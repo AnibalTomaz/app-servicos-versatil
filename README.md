@@ -467,3 +467,12 @@ Correções:
 - A migração preserva IDs de unidades já existentes quando o número coincide.
 - Nenhuma rotina de limpeza automática.
 - Não é necessário atualizar o Apps Script nesta versão.
+
+## Versão 1.48 — unidades corrigidas
+- Cadastro-base atualizado para 81 unidades.
+- Incluídos `208A` e `208B`.
+- Mantidos `501A`, `501B`, `502A` e `502B`.
+- Mantidos os preços corrigidos da moto: diária R$ 160,00 e meia diária R$ 90,00.
+- Migração preserva IDs existentes quando o número da unidade coincide.
+- Nenhuma rotina automática de limpeza foi adicionada.
+- Não é necessário atualizar o Apps Script.

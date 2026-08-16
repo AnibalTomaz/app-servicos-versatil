@@ -1,5 +1,5 @@
-const CACHE="versatil-v1-47";
-const ASSETS=['./','./index.html','./style.css?v=147','./app.js?v=147','./manifest.json','./logo-versatil.jpg'];
+const CACHE="versatil-v1-48";
+const ASSETS=['./','./index.html','./style.css?v=148','./app.js?v=148','./manifest.json','./logo-versatil.jpg'];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
