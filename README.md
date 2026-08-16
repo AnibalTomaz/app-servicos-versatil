@@ -375,3 +375,12 @@ Correções:
 - Nova limpeza única de pedidos, calendário interno e fechamentos.
 - Sincronização com Google Calendar reforçada; recria evento se o ID anterior estiver obsoleto.
 - Testes V135 de bloqueio/reabertura e limpeza de marcações incluídos no Apps Script.
+
+## Versão 1.36
+- Churrasqueiras com e sem serviço são explicitamente tratadas como locações diárias.
+- Se qualquer período for fechado para Locações, churrasqueira diária fica indisponível no dia inteiro.
+- Adicionado botão `Sincronizar Google Calendar` para reenviar todos os fechamentos atuais.
+- Adicionado botão `Reenviar pendências` para repetir tentativas registradas localmente.
+- Apps Script registra as ações recebidas e inclui `statusIntegracaoV136`.
+- Teste `testarBloqueioChurrasqueiraV136` cria um bloqueio visível para Locações em data futura.
+- Teste `testarReaberturaChurrasqueiraV136` remove esse bloqueio.

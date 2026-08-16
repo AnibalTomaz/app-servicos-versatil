@@ -354,11 +354,22 @@ function cartCategorySlotOccupied(date,slot,categoryId){
 
 
 
+
 function isDailyRentalProduct(product){
   if(!product||product.cat!=='locacoes')return false;
+
+  const dailyIds=[
+    'churras-serv',
+    'churras-sem',
+    'sala-dia-serv',
+    'sala-dia-sem',
+    'moto-dia'
+  ];
+
+  if(dailyIds.includes(product.id))return true;
+
   return !productRequiresPeriod(product);
 }
-
 function isDailyUnitPackage(product){
   if(!product||product.cat!=='pacotes')return false;
   return packageBaseProductIds(product).some(pid=>isDailyRentalProduct(db.products.find(p=>p.id===pid)));
@@ -1376,7 +1387,7 @@ function calendarAdmin(){
   const days=new Date(calendarViewYear,calendarViewMonth+1,0).getDate(),firstDay=new Date(calendarViewYear,calendarViewMonth,1).getDay();
   const minDate=tomorrowISO();
   return `<div class="card">
-    <div class="row between"><div><h2>Calendário</h2><p class="muted">Fechamentos somente em datas futuras.</p></div><div class="row"><button class="btn" onclick="refreshCalendarAdmin()">↻ Atualizar</button><button class="btn primary" onclick="openAvailabilityBatchModal()">Gerenciar datas / lote</button></div></div>
+    <div class="row between"><div><h2>Calendário</h2><p class="muted">Fechamentos somente em datas futuras.</p></div><div class="row"><button class="btn" onclick="refreshCalendarAdmin()">↻ Atualizar</button><button class="btn" onclick="syncAllAvailabilityToGoogle()">Sincronizar Google Calendar</button><button class="btn" onclick="retryGoogleAvailabilityQueue()">Reenviar pendências</button><button class="btn primary" onclick="openAvailabilityBatchModal()">Gerenciar datas / lote</button></div></div>
     <div class="calendar-batch-filter">
       <div class="field"><label>Data inicial</label><input id="calendar_filter_start" type="date" min="${minDate}" value="${minDate}"></div>
       <div class="field"><label>Data final</label><input id="calendar_filter_end" type="date" min="${minDate}" value="${minDate}"></div>
@@ -1520,11 +1531,101 @@ function calendarTimesForScope(slot,scopeType,scopeId){
   if(mode==='service')return slot==='morning'?{start:'09:00',end:'11:00'}:{start:'13:00',end:'15:00'};
   return slot==='morning'?{start:'06:00',end:'12:00'}:{start:'13:00',end:'19:00'};
 }
+
+function googleAvailabilityPayload(operation,closures){
+  return {
+    action:'setAvailability',
+    operation,
+    closures,
+    clientVersion:'1.36',
+    sentAt:new Date().toISOString()
+  };
+}
+
+function queueGoogleAvailabilitySync(operation,closures){
+  const queue=JSON.parse(localStorage.getItem('versatil_google_sync_queue')||'[]');
+  queue.push({
+    id:'sync_'+Date.now()+'_'+Math.random().toString(36).slice(2),
+    operation,
+    closures,
+    createdAt:new Date().toISOString()
+  });
+  localStorage.setItem('versatil_google_sync_queue',JSON.stringify(queue.slice(-50)));
+}
+
+function clearGoogleAvailabilityQueue(){
+  localStorage.removeItem('versatil_google_sync_queue');
+}
+
+function syncAllAvailabilityToGoogle(){
+  const closures=structuredClone(db.availabilityClosures||[]);
+  if(!closures.length){
+    alert('Não há fechamentos atuais para sincronizar com o Google Calendar.');
+    return;
+  }
+
+  queueGoogleAvailabilitySync('close',closures);
+
+  fetch(GOOGLE_APPS_SCRIPT_URL,{
+    method:'POST',
+    mode:'no-cors',
+    cache:'no-store',
+    headers:{'Content-Type':'text/plain;charset=UTF-8'},
+    body:JSON.stringify(googleAvailabilityPayload('close',closures)),
+    keepalive:true
+  }).then(()=>{
+    localStorage.setItem('versatil_last_google_sync_attempt',new Date().toISOString());
+    alert(`${closures.length} fechamento(s) reenviado(s) ao Google Calendar. Verifique a agenda em alguns segundos.`);
+  }).catch(err=>{
+    console.error('Falha ao reenviar fechamentos ao Google Calendar:',err);
+    alert('Não foi possível solicitar a sincronização. O envio ficou registrado para nova tentativa.');
+  });
+}
+
+function retryGoogleAvailabilityQueue(){
+  const queue=JSON.parse(localStorage.getItem('versatil_google_sync_queue')||'[]');
+  if(!queue.length){
+    alert('Não há sincronizações pendentes.');
+    return;
+  }
+
+  Promise.all(queue.map(item=>
+    fetch(GOOGLE_APPS_SCRIPT_URL,{
+      method:'POST',
+      mode:'no-cors',
+      cache:'no-store',
+      headers:{'Content-Type':'text/plain;charset=UTF-8'},
+      body:JSON.stringify(googleAvailabilityPayload(item.operation,item.closures)),
+      keepalive:true
+    })
+  )).then(()=>{
+    clearGoogleAvailabilityQueue();
+    localStorage.setItem('versatil_last_google_sync_attempt',new Date().toISOString());
+    alert('Sincronizações pendentes foram reenviadas ao Google Calendar.');
+  }).catch(err=>{
+    console.error(err);
+    alert('Ainda há sincronizações pendentes. Tente novamente.');
+  });
+}
+
+
 function syncAvailabilityToGoogle(operation,closures){
   if(!closures?.length)return;
-  fetch(GOOGLE_APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',cache:'no-store',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({action:'setAvailability',operation,closures}),keepalive:true})
-    .then(()=>console.info('Sincronização com Google Calendar solicitada:',operation,closures.length))
-    .catch(err=>console.error('Falha ao sincronizar disponibilidade com Google Calendar:',err));
+
+  queueGoogleAvailabilitySync(operation,closures);
+
+  fetch(GOOGLE_APPS_SCRIPT_URL,{
+    method:'POST',
+    mode:'no-cors',
+    cache:'no-store',
+    headers:{'Content-Type':'text/plain;charset=UTF-8'},
+    body:JSON.stringify(googleAvailabilityPayload(operation,closures)),
+    keepalive:true
+  }).then(()=>{
+    localStorage.setItem('versatil_last_google_sync_attempt',new Date().toISOString());
+  }).catch(err=>{
+    console.error('Falha ao sincronizar disponibilidade com Google Calendar:',err);
+  });
 }
 function applyAvailabilityChanges(){
   const start=document.getElementById('avail_start')?.value||'',end=document.getElementById('avail_end')?.value||start;
@@ -1553,7 +1654,7 @@ function applyAvailabilityChanges(){
     }
   }
   save(); if(changed.length)syncAvailabilityToGoogle(action,changed); closeAvailabilityModal(); render();
-  alert(changed.length?`${changed.length} alteração(ões) aplicada(s). A sincronização com o Google Calendar foi solicitada.`:'Nenhuma alteração foi necessária.');
+  alert(changed.length?`${changed.length} alteração(ões) aplicada(s). O envio ao Google Calendar foi solicitado. Se não aparecer na agenda, use “Sincronizar Google Calendar”.`:'Nenhuma alteração foi necessária.');
 }
 function togglePeriod(date,slot){openAvailabilityModal(date,slot)}
 function toggleDate(date){openAvailabilityManager({startDate:date,endDate:date,slot:'both'})}
@@ -2450,4 +2551,4 @@ function accountAdmin(){
 function saveAccount(){db.account.adminName=acc_name.value.trim()||'Anibal';db.account.adminPassword=acc_pass.value||db.account.adminPassword;db.account.recoveryEmail=acc_recovery.value.trim();db.account.adminEmails=acc_emails.value.split(/\n|,|;/).map(x=>x.trim()).filter(Boolean);save();alert('Conta atualizada.');render()}
 render();
 
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.35');
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.36');

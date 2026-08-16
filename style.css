@@ -800,3 +800,8 @@ main{
 
 .period-btn.past{background:#f1f3f5;color:#98a1aa;border-color:#dde2e6;cursor:not-allowed}
 .past-day{opacity:.72}.legend-dot.past{background:#aab2b9}
+
+/* v1.36 */
+@media(max-width:760px){
+  .calendar-selectors + .calendar-legend{margin-top:10px}
+}
