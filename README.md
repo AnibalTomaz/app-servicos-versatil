@@ -410,3 +410,10 @@ Correções:
 - Corrigido o favicon 404 usando `logo-versatil.jpg`.
 - Mantidas as correções de recuperação de senha e integrações das versões anteriores.
 - O Apps Script não precisa ser atualizado para esta versão, pois a alteração é somente no front-end/GitHub Pages.
+
+## Versão 1.41 — URL da implantação corrigida
+- O aplicativo estava apontando para uma implantação antiga do Google Apps Script.
+- Nova implantação de produção configurada:
+  `https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec`
+- Esta correção afeta recuperação de senha, sincronização de fechamentos e demais chamadas ao Apps Script.
+- Não é necessário alterar o Apps Script se a implantação Versão 9 já contém o código atual.

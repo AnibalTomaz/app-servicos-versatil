@@ -1,5 +1,5 @@
 const KEY='versatil_services_v1_8';
-const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbwzCLmpeiIs2rluomRVUNTJ_yXDv2oj1zSXcX376hTOPgyRcfzVX5r7l5oGamiTQnJddw/exec";
+const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
 const seed={
  account:{recoveryEmail:'anibal@starlis.com.br',adminEmails:['anibal@starlis.com.br','versatil@starlis.com.br'],adminName:'Anibal',adminPassword:'1234'},
  rooms:[{id:'r1',name:'Quarto 101',number:'101',type:'quarto'},{id:'r2',name:'Apartamento 201',number:'201',type:'apartamento'}],
@@ -2580,7 +2580,7 @@ function bootVersatilV140(){
 
   try{
     render();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.40 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.41 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 
