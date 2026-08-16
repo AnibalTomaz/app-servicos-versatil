@@ -996,8 +996,15 @@ VALOR CONSOLIDADO: ${money(o.total)}${msg}`;
 }
 
 
+
 function testGoogleEmailConnection(){
-  const target=db.account.recoveryEmail||db.account.adminEmails?.[0]||'';
+  const target=(db.account.recoveryEmail||db.account.adminEmails?.[0]||'').trim();
+
+  if(!target){
+    alert('Cadastre primeiro um e-mail de recuperação ou um e-mail Admin.');
+    return;
+  }
+
   const payload={
     action:'sendOrderEmail',
     orderId:'TESTE-'+Date.now(),
@@ -1019,6 +1026,14 @@ function testGoogleEmailConnection(){
     createdAt:new Date().toISOString()
   };
 
+  const button=[...document.querySelectorAll('button')]
+    .find(b=>b.textContent.includes('Testar envio de e-mail'));
+
+  if(button){
+    button.disabled=true;
+    button.textContent='Enviando teste...';
+  }
+
   fetch(GOOGLE_APPS_SCRIPT_URL,{
     method:'POST',
     mode:'no-cors',
@@ -1026,12 +1041,16 @@ function testGoogleEmailConnection(){
     headers:{'Content-Type':'text/plain;charset=UTF-8'},
     body:JSON.stringify(payload)
   }).then(()=>{
-    alert('Teste enviado. Verifique a caixa de entrada.');
+    alert(`Solicitação de teste enviada para ${target}. Verifique a caixa de entrada e a pasta de spam.`);
   }).catch(err=>{
     alert('Falha ao enviar o teste: '+err);
+  }).finally(()=>{
+    if(button){
+      button.disabled=false;
+      button.textContent='Testar envio de e-mail';
+    }
   });
 }
-
 function sendConfirmationEmails(o){
   const adminRecipients=db.account.adminEmails.filter(Boolean);
   const clientRecipient=o.client.email;
@@ -2212,6 +2231,58 @@ function reportsAdmin(){
   </div>`;
 }
 function exportReport(){let rows=[['Pedido','Cliente','Unidade','Data','Total','Status'],...db.orders.map(o=>[o.id,o.client.name,o.client.roomName,new Date(o.createdAt).toLocaleDateString('pt-BR'),o.total,o.status])],csv=rows.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(';')).join('\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download='relatorio-versatil.csv';a.click()}
-function accountAdmin(){return `<div class="card"><h2>Conta</h2><div class="field"><label>Nome do Admin</label><input id="acc_name" value="${esc(db.account.adminName)}"></div><div class="field"><label>Nova senha</label><input id="acc_pass" value="${esc(db.account.adminPassword)}"></div><div class="field"><label>E-mail de recuperação</label><input id="acc_recovery" type="email" value="${esc(db.account.recoveryEmail)}"></div><div class="field"><label>E-mails para recebimento de compras (um por linha)</label><textarea id="acc_emails">${esc(db.account.adminEmails.filter(Boolean).join('\n'))}</textarea></div><button class="btn green" onclick="saveAccount()">Salvar conta</button><div class="notice"><b>Automação mensal:</b> nesta versão local o relatório pode ser exportado manualmente. O envio automático no primeiro dia do mês requer backend/agendamento.</div></div>`}
+
+function accountAdmin(){
+  const emails=db.account.adminEmails||[];
+
+  return `<div class="card">
+    <h2>Conta do Admin</h2>
+
+    <div class="grid">
+      <div class="field">
+        <label>Nome do Admin</label>
+        <input id="acc_name" value="${esc(db.account.adminName||'')}">
+      </div>
+
+      <div class="field">
+        <label>Nova senha</label>
+        <input id="acc_password" type="password" placeholder="Digite apenas se quiser alterar">
+      </div>
+
+      <div class="field">
+        <label>E-mail de recuperação</label>
+        <input id="acc_recovery" type="email" value="${esc(db.account.recoveryEmail||'')}">
+      </div>
+    </div>
+
+    <h3>E-mails para recebimento de compras</h3>
+    <div id="admin_emails_box">
+      ${emails.map((email,index)=>`<div class="row" style="margin-bottom:8px">
+        <input id="admin_email_${index}" type="email" value="${esc(email)}">
+      </div>`).join('')}
+    </div>
+
+    <div class="row">
+      <button class="btn" onclick="addAdminEmailField()">+ Adicionar e-mail</button>
+      <button class="btn primary" onclick="saveAccount()">Salvar conta</button>
+    </div>
+
+    <div class="card email-integration-box" style="margin-top:18px">
+      <h3>Integração de e-mail</h3>
+      <div class="success" style="margin-bottom:10px">
+        Google Apps Script conectado ao aplicativo.
+      </div>
+      <p class="muted">
+        Use o botão abaixo para enviar uma mensagem de teste. O teste será enviado para o e-mail de recuperação da conta ou, na ausência dele, para o primeiro e-mail Admin cadastrado.
+      </p>
+      <button class="btn green" onclick="testGoogleEmailConnection()">Testar envio de e-mail</button>
+      <div class="small muted" style="margin-top:8px;overflow-wrap:anywhere">
+        ${esc(GOOGLE_APPS_SCRIPT_URL)}
+      </div>
+    </div>
+  </div>`;
+}
 function saveAccount(){db.account.adminName=acc_name.value.trim()||'Anibal';db.account.adminPassword=acc_pass.value||db.account.adminPassword;db.account.recoveryEmail=acc_recovery.value.trim();db.account.adminEmails=acc_emails.value.split(/\n|,|;/).map(x=>x.trim()).filter(Boolean);save();alert('Conta atualizada.');render()}
 render();
+
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.30');

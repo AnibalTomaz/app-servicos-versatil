@@ -319,3 +319,12 @@ Correções:
 - Foi mantido o registro local dos dados de e-mail.
 - Em **Admin > Conta** existe um botão para disparar um teste de integração.
 - Próxima etapa: criar/remover eventos automaticamente no Google Calendar.
+
+## Versão 1.30 — botão de teste de e-mail corrigido
+- Corrigida a tela **Admin > Conta**.
+- Adicionado bloco visível **Integração de e-mail**.
+- Adicionado botão **Testar envio de e-mail**.
+- O teste usa o e-mail de recuperação da conta; se estiver vazio, usa o primeiro e-mail Admin.
+- O botão mostra estado de envio e confirma o destinatário após o disparo.
+- Mantida a integração automática de e-mail ao confirmar pedidos.
+- Banco local e demais cadastros existentes foram preservados.
