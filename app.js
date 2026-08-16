@@ -23,7 +23,7 @@ const seed={
   {id:'sala-dia-sem',cat:'locacoes',name:'Locação diária de sala de reunião sem serviço',icon:'🗓️',desc:'Apenas a locação do espaço está compreendida nesta modalidade.',q:300,a:300},
   {id:'sala-meio-serv',cat:'locacoes',name:'Locação de sala de reunião por meia diária com serviço',icon:'🕘',desc:'Locação do espaço, máquina de café e 8 xícaras, pó de café, açúcar, adoçante, água mineral e descartáveis.',q:250,a:250,halfDay:true},
   {id:'sala-meio-sem',cat:'locacoes',name:'Locação de sala de reunião por meia diária sem serviço',icon:'🕐',desc:'Apenas a locação do espaço está compreendida nesta modalidade.',q:150,a:150,halfDay:true},
-  {id:'cafe',cat:'locacoes',name:'Serviço de café',icon:'☕',desc:'Máquina de café e 8 xícaras, pó de café, açúcar, adoçante.',q:80,a:80},
+  {id:'cafe',cat:'locacoes',name:'Serviço de café na sala',icon:'☕',desc:'Máquina de café e 8 xícaras, pó de café, açúcar, adoçante.',q:80,a:80},
   {id:'moto-dia',cat:'locacoes',name:'Locação diária de moto elétrica',icon:'🛵',desc:'Locação do veículo com capacete.',q:90,a:90},
   {id:'moto-meio',cat:'locacoes',name:'Locação de moto elétrica por meia diária',icon:'⚡',desc:'Locação do veículo com capacete. Das 6 às 12h ou das 13 às 19h.',q:160,a:160,halfDay:true},
   {id:'pkg-diarista2',cat:'pacotes',name:'Pacote de diarista 2x',icon:'🎁',desc:'Duas faxinas dentro do período de sua hospedagem.',q:400,a:400},
@@ -259,43 +259,29 @@ function packageScheduleFromCard(p){
 }
 
 
+
 function validateScheduleAgainstCapacity(p,schedule,includeCart=true){
-  const local=[];
-  const group=capacityGroupForProduct(p);
-
+  const local=[],group=capacityGroupForProduct(p);
   for(const use of schedule){
-    if(!use.date || !use.period){
-      return {ok:false,message:'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.'};
-    }
-
+    if(!use.date||!use.period)return {ok:false,message:'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.'};
     const slot=bookingSlotFromPeriod(use.period);
-
-    if(!slot || isSlotClosed(use.date,slot) || capacityGroupSlotOccupied(use.date,slot,group)){
+    if(!slot||isSlotClosed(use.date,slot,p)||capacityGroupSlotOccupied(use.date,slot,group)){
       return {ok:false,message:'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.'};
     }
-
     if(includeCart){
-      const cartBusy=(cart||[]).some(i=>{
+      const busy=(cart||[]).some(i=>{
         const ip=db.products.find(x=>x.id===i.productId);
         if(capacityGroupForProduct(ip)!==group)return false;
         const uses=i.schedule?.length?i.schedule:[{date:i.date,period:i.period}];
-        return uses.some(u=>u.date===use.date && bookingSlotFromPeriod(u.period)===slot);
+        return uses.some(u=>u.date===use.date&&bookingSlotFromPeriod(u.period)===slot);
       });
-      if(cartBusy){
-        return {ok:false,message:'Este período já está ocupado por outro item incompatível no carrinho.'};
-      }
+      if(busy)return {ok:false,message:'Este período já está ocupado por outro item incompatível no carrinho.'};
     }
-
-    if(local.some(x=>x.date===use.date && x.slot===slot)){
-      return {ok:false,message:'As utilizações do mesmo pacote não podem ocupar a mesma data e período.'};
-    }
-
+    if(local.some(x=>x.date===use.date&&x.slot===slot))return {ok:false,message:'As utilizações do mesmo pacote não podem ocupar a mesma data e período.'};
     local.push({date:use.date,slot});
   }
-
   return {ok:true};
 }
-
 function capacityGroupForProduct(p){
   if(!p)return '';
 
@@ -365,18 +351,15 @@ function cartCategorySlotOccupied(date,slot,categoryId){
   });
 }
 
+
 function availableSlotsForProductDate(product,date){
   const group=capacityGroupForProduct(product);
-
   return ['morning','afternoon'].filter(slot=>{
-    if(isSlotClosed(date,slot))return false;
+    if(isSlotClosed(date,slot,product))return false;
     if(capacityGroupSlotOccupied(date,slot,group))return false;
-
-    // Carrinho atual também ocupa o grupo de capacidade compartilhado.
     const cartBusy=(cart||[]).some(i=>{
       const ip=db.products.find(x=>x.id===i.productId);
       if(capacityGroupForProduct(ip)!==group)return false;
-
       const uses=i.schedule?.length?i.schedule:[{date:i.date,period:i.period}];
       return uses.some(use=>{
         if(use.date!==date)return false;
@@ -384,9 +367,7 @@ function availableSlotsForProductDate(product,date){
         return true;
       });
     });
-
-    if(cartBusy)return false;
-    return true;
+    return !cartBusy;
   });
 }
 function categoryDayUnavailable(product,date){
@@ -446,21 +427,70 @@ function closeCalendarOrder(){
   document.getElementById('orderCalendarModal')?.remove();
 }
 
+
 function ensureCalendarData(){
-  if(!Array.isArray(db.closedSlots)) db.closedSlots=[];
+  if(!Array.isArray(db.closedSlots))db.closedSlots=[];
   if(Array.isArray(db.closedDates)){
     for(const d of db.closedDates){
-      const a=d+'|morning', b=d+'|afternoon';
-      if(!db.closedSlots.includes(a)) db.closedSlots.push(a);
-      if(!db.closedSlots.includes(b)) db.closedSlots.push(b);
+      const a=d+'|morning',b=d+'|afternoon';
+      if(!db.closedSlots.includes(a))db.closedSlots.push(a);
+      if(!db.closedSlots.includes(b))db.closedSlots.push(b);
     }
+  }
+  if(!Array.isArray(db.availabilityClosures))db.availabilityClosures=[];
+  if(!db.availabilityClosuresMigratedV132){
+    for(const key of db.closedSlots){
+      const [date,slot]=String(key).split('|');
+      if(!date||!slot)continue;
+      const cid=availabilityClosureId(date,slot,'all','all');
+      if(!db.availabilityClosures.some(c=>c.id===cid)){
+        db.availabilityClosures.push({id:cid,date,slot,scopeType:'all',scopeId:'all',scopeLabel:'Todos os itens',createdAt:new Date().toISOString()});
+      }
+    }
+    db.closedSlots=[];
+    db.availabilityClosuresMigratedV132=true;
+    save();
   }
 }
 ensureCalendarData();
 
 function slotKey(date,slot){return `${date}|${slot}`}
-function isSlotClosed(date,slot){return db.closedSlots.includes(slotKey(date,slot))}
-
+function availabilityClosureId(date,slot,scopeType,scopeId){
+  return 'close_'+`${date}|${slot}|${scopeType}|${scopeId}`.replace(/[^a-zA-Z0-9_-]/g,'_');
+}
+function closuresForSlot(date,slot){
+  return (db.availabilityClosures||[]).filter(c=>c.date===date&&c.slot===slot);
+}
+function productMatchesClosure(product,closure){
+  if(!closure)return false;
+  if(closure.scopeType==='all')return true;
+  if(!product)return false;
+  if(closure.scopeType==='category')return product.cat===closure.scopeId;
+  if(closure.scopeType==='product')return product.id===closure.scopeId;
+  return false;
+}
+function isSlotClosed(date,slot,product=null){
+  const closures=closuresForSlot(date,slot);
+  if(product)return closures.some(c=>productMatchesClosure(product,c));
+  return closures.some(c=>c.scopeType==='all');
+}
+function slotClosureStatus(date,slot){
+  const closures=closuresForSlot(date,slot);
+  if(closures.some(c=>c.scopeType==='all'))return 'closed';
+  if(closures.length)return 'partial';
+  return 'open';
+}
+function slotClosureSummary(date,slot){
+  const closures=closuresForSlot(date,slot);
+  if(!closures.length)return 'Aberto';
+  if(closures.some(c=>c.scopeType==='all'))return 'Fechado';
+  return `Parcial (${closures.length})`;
+}
+function isBookingClosed(date,period='',product=null){
+  const slot=bookingSlotFromPeriod(period);
+  if(slot)return isSlotClosed(date,slot,product);
+  return isSlotClosed(date,'morning',product)&&isSlotClosed(date,'afternoon',product);
+}
 
 function periodLabel(period){
   if(String(period||'').startsWith('09:00')) return 'Manhã • 09 às 11';
@@ -499,7 +529,7 @@ function migrateCatalogV119(){
     'sala-dia-sem':{name:'Locação diária de sala de reunião sem serviço'},
     'sala-meio-serv':{name:'Locação de sala de reunião por meia diária com serviço'},
     'sala-meio-sem':{name:'Locação de sala de reunião por meia diária sem serviço'},
-    'cafe':{name:'Serviço de café'},
+    'cafe':{name:'Serviço de café na sala'},
     'moto-dia':{name:'Locação diária de moto elétrica'},
     'moto-meio':{name:'Locação de moto elétrica por meia diária'},
     'pkg-diarista2':{name:'Pacote de diarista 2x',q:400,a:400},
@@ -558,6 +588,16 @@ function cleanExistingOrdersV121(){
   localStorage.setItem(CLEAN_KEY,'1');
 }
 cleanExistingOrdersV121();
+
+
+function migrateV132(){
+  const cafe=db.products.find(p=>p.id==='cafe');
+  if(cafe)cafe.name='Serviço de café na sala';
+  for(const o of db.orders||[])for(const i of o.items||[])if(i.productId==='cafe')i.name='Serviço de café na sala';
+  for(const e of db.calendarOrders||[])if(e.productId==='cafe')e.name='Serviço de café na sala';
+  save();
+}
+migrateV132();
 
 function render(){document.getElementById('app').innerHTML=session?appView():loginView()}
 function loginView(){return `<div class="login"><div class="loginbox"><img src="logo-versatil.jpg" class="login-logo"><h2 style="text-align:center;margin:0">APP SERVIÇOS VERSÁTIL</h2><p class="muted" style="text-align:center">Contratação de serviços</p><div class="tabs"><button id="tabClient" class="btn access-tab selected" aria-pressed="true" onclick="showLogin('client')">Área do Cliente</button><button id="tabAdmin" class="btn access-tab" aria-pressed="false" onclick="showLogin('admin')">Área do Admin</button></div><div id="clientLogin"><div class="field"><label>E-mail</label><input id="c_email" type="email"></div><div class="field"><label>Nome</label><input id="c_name"></div><div class="field"><label>Quarto / Apartamento</label><input id="c_room" placeholder="Digite a unidade cadastrada, ex.: 101A"></div><button class="btn primary" style="width:100%" onclick="clientLogin()">Entrar como Cliente</button></div><div id="adminLogin" style="display:none"><div class="field"><label>Login do ADMIN</label><input id="a_name" autocomplete="username" placeholder="Login"></div><div class="field"><label>Senha do ADMIN</label><input id="a_pass" type="password" autocomplete="current-password" placeholder="Senha"></div><div class="row"><button class="btn primary" onclick="adminLogin()">Entrar como Admin</button><button class="btn" onclick="recoverAdmin()">Recuperar senha</button></div></div></div></div>`}
@@ -878,66 +918,44 @@ function clearCart(){
 }
 
 
+
 function confirmOrder(){
   if(!cart.length)return;
-
   const reservations=[];
-
   for(const i of cart){
     const p=db.products.find(x=>x.id===i.productId);
     if(!p)return alert('Produto não encontrado.');
-
     const group=capacityGroupForProduct(p);
     const uses=i.schedule?.length?i.schedule:[{date:i.date,period:i.period}];
-
     for(const use of uses){
-      if(productRequiresPeriod(p) && !use.period){
-        return alert('Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
-      }
-
-      const slots=productRequiresPeriod(p)
-        ?[bookingSlotFromPeriod(use.period)]
-        :['morning','afternoon'];
-
+      if(productRequiresPeriod(p)&&!use.period)return alert('Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
+      const slots=productRequiresPeriod(p)?[bookingSlotFromPeriod(use.period)]:['morning','afternoon'];
       for(const slot of slots){
-        if(isSlotClosed(use.date,slot) || capacityGroupSlotOccupied(use.date,slot,group)){
+        if(isSlotClosed(use.date,slot,p)||capacityGroupSlotOccupied(use.date,slot,group)){
           return alert('Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
         }
-
-        const duplicate=reservations.some(r=>r.date===use.date&&r.slot===slot&&r.group===group);
-        if(duplicate){
+        if(reservations.some(r=>r.date===use.date&&r.slot===slot&&r.group===group)){
           return alert('Não é permitido mais de um item do mesmo grupo de capacidade no mesmo dia e período.');
         }
-
         reservations.push({date:use.date,slot,group});
       }
     }
   }
-
-  let order={
+  const order={
     id:id(),
-    client:{
-      email:session.email,
-      name:session.name,
-      roomId:session.roomId,
-      roomName:room()?.name||session.roomName||''
-    },
+    client:{email:session.email,name:session.name,roomId:session.roomId,roomName:room()?.name||session.roomName||''},
     items:structuredClone(cart),
     total:cart.reduce((a,i)=>a+i.price*i.qty,0),
     createdAt:new Date().toISOString(),
     status:'ativo'
   };
-
   db.orders.push(order);
   addOrderToAppCalendar(order);
   save();
-
   session.lastOrderId=order.id;
   cart=[];
   page='confirmation';
-
   sendConfirmationEmails(order);
-  autoPrepareCalendar(order);
   render();
 }
 function confirmationPage(){
@@ -1313,95 +1331,159 @@ function deleteProductAdmin(pid){if(confirm('Excluir produto?')){db.products=db.
 
 
 
+
 function calendarAdmin(){
   const months=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
   const currentYear=new Date().getFullYear();
   const years=Array.from({length:9},(_,i)=>currentYear-2+i);
-  if(!years.includes(calendarViewYear)) years.push(calendarViewYear);
+  if(!years.includes(calendarViewYear))years.push(calendarViewYear);
   years.sort((a,b)=>a-b);
-
   const days=new Date(calendarViewYear,calendarViewMonth+1,0).getDate();
   const firstDay=new Date(calendarViewYear,calendarViewMonth,1).getDay();
 
   return `<div class="card">
     <div class="row between">
-      <div>
-        <h2>Calendário</h2>
-        <p class="muted">Cada categoria aceita um pedido por período. Categorias diferentes podem ocupar o mesmo período.</p>
-      </div>
-      <div class="calendar-selectors">
-        <div class="field"><label>Mês</label><select onchange="calendarViewMonth=Number(this.value);render()">${months.map((name,i)=>`<option value="${i}" ${calendarViewMonth===i?'selected':''}>${name}</option>`).join('')}</select></div>
-        <div class="field"><label>Ano</label><select onchange="calendarViewYear=Number(this.value);render()">${years.map(year=>`<option value="${year}" ${calendarViewYear===year?'selected':''}>${year}</option>`).join('')}</select></div>
+      <div><h2>Calendário</h2><p class="muted">Gerencie disponibilidade por período, categoria ou produto.</p></div>
+      <div class="row">
+        <button class="btn" onclick="refreshCalendarAdmin()">↻ Atualizar</button>
+        <button class="btn primary" onclick="openAvailabilityBatchModal()">Gerenciar datas / lote</button>
       </div>
     </div>
 
-    <div class="calendar-weekdays">${['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(x=>`<div>${x}</div>`).join('')}</div>
+    <div class="calendar-batch-filter">
+      <div class="field"><label>Data inicial</label><input id="calendar_filter_start" type="date" value="${today()}"></div>
+      <div class="field"><label>Data final</label><input id="calendar_filter_end" type="date" value="${today()}"></div>
+      <div class="field"><label>Período</label><select id="calendar_filter_slot">
+        <option value="morning">Manhã</option><option value="afternoon">Tarde</option><option value="both">Manhã e tarde</option>
+      </select></div>
+      <button class="btn primary" onclick="openAvailabilityBatchModalFromFilters()">Selecionar itens</button>
+    </div>
 
+    <div class="calendar-selectors">
+      <div class="field"><label>Mês</label><select onchange="calendarViewMonth=Number(this.value);render()">${months.map((name,i)=>`<option value="${i}" ${calendarViewMonth===i?'selected':''}>${name}</option>`).join('')}</select></div>
+      <div class="field"><label>Ano</label><select onchange="calendarViewYear=Number(this.value);render()">${years.map(y=>`<option value="${y}" ${calendarViewYear===y?'selected':''}>${y}</option>`).join('')}</select></div>
+    </div>
+
+    <div class="calendar-legend">
+      <span><i class="legend-dot open"></i> Aberto</span><span><i class="legend-dot partial"></i> Parcial</span><span><i class="legend-dot closed"></i> Fechado</span>
+    </div>
+
+    <div class="calendar-weekdays">${['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(x=>`<div>${x}</div>`).join('')}</div>
     <div class="calendar-period-grid">
       ${Array.from({length:firstDay},()=>`<div class="calendar-empty"></div>`).join('')}
       ${Array.from({length:days},(_,i)=>{
         const day=i+1;
         const date=`${calendarViewYear}-${String(calendarViewMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-        const morningClosed=isSlotClosed(date,'morning');
-        const afternoonClosed=isSlotClosed(date,'afternoon');
-
+        const ms=slotClosureStatus(date,'morning'),as=slotClosureStatus(date,'afternoon');
         const entries=calendarEntriesForDate(date);
-        const morningEntries=entries.filter(e=>normalizedEntrySlots(e).includes('morning'));
-        const afternoonEntries=entries.filter(e=>normalizedEntrySlots(e).includes('afternoon'));
-
-        const renderEntries=(list)=>list.length?`<div class="calendar-orders">${list.map(e=>{
-          const order=db.orders.find(o=>o.id===e.orderId);
-          const cat=db.categories.find(c=>c.id===calendarEntryCategory(e));
-          return order?`<button class="calendar-order-marker" onclick="openCalendarOrder('${order.id}')">
-            <b>${esc(cat?.name||'Categoria')}</b>
-            <span>${esc(order.client.roomName)} • ${esc(e.name)}</span>
-          </button>`:'';
+        const morning=entries.filter(e=>normalizedEntrySlots(e).includes('morning'));
+        const afternoon=entries.filter(e=>normalizedEntrySlots(e).includes('afternoon'));
+        const renderEntries=list=>list.length?`<div class="calendar-orders">${list.map(e=>{
+          const order=db.orders.find(o=>o.id===e.orderId),cat=db.categories.find(c=>c.id===calendarEntryCategory(e));
+          return order?`<button class="calendar-order-marker" onclick="openCalendarOrder('${order.id}')"><b>${esc(cat?.name||'Categoria')}</b><span>${esc(order.client.roomName)} • ${esc(e.name)}</span></button>`:'';
         }).join('')}</div>`:`<div class="calendar-free">Sem pedidos</div>`;
-
         return `<div class="calendar-day-card">
           <div class="calendar-day-number">${day}</div>
-
-          <div class="calendar-slot-block">
-            <button class="period-btn ${morningClosed?'closed':'open'}" onclick="togglePeriod('${date}','morning')">
-              Manhã<br><span>${morningClosed?'Fechado':'Aberto'}</span>
-            </button>
-            ${renderEntries(morningEntries)}
-          </div>
-
-          <div class="calendar-slot-block">
-            <button class="period-btn ${afternoonClosed?'closed':'open'}" onclick="togglePeriod('${date}','afternoon')">
-              Tarde<br><span>${afternoonClosed?'Fechado':'Aberto'}</span>
-            </button>
-            ${renderEntries(afternoonEntries)}
-          </div>
+          <div class="calendar-slot-block"><button class="period-btn ${ms}" onclick="openAvailabilityModal('${date}','morning')">Manhã<br><span>${slotClosureSummary(date,'morning')}</span></button>${renderEntries(morning)}</div>
+          <div class="calendar-slot-block"><button class="period-btn ${as}" onclick="openAvailabilityModal('${date}','afternoon')">Tarde<br><span>${slotClosureSummary(date,'afternoon')}</span></button>${renderEntries(afternoon)}</div>
         </div>`;
       }).join('')}
     </div>
   </div>`;
 }
-function togglePeriod(date,slot){
-  const key=slotKey(date,slot);
-  db.closedSlots=db.closedSlots.includes(key)
-    ?db.closedSlots.filter(x=>x!==key)
-    :[...db.closedSlots,key];
-  save();render();
+
+function refreshCalendarAdmin(){ensureCalendarOrders();ensureCalendarData();render();}
+function dateRange(start,end){
+  const out=[]; if(!start||!end)return out;
+  let a=new Date(start+'T12:00:00'),b=new Date(end+'T12:00:00');
+  if(a>b){const t=a;a=b;b=t}
+  while(a<=b){out.push(`${a.getFullYear()}-${String(a.getMonth()+1).padStart(2,'0')}-${String(a.getDate()).padStart(2,'0')}`);a.setDate(a.getDate()+1)}
+  return out;
 }
-function toggleDate(date){
-  const bothClosed=isSlotClosed(date,'morning')&&isSlotClosed(date,'afternoon');
-  if(bothClosed){
-    db.closedSlots=db.closedSlots.filter(x=>x!==slotKey(date,'morning')&&x!==slotKey(date,'afternoon'));
-  }else{
-    for(const s of ['morning','afternoon']){
-      const key=slotKey(date,s);
-      if(!db.closedSlots.includes(key))db.closedSlots.push(key);
+function availabilityScopeRows(){
+  return db.categories.map(cat=>`<div class="availability-category-group">
+    <label class="availability-category-title"><input type="checkbox" class="availability-category-check" value="${cat.id}"> ${cat.icon||''} ${esc(cat.name)}</label>
+    <div class="availability-products">${db.products.filter(p=>p.cat===cat.id).map(p=>`<label><input type="checkbox" class="availability-product-check" value="${p.id}"> ${p.icon||''} ${esc(p.name)}</label>`).join('')}</div>
+  </div>`).join('');
+}
+function openAvailabilityModal(date,slot){openAvailabilityManager({startDate:date,endDate:date,slot})}
+function openAvailabilityBatchModal(){openAvailabilityManager({startDate:today(),endDate:today(),slot:'morning'})}
+function openAvailabilityBatchModalFromFilters(){
+  openAvailabilityManager({
+    startDate:document.getElementById('calendar_filter_start')?.value||today(),
+    endDate:document.getElementById('calendar_filter_end')?.value||today(),
+    slot:document.getElementById('calendar_filter_slot')?.value||'morning'
+  });
+}
+function openAvailabilityManager({startDate,endDate,slot}){
+  document.getElementById('availabilityModal')?.remove();
+  const modal=document.createElement('div');
+  modal.id='availabilityModal'; modal.className='modal-overlay';
+  modal.innerHTML=`<div class="modal-card availability-modal-card">
+    <div class="row between"><div><h2 style="margin:0">Gerenciar disponibilidade</h2><p class="muted">Feche ou abra somente os itens desejados. As alterações também serão enviadas ao Google Calendar.</p></div><button class="btn" onclick="closeAvailabilityModal()">Fechar</button></div>
+    <div class="availability-manager-grid">
+      <div class="field"><label>Data inicial</label><input id="avail_start" type="date" value="${startDate}"></div>
+      <div class="field"><label>Data final</label><input id="avail_end" type="date" value="${endDate}"></div>
+      <div class="field"><label>Período</label><select id="avail_slot"><option value="morning" ${slot==='morning'?'selected':''}>Manhã</option><option value="afternoon" ${slot==='afternoon'?'selected':''}>Tarde</option><option value="both" ${slot==='both'?'selected':''}>Manhã e tarde</option></select></div>
+      <div class="field"><label>Ação</label><select id="avail_action"><option value="close">Fechar disponibilidade</option><option value="open">Abrir disponibilidade</option></select></div>
+    </div>
+    <div class="availability-all-row"><label><input id="avail_all" type="checkbox" onchange="toggleAvailabilityAll(this.checked)"> <b>Todos os itens</b></label></div>
+    <div class="availability-scope-list">${availabilityScopeRows()}</div>
+    <div class="row between" style="margin-top:14px"><span class="muted">Selecione categorias inteiras, produtos específicos ou todos os itens.</span><button class="btn primary" onclick="applyAvailabilityChanges()">Aplicar alterações</button></div>
+  </div>`;
+  document.body.appendChild(modal);
+}
+function toggleAvailabilityAll(checked){
+  document.querySelectorAll('.availability-category-check,.availability-product-check').forEach(el=>{el.disabled=checked;if(checked)el.checked=false});
+}
+function closeAvailabilityModal(){document.getElementById('availabilityModal')?.remove()}
+function scopeLabel(type,id){
+  if(type==='all')return 'Todos os itens';
+  if(type==='category')return db.categories.find(c=>c.id===id)?.name||id;
+  return db.products.find(p=>p.id===id)?.name||id;
+}
+function calendarTimesForScope(slot,scopeType,scopeId){
+  let mode='rental';
+  if(scopeType==='category'&&(scopeId==='servicos'||scopeId==='enxoval'))mode='service';
+  if(scopeType==='product')mode=productPeriodMode(db.products.find(p=>p.id===scopeId));
+  if(mode==='service')return slot==='morning'?{start:'09:00',end:'11:00'}:{start:'13:00',end:'15:00'};
+  return slot==='morning'?{start:'06:00',end:'12:00'}:{start:'13:00',end:'19:00'};
+}
+function syncAvailabilityToGoogle(operation,closures){
+  if(!closures?.length)return;
+  fetch(GOOGLE_APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',cache:'no-store',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({action:'setAvailability',operation,closures}),keepalive:true})
+    .catch(err=>console.error('Falha ao sincronizar disponibilidade com Google Calendar:',err));
+}
+function applyAvailabilityChanges(){
+  const start=document.getElementById('avail_start')?.value||'',end=document.getElementById('avail_end')?.value||start;
+  const slotValue=document.getElementById('avail_slot')?.value||'morning',action=document.getElementById('avail_action')?.value||'close';
+  const all=document.getElementById('avail_all')?.checked;
+  const categories=[...document.querySelectorAll('.availability-category-check:checked')].map(x=>x.value);
+  const products=[...document.querySelectorAll('.availability-product-check:checked')].map(x=>x.value);
+  if(!start||!end)return alert('Selecione a data inicial e final.');
+  if(!all&&!categories.length&&!products.length)return alert('Selecione ao menos uma categoria, produto ou Todos os itens.');
+  const scopes=all?[{scopeType:'all',scopeId:'all'}]:[...categories.map(scopeId=>({scopeType:'category',scopeId})),...products.map(scopeId=>({scopeType:'product',scopeId}))];
+  const slots=slotValue==='both'?['morning','afternoon']:[slotValue],dates=dateRange(start,end),changed=[];
+  for(const date of dates)for(const slot of slots)for(const scope of scopes){
+    if(action==='close'){
+      const cid=availabilityClosureId(date,slot,scope.scopeType,scope.scopeId);
+      if(db.availabilityClosures.some(c=>c.id===cid))continue;
+      const times=calendarTimesForScope(slot,scope.scopeType,scope.scopeId);
+      const c={id:cid,date,slot,scopeType:scope.scopeType,scopeId:scope.scopeId,scopeLabel:scopeLabel(scope.scopeType,scope.scopeId),periodLabel:slotLabel(slot),calendarStart:times.start,calendarEnd:times.end,createdAt:new Date().toISOString()};
+      db.availabilityClosures.push(c);changed.push(c);
+    }else{
+      const removed=scope.scopeType==='all'
+        ?db.availabilityClosures.filter(c=>c.date===date&&c.slot===slot)
+        :db.availabilityClosures.filter(c=>c.date===date&&c.slot===slot&&c.scopeType===scope.scopeType&&c.scopeId===scope.scopeId);
+      db.availabilityClosures=db.availabilityClosures.filter(c=>!removed.some(r=>r.id===c.id));
+      changed.push(...removed);
     }
   }
-  save();render();
+  save(); if(changed.length)syncAvailabilityToGoogle(action,changed); closeAvailabilityModal(); render();
+  alert(changed.length?`${changed.length} alteração(ões) de disponibilidade aplicada(s).`:'Nenhuma alteração foi necessária.');
 }
-
-
-
-
+function togglePeriod(date,slot){openAvailabilityModal(date,slot)}
+function toggleDate(date){openAvailabilityManager({startDate:date,endDate:date,slot:'both'})}
 
 function orderUsesForDate(order,date){
   const rows=[];
@@ -2280,7 +2362,7 @@ function accountAdmin(){
     <div class="card email-integration-box" style="margin-top:18px">
       <h3>Integração de e-mail</h3>
       <div class="success" style="margin-bottom:10px">
-        Google Apps Script conectado ao aplicativo para e-mail e Google Calendar.
+        Google Apps Script conectado para e-mails, pedidos e disponibilidade do Google Calendar.
       </div>
       <p class="muted">
         Use o botão abaixo para enviar uma mensagem de teste. O teste será enviado para o e-mail de recuperação da conta ou, na ausência dele, para o primeiro e-mail Admin cadastrado.
@@ -2295,4 +2377,4 @@ function accountAdmin(){
 function saveAccount(){db.account.adminName=acc_name.value.trim()||'Anibal';db.account.adminPassword=acc_pass.value||db.account.adminPassword;db.account.recoveryEmail=acc_recovery.value.trim();db.account.adminEmails=acc_emails.value.split(/\n|,|;/).map(x=>x.trim()).filter(Boolean);save();alert('Conta atualizada.');render()}
 render();
 
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.31');
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.32');

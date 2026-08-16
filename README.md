@@ -335,3 +335,12 @@ Correções:
 - Ao excluir um pedido no Admin, o aplicativo envia `deleteOrder` ao Apps Script para remover os eventos correspondentes do Google Calendar.
 - O pedido também é removido do calendário interno e dos relatórios.
 - Banco local e demais cadastros foram preservados.
+
+## Versão 1.32
+- E-mails HTML com logo Versátil, cores do APP e texto enxuto.
+- Envio Admin separado para anibal@starlis.com.br e versatil@starlis.com.br.
+- Serviço de café renomeado para Serviço de café na sala.
+- Calendário com Atualizar, gestão por item/categoria, datas em lote e estados Aberto/Parcial/Fechado.
+- Fechamentos retiram imediatamente a disponibilidade no catálogo do Cliente.
+- Fechamentos/reaberturas são sincronizados com o Google Calendar via Apps Script.
+- Arquivo APPS_SCRIPT_v1_32.gs incluído para substituir o código atual do Apps Script e republicar a implantação.
