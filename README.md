@@ -402,3 +402,11 @@ Correções:
 - Caches das versões anteriores são removidos na ativação do novo Service Worker.
 - Adicionada tela de diagnóstico caso ocorra erro de inicialização, evitando página totalmente branca.
 - A correção de recuperação de senha da v1.38 foi preservada.
+
+## Versão 1.40 — correção definitiva da tela branca
+- Identificado o erro real: o `app.js` carregava normalmente, mas não executava `render()` ao final da inicialização.
+- Adicionado `bootVersatilV140()` para montar a tela de acesso automaticamente após o DOM estar pronto.
+- Adicionada mensagem visível caso haja qualquer erro real durante a inicialização.
+- Corrigido o favicon 404 usando `logo-versatil.jpg`.
+- Mantidas as correções de recuperação de senha e integrações das versões anteriores.
+- O Apps Script não precisa ser atualizado para esta versão, pois a alteração é somente no front-end/GitHub Pages.

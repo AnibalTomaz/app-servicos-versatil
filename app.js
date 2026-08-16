@@ -2568,4 +2568,35 @@ function saveAccount(){
   db.account.adminEmails=['anibal@starlis.com.br','versatil@starlis.com.br'];
   save();alert('Conta atualizada. E-mail principal: anibal@starlis.com.br. E-mail secundário: versatil@starlis.com.br.');render();
 }
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.39');
+
+
+function bootVersatilV140(){
+  const mount=document.getElementById('app');
+
+  if(!mount){
+    console.error('APP SERVIÇOS VERSÁTIL: elemento #app não encontrado.');
+    return;
+  }
+
+  try{
+    render();
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.40 carregada.');
+  }catch(err){
+    console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
+
+    mount.innerHTML=`
+      <div style="max-width:620px;margin:40px auto;padding:20px;font-family:Arial,sans-serif;background:#fff;border:1px solid #d7e1ea;border-radius:14px">
+        <h2 style="margin-top:0">APP SERVIÇOS VERSÁTIL</h2>
+        <p>O aplicativo encontrou um erro durante a inicialização.</p>
+        <p style="font-size:12px;color:#66788a;overflow-wrap:anywhere">${String(err&&err.message?err.message:err)}</p>
+        <button onclick="location.reload()" style="padding:10px 16px;border:0;border-radius:8px;background:#0f4c81;color:#fff;cursor:pointer">Tentar novamente</button>
+      </div>`;
+  }
+}
+
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',bootVersatilV140,{once:true});
+}else{
+  bootVersatilV140();
+}
+
