@@ -2568,4 +2568,4 @@ function saveAccount(){
   db.account.adminEmails=['anibal@starlis.com.br','versatil@starlis.com.br'];
   save();alert('Conta atualizada. E-mail principal: anibal@starlis.com.br. E-mail secundário: versatil@starlis.com.br.');render();
 }
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.38');
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.39');

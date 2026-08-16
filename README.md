@@ -395,3 +395,10 @@ Correções:
 - Corrigido erro `ReferenceError: escapeHtml is not defined` na recuperação de senha.
 - A função passa a usar `escaparHtml`, que já existe no Apps Script.
 - Incluído teste `testarRecuperacaoSenhaV138`.
+
+## Versão 1.39 — correção de tela branca / cache
+- Arquivos `app.js` e `style.css` recebem versão na URL para evitar carregamento de cópia antiga.
+- Service Worker atualizado para estratégia network-first nos arquivos principais.
+- Caches das versões anteriores são removidos na ativação do novo Service Worker.
+- Adicionada tela de diagnóstico caso ocorra erro de inicialização, evitando página totalmente branca.
+- A correção de recuperação de senha da v1.38 foi preservada.
