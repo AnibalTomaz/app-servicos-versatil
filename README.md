@@ -443,3 +443,27 @@ Correções:
 - Não interfere em cliques ou navegação.
 - Responsivo no celular.
 - Nenhuma alteração funcional no Apps Script.
+
+## Versão 1.45 — proteção de dados e versão sempre visível
+- Removidas definitivamente as rotinas antigas `cleanForV134` e `cleanForV135` que apagavam pedidos/calendário em determinadas instalações.
+- Nenhuma atualização futura deve apagar dados locais automaticamente.
+- `v1.45` é inserida diretamente no `index.html`, aparecendo desde a página inicial, mesmo antes do JavaScript carregar.
+- Mantida também a atualização dinâmica da versão.
+- Esta versão não consegue restaurar dados locais que já tenham sido apagados pelo navegador; restauração depende de existir cópia em outro navegador/dispositivo, backup/exportação ou armazenamento ainda preservado.
+
+## Versão 1.46 — cadastro oficial de unidades e preços da moto
+- Cadastro-base atualizado para 77 unidades, conforme a lista fornecida.
+- As unidades já existentes com o mesmo número preservam o ID anterior quando possível.
+- Nenhum pedido, conta, fechamento ou outro dado é apagado por esta migração.
+- Moto elétrica diária: **R$ 160,00** para quarto e apartamento.
+- Moto elétrica meia diária: **R$ 90,00** para quarto e apartamento.
+- `v1.46` continua visível desde a página de entrada.
+- Não é necessário atualizar o Apps Script nesta versão.
+
+## Versão 1.47 — lista de unidades atualizada
+- Cadastro-base atualizado para 79 unidades.
+- Incluídos `501B` e `502A`, que não constavam na lista anterior.
+- Mantidos os preços corrigidos da moto: diária R$ 160,00 e meia diária R$ 90,00.
+- A migração preserva IDs de unidades já existentes quando o número coincide.
+- Nenhuma rotina de limpeza automática.
+- Não é necessário atualizar o Apps Script nesta versão.

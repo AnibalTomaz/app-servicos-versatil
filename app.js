@@ -2,7 +2,7 @@ const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
 const seed={
  account:{recoveryEmail:'anibal@starlis.com.br',adminEmails:['anibal@starlis.com.br','versatil@starlis.com.br'],adminName:'Anibal',adminPassword:'1234'},
- rooms:[{id:'r1',name:'Quarto 101',number:'101',type:'quarto'},{id:'r2',name:'Apartamento 201',number:'201',type:'apartamento'}],
+ rooms:[{"id":"unit_101","name":"Apartamento 101","number":"101","type":"apartamento"},{"id":"unit_102","name":"Apartamento 102","number":"102","type":"apartamento"},{"id":"unit_103","name":"Apartamento 103","number":"103","type":"apartamento"},{"id":"unit_104","name":"Apartamento 104","number":"104","type":"apartamento"},{"id":"unit_105","name":"Apartamento 105","number":"105","type":"apartamento"},{"id":"unit_106","name":"Apartamento 106","number":"106","type":"apartamento"},{"id":"unit_107","name":"Apartamento 107","number":"107","type":"apartamento"},{"id":"unit_108a","name":"Quarto 108A","number":"108A","type":"quarto"},{"id":"unit_108b","name":"Quarto 108B","number":"108B","type":"quarto"},{"id":"unit_201","name":"Apartamento 201","number":"201","type":"apartamento"},{"id":"unit_202","name":"Apartamento 202","number":"202","type":"apartamento"},{"id":"unit_203","name":"Apartamento 203","number":"203","type":"apartamento"},{"id":"unit_204","name":"Apartamento 204","number":"204","type":"apartamento"},{"id":"unit_205","name":"Apartamento 205","number":"205","type":"apartamento"},{"id":"unit_206","name":"Apartamento 206","number":"206","type":"apartamento"},{"id":"unit_207a","name":"Quarto 207A","number":"207A","type":"quarto"},{"id":"unit_207b","name":"Quarto 207B","number":"207B","type":"quarto"},{"id":"unit_301a","name":"Quarto 301A","number":"301A","type":"quarto"},{"id":"unit_301b","name":"Quarto 301B","number":"301B","type":"quarto"},{"id":"unit_302a","name":"Quarto 302A","number":"302A","type":"quarto"},{"id":"unit_302b","name":"Quarto 302B","number":"302B","type":"quarto"},{"id":"unit_303a","name":"Quarto 303A","number":"303A","type":"quarto"},{"id":"unit_303b","name":"Quarto 303B","number":"303B","type":"quarto"},{"id":"unit_304","name":"Apartamento 304","number":"304","type":"apartamento"},{"id":"unit_305a","name":"Quarto 305A","number":"305A","type":"quarto"},{"id":"unit_305b","name":"Quarto 305B","number":"305B","type":"quarto"},{"id":"unit_306a","name":"Quarto 306A","number":"306A","type":"quarto"},{"id":"unit_306b","name":"Quarto 306B","number":"306B","type":"quarto"},{"id":"unit_307a","name":"Quarto 307A","number":"307A","type":"quarto"},{"id":"unit_307b","name":"Quarto 307B","number":"307B","type":"quarto"},{"id":"unit_308a","name":"Quarto 308A","number":"308A","type":"quarto"},{"id":"unit_308b","name":"Quarto 308B","number":"308B","type":"quarto"},{"id":"unit_401a","name":"Quarto 401A","number":"401A","type":"quarto"},{"id":"unit_401b","name":"Quarto 401B","number":"401B","type":"quarto"},{"id":"unit_402a","name":"Quarto 402A","number":"402A","type":"quarto"},{"id":"unit_402b","name":"Quarto 402B","number":"402B","type":"quarto"},{"id":"unit_403a","name":"Quarto 403A","number":"403A","type":"quarto"},{"id":"unit_403b","name":"Quarto 403B","number":"403B","type":"quarto"},{"id":"unit_404a","name":"Quarto 404A","number":"404A","type":"quarto"},{"id":"unit_404b","name":"Quarto 404B","number":"404B","type":"quarto"},{"id":"unit_405a","name":"Quarto 405A","number":"405A","type":"quarto"},{"id":"unit_405b","name":"Quarto 405B","number":"405B","type":"quarto"},{"id":"unit_406a","name":"Quarto 406A","number":"406A","type":"quarto"},{"id":"unit_406b","name":"Quarto 406B","number":"406B","type":"quarto"},{"id":"unit_407a","name":"Quarto 407A","number":"407A","type":"quarto"},{"id":"unit_407b","name":"Quarto 407B","number":"407B","type":"quarto"},{"id":"unit_408a","name":"Quarto 408A","number":"408A","type":"quarto"},{"id":"unit_408b","name":"Quarto 408B","number":"408B","type":"quarto"},{"id":"unit_501a","name":"Quarto 501A","number":"501A","type":"quarto"},{"id":"unit_501b","name":"Quarto 501B","number":"501B","type":"quarto"},{"id":"unit_502a","name":"Quarto 502A","number":"502A","type":"quarto"},{"id":"unit_502b","name":"Quarto 502B","number":"502B","type":"quarto"},{"id":"unit_503a","name":"Quarto 503A","number":"503A","type":"quarto"},{"id":"unit_503b","name":"Quarto 503B","number":"503B","type":"quarto"},{"id":"unit_504a","name":"Quarto 504A","number":"504A","type":"quarto"},{"id":"unit_504b","name":"Quarto 504B","number":"504B","type":"quarto"},{"id":"unit_505a","name":"Quarto 505A","number":"505A","type":"quarto"},{"id":"unit_505b","name":"Quarto 505B","number":"505B","type":"quarto"},{"id":"unit_506a","name":"Quarto 506A","number":"506A","type":"quarto"},{"id":"unit_506b","name":"Quarto 506B","number":"506B","type":"quarto"},{"id":"unit_507a","name":"Quarto 507A","number":"507A","type":"quarto"},{"id":"unit_507b","name":"Quarto 507B","number":"507B","type":"quarto"},{"id":"unit_508","name":"Apartamento 508","number":"508","type":"apartamento"},{"id":"unit_601a","name":"Quarto 601A","number":"601A","type":"quarto"},{"id":"unit_601b","name":"Quarto 601B","number":"601B","type":"quarto"},{"id":"unit_602a","name":"Quarto 602A","number":"602A","type":"quarto"},{"id":"unit_602b","name":"Quarto 602B","number":"602B","type":"quarto"},{"id":"unit_603a","name":"Quarto 603A","number":"603A","type":"quarto"},{"id":"unit_603b","name":"Quarto 603B","number":"603B","type":"quarto"},{"id":"unit_604a","name":"Quarto 604A","number":"604A","type":"quarto"},{"id":"unit_604b","name":"Quarto 604B","number":"604B","type":"quarto"},{"id":"unit_605a","name":"Quarto 605A","number":"605A","type":"quarto"},{"id":"unit_605b","name":"Quarto 605B","number":"605B","type":"quarto"},{"id":"unit_606a","name":"Quarto 606A","number":"606A","type":"quarto"},{"id":"unit_606b","name":"Quarto 606B","number":"606B","type":"quarto"},{"id":"unit_607a","name":"Quarto 607A","number":"607A","type":"quarto"},{"id":"unit_607b","name":"Quarto 607B","number":"607B","type":"quarto"},{"id":"unit_608a","name":"Quarto 608A","number":"608A","type":"quarto"},{"id":"unit_608b","name":"Quarto 608B","number":"608B","type":"quarto"}],
  categories:[
   {id:'servicos',name:'Serviços',icon:'🧹',description:'Selecione aqui o serviço desejado.'},
   {id:'enxoval',name:'Enxoval',icon:'🛏️',description:'Selecione aqui o tipo de enxoval que deseja trocar.'},
@@ -24,8 +24,8 @@ const seed={
   {id:'sala-meio-serv',cat:'locacoes',name:'Locação de sala de reunião por meia diária com serviço',icon:'🕘',desc:'Locação do espaço, máquina de café e 8 xícaras, pó de café, açúcar, adoçante, água mineral e descartáveis.',q:250,a:250,halfDay:true},
   {id:'sala-meio-sem',cat:'locacoes',name:'Locação de sala de reunião por meia diária sem serviço',icon:'🕐',desc:'Apenas a locação do espaço está compreendida nesta modalidade.',q:150,a:150,halfDay:true},
   {id:'cafe',cat:'locacoes',name:'Serviço de café na sala',icon:'☕',desc:'Máquina de café e 8 xícaras, pó de café, açúcar, adoçante.',q:80,a:80},
-  {id:'moto-dia',cat:'locacoes',name:'Locação diária de moto elétrica',icon:'🛵',desc:'Locação do veículo com capacete.',q:90,a:90},
-  {id:'moto-meio',cat:'locacoes',name:'Locação de moto elétrica por meia diária',icon:'⚡',desc:'Locação do veículo com capacete. Das 6 às 12h ou das 13 às 19h.',q:160,a:160,halfDay:true},
+  {id:'moto-dia',cat:'locacoes',name:'Locação diária de moto elétrica',icon:'🛵',desc:'Locação do veículo com capacete.',q:160,a:160},
+  {id:'moto-meio',cat:'locacoes',name:'Locação de moto elétrica por meia diária',icon:'⚡',desc:'Locação do veículo com capacete. Das 6 às 12h ou das 13 às 19h.',q:90,a:90,halfDay:true},
   {id:'pkg-diarista2',cat:'pacotes',name:'Pacote de diarista 2x',icon:'🎁',desc:'Duas faxinas dentro do período de sua hospedagem.',q:400,a:400},
   {id:'pkg-padrao2',cat:'pacotes',name:'Pacote de limpeza padrão 2x',icon:'🎁',desc:'Duas limpezas dentro do período de sua hospedagem.',q:240,a:240},
   {id:'pkg-padrao4',cat:'pacotes',name:'Pacote de limpeza padrão 4x',icon:'🎁',desc:'Quatro limpezas dentro do período de sua hospedagem.',q:400,a:400},
@@ -702,32 +702,39 @@ function migrateV132(){
 migrateV132();
 
 
-function cleanForV134(){
-  const key='versatil_v134_cleaned';
-  if(localStorage.getItem(key)==='1')return;
 
-  db.orders=[];
-  db.calendarOrders=[];
-  db.availabilityClosures=[];
-  db.closedSlots=[];
-  db.closedDates=[];
-  cart=[];
-  if(session)delete session.lastOrderId;
+
+
+
+
+function migrateV147Units(){
+  const canonicalRooms=[{"id":"unit_101","name":"Apartamento 101","number":"101","type":"apartamento"},{"id":"unit_102","name":"Apartamento 102","number":"102","type":"apartamento"},{"id":"unit_103","name":"Apartamento 103","number":"103","type":"apartamento"},{"id":"unit_104","name":"Apartamento 104","number":"104","type":"apartamento"},{"id":"unit_105","name":"Apartamento 105","number":"105","type":"apartamento"},{"id":"unit_106","name":"Apartamento 106","number":"106","type":"apartamento"},{"id":"unit_107","name":"Apartamento 107","number":"107","type":"apartamento"},{"id":"unit_108a","name":"Quarto 108A","number":"108A","type":"quarto"},{"id":"unit_108b","name":"Quarto 108B","number":"108B","type":"quarto"},{"id":"unit_201","name":"Apartamento 201","number":"201","type":"apartamento"},{"id":"unit_202","name":"Apartamento 202","number":"202","type":"apartamento"},{"id":"unit_203","name":"Apartamento 203","number":"203","type":"apartamento"},{"id":"unit_204","name":"Apartamento 204","number":"204","type":"apartamento"},{"id":"unit_205","name":"Apartamento 205","number":"205","type":"apartamento"},{"id":"unit_206","name":"Apartamento 206","number":"206","type":"apartamento"},{"id":"unit_207a","name":"Quarto 207A","number":"207A","type":"quarto"},{"id":"unit_207b","name":"Quarto 207B","number":"207B","type":"quarto"},{"id":"unit_301a","name":"Quarto 301A","number":"301A","type":"quarto"},{"id":"unit_301b","name":"Quarto 301B","number":"301B","type":"quarto"},{"id":"unit_302a","name":"Quarto 302A","number":"302A","type":"quarto"},{"id":"unit_302b","name":"Quarto 302B","number":"302B","type":"quarto"},{"id":"unit_303a","name":"Quarto 303A","number":"303A","type":"quarto"},{"id":"unit_303b","name":"Quarto 303B","number":"303B","type":"quarto"},{"id":"unit_304","name":"Apartamento 304","number":"304","type":"apartamento"},{"id":"unit_305a","name":"Quarto 305A","number":"305A","type":"quarto"},{"id":"unit_305b","name":"Quarto 305B","number":"305B","type":"quarto"},{"id":"unit_306a","name":"Quarto 306A","number":"306A","type":"quarto"},{"id":"unit_306b","name":"Quarto 306B","number":"306B","type":"quarto"},{"id":"unit_307a","name":"Quarto 307A","number":"307A","type":"quarto"},{"id":"unit_307b","name":"Quarto 307B","number":"307B","type":"quarto"},{"id":"unit_308a","name":"Quarto 308A","number":"308A","type":"quarto"},{"id":"unit_308b","name":"Quarto 308B","number":"308B","type":"quarto"},{"id":"unit_401a","name":"Quarto 401A","number":"401A","type":"quarto"},{"id":"unit_401b","name":"Quarto 401B","number":"401B","type":"quarto"},{"id":"unit_402a","name":"Quarto 402A","number":"402A","type":"quarto"},{"id":"unit_402b","name":"Quarto 402B","number":"402B","type":"quarto"},{"id":"unit_403a","name":"Quarto 403A","number":"403A","type":"quarto"},{"id":"unit_403b","name":"Quarto 403B","number":"403B","type":"quarto"},{"id":"unit_404a","name":"Quarto 404A","number":"404A","type":"quarto"},{"id":"unit_404b","name":"Quarto 404B","number":"404B","type":"quarto"},{"id":"unit_405a","name":"Quarto 405A","number":"405A","type":"quarto"},{"id":"unit_405b","name":"Quarto 405B","number":"405B","type":"quarto"},{"id":"unit_406a","name":"Quarto 406A","number":"406A","type":"quarto"},{"id":"unit_406b","name":"Quarto 406B","number":"406B","type":"quarto"},{"id":"unit_407a","name":"Quarto 407A","number":"407A","type":"quarto"},{"id":"unit_407b","name":"Quarto 407B","number":"407B","type":"quarto"},{"id":"unit_408a","name":"Quarto 408A","number":"408A","type":"quarto"},{"id":"unit_408b","name":"Quarto 408B","number":"408B","type":"quarto"},{"id":"unit_501a","name":"Quarto 501A","number":"501A","type":"quarto"},{"id":"unit_501b","name":"Quarto 501B","number":"501B","type":"quarto"},{"id":"unit_502a","name":"Quarto 502A","number":"502A","type":"quarto"},{"id":"unit_502b","name":"Quarto 502B","number":"502B","type":"quarto"},{"id":"unit_503a","name":"Quarto 503A","number":"503A","type":"quarto"},{"id":"unit_503b","name":"Quarto 503B","number":"503B","type":"quarto"},{"id":"unit_504a","name":"Quarto 504A","number":"504A","type":"quarto"},{"id":"unit_504b","name":"Quarto 504B","number":"504B","type":"quarto"},{"id":"unit_505a","name":"Quarto 505A","number":"505A","type":"quarto"},{"id":"unit_505b","name":"Quarto 505B","number":"505B","type":"quarto"},{"id":"unit_506a","name":"Quarto 506A","number":"506A","type":"quarto"},{"id":"unit_506b","name":"Quarto 506B","number":"506B","type":"quarto"},{"id":"unit_507a","name":"Quarto 507A","number":"507A","type":"quarto"},{"id":"unit_507b","name":"Quarto 507B","number":"507B","type":"quarto"},{"id":"unit_508","name":"Apartamento 508","number":"508","type":"apartamento"},{"id":"unit_601a","name":"Quarto 601A","number":"601A","type":"quarto"},{"id":"unit_601b","name":"Quarto 601B","number":"601B","type":"quarto"},{"id":"unit_602a","name":"Quarto 602A","number":"602A","type":"quarto"},{"id":"unit_602b","name":"Quarto 602B","number":"602B","type":"quarto"},{"id":"unit_603a","name":"Quarto 603A","number":"603A","type":"quarto"},{"id":"unit_603b","name":"Quarto 603B","number":"603B","type":"quarto"},{"id":"unit_604a","name":"Quarto 604A","number":"604A","type":"quarto"},{"id":"unit_604b","name":"Quarto 604B","number":"604B","type":"quarto"},{"id":"unit_605a","name":"Quarto 605A","number":"605A","type":"quarto"},{"id":"unit_605b","name":"Quarto 605B","number":"605B","type":"quarto"},{"id":"unit_606a","name":"Quarto 606A","number":"606A","type":"quarto"},{"id":"unit_606b","name":"Quarto 606B","number":"606B","type":"quarto"},{"id":"unit_607a","name":"Quarto 607A","number":"607A","type":"quarto"},{"id":"unit_607b","name":"Quarto 607B","number":"607B","type":"quarto"},{"id":"unit_608a","name":"Quarto 608A","number":"608A","type":"quarto"},{"id":"unit_608b","name":"Quarto 608B","number":"608B","type":"quarto"}];
+
+  const existingByNumber=new Map(
+    (db.rooms||[]).map(r=>[normalizeUnit(roomNumber(r)),r])
+  );
+
+  db.rooms=canonicalRooms.map(r=>{
+    const old=existingByNumber.get(normalizeUnit(r.number));
+    return {
+      id:old?.id||r.id,
+      name:r.name,
+      number:r.number,
+      type:r.type
+    };
+  });
+
+  const motoDia=(db.products||[]).find(p=>p.id==='moto-dia');
+  if(motoDia){motoDia.q=160;motoDia.a=160;}
+
+  const motoMeio=(db.products||[]).find(p=>p.id==='moto-meio');
+  if(motoMeio){motoMeio.q=90;motoMeio.a=90;}
 
   save();
-  localStorage.setItem(key,'1');
 }
-cleanForV134();
+migrateV147Units();
 
 
-function cleanForV135(){
-  const k='versatil_v135_cleaned';
-  if(localStorage.getItem(k)==='1')return;
-  db.orders=[];db.calendarOrders=[];db.availabilityClosures=[];db.closedSlots=[];db.closedDates=[];cart=[];
-  if(session)delete session.lastOrderId;
-  save();localStorage.setItem(k,'1');
-}
-cleanForV135();
 function render(){
   document.getElementById('app').innerHTML=session?appView():loginView();
   renderVersionBadge();
@@ -740,7 +747,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.44';
+  badge.textContent='v1.47';
 }
 function loginView(){return `<div class="login"><div class="loginbox"><img src="logo-versatil.jpg" class="login-logo"><h2 style="text-align:center;margin:0">APP SERVIÇOS VERSÁTIL</h2><p class="muted" style="text-align:center">Contratação de serviços</p><div class="tabs"><button id="tabClient" class="btn access-tab selected" aria-pressed="true" onclick="showLogin('client')">Área do Cliente</button><button id="tabAdmin" class="btn access-tab" aria-pressed="false" onclick="showLogin('admin')">Área do Admin</button></div><div id="clientLogin"><div class="field"><label>E-mail</label><input id="c_email" type="email"></div><div class="field"><label>Nome</label><input id="c_name"></div><div class="field"><label>Quarto / Apartamento</label><input id="c_room" placeholder="Digite a unidade cadastrada, ex.: 101A"></div><button class="btn primary" style="width:100%" onclick="clientLogin()">Entrar como Cliente</button></div><div id="adminLogin" style="display:none"><div class="field"><label>Login do ADMIN</label><input id="a_name" autocomplete="username" placeholder="Login"></div><div class="field"><label>Senha do ADMIN</label><input id="a_pass" type="password" autocomplete="current-password" placeholder="Senha"></div><div class="row"><button class="btn primary" onclick="adminLogin()">Entrar como Admin</button><button class="btn" onclick="recoverAdmin()">Recuperar senha</button></div></div></div></div>`}
 
@@ -2686,7 +2693,7 @@ function bootVersatilV140(){
 
   try{
     render();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.44 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.47 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 
