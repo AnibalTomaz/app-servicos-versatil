@@ -39,6 +39,7 @@ const seed={
   {id:'pkg-sala5-sem',cat:'pacotes',name:'Pacote semanal de locação de sala sem serviço',icon:'🎁',desc:'Locação de sala por 5 dias corridos sem serviço.',q:1250,a:1250}
  ],closedDates:[],closedSlots:[],orders:[]};
 let db=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(seed),session=null,page='catalog',adminPage='dashboard',selectedCat='servicos',cart=[];
+let productAdminCategoryFilter='all';
 const save=()=>localStorage.setItem(KEY,JSON.stringify(db));
 const id=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
 const money=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v)||0);
@@ -568,10 +569,15 @@ function packageMatchesClosure(product,closure){
 }
 
 
+
 function productMatchesClosure(product,closure){
-  if(!closure)return false;
+  if(!closure||!product)return false;
+
+  // Serviço de café mantém disponibilidade própria e nunca é fechado
+  // pelos bloqueios manuais do calendário, inclusive "Todos os itens".
+  if(product.id==='cafe')return false;
+
   if(closure.scopeType==='all')return true;
-  if(!product)return false;
 
   if(product.cat==='pacotes'&&packageMatchesClosure(product,closure))return true;
 
@@ -734,6 +740,8 @@ function migrateV148Units(){
   save();
 }
 migrateV148Units();
+// Preserva como padrão local os valores atuais já personalizados do café.
+preserveCafeDefaultV149();
 
 
 function render(){
@@ -748,7 +756,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.48';
+  badge.textContent='v1.49';
 }
 function loginView(){return `<div class="login"><div class="loginbox"><img src="logo-versatil.jpg" class="login-logo"><h2 style="text-align:center;margin:0">APP SERVIÇOS VERSÁTIL</h2><p class="muted" style="text-align:center">Contratação de serviços</p><div class="tabs"><button id="tabClient" class="btn access-tab selected" aria-pressed="true" onclick="showLogin('client')">Área do Cliente</button><button id="tabAdmin" class="btn access-tab" aria-pressed="false" onclick="showLogin('admin')">Área do Admin</button></div><div id="clientLogin"><div class="field"><label>E-mail</label><input id="c_email" type="email"></div><div class="field"><label>Nome</label><input id="c_name"></div><div class="field"><label>Quarto / Apartamento</label><input id="c_room" placeholder="Digite a unidade cadastrada, ex.: 101A"></div><button class="btn primary" style="width:100%" onclick="clientLogin()">Entrar como Cliente</button></div><div id="adminLogin" style="display:none"><div class="field"><label>Login do ADMIN</label><input id="a_name" autocomplete="username" placeholder="Login"></div><div class="field"><label>Senha do ADMIN</label><input id="a_pass" type="password" autocomplete="current-password" placeholder="Senha"></div><div class="row"><button class="btn primary" onclick="adminLogin()">Entrar como Admin</button><button class="btn" onclick="recoverAdmin()">Recuperar senha</button></div></div></div></div>`}
 
@@ -1476,9 +1484,125 @@ function categoriesAdmin(){return `<div class="card"><div class="row between"><h
 function addCategory(){let name=prompt('Nome da categoria:');if(!name)return;db.categories.push({id:id(),name,icon:prompt('Ícone/emoji:','📌')||'📌',description:prompt('Descritivo:','')||''});save();render()}
 function editCategory(cid){let c=db.categories.find(x=>x.id===cid);if(!c)return;c.name=prompt('Nome:',c.name)||c.name;c.icon=prompt('Ícone:',c.icon)||c.icon;c.description=prompt('Descritivo:',c.description)||c.description;save();render()}
 function deleteCategory(cid){if(db.products.some(p=>p.cat===cid))return alert('Existem produtos vinculados.');if(confirm('Excluir categoria?')){db.categories=db.categories.filter(c=>c.id!==cid);save();render()}}
-function productsAdmin(){return `<div class="card"><div class="row between"><h2>Produtos, preços e descritivos</h2><button class="btn primary" onclick="addProductAdmin()">+ Produto</button></div><table><tr><th>Produto</th><th>Categoria</th><th>Quarto</th><th>Apartamento</th><th></th></tr>${db.products.map(p=>`<tr><td>${p.icon} ${esc(p.name)}<br><span class="small muted">${esc(p.desc)}</span></td><td>${esc(db.categories.find(c=>c.id===p.cat)?.name||'')}</td><td>${money(p.q)}</td><td>${money(p.a)}</td><td><button class="btn" onclick="editProductAdmin('${p.id}')">Editar</button> <button class="btn red" onclick="deleteProductAdmin('${p.id}')">Excluir</button></td></tr>`).join('')}</table></div>`}
+
+function productsAdmin(){
+  const cats=[...db.categories];
+  const filtered=productAdminCategoryFilter==='all'
+    ?db.products
+    :db.products.filter(p=>p.cat===productAdminCategoryFilter);
+
+  return `<div class="card">
+    <div class="row between">
+      <div>
+        <h2>Produtos, preços e descritivos</h2>
+        <p class="muted">Clique diretamente no título de qualquer produto para alterá-lo.</p>
+      </div>
+      <button class="btn primary" onclick="addProductAdmin()">+ Produto</button>
+    </div>
+
+    <div class="product-admin-filter">
+      <div class="field">
+        <label>Filtrar por categoria</label>
+        <select onchange="productAdminCategoryFilter=this.value;render()">
+          <option value="all" ${productAdminCategoryFilter==='all'?'selected':''}>Todas as categorias</option>
+          ${cats.map(c=>`<option value="${c.id}" ${productAdminCategoryFilter===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}
+        </select>
+      </div>
+      <div class="muted">${filtered.length} produto(s) exibido(s)</div>
+    </div>
+
+    <table>
+      <tr><th>Produto</th><th>Categoria</th><th>Quarto</th><th>Apartamento</th><th></th></tr>
+      ${filtered.map(p=>`<tr>
+        <td>
+          ${p.icon}
+          <span class="product-title-inline" title="Clique para editar o título" onclick="editProductTitleInline('${p.id}',this)">${esc(p.name)}</span>
+          <br><span class="small muted">${esc(p.desc)}</span>
+        </td>
+        <td>${esc(db.categories.find(c=>c.id===p.cat)?.name||'')}</td>
+        <td>${money(p.q)}</td>
+        <td>${money(p.a)}</td>
+        <td><button class="btn" onclick="editProductAdmin('${p.id}')">Editar detalhes</button> <button class="btn red" onclick="deleteProductAdmin('${p.id}')">Excluir</button></td>
+      </tr>`).join('')}
+    </table>
+  </div>`;
+}
+
+function editProductTitleInline(pid,el){
+  const p=db.products.find(x=>x.id===pid);
+  if(!p||!el)return;
+
+  const original=p.name;
+  el.contentEditable='true';
+  el.classList.add('editing');
+  el.focus();
+
+  try{
+    const range=document.createRange();
+    range.selectNodeContents(el);
+    const sel=window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }catch(e){}
+
+  const finish=(saveChange=true)=>{
+    el.contentEditable='false';
+    el.classList.remove('editing');
+    const value=String(el.textContent||'').trim();
+    if(saveChange&&value){
+      p.name=value;
+      save();
+      el.textContent=value;
+    }else{
+      el.textContent=original;
+    }
+  };
+
+  el.onkeydown=(ev)=>{
+    if(ev.key==='Enter'){
+      ev.preventDefault();
+      el.blur();
+    }else if(ev.key==='Escape'){
+      ev.preventDefault();
+      finish(false);
+    }
+  };
+  el.onblur=()=>finish(true);
+}
+
+function preserveCafeDefaultV149(){
+  const cafe=db.products.find(p=>p.id==='cafe');
+  if(!cafe)return;
+  const snapshot={
+    name:cafe.name,
+    desc:cafe.desc,
+    q:cafe.q,
+    a:cafe.a,
+    icon:cafe.icon
+  };
+  localStorage.setItem('versatil_cafe_default',JSON.stringify(snapshot));
+}
+
 function addProductAdmin(){let name=prompt('Nome:');if(!name)return;let cat=prompt('ID da categoria:\n'+db.categories.map(c=>`${c.id} = ${c.name}`).join('\n'));if(!db.categories.some(c=>c.id===cat))return alert('Categoria inválida.');db.products.push({id:id(),cat,name,icon:prompt('Ícone/emoji:','🧰')||'🧰',desc:prompt('Descritivo:','')||'',q:Number(prompt('Preço quarto:','0')),a:Number(prompt('Preço apartamento:','0'))});save();render()}
-function editProductAdmin(pid){let p=db.products.find(x=>x.id===pid);if(!p)return;p.name=prompt('Nome:',p.name)||p.name;p.desc=prompt('Descritivo:',p.desc)??p.desc;p.q=Number(prompt('Preço para quarto:',p.q));p.a=Number(prompt('Preço para apartamento:',p.a));p.icon=prompt('Ícone:',p.icon)||p.icon;save();render()}
+
+function editProductAdmin(pid){
+  const p=db.products.find(x=>x.id===pid);
+  if(!p)return;
+
+  p.name=prompt('Nome:',p.name)||p.name;
+  p.desc=prompt('Descritivo:',p.desc)??p.desc;
+
+  const q=Number(prompt('Preço para quarto:',p.q));
+  const a=Number(prompt('Preço para apartamento:',p.a));
+  if(Number.isFinite(q))p.q=q;
+  if(Number.isFinite(a))p.a=a;
+
+  p.icon=prompt('Ícone:',p.icon)||p.icon;
+
+  save();
+  if(p.id==='cafe')preserveCafeDefaultV149();
+  render();
+}
 function deleteProductAdmin(pid){if(confirm('Excluir produto?')){db.products=db.products.filter(p=>p.id!==pid);save();render()}}
 
 
@@ -1553,13 +1677,21 @@ function dateRange(start,end){
   while(a<=b){out.push(`${a.getFullYear()}-${String(a.getMonth()+1).padStart(2,'0')}-${String(a.getDate()).padStart(2,'0')}`);a.setDate(a.getDate()+1)}
   return out;
 }
+
 function availabilityScopeRows(){
   return db.categories.map(cat=>`<div class="availability-category-group">
-    <label class="availability-category-title"><input type="checkbox" class="availability-category-check" value="${cat.id}"> ${cat.icon||''} ${esc(cat.name)}</label>
-    <div class="availability-products">${db.products.filter(p=>p.cat===cat.id).map(p=>`<label><input type="checkbox" class="availability-product-check" value="${p.id}"> ${p.icon||''} ${esc(p.name)}</label>`).join('')}</div>
+    <label class="availability-category-title">
+      <input type="checkbox" class="availability-category-check" value="${cat.id}">
+      ${cat.icon||''} ${esc(cat.name)}
+    </label>
+    <div class="availability-products">
+      ${db.products.filter(p=>p.cat===cat.id).map(p=>p.id==='cafe'
+        ?`<label class="availability-exempt"><input type="checkbox" disabled> ${p.icon||''} ${esc(p.name)} <small>— não fecha pelo calendário</small></label>`
+        :`<label><input type="checkbox" class="availability-product-check" value="${p.id}"> ${p.icon||''} ${esc(p.name)}</label>`
+      ).join('')}
+    </div>
   </div>`).join('');
 }
-
 function openAvailabilityModal(date,slot){
   const closures=closuresForSlot(date,slot);
   if(closures.length){
@@ -1669,7 +1801,7 @@ function googleAvailabilityPayload(operation,closures){
     action:'setAvailability',
     operation,
     closures,
-    clientVersion:'1.36',
+    clientVersion:'1.49',
     sentAt:new Date().toISOString()
   };
 }
@@ -2694,7 +2826,7 @@ function bootVersatilV140(){
 
   try{
     render();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.48 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.49 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

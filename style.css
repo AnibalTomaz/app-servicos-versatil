@@ -853,3 +853,47 @@ main{
   background:transparent !important;
   padding:2px 3px !important;
 }
+
+/* v1.49 — edição rápida e filtro de produtos */
+.product-admin-filter{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:14px;
+  margin:14px 0;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#f8fbfe;
+}
+.product-admin-filter .field{margin:0;min-width:240px}
+.product-title-inline{
+  font-weight:700;
+  cursor:text;
+  border-bottom:1px dashed transparent;
+}
+.product-title-inline:hover{
+  border-bottom-color:#8aa0b4;
+}
+.product-title-inline.editing{
+  display:inline-block;
+  min-width:120px;
+  padding:3px 6px;
+  background:#fff;
+  border:1px solid #9fb8cc;
+  border-radius:6px;
+  outline:2px solid rgba(15,76,129,.08);
+}
+.availability-exempt{
+  opacity:.6;
+}
+.availability-exempt small{
+  font-size:10px;
+}
+@media(max-width:760px){
+  .product-admin-filter{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .product-admin-filter .field{min-width:0;width:100%}
+}

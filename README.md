@@ -476,3 +476,16 @@ Correções:
 - Migração preserva IDs existentes quando o número da unidade coincide.
 - Nenhuma rotina automática de limpeza foi adicionada.
 - Não é necessário atualizar o Apps Script.
+
+## Versão 1.49
+- Serviço de café não é afetado por fechamentos manuais do calendário, inclusive fechamento da categoria Locações ou Todos os itens.
+- Café continua sujeito apenas à sua própria capacidade por período/pedidos.
+- Valores e descrição atualmente personalizados do café são preservados no banco local e salvos como padrão local ao editar o produto.
+- Google Calendar passa a criar pedidos e bloqueios explicitamente no fuso `America/Cuiaba`.
+- Horários usados no Google Calendar seguem o APP:
+  - Serviços/Enxoval: 09:00–11:00 e 13:00–15:00.
+  - Locações por período: 06:00–12:00 e 13:00–19:00.
+  - Locações diárias sem período: 06:00–19:00.
+- Títulos dos produtos podem ser alterados clicando diretamente no título na página Produtos/Preços do Admin.
+- Página Produtos/Preços ganhou filtro por categoria.
+- Incluídos `diagnosticarFusoHorarioV149` e `testarHorarioCuiabaV149` no Apps Script.
