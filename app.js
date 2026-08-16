@@ -1069,6 +1069,7 @@ function sendConfirmationEmails(o){
 
   o.emailData={client:clientEmail,admin:adminEmail};
   o.emailDelivery={status:'enviando',sentAt:null,error:null};
+  o.googleCalendarDelivery={status:'enviando',sentAt:null,error:null};
   save();
 
   localStorage.setItem('versatil_last_client_email',JSON.stringify(clientEmail));
@@ -1094,12 +1095,14 @@ function sendConfirmationEmails(o){
     const order=db.orders.find(x=>x.id===o.id);
     if(order){
       order.emailDelivery={status:'enviado',sentAt:new Date().toISOString(),error:null};
+      order.googleCalendarDelivery={status:'enviado',sentAt:new Date().toISOString(),error:null};
       save();
     }
   }).catch(err=>{
     const order=db.orders.find(x=>x.id===o.id);
     if(order){
       order.emailDelivery={status:'erro',sentAt:null,error:String(err)};
+      order.googleCalendarDelivery={status:'erro',sentAt:null,error:String(err)};
       save();
     }
     console.error('Falha ao enviar e-mail pelo Google Apps Script:',err);
@@ -1881,21 +1884,28 @@ function ordersAdmin(){
 function cancelOrder(oid){let o=db.orders.find(x=>x.id===oid);if(!o||!confirm('Cancelar este pedido?'))return;o.status='cancelado';o.cancelledAt=new Date().toISOString();save();let recipients=[...db.account.adminEmails.filter(Boolean),o.client.email];localStorage.setItem('versatil_last_cancel_email',JSON.stringify({recipients,subject:'Cancelamento de solicitação - Versátil',body:'Prezado cliente, sua solicitação foi cancelada. Obrigado!'}));render()}
 
 
+function deleteOrderFromGoogleCalendar(orderId){
+  if(!orderId)return Promise.resolve();
+  return fetch(GOOGLE_APPS_SCRIPT_URL,{
+    method:'POST',
+    mode:'no-cors',
+    cache:'no-store',
+    headers:{'Content-Type':'text/plain;charset=UTF-8'},
+    body:JSON.stringify({action:'deleteOrder',orderId}),
+    keepalive:true
+  }).catch(err=>console.error('Falha ao solicitar exclusão do Google Calendar:',err));
+}
+
 function deleteOrderAdmin(oid){
   const o=db.orders.find(x=>x.id===oid);
   if(!o)return;
-
-  if(!confirm('Excluir este pedido definitivamente? Ele também será removido do calendário e dos relatórios.')){
-    return;
-  }
-
+  if(!confirm('Excluir este pedido definitivamente? Ele também será removido do calendário do APP, do Google Calendar e dos relatórios.'))return;
+  deleteOrderFromGoogleCalendar(oid);
   removeOrderFromAppCalendar(oid);
   db.orders=db.orders.filter(x=>x.id!==oid);
   save();
   render();
 }
-
-
 function activeOrders(){
   return (db.orders||[]).filter(o=>!o.status || o.status==='ativo');
 }
@@ -2270,7 +2280,7 @@ function accountAdmin(){
     <div class="card email-integration-box" style="margin-top:18px">
       <h3>Integração de e-mail</h3>
       <div class="success" style="margin-bottom:10px">
-        Google Apps Script conectado ao aplicativo.
+        Google Apps Script conectado ao aplicativo para e-mail e Google Calendar.
       </div>
       <p class="muted">
         Use o botão abaixo para enviar uma mensagem de teste. O teste será enviado para o e-mail de recuperação da conta ou, na ausência dele, para o primeiro e-mail Admin cadastrado.
@@ -2285,4 +2295,4 @@ function accountAdmin(){
 function saveAccount(){db.account.adminName=acc_name.value.trim()||'Anibal';db.account.adminPassword=acc_pass.value||db.account.adminPassword;db.account.recoveryEmail=acc_recovery.value.trim();db.account.adminEmails=acc_emails.value.split(/\n|,|;/).map(x=>x.trim()).filter(Boolean);save();alert('Conta atualizada.');render()}
 render();
 
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.30');
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.31');

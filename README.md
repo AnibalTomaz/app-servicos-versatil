@@ -328,3 +328,10 @@ Correções:
 - O botão mostra estado de envio e confirma o destinatário após o disparo.
 - Mantida a integração automática de e-mail ao confirmar pedidos.
 - Banco local e demais cadastros existentes foram preservados.
+
+## Versão 1.31 — integração com Google Calendar
+- A confirmação do pedido continua acionando o Apps Script, que agora também cria os eventos no Google Calendar.
+- Cada data/período de pedidos e pacotes vira um evento individual.
+- Ao excluir um pedido no Admin, o aplicativo envia `deleteOrder` ao Apps Script para remover os eventos correspondentes do Google Calendar.
+- O pedido também é removido do calendário interno e dos relatórios.
+- Banco local e demais cadastros foram preservados.
