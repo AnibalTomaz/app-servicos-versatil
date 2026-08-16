@@ -384,3 +384,9 @@ Correções:
 - Apps Script registra as ações recebidas e inclui `statusIntegracaoV136`.
 - Teste `testarBloqueioChurrasqueiraV136` cria um bloqueio visível para Locações em data futura.
 - Teste `testarReaberturaChurrasqueiraV136` remove esse bloqueio.
+
+## Versão 1.37
+- Recuperação de senha agora envia e-mail real via Apps Script, exclusivamente para `anibal@starlis.com.br`.
+- `anibal@starlis.com.br` é o e-mail principal; `versatil@starlis.com.br` é secundário.
+- Sincronização de fechamentos usa POST simplificado para reduzir falhas do navegador/GitHub Pages.
+- Incluídos `diagnosticarSincronizacaoCalendarioV137` e `testarRecuperacaoSenhaV137`.

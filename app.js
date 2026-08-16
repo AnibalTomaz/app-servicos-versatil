@@ -738,14 +738,32 @@ function adminLogin(){
   }
 }
 
+
 function recoverAdmin(){
-  if(!db.account.recoveryEmail){
-    alert("Cadastre o e-mail de recuperação na conta do Admin.");
-    return;
-  }
-  const subject=encodeURIComponent("Recuperação de senha - Versátil");
-  const body=encodeURIComponent("Sua senha cadastrada é: "+db.account.adminPassword);
-  window.location.href=`mailto:${db.account.recoveryEmail}?subject=${subject}&body=${body}`;
+  const primary=(db.account.recoveryEmail||'anibal@starlis.com.br').trim();
+  if(!primary)return alert('Cadastre o e-mail principal de recuperação da conta.');
+
+  const btn=document.activeElement;
+  if(btn)btn.disabled=true;
+
+  fetch(GOOGLE_APPS_SCRIPT_URL,{
+    method:'POST',
+    mode:'no-cors',
+    cache:'no-store',
+    headers:{'Content-Type':'text/plain;charset=UTF-8'},
+    body:JSON.stringify({
+      action:'recoverAdminPassword',
+      email:primary,
+      password:db.account.adminPassword,
+      adminName:db.account.adminName||'Admin',
+      clientVersion:'1.37'
+    })
+  }).then(()=>{
+    alert(`Solicitação enviada. A recuperação de senha foi encaminhada somente para o e-mail principal: ${primary}`);
+  }).catch(err=>{
+    console.error(err);
+    alert('Não foi possível solicitar a recuperação de senha. Tente novamente.');
+  }).finally(()=>{if(btn)btn.disabled=false});
 }
 function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><button class="btn" onclick="signout()">Sair</button></header><div class="wrap">${admin?adminView():clientView()}</div>`}
 function signout(){if(session?.role==='client'&&page!=='confirmation')cart=[];session=null;page='catalog';render()}
@@ -1570,7 +1588,6 @@ function syncAllAvailabilityToGoogle(){
     method:'POST',
     mode:'no-cors',
     cache:'no-store',
-    headers:{'Content-Type':'text/plain;charset=UTF-8'},
     body:JSON.stringify(googleAvailabilityPayload('close',closures)),
     keepalive:true
   }).then(()=>{
@@ -1594,7 +1611,6 @@ function retryGoogleAvailabilityQueue(){
       method:'POST',
       mode:'no-cors',
       cache:'no-store',
-      headers:{'Content-Type':'text/plain;charset=UTF-8'},
       body:JSON.stringify(googleAvailabilityPayload(item.operation,item.closures)),
       keepalive:true
     })
@@ -1609,23 +1625,19 @@ function retryGoogleAvailabilityQueue(){
 }
 
 
+
 function syncAvailabilityToGoogle(operation,closures){
   if(!closures?.length)return;
-
   queueGoogleAvailabilitySync(operation,closures);
-
-  fetch(GOOGLE_APPS_SCRIPT_URL,{
+  const url=GOOGLE_APPS_SCRIPT_URL+'?v=137&t='+Date.now();
+  fetch(url,{
     method:'POST',
     mode:'no-cors',
     cache:'no-store',
-    headers:{'Content-Type':'text/plain;charset=UTF-8'},
     body:JSON.stringify(googleAvailabilityPayload(operation,closures)),
     keepalive:true
-  }).then(()=>{
-    localStorage.setItem('versatil_last_google_sync_attempt',new Date().toISOString());
-  }).catch(err=>{
-    console.error('Falha ao sincronizar disponibilidade com Google Calendar:',err);
-  });
+  }).then(()=>localStorage.setItem('versatil_last_google_sync_attempt',new Date().toISOString()))
+    .catch(err=>console.error('Falha ao sincronizar disponibilidade com Google Calendar:',err));
 }
 function applyAvailabilityChanges(){
   const start=document.getElementById('avail_start')?.value||'',end=document.getElementById('avail_end')?.value||start;
@@ -2516,7 +2528,7 @@ function accountAdmin(){
       </div>
 
       <div class="field">
-        <label>E-mail de recuperação</label>
+        <label>E-mail principal / recuperação de senha</label>
         <input id="acc_recovery" type="email" value="${esc(db.account.recoveryEmail||'')}">
       </div>
     </div>
@@ -2548,7 +2560,12 @@ function accountAdmin(){
     </div>
   </div>`;
 }
-function saveAccount(){db.account.adminName=acc_name.value.trim()||'Anibal';db.account.adminPassword=acc_pass.value||db.account.adminPassword;db.account.recoveryEmail=acc_recovery.value.trim();db.account.adminEmails=acc_emails.value.split(/\n|,|;/).map(x=>x.trim()).filter(Boolean);save();alert('Conta atualizada.');render()}
-render();
 
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.36');
+function saveAccount(){
+  db.account.adminName=acc_name.value.trim()||'Anibal';
+  db.account.adminPassword=acc_pass.value||db.account.adminPassword;
+  db.account.recoveryEmail='anibal@starlis.com.br';
+  db.account.adminEmails=['anibal@starlis.com.br','versatil@starlis.com.br'];
+  save();alert('Conta atualizada. E-mail principal: anibal@starlis.com.br. E-mail secundário: versatil@starlis.com.br.');render();
+}
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.37');
