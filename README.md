@@ -354,3 +354,15 @@ Correções:
 - Fechamentos de produtos/categorias também afetam pacotes que contenham esses itens.
 - Bloqueios continuam sincronizados com Google Calendar.
 - Incluída função `testarBloqueioCalendarioV133` para criar um bloqueio visível de teste.
+
+## Versão 1.34 — fechamento corrigido e aplicativo limpo
+- Limpeza única ao abrir esta versão:
+  - pedidos removidos;
+  - carrinho removido;
+  - marcações do calendário interno removidas;
+  - fechamentos anteriores removidos.
+- Ao clicar em um período com fechamento, o popup mostra **somente as categorias/produtos que causaram aquele fechamento**, permitindo selecionar quais reabrir.
+- Locações sem venda por período são tratadas como **diária completa**: se manhã OU tarde estiver fechada/ocupada, o produto fica indisponível no dia.
+- Pacotes possuem mapeamento explícito para seus produtos-base; fechamento do produto/categoria correspondente afeta cada utilização do pacote.
+- Incluído `APPS_SCRIPT_v1_34.gs`.
+- Incluída função `limparMarcacoesVersatilV134` para remover do Google Calendar somente eventos rastreados pelo APP Serviços Versátil.

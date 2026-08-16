@@ -765,3 +765,35 @@ main{
 .availability-products{display:flex;flex-direction:column;gap:6px;font-size:12px}.availability-products label{display:flex;align-items:flex-start;gap:6px}
 .availability-scope-list input,.availability-all-row input{width:auto;min-height:auto}
 @media(max-width:760px){.calendar-batch-filter,.availability-manager-grid{grid-template-columns:1fr}.availability-scope-list{grid-template-columns:1fr}}
+
+/* v1.34 — reabertura seletiva */
+.availability-reopen-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  margin-top:14px;
+  max-height:52vh;
+  overflow:auto;
+}
+.availability-reopen-item{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#f8fbfe;
+}
+.availability-reopen-item input{
+  width:auto;
+  min-height:auto;
+  margin-top:3px;
+}
+.availability-reopen-item span{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.availability-reopen-item small{
+  color:var(--muted);
+}

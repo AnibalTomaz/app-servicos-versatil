@@ -353,11 +353,10 @@ function cartCategorySlotOccupied(date,slot,categoryId){
 
 
 
+
 function isDailyRentalProduct(product){
-  if(!product)return false;
-  if(product.cat!=='locacoes')return false;
-  const name=String(product.name||'').toLowerCase();
-  return name.includes('diária')||name.includes('diaria')||name.includes('dia inteiro')||name.includes('24h')||name.includes('24 h');
+  if(!product||product.cat!=='locacoes')return false;
+  return !productRequiresPeriod(product);
 }
 function productClosedForSelection(product,date,slot){
   if(isDailyRentalProduct(product)){
@@ -366,12 +365,15 @@ function productClosedForSelection(product,date,slot){
   return isSlotClosed(date,slot,product);
 }
 
+
 function availableSlotsForProductDate(product,date){
   const group=capacityGroupForProduct(product);
-  return ['morning','afternoon'].filter(slot=>{
-    if(productClosedForSelection(product,date,slot))return false;
-    if(capacityGroupSlotOccupied(date,slot,group))return false;
-    const cartBusy=(cart||[]).some(i=>{
+
+  const slotBusy=(slot)=>{
+    if(productClosedForSelection(product,date,slot))return true;
+    if(capacityGroupSlotOccupied(date,slot,group))return true;
+
+    return (cart||[]).some(i=>{
       const ip=db.products.find(x=>x.id===i.productId);
       if(capacityGroupForProduct(ip)!==group)return false;
       const uses=i.schedule?.length?i.schedule:[{date:i.date,period:i.period}];
@@ -381,8 +383,14 @@ function availableSlotsForProductDate(product,date){
         return true;
       });
     });
-    return !cartBusy;
-  });
+  };
+
+  if(isDailyRentalProduct(product)){
+    if(slotBusy('morning')||slotBusy('afternoon'))return [];
+    return ['morning','afternoon'];
+  }
+
+  return ['morning','afternoon'].filter(slot=>!slotBusy(slot));
 }
 function categoryDayUnavailable(product,date){
   return availableSlotsForProductDate(product,date).length===0;
@@ -475,27 +483,46 @@ function availabilityClosureId(date,slot,scopeType,scopeId){
 function closuresForSlot(date,slot){
   return (db.availabilityClosures||[]).filter(c=>c.date===date&&c.slot===slot);
 }
+
+function packageBaseProductIds(product){
+  const map={
+    'pkg-diarista2':['diarista'],
+    'pkg-padrao2':['limpeza-padrao'],
+    'pkg-padrao4':['limpeza-padrao'],
+    'pkg-express2':['limpeza-express'],
+    'pkg-express4':['limpeza-express'],
+    'pkg-wc2':['limpeza-wc'],
+    'pkg-wc4':['limpeza-wc'],
+    'pkg-sala2-serv':['sala-dia-serv'],
+    'pkg-sala5-serv':['sala-dia-serv'],
+    'pkg-sala2-sem':['sala-dia-sem'],
+    'pkg-sala5-sem':['sala-dia-sem']
+  };
+  return map[product?.id]||[];
+}
+
+function packageMatchesClosure(product,closure){
+  if(!product||product.cat!=='pacotes')return false;
+  const ids=packageBaseProductIds(product);
+  if(!ids.length)return false;
+
+  if(closure.scopeType==='product')return ids.includes(closure.scopeId);
+  if(closure.scopeType==='category'){
+    return ids.some(pid=>db.products.find(p=>p.id===pid)?.cat===closure.scopeId);
+  }
+  return closure.scopeType==='all';
+}
+
+
 function productMatchesClosure(product,closure){
   if(!closure)return false;
   if(closure.scopeType==='all')return true;
   if(!product)return false;
-  if(closure.scopeType==='category'){
-    if(product.cat===closure.scopeId)return true;
-    if(product.cat==='pacotes'&&Array.isArray(product.packageItems)){
-      return product.packageItems.some(pi=>{
-        const component=db.products.find(p=>p.id===pi.productId);
-        return component?.cat===closure.scopeId;
-      });
-    }
-    return false;
-  }
-  if(closure.scopeType==='product'){
-    if(product.id===closure.scopeId)return true;
-    if(product.cat==='pacotes'&&Array.isArray(product.packageItems)){
-      return product.packageItems.some(pi=>pi.productId===closure.scopeId);
-    }
-    return false;
-  }
+
+  if(product.cat==='pacotes'&&packageMatchesClosure(product,closure))return true;
+
+  if(closure.scopeType==='category')return product.cat===closure.scopeId;
+  if(closure.scopeType==='product')return product.id===closure.scopeId;
   return false;
 }
 function isSlotClosed(date,slot,product=null){
@@ -535,14 +562,6 @@ function bookingSlotFromPeriod(period){
   if(p.startsWith('13:00')) return 'afternoon';
   return '';
 }
-function isBookingClosed(date,period=''){
-  const slot=bookingSlotFromPeriod(period);
-  if(slot) return isSlotClosed(date,slot);
-  // Produtos sem período específico continuam disponíveis se ao menos um período estiver aberto.
-  return isSlotClosed(date,'morning') && isSlotClosed(date,'afternoon');
-}
-
-
 function migrateCatalogV119(){
   const canonical={
     'diarista':{name:'Diarista'},
@@ -627,6 +646,24 @@ function migrateV132(){
   save();
 }
 migrateV132();
+
+
+function cleanForV134(){
+  const key='versatil_v134_cleaned';
+  if(localStorage.getItem(key)==='1')return;
+
+  db.orders=[];
+  db.calendarOrders=[];
+  db.availabilityClosures=[];
+  db.closedSlots=[];
+  db.closedDates=[];
+  cart=[];
+  if(session)delete session.lastOrderId;
+
+  save();
+  localStorage.setItem(key,'1');
+}
+cleanForV134();
 
 function render(){document.getElementById('app').innerHTML=session?appView():loginView()}
 function loginView(){return `<div class="login"><div class="loginbox"><img src="logo-versatil.jpg" class="login-logo"><h2 style="text-align:center;margin:0">APP SERVIÇOS VERSÁTIL</h2><p class="muted" style="text-align:center">Contratação de serviços</p><div class="tabs"><button id="tabClient" class="btn access-tab selected" aria-pressed="true" onclick="showLogin('client')">Área do Cliente</button><button id="tabAdmin" class="btn access-tab" aria-pressed="false" onclick="showLogin('admin')">Área do Admin</button></div><div id="clientLogin"><div class="field"><label>E-mail</label><input id="c_email" type="email"></div><div class="field"><label>Nome</label><input id="c_name"></div><div class="field"><label>Quarto / Apartamento</label><input id="c_room" placeholder="Digite a unidade cadastrada, ex.: 101A"></div><button class="btn primary" style="width:100%" onclick="clientLogin()">Entrar como Cliente</button></div><div id="adminLogin" style="display:none"><div class="field"><label>Login do ADMIN</label><input id="a_name" autocomplete="username" placeholder="Login"></div><div class="field"><label>Senha do ADMIN</label><input id="a_pass" type="password" autocomplete="current-password" placeholder="Senha"></div><div class="row"><button class="btn primary" onclick="adminLogin()">Entrar como Admin</button><button class="btn" onclick="recoverAdmin()">Recuperar senha</button></div></div></div></div>`}
@@ -1422,11 +1459,13 @@ function calendarAdmin(){
 }
 
 
+
 function refreshCalendarAdmin(){
   ensureCalendarOrders();
   ensureCalendarData();
+  save();
   render();
-  setTimeout(()=>alert('Calendário atualizado com sucesso.'),30);
+  setTimeout(()=>alert('Calendário atualizado. Pedidos e disponibilidades foram recalculados.'),30);
 }
 function dateRange(start,end){
   const out=[]; if(!start||!end)return out;
@@ -1441,7 +1480,66 @@ function availabilityScopeRows(){
     <div class="availability-products">${db.products.filter(p=>p.cat===cat.id).map(p=>`<label><input type="checkbox" class="availability-product-check" value="${p.id}"> ${p.icon||''} ${esc(p.name)}</label>`).join('')}</div>
   </div>`).join('');
 }
-function openAvailabilityModal(date,slot){openAvailabilityManager({startDate:date,endDate:date,slot})}
+
+function openAvailabilityModal(date,slot){
+  const closures=closuresForSlot(date,slot);
+  if(closures.length){
+    openReopenAvailabilityModal(date,slot,closures);
+    return;
+  }
+  openAvailabilityManager({startDate:date,endDate:date,slot});
+}
+
+function openReopenAvailabilityModal(date,slot,closures){
+  document.getElementById('availabilityModal')?.remove();
+
+  const modal=document.createElement('div');
+  modal.id='availabilityModal';
+  modal.className='modal-overlay';
+
+  modal.innerHTML=`<div class="modal-card availability-modal-card">
+    <div class="row between">
+      <div>
+        <h2 style="margin:0">Disponibilidade fechada</h2>
+        <p class="muted">${formatDateBR(date)} • ${slotLabel(slot)}. Selecione somente os bloqueios que deseja reabrir.</p>
+      </div>
+      <button class="btn" onclick="closeAvailabilityModal()">Fechar</button>
+    </div>
+
+    <div class="availability-reopen-list">
+      ${closures.map(c=>`<label class="availability-reopen-item">
+        <input type="checkbox" class="availability-reopen-check" value="${esc(c.id)}">
+        <span>
+          <b>${esc(c.scopeLabel||scopeLabel(c.scopeType,c.scopeId))}</b>
+          <small>${c.scopeType==='category'?'Categoria':c.scopeType==='product'?'Produto':'Todos os itens'}</small>
+        </span>
+      </label>`).join('')}
+    </div>
+
+    <div class="row between" style="margin-top:14px">
+      <button class="btn" onclick="document.querySelectorAll('.availability-reopen-check').forEach(x=>x.checked=true)">Selecionar tudo</button>
+      <button class="btn green" onclick="reopenSelectedClosures('${date}','${slot}')">Abrir selecionados</button>
+    </div>
+  </div>`;
+
+  document.body.appendChild(modal);
+}
+
+function reopenSelectedClosures(date,slot){
+  const ids=[...document.querySelectorAll('.availability-reopen-check:checked')].map(x=>x.value);
+  if(!ids.length)return alert('Selecione ao menos um item para reabrir.');
+
+  const removed=db.availabilityClosures.filter(c=>ids.includes(c.id));
+  db.availabilityClosures=db.availabilityClosures.filter(c=>!ids.includes(c.id));
+
+  save();
+  syncAvailabilityToGoogle('open',removed);
+  closeAvailabilityModal();
+  render();
+
+  alert(`${removed.length} bloqueio(s) reaberto(s). A atualização do Google Calendar foi solicitada.`);
+}
+
 function openAvailabilityBatchModal(){openAvailabilityManager({startDate:today(),endDate:today(),slot:'morning'})}
 function openAvailabilityBatchModalFromFilters(){
   openAvailabilityManager({
@@ -2413,4 +2511,4 @@ function accountAdmin(){
 function saveAccount(){db.account.adminName=acc_name.value.trim()||'Anibal';db.account.adminPassword=acc_pass.value||db.account.adminPassword;db.account.recoveryEmail=acc_recovery.value.trim();db.account.adminEmails=acc_emails.value.split(/\n|,|;/).map(x=>x.trim()).filter(Boolean);save();alert('Conta atualizada.');render()}
 render();
 
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.33');
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.34');
