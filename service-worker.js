@@ -1,9 +1,21 @@
-const CACHE="versatil-v1-49";
-const ASSETS=['./','./index.html','./style.css?v=149','./app.js?v=149','./manifest.json','./logo-versatil.jpg'];
+const CACHE="versatil-v1-50";
+const APP_SHELL=[
+  './',
+  './index.html',
+  './style.css?v=150',
+  './app.js?v=150',
+  './manifest.json',
+  './logo-versatil.jpg',
+  './icon-192.png',
+  './icon-512.png',
+  './icon-maskable-512.png'
+];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));
+  event.waitUntil(
+    caches.open(CACHE).then(cache=>cache.addAll(APP_SHELL))
+  );
 });
 
 self.addEventListener('activate',event=>{
@@ -18,26 +30,36 @@ self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
 
   const url=new URL(event.request.url);
-  const isAppAsset=url.origin===self.location.origin &&
-    (url.pathname.endsWith('/index.html') ||
-     url.pathname.endsWith('/app.js') ||
-     url.pathname.endsWith('/style.css') ||
-     url.pathname.endsWith('/'));
+  const sameOrigin=url.origin===self.location.origin;
 
-  if(isAppAsset){
+  // Navegação: tenta rede primeiro; se estiver sem internet, abre o app salvo.
+  if(event.request.mode==='navigate'){
     event.respondWith(
       fetch(event.request,{cache:'no-store'})
         .then(response=>{
           const copy=response.clone();
-          caches.open(CACHE).then(cache=>cache.put(event.request,copy));
+          caches.open(CACHE).then(cache=>cache.put('./index.html',copy));
           return response;
         })
-        .catch(()=>caches.match(event.request))
+        .catch(()=>caches.match('./index.html'))
     );
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request).then(cached=>cached||fetch(event.request))
-  );
+  if(sameOrigin){
+    event.respondWith(
+      caches.match(event.request).then(cached=>{
+        const network=fetch(event.request,{cache:'no-store'})
+          .then(response=>{
+            if(response && response.ok){
+              const copy=response.clone();
+              caches.open(CACHE).then(cache=>cache.put(event.request,copy));
+            }
+            return response;
+          })
+          .catch(()=>cached);
+        return cached||network;
+      })
+    );
+  }
 });

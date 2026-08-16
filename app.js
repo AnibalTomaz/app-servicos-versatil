@@ -40,6 +40,8 @@ const seed={
  ],closedDates:[],closedSlots:[],orders:[]};
 let db=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(seed),session=null,page='catalog',adminPage='dashboard',selectedCat='servicos',cart=[];
 let productAdminCategoryFilter='all';
+let deferredInstallPrompt=null;
+let pwaInstallReady=false;
 const save=()=>localStorage.setItem(KEY,JSON.stringify(db));
 const id=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
 const money=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v)||0);
@@ -747,6 +749,7 @@ preserveCafeDefaultV149();
 function render(){
   document.getElementById('app').innerHTML=session?appView():loginView();
   renderVersionBadge();
+  setTimeout(updatePwaInstallUI,0);
 }
 
 function renderVersionBadge(){
@@ -756,9 +759,111 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.49';
+  badge.textContent='v1.50';
 }
-function loginView(){return `<div class="login"><div class="loginbox"><img src="logo-versatil.jpg" class="login-logo"><h2 style="text-align:center;margin:0">APP SERVIÇOS VERSÁTIL</h2><p class="muted" style="text-align:center">Contratação de serviços</p><div class="tabs"><button id="tabClient" class="btn access-tab selected" aria-pressed="true" onclick="showLogin('client')">Área do Cliente</button><button id="tabAdmin" class="btn access-tab" aria-pressed="false" onclick="showLogin('admin')">Área do Admin</button></div><div id="clientLogin"><div class="field"><label>E-mail</label><input id="c_email" type="email"></div><div class="field"><label>Nome</label><input id="c_name"></div><div class="field"><label>Quarto / Apartamento</label><input id="c_room" placeholder="Digite a unidade cadastrada, ex.: 101A"></div><button class="btn primary" style="width:100%" onclick="clientLogin()">Entrar como Cliente</button></div><div id="adminLogin" style="display:none"><div class="field"><label>Login do ADMIN</label><input id="a_name" autocomplete="username" placeholder="Login"></div><div class="field"><label>Senha do ADMIN</label><input id="a_pass" type="password" autocomplete="current-password" placeholder="Senha"></div><div class="row"><button class="btn primary" onclick="adminLogin()">Entrar como Admin</button><button class="btn" onclick="recoverAdmin()">Recuperar senha</button></div></div></div></div>`}
+
+function isPwaStandalone(){
+  return window.matchMedia?.('(display-mode: standalone)').matches ||
+         window.navigator.standalone===true ||
+         document.referrer.startsWith('android-app://');
+}
+
+function isIosDevice(){
+  return /iphone|ipad|ipod/i.test(navigator.userAgent||'');
+}
+
+function pwaInstallButtonHtml(){
+  if(isPwaStandalone())return '';
+  return `<button id="pwaInstallBtn" class="btn pwa-install-btn" onclick="installVersatilApp()" style="display:none">
+    📲 Instalar aplicativo
+  </button>`;
+}
+
+function updatePwaInstallUI(){
+  const btn=document.getElementById('pwaInstallBtn');
+  if(!btn)return;
+
+  if(isPwaStandalone()){
+    btn.style.display='none';
+    return;
+  }
+
+  const canPrompt=!!deferredInstallPrompt;
+  const ios=isIosDevice();
+
+  // No iPhone/iPad o navegador não fornece beforeinstallprompt;
+  // exibimos instruções próprias.
+  btn.style.display=(canPrompt||ios)?'inline-flex':'none';
+}
+
+async function installVersatilApp(){
+  if(isPwaStandalone()){
+    alert('O APP SERVIÇOS VERSÁTIL já está instalado neste aparelho.');
+    return;
+  }
+
+  if(deferredInstallPrompt){
+    const promptEvent=deferredInstallPrompt;
+    deferredInstallPrompt=null;
+    await promptEvent.prompt();
+
+    try{
+      const choice=await promptEvent.userChoice;
+      if(choice?.outcome==='accepted'){
+        localStorage.setItem('versatil_pwa_installed_or_accepted','1');
+      }
+    }catch(e){}
+
+    updatePwaInstallUI();
+    return;
+  }
+
+  if(isIosDevice()){
+    showIosInstallInstructions();
+    return;
+  }
+
+  alert('A instalação ficará disponível quando o navegador concluir a preparação do aplicativo. Se necessário, use o menu do navegador e escolha “Instalar app” ou “Adicionar à tela inicial”.');
+}
+
+function showIosInstallInstructions(){
+  document.getElementById('pwaInstallModal')?.remove();
+
+  const modal=document.createElement('div');
+  modal.id='pwaInstallModal';
+  modal.className='modal-overlay';
+  modal.innerHTML=`<div class="modal-card pwa-install-modal">
+    <div class="row between">
+      <h2 style="margin:0">Instalar APP SERVIÇOS VERSÁTIL</h2>
+      <button class="btn" onclick="document.getElementById('pwaInstallModal')?.remove()">Fechar</button>
+    </div>
+    <div class="pwa-install-steps">
+      <p><b>No iPhone/iPad:</b></p>
+      <p>1. Abra esta página no <b>Safari</b>.</p>
+      <p>2. Toque no botão <b>Compartilhar</b> (quadrado com seta para cima).</p>
+      <p>3. Escolha <b>Adicionar à Tela de Início</b>.</p>
+      <p>4. Confirme em <b>Adicionar</b>.</p>
+    </div>
+    <div class="notice">Depois disso, o ícone Versátil ficará na tela inicial e abrirá como aplicativo.</div>
+  </div>`;
+  document.body.appendChild(modal);
+}
+
+window.addEventListener('beforeinstallprompt',event=>{
+  event.preventDefault();
+  deferredInstallPrompt=event;
+  pwaInstallReady=true;
+  updatePwaInstallUI();
+});
+
+window.addEventListener('appinstalled',()=>{
+  deferredInstallPrompt=null;
+  pwaInstallReady=false;
+  localStorage.setItem('versatil_pwa_installed_or_accepted','1');
+  updatePwaInstallUI();
+});
+
+function loginView(){return `<div class="login"><div class="loginbox"><img src="logo-versatil.jpg" class="login-logo"><h2 style="text-align:center;margin:0">APP SERVIÇOS VERSÁTIL</h2><p class="muted" style="text-align:center">Contratação de serviços</p><div class="tabs"><button id="tabClient" class="btn access-tab selected" aria-pressed="true" onclick="showLogin('client')">Área do Cliente</button><button id="tabAdmin" class="btn access-tab" aria-pressed="false" onclick="showLogin('admin')">Área do Admin</button></div><div id="clientLogin"><div class="field"><label>E-mail</label><input id="c_email" type="email"></div><div class="field"><label>Nome</label><input id="c_name"></div><div class="field"><label>Quarto / Apartamento</label><input id="c_room" placeholder="Digite a unidade cadastrada, ex.: 101A"></div><button class="btn primary" style="width:100%" onclick="clientLogin()">Entrar como Cliente</button></div><div id="adminLogin" style="display:none"><div class="field"><label>Login do ADMIN</label><input id="a_name" autocomplete="username" placeholder="Login"></div><div class="field"><label>Senha do ADMIN</label><input id="a_pass" type="password" autocomplete="current-password" placeholder="Senha"></div><div class="row"><button class="btn primary" onclick="adminLogin()">Entrar como Admin</button><button class="btn" onclick="recoverAdmin()">Recuperar senha</button></div></div><div class="login-install-area">${pwaInstallButtonHtml()}</div></div></div>`}
 
 function showLogin(t){
   const clientBox=document.getElementById("clientLogin");
@@ -841,7 +946,7 @@ function recoverAdmin(){
     alert('Não foi possível solicitar a recuperação de senha. Tente novamente.');
   }).finally(()=>{if(btn)btn.disabled=false});
 }
-function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><button class="btn" onclick="signout()">Sair</button></header><div class="wrap">${admin?adminView():clientView()}</div>`}
+function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><div class="row">${pwaInstallButtonHtml()}<button class="btn" onclick="signout()">Sair</button></div></header><div class="wrap">${admin?adminView():clientView()}</div>`}
 function signout(){if(session?.role==='client'&&page!=='confirmation')cart=[];session=null;page='catalog';render()}
 function clientView(){return `<nav class="nav">${[['catalog','Catálogo'],['cart','Carrinho'],['confirmation','Confirmação']].map(([k,v])=>`<button class="${page===k?'active':''}" onclick="page='${k}';render()">${v}</button>`).join('')}</nav>${page==='catalog'?catalogPage():page==='cart'?cartPage():confirmationPage()}`}
 
@@ -2826,7 +2931,7 @@ function bootVersatilV140(){
 
   try{
     render();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.49 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.50 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

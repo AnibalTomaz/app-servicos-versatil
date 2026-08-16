@@ -489,3 +489,14 @@ Correções:
 - Títulos dos produtos podem ser alterados clicando diretamente no título na página Produtos/Preços do Admin.
 - Página Produtos/Preços ganhou filtro por categoria.
 - Incluídos `diagnosticarFusoHorarioV149` e `testarHorarioCuiabaV149` no Apps Script.
+
+## Versão 1.50 — aplicativo instalável no celular
+- APP configurado como PWA instalável.
+- Android/Chrome/Edge: botão `Instalar aplicativo` aparece quando o navegador libera a instalação.
+- iPhone/iPad: botão mostra instruções para `Compartilhar → Adicionar à Tela de Início`.
+- Ícones próprios 192×192, 512×512 e maskable.
+- Ao instalar, o app abre em modo standalone, como aplicativo.
+- Service Worker permite abrir a estrutura básica do app mesmo quando a rede estiver momentaneamente indisponível.
+- Envio de e-mail e sincronização com Google Calendar continuam exigindo internet.
+- Os dados administrativos permanecem no armazenamento do próprio site/aparelho; não limpar os dados do site sem antes ter uma cópia/backup.
+- Não é necessário atualizar o Apps Script nesta versão.

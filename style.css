@@ -897,3 +897,39 @@ main{
   }
   .product-admin-filter .field{min-width:0;width:100%}
 }
+
+/* v1.50 — instalação PWA */
+.pwa-install-btn{
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  white-space:nowrap;
+}
+.login-install-area{
+  margin-top:14px;
+  display:flex;
+  justify-content:center;
+}
+.login-install-area .pwa-install-btn{
+  width:100%;
+  border-style:dashed;
+  color:#4f6578;
+}
+.pwa-install-modal{
+  max-width:520px;
+}
+.pwa-install-steps{
+  margin:16px 0;
+  line-height:1.55;
+}
+@media(max-width:760px){
+  .top .row{
+    gap:6px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  .top .pwa-install-btn{
+    font-size:12px;
+    padding:8px 10px;
+  }
+}
