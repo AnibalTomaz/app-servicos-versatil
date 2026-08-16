@@ -366,3 +366,12 @@ Correções:
 - Pacotes possuem mapeamento explícito para seus produtos-base; fechamento do produto/categoria correspondente afeta cada utilização do pacote.
 - Incluído `APPS_SCRIPT_v1_34.gs`.
 - Incluída função `limparMarcacoesVersatilV134` para remover do Google Calendar somente eventos rastreados pelo APP Serviços Versátil.
+
+## Versão 1.35
+- Fechamentos somente em datas futuras.
+- Locações diárias ficam indisponíveis no dia inteiro se qualquer período for fechado.
+- Quantidade de locações diárias fixada em 1 no catálogo e carrinho.
+- Pacotes de diária de sala herdando fechamento do produto/categoria base por utilização.
+- Nova limpeza única de pedidos, calendário interno e fechamentos.
+- Sincronização com Google Calendar reforçada; recria evento se o ID anterior estiver obsoleto.
+- Testes V135 de bloqueio/reabertura e limpeza de marcações incluídos no Apps Script.

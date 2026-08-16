@@ -358,39 +358,35 @@ function isDailyRentalProduct(product){
   if(!product||product.cat!=='locacoes')return false;
   return !productRequiresPeriod(product);
 }
+
+function isDailyUnitPackage(product){
+  if(!product||product.cat!=='pacotes')return false;
+  return packageBaseProductIds(product).some(pid=>isDailyRentalProduct(db.products.find(p=>p.id===pid)));
+}
+function closureForDailyUnit(product,date){
+  return isSlotClosed(date,'morning',product)||isSlotClosed(date,'afternoon',product);
+}
+
 function productClosedForSelection(product,date,slot){
-  if(isDailyRentalProduct(product)){
-    return isSlotClosed(date,'morning',product)||isSlotClosed(date,'afternoon',product);
-  }
+  if(isDailyRentalProduct(product)||isDailyUnitPackage(product))return closureForDailyUnit(product,date);
   return isSlotClosed(date,slot,product);
 }
 
-
 function availableSlotsForProductDate(product,date){
   const group=capacityGroupForProduct(product);
-
-  const slotBusy=(slot)=>{
-    if(productClosedForSelection(product,date,slot))return true;
-    if(capacityGroupSlotOccupied(date,slot,group))return true;
-
+  const busy=slot=>{
+    if(productClosedForSelection(product,date,slot)||capacityGroupSlotOccupied(date,slot,group))return true;
     return (cart||[]).some(i=>{
-      const ip=db.products.find(x=>x.id===i.productId);
-      if(capacityGroupForProduct(ip)!==group)return false;
+      const ip=db.products.find(x=>x.id===i.productId);if(capacityGroupForProduct(ip)!==group)return false;
       const uses=i.schedule?.length?i.schedule:[{date:i.date,period:i.period}];
-      return uses.some(use=>{
-        if(use.date!==date)return false;
-        if(use.period)return bookingSlotFromPeriod(use.period)===slot;
-        return true;
-      });
+      return uses.some(u=>u.date===date&&(u.period?bookingSlotFromPeriod(u.period)===slot:true));
     });
   };
-
-  if(isDailyRentalProduct(product)){
-    if(slotBusy('morning')||slotBusy('afternoon'))return [];
+  if(isDailyRentalProduct(product)||isDailyUnitPackage(product)){
+    if(busy('morning')||busy('afternoon'))return [];
     return ['morning','afternoon'];
   }
-
-  return ['morning','afternoon'].filter(slot=>!slotBusy(slot));
+  return ['morning','afternoon'].filter(s=>!busy(s));
 }
 function categoryDayUnavailable(product,date){
   return availableSlotsForProductDate(product,date).length===0;
@@ -665,6 +661,15 @@ function cleanForV134(){
 }
 cleanForV134();
 
+
+function cleanForV135(){
+  const k='versatil_v135_cleaned';
+  if(localStorage.getItem(k)==='1')return;
+  db.orders=[];db.calendarOrders=[];db.availabilityClosures=[];db.closedSlots=[];db.closedDates=[];cart=[];
+  if(session)delete session.lastOrderId;
+  save();localStorage.setItem(k,'1');
+}
+cleanForV135();
 function render(){document.getElementById('app').innerHTML=session?appView():loginView()}
 function loginView(){return `<div class="login"><div class="loginbox"><img src="logo-versatil.jpg" class="login-logo"><h2 style="text-align:center;margin:0">APP SERVIÇOS VERSÁTIL</h2><p class="muted" style="text-align:center">Contratação de serviços</p><div class="tabs"><button id="tabClient" class="btn access-tab selected" aria-pressed="true" onclick="showLogin('client')">Área do Cliente</button><button id="tabAdmin" class="btn access-tab" aria-pressed="false" onclick="showLogin('admin')">Área do Admin</button></div><div id="clientLogin"><div class="field"><label>E-mail</label><input id="c_email" type="email"></div><div class="field"><label>Nome</label><input id="c_name"></div><div class="field"><label>Quarto / Apartamento</label><input id="c_room" placeholder="Digite a unidade cadastrada, ex.: 101A"></div><button class="btn primary" style="width:100%" onclick="clientLogin()">Entrar como Cliente</button></div><div id="adminLogin" style="display:none"><div class="field"><label>Login do ADMIN</label><input id="a_name" autocomplete="username" placeholder="Login"></div><div class="field"><label>Senha do ADMIN</label><input id="a_pass" type="password" autocomplete="current-password" placeholder="Senha"></div><div class="row"><button class="btn primary" onclick="adminLogin()">Entrar como Admin</button><button class="btn" onclick="recoverAdmin()">Recuperar senha</button></div></div></div></div>`}
 
@@ -768,84 +773,40 @@ function catalogPage(){
 
 
 
+
 function productCard(p){
-  let price=productPrice(p),unavailable=price<=0;
-  let defaultDate=today();
-  let requiresPeriod=productRequiresPeriod(p);
-  let isPackage=p.cat==='pacotes';
-  let slots=requiresPeriod?availableSlotsForProductDate(p,defaultDate):[];
-  let noAvailability=requiresPeriod && !slots.length;
-
-  return `<div class="card product-card">
-    <div class="icon">${p.icon}</div>
-    <h3>${esc(p.name)}</h3>
-    <p class="muted">${esc(p.desc)}</p>
-    <div class="price">${unavailable?'Preço a cadastrar':money(price)}</div>
-
-    ${isPackage
-      ?`<div class="package-schedule">
-          <div class="notice"><b>Este pacote possui ${packageUseCount(p)} utilização(ões).</b> Selecione a data e o período de cada utilização.</div>
-          ${Array.from({length:packageUseCount(p)},(_,i)=>renderPackageUseRow(p,i,defaultDate)).join('')}
-        </div>`
-      :`<div class="field">
-          <label>Data</label>
-          <input id="date_${p.id}" type="date" min="${today()}" value="${defaultDate}" onchange="refreshProductAvailability('${p.id}')">
-        </div>
-        ${requiresPeriod?`<div class="field">
-          <label>Período</label>
-          <select id="period_${p.id}" ${noAvailability?'disabled':''}>
-            ${slots.map(slot=>`<option value="${periodValueForProduct(p,slot)}">${periodOptionLabelForProduct(p,slot)}</option>`).join('')}
-          </select>
-          <div id="period_msg_${p.id}" class="availability-message ${noAvailability?'show':''}">${noAvailability?'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.':''}</div>
-        </div>`:''}
-      `}
-
-    <div class="row">
-      <input id="qty_${p.id}" type="number" min="1" value="1" style="width:85px" ${isPackage?'disabled':''}>
-      <button id="addbtn_${p.id}" class="btn primary" ${(unavailable||(!isPackage&&noAvailability))?'disabled':''} onclick="addToCart('${p.id}')">Enviar ao carrinho</button>
-    </div>
+  const price=productPrice(p),unavailable=price<=0,defaultDate=today(),requiresPeriod=productRequiresPeriod(p),isPackage=p.cat==='pacotes',daily=isDailyRentalProduct(p);
+  const slots=(requiresPeriod||daily)?availableSlotsForProductDate(p,defaultDate):[];
+  const noAvailability=(requiresPeriod||daily)&&!slots.length;
+  const lockQty=isPackage||requiresPeriod||daily;
+  return `<div class="card product-card"><div class="icon">${p.icon}</div><h3>${esc(p.name)}</h3><p class="muted">${esc(p.desc)}</p><div class="price">${unavailable?'Preço a cadastrar':money(price)}</div>
+    ${isPackage?`<div class="package-schedule"><div class="notice"><b>Este pacote possui ${packageUseCount(p)} utilização(ões).</b> Selecione a data e o período de cada utilização.</div>${Array.from({length:packageUseCount(p)},(_,i)=>renderPackageUseRow(p,i,defaultDate)).join('')}</div>`:
+    `<div class="field"><label>Data</label><input id="date_${p.id}" type="date" min="${today()}" value="${defaultDate}" onchange="refreshProductAvailability('${p.id}')"></div>
+     ${requiresPeriod?`<div class="field"><label>Período</label><select id="period_${p.id}" ${noAvailability?'disabled':''}>${slots.map(s=>`<option value="${periodValueForProduct(p,s)}">${periodOptionLabelForProduct(p,s)}</option>`).join('')}</select><div id="period_msg_${p.id}" class="availability-message ${noAvailability?'show':''}">${noAvailability?'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.':''}</div></div>`:''}
+     ${daily?`<div id="period_msg_${p.id}" class="availability-message ${noAvailability?'show':''}">${noAvailability?'Lamentamos mas nesta data não há disponibilidade para esta locação diária.':''}</div>`:''}`}
+    <div class="row"><input id="qty_${p.id}" type="number" min="1" max="${lockQty?1:''}" value="1" style="width:85px" ${lockQty?'disabled':''}><button id="addbtn_${p.id}" class="btn primary" ${(unavailable||(!isPackage&&noAvailability))?'disabled':''} onclick="addToCart('${p.id}')">Enviar ao carrinho</button></div>
   </div>`;
 }
+
 function refreshProductAvailability(pid){
-  const p=db.products.find(x=>x.id===pid);
-  if(!p)return;
-
-  const date=document.getElementById('date_'+pid)?.value||'';
-  const addBtn=document.getElementById('addbtn_'+pid);
-  const qty=document.getElementById('qty_'+pid);
-  const requiresPeriod=productRequiresPeriod(p);
-
+  const p=db.products.find(x=>x.id===pid);if(!p)return;
+  const date=document.getElementById('date_'+pid)?.value||'',addBtn=document.getElementById('addbtn_'+pid),qty=document.getElementById('qty_'+pid),requiresPeriod=productRequiresPeriod(p),daily=isDailyRentalProduct(p);
   if(requiresPeriod){
-    const select=document.getElementById('period_'+pid);
-    const msg=document.getElementById('period_msg_'+pid);
-    const slots=date?availableSlotsForProductDate(p,date):[];
-    const noAvailability=!slots.length;
-
-    if(select){
-      select.innerHTML=slots.map(slot=>`<option value="${periodValueForProduct(p,slot)}">${periodOptionLabelForProduct(p,slot)}</option>`).join('');
-      select.disabled=noAvailability;
-    }
-
-    if(qty)qty.disabled=noAvailability;
-
-    if(msg){
-      msg.textContent=noAvailability?'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.':'';
-      msg.className=`availability-message ${noAvailability?'show':''}`;
-    }
-
-    if(addBtn)addBtn.disabled=noAvailability || productPrice(p)<=0;
-  }else{
-    const unavailable=date?categoryDayUnavailable(p,date):true;
-    if(qty)qty.disabled=unavailable;
-    if(addBtn)addBtn.disabled=unavailable || productPrice(p)<=0;
+    const select=document.getElementById('period_'+pid),msg=document.getElementById('period_msg_'+pid),slots=date?availableSlotsForProductDate(p,date):[],none=!slots.length;
+    if(select){select.innerHTML=slots.map(s=>`<option value="${periodValueForProduct(p,s)}">${periodOptionLabelForProduct(p,s)}</option>`).join('');select.disabled=none}
+    if(qty){qty.value=1;qty.disabled=true}
+    if(msg){msg.textContent=none?'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.':'';msg.className=`availability-message ${none?'show':''}`}
+    if(addBtn)addBtn.disabled=none||productPrice(p)<=0;return;
   }
+  const none=date?availableSlotsForProductDate(p,date).length===0:true,msg=document.getElementById('period_msg_'+pid);
+  if(qty){if(daily)qty.value=1;qty.disabled=daily||none}
+  if(msg&&daily){msg.textContent=none?'Lamentamos mas nesta data não há disponibilidade para esta locação diária.':'';msg.className=`availability-message ${none?'show':''}`}
+  if(addBtn)addBtn.disabled=none||productPrice(p)<=0;
 }
-
-
-
 function addToCart(pid){
   const p=db.products.find(x=>x.id===pid);
-  const qty=Number(document.getElementById('qty_'+pid)?.value||1);
+  const daily=isDailyRentalProduct(p);
+  const qty=daily?1:Number(document.getElementById('qty_'+pid)?.value||1);
   if(!p)return alert('Produto não encontrado.');
 
   const group=capacityGroupForProduct(p);
@@ -916,7 +877,7 @@ function addToCart(pid){
     categoryId:p.cat,
     capacityGroup:group,
     name:p.name,
-    qty,
+    qty:daily?1:qty,
     price:productPrice(p),
     date,
     period
@@ -942,7 +903,7 @@ function cartPage(){
 
       ${cart.map((i,idx)=>{
         const p=db.products.find(x=>x.id===i.productId);
-        const locked=!!i.schedule?.length || productRequiresPeriod(p);
+        const locked=!!i.schedule?.length || productRequiresPeriod(p) || isDailyRentalProduct(p);
 
         return `<tr>
           <td>${esc(i.name)}</td>
@@ -1398,73 +1359,48 @@ function deleteProductAdmin(pid){if(confirm('Excluir produto?')){db.products=db.
 
 
 
+
+function tomorrowISO(){
+  const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+1);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function isFutureDateISO(date){
+  if(!date)return false;
+  return new Date(date+'T12:00:00')>=new Date(tomorrowISO()+'T12:00:00');
+}
+
 function calendarAdmin(){
   const months=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-  const currentYear=new Date().getFullYear();
-  const years=Array.from({length:9},(_,i)=>currentYear-2+i);
-  if(!years.includes(calendarViewYear))years.push(calendarViewYear);
-  years.sort((a,b)=>a-b);
-  const days=new Date(calendarViewYear,calendarViewMonth+1,0).getDate();
-  const firstDay=new Date(calendarViewYear,calendarViewMonth,1).getDay();
-
+  const currentYear=new Date().getFullYear(),years=Array.from({length:9},(_,i)=>currentYear-2+i);
+  if(!years.includes(calendarViewYear))years.push(calendarViewYear);years.sort((a,b)=>a-b);
+  const days=new Date(calendarViewYear,calendarViewMonth+1,0).getDate(),firstDay=new Date(calendarViewYear,calendarViewMonth,1).getDay();
+  const minDate=tomorrowISO();
   return `<div class="card">
-    <div class="row between">
-      <div><h2>Calendário</h2><p class="muted">Gerencie disponibilidade por período, categoria ou produto.</p></div>
-      <div class="row">
-        <button class="btn" onclick="refreshCalendarAdmin()">↻ Atualizar</button>
-        <button class="btn primary" onclick="openAvailabilityBatchModal()">Gerenciar datas / lote</button>
-      </div>
-    </div>
-
+    <div class="row between"><div><h2>Calendário</h2><p class="muted">Fechamentos somente em datas futuras.</p></div><div class="row"><button class="btn" onclick="refreshCalendarAdmin()">↻ Atualizar</button><button class="btn primary" onclick="openAvailabilityBatchModal()">Gerenciar datas / lote</button></div></div>
     <div class="calendar-batch-filter">
-      <div class="field"><label>Data inicial</label><input id="calendar_filter_start" type="date" value="${today()}"></div>
-      <div class="field"><label>Data final</label><input id="calendar_filter_end" type="date" value="${today()}"></div>
-      <div class="field"><label>Período</label><select id="calendar_filter_slot">
-        <option value="morning">Manhã</option><option value="afternoon">Tarde</option><option value="both">Manhã e tarde</option>
-      </select></div>
+      <div class="field"><label>Data inicial</label><input id="calendar_filter_start" type="date" min="${minDate}" value="${minDate}"></div>
+      <div class="field"><label>Data final</label><input id="calendar_filter_end" type="date" min="${minDate}" value="${minDate}"></div>
+      <div class="field"><label>Período</label><select id="calendar_filter_slot"><option value="morning">Manhã</option><option value="afternoon">Tarde</option><option value="both">Manhã e tarde</option></select></div>
       <button class="btn primary" onclick="openAvailabilityBatchModalFromFilters()">Selecionar itens</button>
     </div>
-
-    <div class="calendar-selectors">
-      <div class="field"><label>Mês</label><select onchange="calendarViewMonth=Number(this.value);render()">${months.map((name,i)=>`<option value="${i}" ${calendarViewMonth===i?'selected':''}>${name}</option>`).join('')}</select></div>
-      <div class="field"><label>Ano</label><select onchange="calendarViewYear=Number(this.value);render()">${years.map(y=>`<option value="${y}" ${calendarViewYear===y?'selected':''}>${y}</option>`).join('')}</select></div>
-    </div>
-
-    <div class="calendar-legend">
-      <span><i class="legend-dot open"></i> Aberto</span><span><i class="legend-dot partial"></i> Parcial</span><span><i class="legend-dot closed"></i> Fechado</span>
-    </div>
-
+    <div class="calendar-selectors"><div class="field"><label>Mês</label><select onchange="calendarViewMonth=Number(this.value);render()">${months.map((n,i)=>`<option value="${i}" ${calendarViewMonth===i?'selected':''}>${n}</option>`).join('')}</select></div><div class="field"><label>Ano</label><select onchange="calendarViewYear=Number(this.value);render()">${years.map(y=>`<option value="${y}" ${calendarViewYear===y?'selected':''}>${y}</option>`).join('')}</select></div></div>
+    <div class="calendar-legend"><span><i class="legend-dot open"></i> Aberto</span><span><i class="legend-dot partial"></i> Parcial</span><span><i class="legend-dot closed"></i> Fechado</span><span><i class="legend-dot past"></i> Não editável</span></div>
     <div class="calendar-weekdays">${['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(x=>`<div>${x}</div>`).join('')}</div>
     <div class="calendar-period-grid">
       ${Array.from({length:firstDay},()=>`<div class="calendar-empty"></div>`).join('')}
       ${Array.from({length:days},(_,i)=>{
-        const day=i+1;
-        const date=`${calendarViewYear}-${String(calendarViewMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-        const ms=slotClosureStatus(date,'morning'),as=slotClosureStatus(date,'afternoon');
-        const entries=calendarEntriesForDate(date);
-        const morning=entries.filter(e=>normalizedEntrySlots(e).includes('morning'));
-        const afternoon=entries.filter(e=>normalizedEntrySlots(e).includes('afternoon'));
-        const renderEntries=list=>list.length?`<div class="calendar-orders">${list.map(e=>{
-          const order=db.orders.find(o=>o.id===e.orderId),cat=db.categories.find(c=>c.id===calendarEntryCategory(e));
-          return order?`<button class="calendar-order-marker" onclick="openCalendarOrder('${order.id}')"><b>${esc(cat?.name||'Categoria')}</b><span>${esc(order.client.roomName)} • ${esc(e.name)}</span></button>`:'';
-        }).join('')}</div>`:`<div class="calendar-free">Sem pedidos</div>`;
-        return `<div class="calendar-day-card">
-          <div class="calendar-day-number">${day}</div>
-          <div class="calendar-slot-block"><button class="period-btn ${ms}" onclick="openAvailabilityModal('${date}','morning')">Manhã<br><span>${slotClosureSummary(date,'morning')}</span></button>${renderEntries(morning)}</div>
-          <div class="calendar-slot-block"><button class="period-btn ${as}" onclick="openAvailabilityModal('${date}','afternoon')">Tarde<br><span>${slotClosureSummary(date,'afternoon')}</span></button>${renderEntries(afternoon)}</div>
-        </div>`;
+        const day=i+1,date=`${calendarViewYear}-${String(calendarViewMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`,editable=isFutureDateISO(date);
+        const entries=calendarEntriesForDate(date),morning=entries.filter(e=>normalizedEntrySlots(e).includes('morning')),afternoon=entries.filter(e=>normalizedEntrySlots(e).includes('afternoon'));
+        const renderEntries=list=>list.length?`<div class="calendar-orders">${list.map(e=>{const o=db.orders.find(x=>x.id===e.orderId),c=db.categories.find(x=>x.id===calendarEntryCategory(e));return o?`<button class="calendar-order-marker" onclick="openCalendarOrder('${o.id}')"><b>${esc(c?.name||'Categoria')}</b><span>${esc(o.client.roomName)} • ${esc(e.name)}</span></button>`:''}).join('')}</div>`:`<div class="calendar-free">Sem pedidos</div>`;
+        const b=(slot,label)=>editable?`<button class="period-btn ${slotClosureStatus(date,slot)}" onclick="openAvailabilityModal('${date}','${slot}')">${label}<br><span>${slotClosureSummary(date,slot)}</span></button>`:`<button class="period-btn past" disabled>${label}<br><span>Não editável</span></button>`;
+        return `<div class="calendar-day-card ${editable?'':'past-day'}"><div class="calendar-day-number">${day}</div><div class="calendar-slot-block">${b('morning','Manhã')}${renderEntries(morning)}</div><div class="calendar-slot-block">${b('afternoon','Tarde')}${renderEntries(afternoon)}</div></div>`;
       }).join('')}
     </div>
   </div>`;
 }
 
-
-
 function refreshCalendarAdmin(){
-  ensureCalendarOrders();
-  ensureCalendarData();
-  save();
-  render();
+  ensureCalendarOrders();ensureCalendarData();save();render();
   setTimeout(()=>alert('Calendário atualizado. Pedidos e disponibilidades foram recalculados.'),30);
 }
 function dateRange(start,end){
@@ -1540,13 +1476,15 @@ function reopenSelectedClosures(date,slot){
   alert(`${removed.length} bloqueio(s) reaberto(s). A atualização do Google Calendar foi solicitada.`);
 }
 
-function openAvailabilityBatchModal(){openAvailabilityManager({startDate:today(),endDate:today(),slot:'morning'})}
+
+function openAvailabilityBatchModal(){
+  const t=tomorrowISO();openAvailabilityManager({startDate:t,endDate:t,slot:'morning'});
+}
+
 function openAvailabilityBatchModalFromFilters(){
-  openAvailabilityManager({
-    startDate:document.getElementById('calendar_filter_start')?.value||today(),
-    endDate:document.getElementById('calendar_filter_end')?.value||today(),
-    slot:document.getElementById('calendar_filter_slot')?.value||'morning'
-  });
+  const t=tomorrowISO(),startDate=document.getElementById('calendar_filter_start')?.value||t,endDate=document.getElementById('calendar_filter_end')?.value||t,slot=document.getElementById('calendar_filter_slot')?.value||'morning';
+  if(!isFutureDateISO(startDate)||!isFutureDateISO(endDate))return alert('Somente datas futuras podem ser alteradas.');
+  openAvailabilityManager({startDate,endDate,slot});
 }
 function openAvailabilityManager({startDate,endDate,slot}){
   document.getElementById('availabilityModal')?.remove();
@@ -1555,8 +1493,8 @@ function openAvailabilityManager({startDate,endDate,slot}){
   modal.innerHTML=`<div class="modal-card availability-modal-card">
     <div class="row between"><div><h2 style="margin:0">Gerenciar disponibilidade</h2><p class="muted">Feche ou abra somente os itens desejados. As alterações também serão enviadas ao Google Calendar.</p></div><button class="btn" onclick="closeAvailabilityModal()">Fechar</button></div>
     <div class="availability-manager-grid">
-      <div class="field"><label>Data inicial</label><input id="avail_start" type="date" value="${startDate}"></div>
-      <div class="field"><label>Data final</label><input id="avail_end" type="date" value="${endDate}"></div>
+      <div class="field"><label>Data inicial</label><input id="avail_start" type="date" min="${tomorrowISO()}" value="${startDate}"></div>
+      <div class="field"><label>Data final</label><input id="avail_end" type="date" min="${tomorrowISO()}" value="${endDate}"></div>
       <div class="field"><label>Período</label><select id="avail_slot"><option value="morning" ${slot==='morning'?'selected':''}>Manhã</option><option value="afternoon" ${slot==='afternoon'?'selected':''}>Tarde</option><option value="both" ${slot==='both'?'selected':''}>Manhã e tarde</option></select></div>
       <div class="field"><label>Ação</label><select id="avail_action"><option value="close">Fechar disponibilidade</option><option value="open">Abrir disponibilidade</option></select></div>
     </div>
@@ -1595,6 +1533,7 @@ function applyAvailabilityChanges(){
   const categories=[...document.querySelectorAll('.availability-category-check:checked')].map(x=>x.value);
   const products=[...document.querySelectorAll('.availability-product-check:checked')].map(x=>x.value);
   if(!start||!end)return alert('Selecione a data inicial e final.');
+  if(!isFutureDateISO(start)||!isFutureDateISO(end))return alert('Somente datas futuras podem ser fechadas ou reabertas.');
   if(!all&&!categories.length&&!products.length)return alert('Selecione ao menos uma categoria, produto ou Todos os itens.');
   const scopes=all?[{scopeType:'all',scopeId:'all'}]:[...categories.map(scopeId=>({scopeType:'category',scopeId})),...products.map(scopeId=>({scopeType:'product',scopeId}))];
   const slots=slotValue==='both'?['morning','afternoon']:[slotValue],dates=dateRange(start,end),changed=[];
@@ -2511,4 +2450,4 @@ function accountAdmin(){
 function saveAccount(){db.account.adminName=acc_name.value.trim()||'Anibal';db.account.adminPassword=acc_pass.value||db.account.adminPassword;db.account.recoveryEmail=acc_recovery.value.trim();db.account.adminEmails=acc_emails.value.split(/\n|,|;/).map(x=>x.trim()).filter(Boolean);save();alert('Conta atualizada.');render()}
 render();
 
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.34');
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.35');
