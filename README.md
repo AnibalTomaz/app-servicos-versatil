@@ -417,3 +417,21 @@ Correções:
   `https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec`
 - Esta correção afeta recuperação de senha, sincronização de fechamentos e demais chamadas ao Apps Script.
 - Não é necessário alterar o Apps Script se a implantação Versão 9 já contém o código atual.
+
+## Versão 1.42 — auditoria de disponibilidade
+- Locações diárias ocupam sempre Manhã e Tarde para fins de capacidade.
+- Churrasqueiras com e sem serviço, salas diárias e moto diária são consideradas diária completa.
+- Pacotes baseados em sala diária também ocupam o dia inteiro em cada utilização.
+- Fechamento de qualquer período elimina a disponibilidade da diária completa.
+- A confirmação do pedido repete a validação de disponibilidade para evitar reserva com dados desatualizados.
+- Carrinho e pedidos existentes são considerados na validação de ambos os períodos para diárias.
+- Adicionado botão `Verificar regras` no Calendário Admin.
+- Não há alteração necessária no Apps Script nesta versão.
+
+## Versão 1.43 — resposta ao solicitante
+- O e-mail de pedido recebido pelos administradores mostra o e-mail do solicitante em destaque.
+- O endereço do solicitante é clicável.
+- Os e-mails administrativos usam `Reply-To` igual ao e-mail do solicitante; portanto, o botão Responder do Gmail/Outlook responde diretamente ao cliente.
+- `anibal@starlis.com.br` continua como principal e `versatil@starlis.com.br` como secundário.
+- Mantida a correção `jsonResponse` na recuperação de senha.
+- Incluído teste `testarEmailPedidoComRespostaV143`.

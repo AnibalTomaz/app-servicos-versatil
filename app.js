@@ -260,26 +260,66 @@ function packageScheduleFromCard(p){
 
 
 
+
 function validateScheduleAgainstCapacity(p,schedule,includeCart=true){
-  const local=[],group=capacityGroupForProduct(p);
+  const local=[];
+  const group=capacityGroupForProduct(p);
+  const fullDay=isDailyRentalProduct(p)||isDailyUnitPackage(p);
+
   for(const use of schedule){
-    if(!use.date||!use.period)return {ok:false,message:'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.'};
-    const slot=bookingSlotFromPeriod(use.period);
-    if(!slot||productClosedForSelection(p,use.date,slot)||capacityGroupSlotOccupied(use.date,slot,group)){
+    if(!use.date||!use.period){
       return {ok:false,message:'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.'};
     }
-    if(includeCart){
-      const busy=(cart||[]).some(i=>{
-        const ip=db.products.find(x=>x.id===i.productId);
-        if(capacityGroupForProduct(ip)!==group)return false;
-        const uses=i.schedule?.length?i.schedule:[{date:i.date,period:i.period}];
-        return uses.some(u=>u.date===use.date&&bookingSlotFromPeriod(u.period)===slot);
-      });
-      if(busy)return {ok:false,message:'Este período já está ocupado por outro item incompatível no carrinho.'};
+
+    const selectedSlot=bookingSlotFromPeriod(use.period);
+    if(!selectedSlot){
+      return {ok:false,message:'Período inválido. Selecione novamente.'};
     }
-    if(local.some(x=>x.date===use.date&&x.slot===slot))return {ok:false,message:'As utilizações do mesmo pacote não podem ocupar a mesma data e período.'};
-    local.push({date:use.date,slot});
+
+    const slotsToCheck=fullDay?['morning','afternoon']:[selectedSlot];
+
+    for(const slot of slotsToCheck){
+      if(productClosedForSelection(p,use.date,slot)||capacityGroupSlotOccupied(use.date,slot,group)){
+        return {ok:false,message:fullDay
+          ?'Lamentamos, esta diária está indisponível na data selecionada. Por favor selecione outra data.'
+          :'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.'};
+      }
+
+      if(includeCart){
+        const busy=(cart||[]).some(i=>{
+          const ip=db.products.find(x=>x.id===i.productId);
+          if(capacityGroupForProduct(ip)!==group)return false;
+
+          const iFullDay=isDailyRentalProduct(ip)||isDailyUnitPackage(ip);
+          const uses=i.schedule?.length?i.schedule:[{date:i.date,period:i.period}];
+
+          return uses.some(u=>{
+            if(u.date!==use.date)return false;
+            if(iFullDay)return true;
+            const cartSlot=bookingSlotFromPeriod(u.period);
+            return cartSlot===slot;
+          });
+        });
+
+        if(busy){
+          return {ok:false,message:'Já existe um item incompatível no carrinho para esta data.'};
+        }
+      }
+    }
+
+    if(fullDay){
+      if(local.some(x=>x.date===use.date)){
+        return {ok:false,message:'As utilizações deste pacote diário não podem usar a mesma data.'};
+      }
+      local.push({date:use.date,slot:'full-day'});
+    }else{
+      if(local.some(x=>x.date===use.date&&x.slot===selectedSlot)){
+        return {ok:false,message:'As utilizações do mesmo pacote não podem ocupar a mesma data e período.'};
+      }
+      local.push({date:use.date,slot:selectedSlot});
+    }
   }
+
   return {ok:true};
 }
 function capacityGroupForProduct(p){
@@ -309,12 +349,19 @@ function productCategoryId(productId){
 function calendarEntryCategory(e){
   return e.categoryId||productCategoryId(e.productId);
 }
+
 function normalizedEntrySlots(e){
+  const p=db.products.find(x=>x.id===e.productId);
+
+  if(isDailyRentalProduct(p)||isDailyUnitPackage(p)){
+    return ['morning','afternoon'];
+  }
+
   if(e.period){
     const s=bookingSlotFromPeriod(e.period);
     return s?[s]:[];
   }
-  // Pedido sem meia diária ocupa o dia completo e, portanto, ambos os períodos.
+
   return ['morning','afternoon'];
 }
 function capacityGroupSlotOccupied(date,slot,groupId,ignoreOrderId=''){
@@ -975,42 +1022,70 @@ function clearCart(){
 
 
 
+
 function confirmOrder(){
   if(!cart.length)return;
+
   const reservations=[];
+
   for(const i of cart){
     const p=db.products.find(x=>x.id===i.productId);
     if(!p)return alert('Produto não encontrado.');
+
     const group=capacityGroupForProduct(p);
+    const fullDay=isDailyRentalProduct(p)||isDailyUnitPackage(p);
     const uses=i.schedule?.length?i.schedule:[{date:i.date,period:i.period}];
+
     for(const use of uses){
-      if(productRequiresPeriod(p)&&!use.period)return alert('Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
-      const slots=productRequiresPeriod(p)?[bookingSlotFromPeriod(use.period)]:['morning','afternoon'];
+      if(productRequiresPeriod(p)&&!use.period){
+        return alert('Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
+      }
+
+      const selected=use.period?bookingSlotFromPeriod(use.period):'';
+      const slots=fullDay
+        ?['morning','afternoon']
+        :productRequiresPeriod(p)
+          ?[selected]
+          :['morning','afternoon'];
+
       for(const slot of slots){
-        if(productClosedForSelection(p,use.date,slot)||capacityGroupSlotOccupied(use.date,slot,group)){
-          return alert('Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
+        if(!slot||productClosedForSelection(p,use.date,slot)||capacityGroupSlotOccupied(use.date,slot,group)){
+          return alert(fullDay
+            ?'Esta diária não está mais disponível na data selecionada. Escolha outra data.'
+            :'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
         }
+
         if(reservations.some(r=>r.date===use.date&&r.slot===slot&&r.group===group)){
-          return alert('Não é permitido mais de um item do mesmo grupo de capacidade no mesmo dia e período.');
+          return alert('Não é permitido mais de um item do mesmo grupo de capacidade nesta data e período.');
         }
+
         reservations.push({date:use.date,slot,group});
       }
     }
   }
+
   const order={
     id:id(),
-    client:{email:session.email,name:session.name,roomId:session.roomId,roomName:room()?.name||session.roomName||''},
+    client:{
+      email:session.email,
+      name:session.name,
+      roomId:session.roomId,
+      roomName:room()?.name||session.roomName||''
+    },
     items:structuredClone(cart),
     total:cart.reduce((a,i)=>a+i.price*i.qty,0),
     createdAt:new Date().toISOString(),
     status:'ativo'
   };
+
   db.orders.push(order);
   addOrderToAppCalendar(order);
   save();
+
   session.lastOrderId=order.id;
   cart=[];
   page='confirmation';
+
   sendConfirmationEmails(order);
   render();
 }
@@ -1398,6 +1473,24 @@ function isFutureDateISO(date){
   return new Date(date+'T12:00:00')>=new Date(tomorrowISO()+'T12:00:00');
 }
 
+
+function availabilityRulesSummary(){
+  const daily=['churras-serv','churras-sem','sala-dia-serv','sala-dia-sem','moto-dia']
+    .map(id=>db.products.find(p=>p.id===id)?.name)
+    .filter(Boolean);
+
+  const dailyPackages=db.products
+    .filter(p=>p.cat==='pacotes'&&isDailyUnitPackage(p))
+    .map(p=>p.name);
+
+  alert(
+    'REGRAS ATIVAS DE DISPONIBILIDADE\n\n'+
+    'Locações diárias (ocupam o dia inteiro):\n• '+daily.join('\n• ')+
+    '\n\nPacotes com utilização diária:\n• '+dailyPackages.join('\n• ')+
+    '\n\nQualquer fechamento ou ocupação em Manhã ou Tarde torna a diária inteira indisponível.'
+  );
+}
+
 function calendarAdmin(){
   const months=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
   const currentYear=new Date().getFullYear(),years=Array.from({length:9},(_,i)=>currentYear-2+i);
@@ -1405,7 +1498,7 @@ function calendarAdmin(){
   const days=new Date(calendarViewYear,calendarViewMonth+1,0).getDate(),firstDay=new Date(calendarViewYear,calendarViewMonth,1).getDay();
   const minDate=tomorrowISO();
   return `<div class="card">
-    <div class="row between"><div><h2>Calendário</h2><p class="muted">Fechamentos somente em datas futuras.</p></div><div class="row"><button class="btn" onclick="refreshCalendarAdmin()">↻ Atualizar</button><button class="btn" onclick="syncAllAvailabilityToGoogle()">Sincronizar Google Calendar</button><button class="btn" onclick="retryGoogleAvailabilityQueue()">Reenviar pendências</button><button class="btn primary" onclick="openAvailabilityBatchModal()">Gerenciar datas / lote</button></div></div>
+    <div class="row between"><div><h2>Calendário</h2><p class="muted">Fechamentos somente em datas futuras.</p></div><div class="row"><button class="btn" onclick="refreshCalendarAdmin()">↻ Atualizar</button><button class="btn" onclick="availabilityRulesSummary()">Verificar regras</button><button class="btn" onclick="syncAllAvailabilityToGoogle()">Sincronizar Google Calendar</button><button class="btn" onclick="retryGoogleAvailabilityQueue()">Reenviar pendências</button><button class="btn primary" onclick="openAvailabilityBatchModal()">Gerenciar datas / lote</button></div></div>
     <div class="calendar-batch-filter">
       <div class="field"><label>Data inicial</label><input id="calendar_filter_start" type="date" min="${minDate}" value="${minDate}"></div>
       <div class="field"><label>Data final</label><input id="calendar_filter_end" type="date" min="${minDate}" value="${minDate}"></div>
@@ -2580,7 +2673,7 @@ function bootVersatilV140(){
 
   try{
     render();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.41 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.43 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 
