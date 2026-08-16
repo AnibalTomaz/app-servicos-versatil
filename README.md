@@ -390,3 +390,8 @@ Correções:
 - `anibal@starlis.com.br` é o e-mail principal; `versatil@starlis.com.br` é secundário.
 - Sincronização de fechamentos usa POST simplificado para reduzir falhas do navegador/GitHub Pages.
 - Incluídos `diagnosticarSincronizacaoCalendarioV137` e `testarRecuperacaoSenhaV137`.
+
+## Versão 1.38
+- Corrigido erro `ReferenceError: escapeHtml is not defined` na recuperação de senha.
+- A função passa a usar `escaparHtml`, que já existe no Apps Script.
+- Incluído teste `testarRecuperacaoSenhaV138`.
