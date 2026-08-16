@@ -265,7 +265,7 @@ function validateScheduleAgainstCapacity(p,schedule,includeCart=true){
   for(const use of schedule){
     if(!use.date||!use.period)return {ok:false,message:'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.'};
     const slot=bookingSlotFromPeriod(use.period);
-    if(!slot||isSlotClosed(use.date,slot,p)||capacityGroupSlotOccupied(use.date,slot,group)){
+    if(!slot||productClosedForSelection(p,use.date,slot)||capacityGroupSlotOccupied(use.date,slot,group)){
       return {ok:false,message:'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.'};
     }
     if(includeCart){
@@ -352,10 +352,24 @@ function cartCategorySlotOccupied(date,slot,categoryId){
 }
 
 
+
+function isDailyRentalProduct(product){
+  if(!product)return false;
+  if(product.cat!=='locacoes')return false;
+  const name=String(product.name||'').toLowerCase();
+  return name.includes('diária')||name.includes('diaria')||name.includes('dia inteiro')||name.includes('24h')||name.includes('24 h');
+}
+function productClosedForSelection(product,date,slot){
+  if(isDailyRentalProduct(product)){
+    return isSlotClosed(date,'morning',product)||isSlotClosed(date,'afternoon',product);
+  }
+  return isSlotClosed(date,slot,product);
+}
+
 function availableSlotsForProductDate(product,date){
   const group=capacityGroupForProduct(product);
   return ['morning','afternoon'].filter(slot=>{
-    if(isSlotClosed(date,slot,product))return false;
+    if(productClosedForSelection(product,date,slot))return false;
     if(capacityGroupSlotOccupied(date,slot,group))return false;
     const cartBusy=(cart||[]).some(i=>{
       const ip=db.products.find(x=>x.id===i.productId);
@@ -465,8 +479,23 @@ function productMatchesClosure(product,closure){
   if(!closure)return false;
   if(closure.scopeType==='all')return true;
   if(!product)return false;
-  if(closure.scopeType==='category')return product.cat===closure.scopeId;
-  if(closure.scopeType==='product')return product.id===closure.scopeId;
+  if(closure.scopeType==='category'){
+    if(product.cat===closure.scopeId)return true;
+    if(product.cat==='pacotes'&&Array.isArray(product.packageItems)){
+      return product.packageItems.some(pi=>{
+        const component=db.products.find(p=>p.id===pi.productId);
+        return component?.cat===closure.scopeId;
+      });
+    }
+    return false;
+  }
+  if(closure.scopeType==='product'){
+    if(product.id===closure.scopeId)return true;
+    if(product.cat==='pacotes'&&Array.isArray(product.packageItems)){
+      return product.packageItems.some(pi=>pi.productId===closure.scopeId);
+    }
+    return false;
+  }
   return false;
 }
 function isSlotClosed(date,slot,product=null){
@@ -931,7 +960,7 @@ function confirmOrder(){
       if(productRequiresPeriod(p)&&!use.period)return alert('Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
       const slots=productRequiresPeriod(p)?[bookingSlotFromPeriod(use.period)]:['morning','afternoon'];
       for(const slot of slots){
-        if(isSlotClosed(use.date,slot,p)||capacityGroupSlotOccupied(use.date,slot,group)){
+        if(productClosedForSelection(p,use.date,slot)||capacityGroupSlotOccupied(use.date,slot,group)){
           return alert('Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.');
         }
         if(reservations.some(r=>r.date===use.date&&r.slot===slot&&r.group===group)){
@@ -1392,7 +1421,13 @@ function calendarAdmin(){
   </div>`;
 }
 
-function refreshCalendarAdmin(){ensureCalendarOrders();ensureCalendarData();render();}
+
+function refreshCalendarAdmin(){
+  ensureCalendarOrders();
+  ensureCalendarData();
+  render();
+  setTimeout(()=>alert('Calendário atualizado com sucesso.'),30);
+}
 function dateRange(start,end){
   const out=[]; if(!start||!end)return out;
   let a=new Date(start+'T12:00:00'),b=new Date(end+'T12:00:00');
@@ -1452,6 +1487,7 @@ function calendarTimesForScope(slot,scopeType,scopeId){
 function syncAvailabilityToGoogle(operation,closures){
   if(!closures?.length)return;
   fetch(GOOGLE_APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',cache:'no-store',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({action:'setAvailability',operation,closures}),keepalive:true})
+    .then(()=>console.info('Sincronização com Google Calendar solicitada:',operation,closures.length))
     .catch(err=>console.error('Falha ao sincronizar disponibilidade com Google Calendar:',err));
 }
 function applyAvailabilityChanges(){
@@ -1480,7 +1516,7 @@ function applyAvailabilityChanges(){
     }
   }
   save(); if(changed.length)syncAvailabilityToGoogle(action,changed); closeAvailabilityModal(); render();
-  alert(changed.length?`${changed.length} alteração(ões) de disponibilidade aplicada(s).`:'Nenhuma alteração foi necessária.');
+  alert(changed.length?`${changed.length} alteração(ões) aplicada(s). A sincronização com o Google Calendar foi solicitada.`:'Nenhuma alteração foi necessária.');
 }
 function togglePeriod(date,slot){openAvailabilityModal(date,slot)}
 function toggleDate(date){openAvailabilityManager({startDate:date,endDate:date,slot:'both'})}
@@ -2377,4 +2413,4 @@ function accountAdmin(){
 function saveAccount(){db.account.adminName=acc_name.value.trim()||'Anibal';db.account.adminPassword=acc_pass.value||db.account.adminPassword;db.account.recoveryEmail=acc_recovery.value.trim();db.account.adminEmails=acc_emails.value.split(/\n|,|;/).map(x=>x.trim()).filter(Boolean);save();alert('Conta atualizada.');render()}
 render();
 
-console.info('APP SERVIÇOS VERSÁTIL - Versão 1.32');
+console.info('APP SERVIÇOS VERSÁTIL - Versão 1.33');

@@ -344,3 +344,13 @@ Correções:
 - Fechamentos retiram imediatamente a disponibilidade no catálogo do Cliente.
 - Fechamentos/reaberturas são sincronizados com o Google Calendar via Apps Script.
 - Arquivo APPS_SCRIPT_v1_32.gs incluído para substituir o código atual do Apps Script e republicar a implantação.
+
+## Versão 1.33 — correções
+- Logo dos e-mails agora é incorporada como imagem inline (CID) pelo Apps Script.
+- E-mails Admin enviados individualmente aos dois endereços configurados.
+- Incluída função `testarEmailsAdministrativosV133` para comprovar os dois envios.
+- Botão Atualizar do calendário exibe confirmação.
+- Locações diárias: qualquer fechamento de período torna o produto indisponível no dia inteiro.
+- Fechamentos de produtos/categorias também afetam pacotes que contenham esses itens.
+- Bloqueios continuam sincronizados com Google Calendar.
+- Incluída função `testarBloqueioCalendarioV133` para criar um bloqueio visível de teste.
