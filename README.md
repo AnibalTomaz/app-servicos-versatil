@@ -310,3 +310,12 @@ Correções:
 - Inputs usam tamanho de fonte adequado para evitar zoom automático no iPhone.
 - Gráficos continuam responsivos e podem rolar horizontalmente quando necessário.
 - O banco local e todos os cadastros existentes foram preservados.
+
+## Versão 1.29 — envio real de e-mails
+- Conectado ao Google Apps Script:
+  `https://script.google.com/macros/s/AKfycbwzCLmpeiIs2rluomRVUNTJ_yXDv2oj1zSXcX376hTOPgyRcfzVX5r7l5oGamiTQnJddw/exec`
+- Ao confirmar um pedido, o APP envia automaticamente os dados ao Apps Script.
+- O Apps Script recebe cliente, unidade, itens, datas, períodos, quantidades e total.
+- Foi mantido o registro local dos dados de e-mail.
+- Em **Admin > Conta** existe um botão para disparar um teste de integração.
+- Próxima etapa: criar/remover eventos automaticamente no Google Calendar.

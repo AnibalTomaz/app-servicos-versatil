@@ -1,4 +1,5 @@
 const KEY='versatil_services_v1_8';
+const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbwzCLmpeiIs2rluomRVUNTJ_yXDv2oj1zSXcX376hTOPgyRcfzVX5r7l5oGamiTQnJddw/exec";
 const seed={
  account:{recoveryEmail:'anibal@starlis.com.br',adminEmails:['anibal@starlis.com.br','versatil@starlis.com.br'],adminName:'Anibal',adminPassword:'1234'},
  rooms:[{id:'r1',name:'Quarto 101',number:'101',type:'quarto'},{id:'r2',name:'Apartamento 201',number:'201',type:'apartamento'}],
@@ -993,35 +994,98 @@ ${lines}
 
 VALOR CONSOLIDADO: ${money(o.total)}${msg}`;
 }
+
+
+function testGoogleEmailConnection(){
+  const target=db.account.recoveryEmail||db.account.adminEmails?.[0]||'';
+  const payload={
+    action:'sendOrderEmail',
+    orderId:'TESTE-'+Date.now(),
+    client:{
+      name:'Teste APP SERVIÇOS VERSÁTIL',
+      email:target,
+      roomName:'Teste'
+    },
+    items:[{
+      id:'teste',
+      productId:'teste',
+      name:'Teste de integração de e-mail',
+      qty:1,
+      price:0,
+      date:today(),
+      period:'09:00-11:00'
+    }],
+    total:0,
+    createdAt:new Date().toISOString()
+  };
+
+  fetch(GOOGLE_APPS_SCRIPT_URL,{
+    method:'POST',
+    mode:'no-cors',
+    cache:'no-store',
+    headers:{'Content-Type':'text/plain;charset=UTF-8'},
+    body:JSON.stringify(payload)
+  }).then(()=>{
+    alert('Teste enviado. Verifique a caixa de entrada.');
+  }).catch(err=>{
+    alert('Falha ao enviar o teste: '+err);
+  });
+}
+
 function sendConfirmationEmails(o){
   const adminRecipients=db.account.adminEmails.filter(Boolean);
   const clientRecipient=o.client.email;
 
   const clientEmail={
     to:[clientRecipient],
-    subject:'Confirmação da solicitação - Versátil',
+    subject:'Solicitação recebida - Serviços Versátil',
     body:emailBody(o,true)
   };
 
   const adminEmail={
     to:adminRecipients,
-    subject:'Nova solicitação - Versátil',
+    subject:'Nova solicitação - Serviços Versátil',
     body:emailBody(o,false)
   };
 
   o.emailData={client:clientEmail,admin:adminEmail};
+  o.emailDelivery={status:'enviando',sentAt:null,error:null};
   save();
 
   localStorage.setItem('versatil_last_client_email',JSON.stringify(clientEmail));
   localStorage.setItem('versatil_last_admin_email',JSON.stringify(adminEmail));
-  localStorage.setItem('versatil_last_email',JSON.stringify({
-    recipients:[...adminRecipients,clientRecipient],
-    subject:'Nova solicitação - Versátil',
-    body:emailBody(o,true)
-  }));
+
+  const payload={
+    action:'sendOrderEmail',
+    orderId:o.id,
+    client:o.client,
+    items:o.items,
+    total:o.total,
+    createdAt:o.createdAt
+  };
+
+  fetch(GOOGLE_APPS_SCRIPT_URL,{
+    method:'POST',
+    mode:'no-cors',
+    cache:'no-store',
+    headers:{'Content-Type':'text/plain;charset=UTF-8'},
+    body:JSON.stringify(payload),
+    keepalive:true
+  }).then(()=>{
+    const order=db.orders.find(x=>x.id===o.id);
+    if(order){
+      order.emailDelivery={status:'enviado',sentAt:new Date().toISOString(),error:null};
+      save();
+    }
+  }).catch(err=>{
+    const order=db.orders.find(x=>x.id===o.id);
+    if(order){
+      order.emailDelivery={status:'erro',sentAt:null,error:String(err)};
+      save();
+    }
+    console.error('Falha ao enviar e-mail pelo Google Apps Script:',err);
+  });
 }
-
-
 function buildOrderICS(o){
   let eventIndex=0;
   const events=[];
