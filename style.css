@@ -805,3 +805,31 @@ main{
 @media(max-width:760px){
   .calendar-selectors + .calendar-legend{margin-top:10px}
 }
+
+/* v1.44 — versão visível, discreta, em todas as páginas */
+#appVersionBadge{
+  position:fixed;
+  right:10px;
+  bottom:8px;
+  z-index:9999;
+  font-size:10px;
+  line-height:1;
+  color:#7f8c99;
+  opacity:.62;
+  font-weight:500;
+  letter-spacing:.02em;
+  pointer-events:none;
+  user-select:none;
+  background:rgba(255,255,255,.38);
+  padding:2px 4px;
+  border-radius:4px;
+  backdrop-filter:blur(2px);
+}
+@media(max-width:760px){
+  #appVersionBadge{
+    right:7px;
+    bottom:6px;
+    font-size:9px;
+    opacity:.58;
+  }
+}

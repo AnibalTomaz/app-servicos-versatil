@@ -728,7 +728,20 @@ function cleanForV135(){
   save();localStorage.setItem(k,'1');
 }
 cleanForV135();
-function render(){document.getElementById('app').innerHTML=session?appView():loginView()}
+function render(){
+  document.getElementById('app').innerHTML=session?appView():loginView();
+  renderVersionBadge();
+}
+
+function renderVersionBadge(){
+  let badge=document.getElementById('appVersionBadge');
+  if(!badge){
+    badge=document.createElement('div');
+    badge.id='appVersionBadge';
+    document.body.appendChild(badge);
+  }
+  badge.textContent='v1.44';
+}
 function loginView(){return `<div class="login"><div class="loginbox"><img src="logo-versatil.jpg" class="login-logo"><h2 style="text-align:center;margin:0">APP SERVIÇOS VERSÁTIL</h2><p class="muted" style="text-align:center">Contratação de serviços</p><div class="tabs"><button id="tabClient" class="btn access-tab selected" aria-pressed="true" onclick="showLogin('client')">Área do Cliente</button><button id="tabAdmin" class="btn access-tab" aria-pressed="false" onclick="showLogin('admin')">Área do Admin</button></div><div id="clientLogin"><div class="field"><label>E-mail</label><input id="c_email" type="email"></div><div class="field"><label>Nome</label><input id="c_name"></div><div class="field"><label>Quarto / Apartamento</label><input id="c_room" placeholder="Digite a unidade cadastrada, ex.: 101A"></div><button class="btn primary" style="width:100%" onclick="clientLogin()">Entrar como Cliente</button></div><div id="adminLogin" style="display:none"><div class="field"><label>Login do ADMIN</label><input id="a_name" autocomplete="username" placeholder="Login"></div><div class="field"><label>Senha do ADMIN</label><input id="a_pass" type="password" autocomplete="current-password" placeholder="Senha"></div><div class="row"><button class="btn primary" onclick="adminLogin()">Entrar como Admin</button><button class="btn" onclick="recoverAdmin()">Recuperar senha</button></div></div></div></div>`}
 
 function showLogin(t){
@@ -2673,7 +2686,7 @@ function bootVersatilV140(){
 
   try{
     render();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.43 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.44 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

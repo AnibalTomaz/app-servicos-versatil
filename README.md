@@ -435,3 +435,11 @@ Correções:
 - `anibal@starlis.com.br` continua como principal e `versatil@starlis.com.br` como secundário.
 - Mantida a correção `jsonResponse` na recuperação de senha.
 - Incluído teste `testarEmailPedidoComRespostaV143`.
+
+## Versão 1.44 — versão visível
+- Exibe `v1.44` em todas as páginas.
+- Indicador pequeno, cinza e discreto.
+- Posicionado sempre no canto inferior direito.
+- Não interfere em cliques ou navegação.
+- Responsivo no celular.
+- Nenhuma alteração funcional no Apps Script.
