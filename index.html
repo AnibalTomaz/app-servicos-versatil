@@ -6,8 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Versátil">
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css?v=151">
-</head><body><div id="appVersionBadge">v1.51</div><div id="app"></div><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css?v=152">
+</head><body><div id="appVersionBadge">v1.52</div><div id="app"></div><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
 window.addEventListener('error',function(ev){
   const app=document.getElementById('app');
@@ -16,13 +16,13 @@ window.addEventListener('error',function(ev){
   }
 });
 </script>
-<script src="app.js?v=151"></script><script>
+<script src="app.js?v=152"></script><script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',async()=>{
     try{
       const regs=await navigator.serviceWorker.getRegistrations();
       for(const reg of regs)await reg.update();
-      await navigator.serviceWorker.register('service-worker.js?v=151',{updateViaCache:'none'});
+      await navigator.serviceWorker.register('service-worker.js?v=152',{updateViaCache:'none'});
     }catch(e){console.warn('Service Worker:',e)}
   });
 }

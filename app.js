@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.51';
+const APP_VERSION='1.52';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 const seed={
@@ -750,24 +750,112 @@ preserveCafeDefaultV149();
 
 
 
+
 function centralJsonp(action,params={}){
   return new Promise((resolve,reject)=>{
     const callback='versatil_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
     const script=document.createElement('script');
-    const timeout=setTimeout(()=>{cleanup();reject(new Error('Tempo limite ao consultar a base central.'));},CENTRAL_SYNC_TIMEOUT_MS);
-    function cleanup(){clearTimeout(timeout);try{delete window[callback]}catch(e){}script.remove()}
-    window[callback]=(payload)=>{cleanup();resolve(payload)};
-    const q=new URLSearchParams({action,callback,...Object.fromEntries(Object.entries(params).map(([k,v])=>[k,String(v)]))});
+    let finished=false;
+
+    const timeout=setTimeout(()=>{
+      if(finished)return;
+      finished=true;
+      cleanup();
+      reject(new Error('JSONP indisponível neste navegador.'));
+    },6000);
+
+    function cleanup(){
+      clearTimeout(timeout);
+      try{delete window[callback]}catch(e){}
+      script.remove();
+    }
+
+    window[callback]=(payload)=>{
+      if(finished)return;
+      finished=true;
+      cleanup();
+      resolve(payload);
+    };
+
+    const q=new URLSearchParams({
+      action,
+      callback,
+      ...Object.fromEntries(Object.entries(params).map(([k,v])=>[k,String(v)]))
+    });
+
     script.src=GOOGLE_APPS_SCRIPT_URL+'?'+q.toString()+'&t='+Date.now();
-    script.onerror=()=>{cleanup();reject(new Error('Falha ao consultar a base central.'))};
+    script.async=true;
+    script.onerror=()=>{
+      if(finished)return;
+      finished=true;
+      cleanup();
+      reject(new Error('Falha JSONP.'));
+    };
+
     document.head.appendChild(script);
   });
 }
+
+function centralIframeBridge(action,params={}){
+  return new Promise((resolve,reject)=>{
+    const requestId='bridge_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+    const iframe=document.createElement('iframe');
+    iframe.style.display='none';
+    iframe.setAttribute('aria-hidden','true');
+
+    let finished=false;
+    const timeout=setTimeout(()=>{
+      if(finished)return;
+      finished=true;
+      cleanup();
+      reject(new Error('Tempo limite no modo compatível.'));
+    },CENTRAL_SYNC_TIMEOUT_MS);
+
+    function cleanup(){
+      clearTimeout(timeout);
+      window.removeEventListener('message',onMessage);
+      iframe.remove();
+    }
+
+    function onMessage(event){
+      const data=event.data;
+      if(!data||data.type!=='VERSATIL_CENTRAL_BRIDGE'||data.requestId!==requestId)return;
+      if(finished)return;
+      finished=true;
+      cleanup();
+      if(data.payload?.ok)resolve(data.payload);
+      else reject(new Error(data.payload?.error||'Falha na base central.'));
+    }
+
+    window.addEventListener('message',onMessage);
+
+    const q=new URLSearchParams({
+      action:'bridgePublic',
+      bridgeAction:action,
+      requestId,
+      ...Object.fromEntries(Object.entries(params).map(([k,v])=>[k,String(v)])),
+      t:String(Date.now())
+    });
+
+    iframe.src=GOOGLE_APPS_SCRIPT_URL+'?'+q.toString();
+    document.body.appendChild(iframe);
+  });
+}
+
+async function centralRead(action,params={}){
+  try{
+    return await centralJsonp(action,params);
+  }catch(jsonpError){
+    console.warn('JSONP indisponível; tentando modo compatível.',jsonpError);
+    return await centralIframeBridge(action,params);
+  }
+}
+
 function publicCentralSnapshot(){return {rooms:db.rooms||[],categories:db.categories||[],products:db.products||[],availabilityClosures:db.availabilityClosures||[]}}
 async function loadCentralData(){
   centralDataStatus='carregando';updateCentralStatusUI();
   try{
-    const p=await centralJsonp('bootstrapPublic');
+    const p=await centralRead('bootstrapPublic');
     if(!p?.ok)throw new Error(p?.error||'Resposta inválida.');
     const c=p.data||{};
     if(Array.isArray(c.rooms)&&c.rooms.length)db.rooms=c.rooms;
@@ -778,7 +866,7 @@ async function loadCentralData(){
     centralDataStatus='ok';
     if(p.version&&p.version!==APP_VERSION){centralDataStatus='atualizacao';showMandatoryUpdateNotice(p.version);return}
     render();
-  }catch(err){console.warn('Base central:',err);centralDataStatus='offline';render();}
+  }catch(err){console.warn('Base central:',err);centralDataStatus='offline';localStorage.setItem('versatil_central_last_error',String(err?.message||err));render();}
 }
 function centralPost(action,payload={}){
   return fetch(GOOGLE_APPS_SCRIPT_URL+'?v='+APP_VERSION+'&t='+Date.now(),{method:'POST',mode:'no-cors',cache:'no-store',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,clientVersion:APP_VERSION,...payload})});
@@ -811,7 +899,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.51';
+  badge.textContent='v1.52';
 }
 
 function isPwaStandalone(){
@@ -2985,7 +3073,7 @@ function bootVersatilV140(){
   try{
     render();
     loadCentralData();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.51 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.52 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

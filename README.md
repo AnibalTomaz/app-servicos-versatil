@@ -503,3 +503,10 @@ Correções:
 
 ## v1.51 — base central
 Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por uma Google Planilha criada automaticamente pelo Apps Script. O app consulta a base ao abrir. Alterações do Admin são publicadas na base. Pedidos também são gravados na aba ORDERS. Execute `inicializarBaseCentralV151`, atualize a implantação e depois use `Admin > Visão geral > Publicar alterações`.
+
+## v1.52 — sincronização móvel reforçada
+- Mantém JSONP como primeira tentativa de leitura da base central.
+- Se o navegador móvel bloquear/falhar na leitura JSONP, usa automaticamente uma ponte invisível por iframe + postMessage.
+- A ponte é somente para leitura dos dados públicos do aplicativo.
+- Corrige casos em que a v1.51 aparecia como `Modo local/offline` no celular mesmo com o backend funcionando.
+- Apps Script deve ser atualizado e a implantação deve receber uma nova versão.
