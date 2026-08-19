@@ -500,3 +500,6 @@ Correções:
 - Envio de e-mail e sincronização com Google Calendar continuam exigindo internet.
 - Os dados administrativos permanecem no armazenamento do próprio site/aparelho; não limpar os dados do site sem antes ter uma cópia/backup.
 - Não é necessário atualizar o Apps Script nesta versão.
+
+## v1.51 — base central
+Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por uma Google Planilha criada automaticamente pelo Apps Script. O app consulta a base ao abrir. Alterações do Admin são publicadas na base. Pedidos também são gravados na aba ORDERS. Execute `inicializarBaseCentralV151`, atualize a implantação e depois use `Admin > Visão geral > Publicar alterações`.
