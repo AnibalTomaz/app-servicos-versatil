@@ -510,3 +510,10 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 - A ponte é somente para leitura dos dados públicos do aplicativo.
 - Corrige casos em que a v1.51 aparecia como `Modo local/offline` no celular mesmo com o backend funcionando.
 - Apps Script deve ser atualizado e a implantação deve receber uma nova versão.
+
+## v1.53 — sincronização móvel sem parâmetros
+- O celular passa a ler a base central pela URL simples `/exec`, sem `?action=...`.
+- O Apps Script responde com HtmlOutput e envia a base por `postMessage`.
+- Isso contorna celulares que abrem `/exec`, mas falham quando a URL contém parâmetros.
+- As rotas com `?action=centralStatus` e `?action=bootstrapPublic` são mantidas apenas para diagnóstico.
+- Atualize o Apps Script e gere uma nova versão da mesma implantação.

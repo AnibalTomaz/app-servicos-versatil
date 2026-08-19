@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.52';
+const APP_VERSION='1.53';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 const seed={
@@ -796,9 +796,9 @@ function centralJsonp(action,params={}){
   });
 }
 
-function centralIframeBridge(action,params={}){
+
+function centralIframeBootstrap(){
   return new Promise((resolve,reject)=>{
-    const requestId='bridge_'+Date.now()+'_'+Math.random().toString(36).slice(2);
     const iframe=document.createElement('iframe');
     iframe.style.display='none';
     iframe.setAttribute('aria-hidden','true');
@@ -808,7 +808,7 @@ function centralIframeBridge(action,params={}){
       if(finished)return;
       finished=true;
       cleanup();
-      reject(new Error('Tempo limite no modo compatível.'));
+      reject(new Error('Tempo limite ao carregar a base central.'));
     },CENTRAL_SYNC_TIMEOUT_MS);
 
     function cleanup(){
@@ -819,36 +819,44 @@ function centralIframeBridge(action,params={}){
 
     function onMessage(event){
       const data=event.data;
-      if(!data||data.type!=='VERSATIL_CENTRAL_BRIDGE'||data.requestId!==requestId)return;
+      if(!data||data.type!=='VERSATIL_CENTRAL_BOOTSTRAP')return;
       if(finished)return;
+
       finished=true;
       cleanup();
+
       if(data.payload?.ok)resolve(data.payload);
       else reject(new Error(data.payload?.error||'Falha na base central.'));
     }
 
     window.addEventListener('message',onMessage);
 
-    const q=new URLSearchParams({
-      action:'bridgePublic',
-      bridgeAction:action,
-      requestId,
-      ...Object.fromEntries(Object.entries(params).map(([k,v])=>[k,String(v)])),
-      t:String(Date.now())
-    });
-
-    iframe.src=GOOGLE_APPS_SCRIPT_URL+'?'+q.toString();
+    // IMPORTANTE: sem query string. Alguns celulares conseguiam abrir /exec,
+    // mas não conseguiam abrir a implantação quando havia ?action=...
+    iframe.src=GOOGLE_APPS_SCRIPT_URL+'#v153_'+Date.now();
     document.body.appendChild(iframe);
   });
 }
 
 async function centralRead(action,params={}){
-  try{
-    return await centralJsonp(action,params);
-  }catch(jsonpError){
-    console.warn('JSONP indisponível; tentando modo compatível.',jsonpError);
-    return await centralIframeBridge(action,params);
+  // A leitura pública agora usa sempre a URL /exec sem parâmetros.
+  // O Apps Script devolve os dados por postMessage a partir de um HtmlOutput.
+  if(action==='bootstrapPublic'||action==='centralStatus'){
+    const payload=await centralIframeBootstrap();
+
+    if(action==='centralStatus'){
+      return {
+        ok:payload.ok,
+        version:payload.version,
+        updatedAt:payload.updatedAt,
+        spreadsheetId:payload.spreadsheetId||''
+      };
+    }
+
+    return payload;
   }
+
+  throw new Error('Ação de leitura central não suportada.');
 }
 
 function publicCentralSnapshot(){return {rooms:db.rooms||[],categories:db.categories||[],products:db.products||[],availabilityClosures:db.availabilityClosures||[]}}
@@ -899,7 +907,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.52';
+  badge.textContent='v1.53';
 }
 
 function isPwaStandalone(){
@@ -3073,7 +3081,7 @@ function bootVersatilV140(){
   try{
     render();
     loadCentralData();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.52 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.53 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 
