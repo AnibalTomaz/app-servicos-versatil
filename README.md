@@ -553,3 +553,12 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 - `Excluir tudo` fica compacto e alinhado à direita, acompanhando a coluna de exclusão.
 - `Excluir tudo` pede confirmação antes de esvaziar o carrinho.
 - Mantém o catálogo simplificado e toda a sincronização da v1.56.
+
+## v1.58 — correção efetiva do carrinho
+- Corrigido o motivo pelo qual a v1.57 não alterava visualmente o carrinho: o HTML real da tabela não possuía o wrapper/classes que a regra CSS anterior esperava.
+- A tabela agora fica dentro de uma área horizontal explicitamente rolável.
+- Barra horizontal reforçada no celular.
+- Aviso `← Deslize para ver todos os dados →`.
+- `Excluir tudo` foi movido para o cabeçalho da mesma coluna onde ficam os botões `Excluir`.
+- `Excluir tudo` e `Excluir` têm o mesmo tamanho compacto.
+- Mantida confirmação antes de excluir todo o carrinho.

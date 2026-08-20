@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.57';
+const APP_VERSION='1.58';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -891,7 +891,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.57';
+  badge.textContent='v1.58';
 }
 
 function isPwaStandalone(){
@@ -1369,42 +1369,65 @@ function confirmClearCart(){
   }
 }
 
+
 function cartPage(){
-  if(!cart.length)return `<div class="card"><h2>Carrinho</h2><div class="muted">Nenhum item selecionado.</div><button class="btn primary" onclick="page='catalog';render()">Voltar ao catálogo</button></div>`;
+  if(!cart.length){
+    return `<div class="card">
+      <h2>Carrinho</h2>
+      <div class="muted">Nenhum item selecionado.</div>
+      <button class="btn primary" onclick="page='catalog';render()">Voltar ao catálogo</button>
+    </div>`;
+  }
 
-  let total=cart.reduce((a,i)=>a+i.price*i.qty,0);
+  const total=cart.reduce((a,i)=>a+i.price*i.qty,0);
 
-  return `<div class="card">
+  return `<div class="card cart-card-v158">
     <div class="row between">
       <h2>Carrinho</h2>
-      <button class="btn red" onclick="clearCart()">Excluir tudo</button>
     </div>
 
-    <table>
-      <tr><th>Serviço / pacote</th><th>Datas e períodos</th><th>Qtd.</th><th>Unit.</th><th>Total</th><th></th></tr>
+    <div class="cart-mobile-scroll-hint">← Deslize para ver todos os dados →</div>
 
-      ${cart.map((i,idx)=>{
-        const p=db.products.find(x=>x.id===i.productId);
-        const locked=!!i.schedule?.length || productRequiresPeriod(p) || isDailyRentalProduct(p);
+    <div class="cart-scroll-shell">
+      <table class="cart-table-v158">
+        <tr>
+          <th>Serviço / pacote</th>
+          <th>Datas e períodos</th>
+          <th>Qtd.</th>
+          <th>Unit.</th>
+          <th>Total</th>
+          <th class="cart-action-col">
+            <button class="btn red cart-delete-small" onclick="clearCart()">Excluir tudo</button>
+          </th>
+        </tr>
 
-        return `<tr>
-          <td>${esc(i.name)}</td>
-          <td>${i.schedule?.length
-            ?i.schedule.map((u,n)=>`<div><b>${n+1}.</b> ${formatDateBR(u.date)} • ${esc(periodLabel(u.period))}</div>`).join('')
-            :`${formatDateBR(i.date)}${i.period?` • ${esc(periodLabel(i.period))}`:''}`}
-          </td>
+        ${cart.map((i,idx)=>{
+          const p=db.products.find(x=>x.id===i.productId);
+          const locked=!!i.schedule?.length || productRequiresPeriod(p) || isDailyRentalProduct(p);
 
-          <td>${locked
-            ?`<b>${i.qty}</b><br><span class="small muted">Quantidade definida na seleção</span>`
-            :`<input type="number" min="1" value="${i.qty}" style="width:80px" onchange="cart[${idx}].qty=Math.max(1,Number(this.value));render()">`}
-          </td>
+          return `<tr>
+            <td>${esc(i.name)}</td>
 
-          <td>${money(i.price)}</td>
-          <td>${money(i.price*i.qty)}</td>
-          <td><button class="btn red" onclick="cart.splice(${idx},1);render()">Excluir</button></td>
-        </tr>`;
-      }).join('')}
-    </table>
+            <td>${i.schedule?.length
+              ?i.schedule.map((u,n)=>`<div><b>${n+1}.</b> ${formatDateBR(u.date)} • ${esc(periodLabel(u.period))}</div>`).join('')
+              :`${formatDateBR(i.date)}${i.period?` • ${esc(periodLabel(i.period))}`:''}`}
+            </td>
+
+            <td>${locked
+              ?`<b>${i.qty}</b><br><span class="small muted">Quantidade definida na seleção</span>`
+              :`<input type="number" min="1" value="${i.qty}" style="width:80px" onchange="cart[${idx}].qty=Math.max(1,Number(this.value));render()">`}
+            </td>
+
+            <td>${money(i.price)}</td>
+            <td>${money(i.price*i.qty)}</td>
+
+            <td class="cart-action-col">
+              <button class="btn red cart-delete-small" onclick="cart.splice(${idx},1);render()">Excluir</button>
+            </td>
+          </tr>`;
+        }).join('')}
+      </table>
+    </div>
 
     <div class="notice">
       Itens que dependem de disponibilidade de data/período não podem ter sua quantidade alterada dentro do carrinho. Para mudar a quantidade, exclua o item e faça uma nova seleção no catálogo.
@@ -1419,16 +1442,14 @@ function cartPage(){
     </div>
   </div>`;
 }
+
 function clearCart(){
   if(!cart.length)return;
-  if(!confirm('Excluir todos os itens do carrinho?'))return;
-  cart=[];
-  render();
+  if(confirm('Deseja excluir todos os itens do carrinho?')){
+    cart=[];
+    render();
+  }
 }
-
-
-
-
 function confirmOrder(){
   if(!cart.length)return;
 
@@ -3229,7 +3250,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.57 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.58 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 
