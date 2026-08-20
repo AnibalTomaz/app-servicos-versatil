@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:04:00.219Z",
+  "updatedAt": "2026-08-20T17:04:17.740Z",
   "data": {
     "rooms": [
       {
@@ -631,7 +631,7 @@
       {
         "id": "sala-meio-serv",
         "cat": "locacoes",
-        "name": "Locação de sala de reunião por meia diária com serviço",
+        "name": "Locação de sala de reunião por meia diária COM serviço",
         "icon": "🕘",
         "desc": "Locação do espaço, máquina de café e 8 xícaras, pó de café, açúcar, adoçante, água mineral e descartáveis.",
         "q": 250,
