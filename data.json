@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:04:40.657Z",
+  "updatedAt": "2026-08-20T17:07:55.163Z",
   "data": {
     "rooms": [
       {
@@ -771,7 +771,7 @@
       {
         "id": "pkg-sala5-serv",
         "cat": "pacotes",
-        "name": "Pacote semanal de locação de sala com serviço",
+        "name": "Pacote semanal de locação de sala COM serviço",
         "icon": "🎁",
         "desc": "Locação de sala por 5 dias corridos com serviço.",
         "q": 1800,
