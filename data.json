@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:07:55.163Z",
+  "updatedAt": "2026-08-20T17:08:31.744Z",
   "data": {
     "rooms": [
       {
@@ -751,7 +751,7 @@
       {
         "id": "pkg-sala2-serv",
         "cat": "pacotes",
-        "name": "Pacote de locação de sala 2x com serviço",
+        "name": "Pacote de locação de sala: 2x COM serviço",
         "icon": "🎁",
         "desc": "Duas diárias de sala com serviço dentro do período de sua hospedagem.",
         "q": 750,
