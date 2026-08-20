@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:01:45.062Z",
+  "updatedAt": "2026-08-20T17:02:35.022Z",
   "data": {
     "rooms": [
       {
@@ -591,7 +591,7 @@
       {
         "id": "churras-serv",
         "cat": "locacoes",
-        "name": "Locação de churrasqueira com serviço",
+        "name": "Locação de churrasqueira COM serviço",
         "icon": "🔥",
         "desc": "Locação do espaço com grelha argentina, 2 espetos duplos, utensílios de churrasco, talheres, 8 pratos (para 8 pessoas) copos descartáveis, guardanapos, panos perflex, caixa de fosforos, caixa de palitos, 2 travessas, 1 saladeira, 2 panelas, gás, fogão e limpeza antes e depois.",
         "q": 450,
