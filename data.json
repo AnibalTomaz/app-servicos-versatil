@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:12:00.805Z",
+  "updatedAt": "2026-08-20T17:12:11.842Z",
   "data": {
     "rooms": [
       {
@@ -691,7 +691,7 @@
       {
         "id": "pkg-padrao2",
         "cat": "pacotes",
-        "name": "Pacote de limpeza padrão 2x",
+        "name": "Pacote de limpeza padrão: 2X",
         "icon": "🎁",
         "desc": "Duas limpezas dentro do período de sua hospedagem.",
         "q": 240,
