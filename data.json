@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:15:56.199Z",
+  "updatedAt": "2026-08-20T17:36:48.035Z",
   "data": {
     "rooms": [
       {
@@ -774,8 +774,8 @@
         "name": "Pacote de locação de sala: semanal COM serviço",
         "icon": "🎁",
         "desc": "Locação de sala por 5 dias corridos com serviço.",
-        "q": 1800,
-        "a": 1800,
+        "q": 1875,
+        "a": 1875,
         "halfDay": false
       },
       {
