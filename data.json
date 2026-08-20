@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:10:56.014Z",
+  "updatedAt": "2026-08-20T17:11:42.409Z",
   "data": {
     "rooms": [
       {
@@ -781,7 +781,7 @@
       {
         "id": "pkg-sala5-sem",
         "cat": "pacotes",
-        "name": "Pacote semanal de locação de sala sem serviço",
+        "name": "Pacote de locação de sala: semanal SEM serviço",
         "icon": "🎁",
         "desc": "Locação de sala por 5 dias corridos sem serviço.",
         "q": 1250,
