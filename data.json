@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.55",
-  "updatedAt": "2026-08-20T01:57:29.635Z",
+  "updatedAt": "2026-08-20T02:00:07.749Z",
   "data": {
     "rooms": [
       {
@@ -654,8 +654,8 @@
         "name": "Serviço de café na sala",
         "icon": "☕",
         "desc": "Máquina de café e 8 xícaras, pó de café, açúcar, adoçante. limpeza e reposição",
-        "q": 10,
-        "a": 10,
+        "q": 50,
+        "a": 50,
         "halfDay": false
       },
       {
