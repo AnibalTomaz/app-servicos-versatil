@@ -525,3 +525,10 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 - É necessário criar um Fine-grained Personal Access Token no GitHub com acesso somente ao repositório `app-servicos-versatil` e permissão `Contents: Read and write`.
 - O token é salvo em Script Properties, não no código público do GitHub.
 - Funções de configuração/teste: `definirTokenGitHubV154`, `testarPublicacaoGitHubV154`, `statusPublicacaoGitHubV154`.
+
+## v1.55 — sincronização multi-dispositivo
+- O computador, navegador e PWA atualizam `data.json` ao abrir, ao voltar para a aba, ao recuperar internet e a cada 60 segundos enquanto estiverem em uso.
+- O selo `Base pública atualizada` agora é clicável para forçar atualização imediata.
+- O selo mostra também a data/hora da última publicação carregada.
+- Após o Admin publicar uma alteração, o próprio aparelho tenta reler a base pública automaticamente.
+- Evita situações em que um aparelho já esteja na versão correta, mas continue exibindo valores antigos até uma recarga manual.
