@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:14:40.257Z",
+  "updatedAt": "2026-08-20T17:14:52.198Z",
   "data": {
     "rooms": [
       {
@@ -601,7 +601,7 @@
       {
         "id": "churras-sem",
         "cat": "locacoes",
-        "name": "Locação de churrasqueira SEM serviço",
+        "name": "Locação de churrasqueira: SEM serviço",
         "icon": "🍖",
         "desc": "Locação do espaço com grelha argentina, 2 espetos duplos, utensílios de churrasco, gás, fogão e limpeza.",
         "q": 300,
