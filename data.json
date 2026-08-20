@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.59",
-  "updatedAt": "2026-08-20T16:43:36.266Z",
+  "updatedAt": "2026-08-20T16:43:52.330Z",
   "data": {
     "rooms": [
       {
@@ -685,7 +685,7 @@
         "icon": "🎁",
         "desc": "Duas faxinas dentro do período de sua hospedagem.",
         "q": 400,
-        "a": 460,
+        "a": 400,
         "halfDay": false
       },
       {
