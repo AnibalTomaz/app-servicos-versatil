@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T16:56:52.594Z",
+  "updatedAt": "2026-08-20T16:57:21.092Z",
   "data": {
     "rooms": [
       {
@@ -704,8 +704,8 @@
         "name": "Pacote de limpeza padrão 4x",
         "icon": "🎁",
         "desc": "Quatro limpezas dentro do período de sua hospedagem.",
-        "q": 400,
-        "a": 400,
+        "q": 480,
+        "a": 800,
         "halfDay": false
       },
       {
