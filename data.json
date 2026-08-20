@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:12:19.840Z",
+  "updatedAt": "2026-08-20T17:12:30.345Z",
   "data": {
     "rooms": [
       {
@@ -711,7 +711,7 @@
       {
         "id": "pkg-express2",
         "cat": "pacotes",
-        "name": "Pacote de limpeza express 2x",
+        "name": "Pacote de limpeza express: 2X",
         "icon": "🎁",
         "desc": "Duas limpezas dentro do período de sua hospedagem.",
         "q": 200,
