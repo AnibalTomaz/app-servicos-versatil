@@ -1,0 +1,794 @@
+{
+  "ok": true,
+  "version": "1.54",
+  "updatedAt": "2026-08-19T17:11:47.520Z",
+  "data": {
+    "rooms": [
+      {
+        "id": "r1",
+        "name": "Apartamento 101",
+        "number": 101,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_102",
+        "name": "Apartamento 102",
+        "number": 102,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_103",
+        "name": "Apartamento 103",
+        "number": 103,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_104",
+        "name": "Apartamento 104",
+        "number": 104,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_105",
+        "name": "Apartamento 105",
+        "number": 105,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_106",
+        "name": "Apartamento 106",
+        "number": 106,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_107",
+        "name": "Apartamento 107",
+        "number": 107,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_108a",
+        "name": "Quarto 108A",
+        "number": "108A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_108b",
+        "name": "Quarto 108B",
+        "number": "108B",
+        "type": "quarto"
+      },
+      {
+        "id": "r2",
+        "name": "Apartamento 201",
+        "number": 201,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_202",
+        "name": "Apartamento 202",
+        "number": 202,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_203",
+        "name": "Apartamento 203",
+        "number": 203,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_204",
+        "name": "Apartamento 204",
+        "number": 204,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_205",
+        "name": "Apartamento 205",
+        "number": 205,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_206",
+        "name": "Apartamento 206",
+        "number": 206,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_207a",
+        "name": "Quarto 207A",
+        "number": "207A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_207b",
+        "name": "Quarto 207B",
+        "number": "207B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_208a",
+        "name": "Quarto 208A",
+        "number": "208A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_208b",
+        "name": "Quarto 208B",
+        "number": "208B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_301a",
+        "name": "Quarto 301A",
+        "number": "301A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_301b",
+        "name": "Quarto 301B",
+        "number": "301B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_302a",
+        "name": "Quarto 302A",
+        "number": "302A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_302b",
+        "name": "Quarto 302B",
+        "number": "302B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_303a",
+        "name": "Quarto 303A",
+        "number": "303A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_303b",
+        "name": "Quarto 303B",
+        "number": "303B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_304",
+        "name": "Apartamento 304",
+        "number": 304,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_305a",
+        "name": "Quarto 305A",
+        "number": "305A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_305b",
+        "name": "Quarto 305B",
+        "number": "305B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_306a",
+        "name": "Quarto 306A",
+        "number": "306A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_306b",
+        "name": "Quarto 306B",
+        "number": "306B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_307a",
+        "name": "Quarto 307A",
+        "number": "307A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_307b",
+        "name": "Quarto 307B",
+        "number": "307B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_308a",
+        "name": "Quarto 308A",
+        "number": "308A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_308b",
+        "name": "Quarto 308B",
+        "number": "308B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_401a",
+        "name": "Quarto 401A",
+        "number": "401A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_401b",
+        "name": "Quarto 401B",
+        "number": "401B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_402a",
+        "name": "Quarto 402A",
+        "number": "402A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_402b",
+        "name": "Quarto 402B",
+        "number": "402B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_403a",
+        "name": "Quarto 403A",
+        "number": "403A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_403b",
+        "name": "Quarto 403B",
+        "number": "403B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_404a",
+        "name": "Quarto 404A",
+        "number": "404A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_404b",
+        "name": "Quarto 404B",
+        "number": "404B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_405a",
+        "name": "Quarto 405A",
+        "number": "405A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_405b",
+        "name": "Quarto 405B",
+        "number": "405B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_406a",
+        "name": "Quarto 406A",
+        "number": "406A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_406b",
+        "name": "Quarto 406B",
+        "number": "406B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_407a",
+        "name": "Quarto 407A",
+        "number": "407A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_407b",
+        "name": "Quarto 407B",
+        "number": "407B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_408a",
+        "name": "Quarto 408A",
+        "number": "408A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_408b",
+        "name": "Quarto 408B",
+        "number": "408B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_501a",
+        "name": "Quarto 501A",
+        "number": "501A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_501b",
+        "name": "Quarto 501B",
+        "number": "501B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_502a",
+        "name": "Quarto 502A",
+        "number": "502A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_502b",
+        "name": "Quarto 502B",
+        "number": "502B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_503a",
+        "name": "Quarto 503A",
+        "number": "503A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_503b",
+        "name": "Quarto 503B",
+        "number": "503B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_504a",
+        "name": "Quarto 504A",
+        "number": "504A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_504b",
+        "name": "Quarto 504B",
+        "number": "504B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_505a",
+        "name": "Quarto 505A",
+        "number": "505A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_505b",
+        "name": "Quarto 505B",
+        "number": "505B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_506a",
+        "name": "Quarto 506A",
+        "number": "506A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_506b",
+        "name": "Quarto 506B",
+        "number": "506B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_507a",
+        "name": "Quarto 507A",
+        "number": "507A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_507b",
+        "name": "Quarto 507B",
+        "number": "507B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_508",
+        "name": "Apartamento 508",
+        "number": 508,
+        "type": "apartamento"
+      },
+      {
+        "id": "unit_601a",
+        "name": "Quarto 601A",
+        "number": "601A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_601b",
+        "name": "Quarto 601B",
+        "number": "601B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_602a",
+        "name": "Quarto 602A",
+        "number": "602A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_602b",
+        "name": "Quarto 602B",
+        "number": "602B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_603a",
+        "name": "Quarto 603A",
+        "number": "603A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_603b",
+        "name": "Quarto 603B",
+        "number": "603B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_604a",
+        "name": "Quarto 604A",
+        "number": "604A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_604b",
+        "name": "Quarto 604B",
+        "number": "604B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_605a",
+        "name": "Quarto 605A",
+        "number": "605A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_605b",
+        "name": "Quarto 605B",
+        "number": "605B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_606a",
+        "name": "Quarto 606A",
+        "number": "606A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_606b",
+        "name": "Quarto 606B",
+        "number": "606B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_607a",
+        "name": "Quarto 607A",
+        "number": "607A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_607b",
+        "name": "Quarto 607B",
+        "number": "607B",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_608a",
+        "name": "Quarto 608A",
+        "number": "608A",
+        "type": "quarto"
+      },
+      {
+        "id": "unit_608b",
+        "name": "Quarto 608B",
+        "number": "608B",
+        "type": "quarto"
+      }
+    ],
+    "categories": [
+      {
+        "id": "servicos",
+        "name": "Serviços",
+        "icon": "🧹",
+        "description": "Selecione aqui o serviço desejado."
+      },
+      {
+        "id": "enxoval",
+        "name": "Enxoval",
+        "icon": "🛏️",
+        "description": "Selecione aqui o tipo de enxoval que deseja trocar."
+      },
+      {
+        "id": "locacoes",
+        "name": "Locações",
+        "icon": "🔑",
+        "description": "Selecione aqui o espaço/ítem de sua preferência."
+      },
+      {
+        "id": "pacotes",
+        "name": "Pacotes promocionais",
+        "icon": "🎁",
+        "description": "Selecione o pacote mais vantajoso para a sua estada."
+      }
+    ],
+    "products": [
+      {
+        "id": "diarista",
+        "cat": "servicos",
+        "name": "Diarista",
+        "icon": "🧹",
+        "desc": "Limpeza completa, vidros, louças, troca de enxoval de cama e toalhas, reposição de amenidades e papel higiênico",
+        "q": 230,
+        "a": 260,
+        "halfDay": false
+      },
+      {
+        "id": "limpeza-padrao",
+        "cat": "servicos",
+        "name": "Limpeza padrão",
+        "icon": "✨",
+        "desc": "Limpeza completa, vidros, troca de enxoval de cama e toalhas, reposição de amenidades e papel higiênico",
+        "q": 140,
+        "a": 235,
+        "halfDay": false
+      },
+      {
+        "id": "limpeza-express",
+        "cat": "servicos",
+        "name": "Limpeza express",
+        "icon": "⚡",
+        "desc": "Limpeza de pisos e WC´s, troca de toalhas, reposição de amenidades e papel higiênico",
+        "q": 110,
+        "a": 140,
+        "halfDay": false
+      },
+      {
+        "id": "limpeza-wc",
+        "cat": "servicos",
+        "name": "Limpeza de WCs",
+        "icon": "🚿",
+        "desc": "Limpeza de WC, troca de toalhas, reposição de amenidades e papel higiênico",
+        "q": 80,
+        "a": 110,
+        "halfDay": false
+      },
+      {
+        "id": "troca-geral",
+        "cat": "enxoval",
+        "name": "Troca geral de cama e toalhas",
+        "icon": "🛏️",
+        "desc": "Todos os lençóis, fronhas, edredon, toalhas de banho, piso e rosto serão trocadas.",
+        "q": 28,
+        "a": 45,
+        "halfDay": false
+      },
+      {
+        "id": "troca-cama",
+        "cat": "enxoval",
+        "name": "Troca de roupa de cama",
+        "icon": "🛌",
+        "desc": "Todos os lençóis, fronhas e edredon serão trocados.",
+        "q": 15,
+        "a": 20,
+        "halfDay": false
+      },
+      {
+        "id": "troca-toalhas",
+        "cat": "enxoval",
+        "name": "Troca de toalhas",
+        "icon": "🧺",
+        "desc": "Todas as toalhas de banho, rosto e piso serão trocadas.",
+        "q": 13,
+        "a": 25,
+        "halfDay": false
+      },
+      {
+        "id": "churras-serv",
+        "cat": "locacoes",
+        "name": "Locação de churrasqueira com serviço",
+        "icon": "🔥",
+        "desc": "Locação do espaço com grelha argentina, 2 espetos duplos, utensílios de churrasco, talheres, 8 pratos (para 8 pessoas) copos descartáveis, guardanapos, panos perflex, caixa de fosforos, caixa de palitos, 2 travessas, 1 saladeira, 2 panelas, gás, fogão e limpeza antes e depois.",
+        "q": 450,
+        "a": 450,
+        "halfDay": false
+      },
+      {
+        "id": "churras-sem",
+        "cat": "locacoes",
+        "name": "Locação de churrasqueira sem serviço",
+        "icon": "🍖",
+        "desc": "Locação do espaço com grelha argentina, 2 espetos duplos, utensílios de churrasco, gás, fogão e limpeza.",
+        "q": 300,
+        "a": 300,
+        "halfDay": false
+      },
+      {
+        "id": "sala-dia-serv",
+        "cat": "locacoes",
+        "name": "Locação diária de sala de reunião com serviço",
+        "icon": "🏢",
+        "desc": "Locação do espaço, máquina de café e 8 xícaras, açúcar, adoçante, água mineral, descartáveis e limpeza de louça ao meio dia.",
+        "q": 400,
+        "a": 400,
+        "halfDay": false
+      },
+      {
+        "id": "sala-dia-sem",
+        "cat": "locacoes",
+        "name": "Locação diária de sala de reunião sem serviço",
+        "icon": "🗓️",
+        "desc": "Apenas a locação do espaço está compreendida nesta modalidade.",
+        "q": 300,
+        "a": 300,
+        "halfDay": false
+      },
+      {
+        "id": "sala-meio-serv",
+        "cat": "locacoes",
+        "name": "Locação de sala de reunião por meia diária com serviço",
+        "icon": "🕘",
+        "desc": "Locação do espaço, máquina de café e 8 xícaras, pó de café, açúcar, adoçante, água mineral e descartáveis.",
+        "q": 250,
+        "a": 250,
+        "halfDay": true
+      },
+      {
+        "id": "sala-meio-sem",
+        "cat": "locacoes",
+        "name": "Locação de sala de reunião por meia diária sem serviço",
+        "icon": "🕐",
+        "desc": "Apenas a locação do espaço está compreendida nesta modalidade.",
+        "q": 150,
+        "a": 150,
+        "halfDay": true
+      },
+      {
+        "id": "cafe",
+        "cat": "locacoes",
+        "name": "Serviço de café na sala",
+        "icon": "☕",
+        "desc": "Máquina de café e 8 xícaras, pó de café, açúcar, adoçante. limpeza e reposição",
+        "q": 50,
+        "a": 50,
+        "halfDay": false
+      },
+      {
+        "id": "moto-dia",
+        "cat": "locacoes",
+        "name": "Locação diária de moto elétrica",
+        "icon": "🛵",
+        "desc": "Locação do veículo com capacete.",
+        "q": 160,
+        "a": 160,
+        "halfDay": false
+      },
+      {
+        "id": "moto-meio",
+        "cat": "locacoes",
+        "name": "Locação de moto elétrica por meia diária",
+        "icon": "⚡",
+        "desc": "Locação do veículo com capacete. Das 6 às 12h ou das 13 às 19h.",
+        "q": 50,
+        "a": 50,
+        "halfDay": true
+      },
+      {
+        "id": "pkg-diarista2",
+        "cat": "pacotes",
+        "name": "Pacote de diarista 2x",
+        "icon": "🎁",
+        "desc": "Duas faxinas dentro do período de sua hospedagem.",
+        "q": 400,
+        "a": 400,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-padrao2",
+        "cat": "pacotes",
+        "name": "Pacote de limpeza padrão 2x",
+        "icon": "🎁",
+        "desc": "Duas limpezas dentro do período de sua hospedagem.",
+        "q": 240,
+        "a": 240,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-padrao4",
+        "cat": "pacotes",
+        "name": "Pacote de limpeza padrão 4x",
+        "icon": "🎁",
+        "desc": "Quatro limpezas dentro do período de sua hospedagem.",
+        "q": 400,
+        "a": 400,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-express2",
+        "cat": "pacotes",
+        "name": "Pacote de limpeza express 2x",
+        "icon": "🎁",
+        "desc": "Duas limpezas dentro do período de sua hospedagem.",
+        "q": 200,
+        "a": 200,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-express4",
+        "cat": "pacotes",
+        "name": "Pacote de limpeza express 4x",
+        "icon": "🎁",
+        "desc": "Quatro limpezas dentro do período de sua hospedagem.",
+        "q": 380,
+        "a": 380,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-wc2",
+        "cat": "pacotes",
+        "name": "Pacote de limpeza de WCs 2x",
+        "icon": "🎁",
+        "desc": "Duas limpezas dentro do período de sua hospedagem.",
+        "q": 150,
+        "a": 150,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-wc4",
+        "cat": "pacotes",
+        "name": "Pacote de limpeza de WCs 4x",
+        "icon": "🎁",
+        "desc": "Quatro limpezas dentro do período de sua hospedagem.",
+        "q": 280,
+        "a": 280,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-sala2-serv",
+        "cat": "pacotes",
+        "name": "Pacote de locação de sala 2x com serviço",
+        "icon": "🎁",
+        "desc": "Duas diárias de sala com serviço dentro do período de sua hospedagem.",
+        "q": 750,
+        "a": 750,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-sala2-sem",
+        "cat": "pacotes",
+        "name": "Pacote de locação de sala 2x sem serviço",
+        "icon": "🎁",
+        "desc": "Duas diárias de sala sem serviço dentro do período de sua hospedagem.",
+        "q": 550,
+        "a": 550,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-sala5-serv",
+        "cat": "pacotes",
+        "name": "Pacote semanal de locação de sala com serviço",
+        "icon": "🎁",
+        "desc": "Locação de sala por 5 dias corridos com serviço.",
+        "q": 1800,
+        "a": 1800,
+        "halfDay": false
+      },
+      {
+        "id": "pkg-sala5-sem",
+        "cat": "pacotes",
+        "name": "Pacote semanal de locação de sala sem serviço",
+        "icon": "🎁",
+        "desc": "Locação de sala por 5 dias corridos sem serviço.",
+        "q": 1250,
+        "a": 1250,
+        "halfDay": false
+      }
+    ],
+    "availabilityClosures": []
+  }
+}
