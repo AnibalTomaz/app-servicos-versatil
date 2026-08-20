@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:13:13.343Z",
+  "updatedAt": "2026-08-20T17:13:20.394Z",
   "data": {
     "rooms": [
       {
@@ -741,7 +741,7 @@
       {
         "id": "pkg-wc4",
         "cat": "pacotes",
-        "name": "Pacote de limpeza de WC's 4X",
+        "name": "Pacote de limpeza de WC's: 4X",
         "icon": "🎁",
         "desc": "Quatro limpezas dentro do período de sua hospedagem.",
         "q": 280,
