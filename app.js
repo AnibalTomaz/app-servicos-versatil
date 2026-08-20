@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.60';
+const APP_VERSION='1.61';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -198,6 +198,7 @@ function productPeriodMode(p){
   return 'none';
 }
 function productRequiresPeriod(p){
+  if(p?.id==='diarista')return false;
   return productPeriodMode(p)!=='none';
 }
 
@@ -928,7 +929,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.60';
+  badge.textContent='v1.61';
 }
 
 function isPwaStandalone(){
@@ -1117,8 +1118,26 @@ function recoverAdmin(){
     alert('Não foi possível solicitar a recuperação de senha. Tente novamente.');
   }).finally(()=>{if(btn)btn.disabled=false});
 }
-function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><div class="row">${centralStatusHtml()}${pwaInstallButtonHtml()}<button class="btn" onclick="signout()">Sair</button></div></header><div class="wrap">${admin?adminView():clientView()}</div>`}
-function signout(){if(session?.role==='client'&&page!=='confirmation')cart=[];session=null;selectedCat='';expandedClientProductId='';page='catalog';render()}
+
+function adminPageCanEdit(){
+  const editable=['products','categories','rooms','calendar','account','settings','catalog','availability'];
+  return session?.role==='admin' && editable.includes(page);
+}
+function repeatedPublishButtonHtml(){
+  return adminPageCanEdit()?`<div class="repeat-publish-wrap"><button class="btn primary" onclick="publishPublicDataToCentral(true)">Publicar alterações</button></div>`:'';
+}
+function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><div class="app-welcome">Seja bem vindo <b>${esc(session?.name||session?.email||"")}</b>!</div><div class="row">${centralStatusHtml()}${pwaInstallButtonHtml()}<button class="btn" onclick="signout()">Sair</button></div></header><div class="wrap">${admin?adminView():clientView()}</div>`}
+
+function signout(){
+  const accessName=session?.name||session?.email||'';
+  if(session?.role==='client'&&page!=='confirmation')cart=[];
+  session=null;
+  selectedCat='';
+  expandedClientProductId='';
+  page='catalog';
+  render();
+  setTimeout(()=>alert(`Obrigado por seu pedido,\naté breve, ${accessName}.`),50);
+}
 function clientView(){
   const menus=[
     ['catalog','Catálogo'],
@@ -1162,7 +1181,7 @@ function catalogPage(){
   if(!selectedCat){
     return `<section class="client-category-home">
       <div class="client-catalog-intro">
-        <h2>O que você precisa?</h2>
+        <h2>O que você precisa?</h2><div class="guest-today-notice">Prezado Hóspede para solicitações, para o dia de hoje, contate nossa portaria, para avaliarmos a possibilidade.</div>
         <p class="muted">Escolha uma categoria para ver os produtos disponíveis.</p>
       </div>
 
@@ -1235,7 +1254,7 @@ function packageSavingsHtml(product){
 function clientProductAccordion(p){
   const price=productPrice(p);
   const unavailable=price<=0;
-  const defaultDate=today();
+  const defaultDate=firstAllowedDate24h(p);
   const requiresPeriod=productRequiresPeriod(p);
   const isPackage=p.cat==='pacotes';
   const daily=isDailyRentalProduct(p);
@@ -1323,6 +1342,14 @@ function refreshProductAvailability(pid){
   if(addBtn)addBtn.disabled=none||productPrice(p)<=0;
 }
 function addToCart(pid){
+  const _p24=db.products.find(x=>x.id===pid);
+  const _date24=document.getElementById(`date_${pid}`)?.value||'';
+  const _period24=document.getElementById(`period_${pid}`)?.value||'';
+  if(_date24 && !bookingMeets24h(_p24,_date24,_period24)){
+    alert('Esta solicitação precisa ser feita com no mínimo 24 horas de antecedência. Para solicitações para o dia de hoje, contate nossa portaria para avaliarmos a possibilidade.');
+    return;
+  }
+
   const p=db.products.find(x=>x.id===pid);
   const daily=isDailyRentalProduct(p);
   const qty=daily?1:Number(document.getElementById('qty_'+pid)?.value||1);
@@ -1809,6 +1836,10 @@ function downloadICS(oid){
   a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
   a.download=`pedido-${o.id}.ics`;
   a.click();
+}
+
+function adminPublishChangesButton(){
+  return `<button class="btn primary admin-publish-repeat" onclick="publishPublicDataToCentral(true)">Publicar alterações</button>`;
 }
 function adminView(){let menus=[
   ['dashboard','Visão geral'],
@@ -3315,7 +3346,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.60 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.61 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 
@@ -3333,5 +3364,41 @@ if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',bootVersatilV140,{once:true});
 }else{
   bootVersatilV140();
+}
+
+function cuiabaLocalEpoch(date,time='00:00'){
+  const [y,m,d]=String(date).split('-').map(Number);
+  const [hh,mm]=String(time).split(':').map(Number);
+  let guess=Date.UTC(y,m-1,d,hh,mm,0);
+  for(let k=0;k<3;k++){
+    const parts=new Intl.DateTimeFormat('en-CA',{
+      timeZone:'America/Cuiaba',year:'numeric',month:'2-digit',day:'2-digit',
+      hour:'2-digit',minute:'2-digit',hour12:false
+    }).formatToParts(new Date(guess));
+    const n=t=>Number(parts.find(p=>p.type===t)?.value||0);
+    const represented=Date.UTC(n('year'),n('month')-1,n('day'),n('hour'),n('minute'),0);
+    const desired=Date.UTC(y,m-1,d,hh,mm,0);
+    guess+=desired-represented;
+  }
+  return guess;
+}
+function periodStartTimeFor24h(p,period=''){
+  if(p?.id==='diarista')return '09:00';
+  const v=String(period||'').toLowerCase();
+  if(v.includes('tarde')||v.includes('afternoon'))return '13:00';
+  if(v.includes('manha')||v.includes('manhã')||v.includes('morning'))return '06:00';
+  return '09:00';
+}
+function bookingMeets24h(p,date,period=''){
+  if(!date)return false;
+  return cuiabaLocalEpoch(date,periodStartTimeFor24h(p,period)) >= Date.now()+24*60*60*1000;
+}
+function firstAllowedDate24h(p){
+  let d=today();
+  for(let i=0;i<4;i++){
+    if(bookingMeets24h(p,d,''))return d;
+    const x=new Date(d+'T12:00:00');x.setDate(x.getDate()+1);d=x.toISOString().slice(0,10);
+  }
+  return d;
 }
 

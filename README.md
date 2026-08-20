@@ -572,3 +572,13 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 
 ## v1.60 — persistência das alterações
 Corrige o caso em que um preço recém-editado voltava ao valor anterior enquanto o GitHub Pages ainda servia um `data.json` antigo. O aplicativo marca a publicação como pendente e não deixa uma base anterior sobrescrever a alteração. O status mostra `Publicando alterações…` até a nova base chegar.
+
+## v1.61
+- Logos sempre quadradas, sem cantos arredondados.
+- Saudação no cabeçalho com o nome do acesso.
+- Signout: `Obrigado por seu pedido,` / `até breve, Nome.`
+- Todos os produtos exigem no mínimo 24h de antecedência, considerando horário/período em Cuiabá.
+- Diarista não possui período e não bloqueia o dia inteiro.
+- Aviso destacado ao hóspede para solicitações do dia de hoje.
+- Botões com efeito visual de pressionamento.
+- Botão `Publicar alterações` repetido nas páginas administrativas editáveis; páginas de consulta permanecem sem ele.
