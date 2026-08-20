@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.61';
+const APP_VERSION='1.62';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -806,6 +806,7 @@ function remotePublicationIsNewEnough(remoteUpdatedAt,pending){
 async function loadCentralData(options={}){
   const force=!!options.force;
   const quiet=!!options.quiet;
+  if(!quiet)showVersatilLoading('Sincronizando dados…');
 
   if(centralSyncInFlight)return;
   if(!force && centralLastSyncAt && Date.now()-centralLastSyncAt<5000)return;
@@ -858,6 +859,7 @@ async function loadCentralData(options={}){
     else updateCentralStatusUI();
   }finally{
     centralSyncInFlight=false;
+    if(!quiet)hideVersatilLoading();
   }
 }
 
@@ -916,6 +918,74 @@ function showMandatoryUpdateNotice(serverVersion){
 }
 async function forceAppUpdate(){try{if('serviceWorker'in navigator){for(const r of await navigator.serviceWorker.getRegistrations())await r.update()}const u=new URL(location.href);u.searchParams.set('update',Date.now());location.replace(u.toString())}catch(e){location.reload()}}
 
+
+function ensureVersatilLoader(){
+  if(document.getElementById('versatilLoadingOverlay'))return;
+
+  const overlay=document.createElement('div');
+  overlay.id='versatilLoadingOverlay';
+  overlay.className='versatil-loading-overlay';
+  overlay.innerHTML=`<div class="versatil-loading-card">
+    <div class="versatil-tetris-loader">
+      <div class="versatil-tetris-base">
+        <img class="versatil-tetris-ghost" src="logo-versatil.jpg" alt="">
+        <div class="versatil-tetris-grid" id="versatilTetrisGrid"></div>
+      </div>
+    </div>
+    <div id="versatilLoadingText" class="versatil-loading-text">Aguarde…</div>
+  </div>`;
+  document.body.appendChild(overlay);
+
+  const grid=document.getElementById('versatilTetrisGrid');
+  if(grid){
+    const order=[
+      30,31,32,33,34,35,
+      24,25,27,28,26,29,
+      18,20,19,23,21,22,
+      12,13,17,14,16,15,
+      6,11,7,9,10,8,
+      0,5,1,4,2,3
+    ];
+    for(let i=0;i<36;i++){
+      const cell=document.createElement('div');
+      cell.className='versatil-tetris-piece';
+      const row=Math.floor(i/6),col=i%6;
+      cell.style.setProperty('--bg-x',`${-col*20}px`);
+      cell.style.setProperty('--bg-y',`${-row*20}px`);
+      const seq=order.indexOf(i);
+      cell.style.animationDelay=`${seq*0.035}s`;
+      grid.appendChild(cell);
+    }
+  }
+}
+
+function showVersatilLoading(message='Aguarde…'){
+  ensureVersatilLoader();
+  const overlay=document.getElementById('versatilLoadingOverlay');
+  const txt=document.getElementById('versatilLoadingText');
+  if(txt)txt.textContent=message;
+  if(overlay)overlay.classList.add('show');
+}
+
+function hideVersatilLoading(){
+  document.getElementById('versatilLoadingOverlay')?.classList.remove('show');
+}
+
+async function withVersatilLoading(message,action){
+  showVersatilLoading(message);
+  try{
+    return await action();
+  }finally{
+    hideVersatilLoading();
+  }
+}
+
+async function publishWithLoading(){
+  return withVersatilLoading('Publicando alterações…',async()=>{
+    await publishPublicDataToCentral(true);
+  });
+}
+
 function render(){
   document.getElementById('app').innerHTML=session?appView():loginView();
   renderVersionBadge();
@@ -929,7 +999,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.61';
+  badge.textContent='v1.62';
 }
 
 function isPwaStandalone(){
@@ -1119,14 +1189,13 @@ function recoverAdmin(){
   }).finally(()=>{if(btn)btn.disabled=false});
 }
 
-function adminPageCanEdit(){
-  const editable=['products','categories','rooms','calendar','account','settings','catalog','availability'];
-  return session?.role==='admin' && editable.includes(page);
-}
-function repeatedPublishButtonHtml(){
-  return adminPageCanEdit()?`<div class="repeat-publish-wrap"><button class="btn primary" onclick="publishPublicDataToCentral(true)">Publicar alterações</button></div>`:'';
-}
-function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><div class="app-welcome">Seja bem vindo <b>${esc(session?.name||session?.email||"")}</b>!</div><div class="row">${centralStatusHtml()}${pwaInstallButtonHtml()}<button class="btn" onclick="signout()">Sair</button></div></header><div class="wrap">${admin?adminView():clientView()}</div>`}
+function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><div class="app-welcome"><span>Seja bem vindo</span><br><b>${esc(session?.name||session?.email||'')}</b>!</div>
+    <div class="row header-action-row">
+      ${session?.role==='admin'?`<button class="btn header-publish-btn" onclick="publishWithLoading()">Publicar alterações</button>`:''}
+      ${centralStatusHtml()}
+      ${pwaInstallButtonHtml()}
+      <button class="btn header-signout-btn" onclick="signout()">Sair</button>
+    </div></header><div class="wrap">${admin?adminView():clientView()}</div>`}
 
 function signout(){
   const accessName=session?.name||session?.email||'';
@@ -3251,57 +3320,95 @@ function reportsAdmin(){
 }
 function exportReport(){let rows=[['Pedido','Cliente','Unidade','Data','Total','Status'],...db.orders.map(o=>[o.id,o.client.name,o.client.roomName,new Date(o.createdAt).toLocaleDateString('pt-BR'),o.total,o.status])],csv=rows.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(';')).join('\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download='relatorio-versatil.csv';a.click()}
 
+
+function toggleAdminPasswordVisibility(){
+  const input=document.getElementById('adminAccountPassword');
+  const btn=document.getElementById('adminAccountEye');
+  if(!input||!btn)return;
+  const show=input.type==='password';
+  input.type=show?'text':'password';
+  btn.textContent=show?'🙈':'👁';
+}
+
+async function saveAdminAccount(){
+  const name=document.getElementById('adminAccountName')?.value.trim()||db.account?.name||'Admin';
+  const password=document.getElementById('adminAccountPassword')?.value||db.account?.password||'';
+  const recoveryEmail=document.getElementById('adminAccountRecovery')?.value.trim()||'';
+  const purchaseEmails=Array.from(document.querySelectorAll('.adminPurchaseEmail'))
+    .map(x=>x.value.trim())
+    .filter(Boolean);
+
+  db.account=db.account||{};
+  db.account.name=name;
+  db.account.password=password;
+  db.account.recoveryEmail=recoveryEmail;
+  db.account.purchaseEmails=purchaseEmails;
+
+  save();
+  await publishPublicDataToCentral(false);
+
+  const status=document.getElementById('adminAccountSavedStatus');
+  if(status){
+    status.textContent='Conta salva com sucesso.';
+    status.classList.add('show');
+    setTimeout(()=>status.classList.remove('show'),2200);
+  }
+}
+
 function accountAdmin(){
-  const emails=db.account.adminEmails||[];
+  const a=db.account||{};
+  const emails=(a.purchaseEmails&&a.purchaseEmails.length?a.purchaseEmails:['anibal@starlis.com.br','versatil@starlis.com.br']);
 
   return `<div class="card">
-    <h2>Conta do Admin</h2>
+    <h2>Conta</h2>
 
     <div class="grid">
       <div class="field">
-        <label>Nome do Admin</label>
-        <input id="acc_name" value="${esc(db.account.adminName||'')}">
+        <label>Nome</label>
+        <input id="adminAccountName" value="${esc(a.name||'Admin')}">
       </div>
 
       <div class="field">
-        <label>Nova senha</label>
-        <input id="acc_password" type="password" placeholder="Digite apenas se quiser alterar">
+        <label>Senha</label>
+        <div class="account-password-wrap">
+          <input id="adminAccountPassword" type="password" value="${esc(a.password||'')}">
+          <button id="adminAccountEye" class="account-eye-btn" type="button" onclick="toggleAdminPasswordVisibility()" title="Mostrar/ocultar senha">👁</button>
+        </div>
       </div>
 
       <div class="field">
-        <label>E-mail principal / recuperação de senha</label>
-        <input id="acc_recovery" type="email" value="${esc(db.account.recoveryEmail||'')}">
+        <label>E-mail de recuperação</label>
+        <input id="adminAccountRecovery" type="email" value="${esc(a.recoveryEmail||'anibal@starlis.com.br')}">
+      </div>
+
+      <div class="field">
+        <label>E-mails para recebimento de pedidos</label>
+        <div class="admin-purchase-emails">
+          ${emails.map(email=>`<input class="adminPurchaseEmail" type="email" value="${esc(email)}" style="margin-bottom:6px">`).join('')}
+          <button class="btn small" type="button" onclick="addAdminPurchaseEmailField()">+ E-mail</button>
+        </div>
       </div>
     </div>
 
-    <h3>E-mails para recebimento de compras</h3>
-    <div id="admin_emails_box">
-      ${emails.map((email,index)=>`<div class="row" style="margin-bottom:8px">
-        <input id="admin_email_${index}" type="email" value="${esc(email)}">
-      </div>`).join('')}
+    <div class="row between" style="margin-top:16px">
+      <button class="btn" onclick="recoverAdmin()">Recuperar senha</button>
+      <button class="btn primary" onclick="withVersatilLoading('Salvando conta…',saveAdminAccount)">Salvar</button>
     </div>
 
-    <div class="row">
-      <button class="btn" onclick="addAdminEmailField()">+ Adicionar e-mail</button>
-      <button class="btn primary" onclick="saveAccount()">Salvar conta</button>
-    </div>
-
-    <div class="card email-integration-box" style="margin-top:18px">
-      <h3>Integração de e-mail</h3>
-      <div class="success" style="margin-bottom:10px">
-        Google Apps Script conectado para e-mails, pedidos e disponibilidade do Google Calendar.
-      </div>
-      <p class="muted">
-        Use o botão abaixo para enviar uma mensagem de teste. O teste será enviado para o e-mail de recuperação da conta ou, na ausência dele, para o primeiro e-mail Admin cadastrado.
-      </p>
-      <button class="btn green" onclick="testGoogleEmailConnection()">Testar envio de e-mail</button>
-      <div class="small muted" style="margin-top:8px;overflow-wrap:anywhere">
-        ${esc(GOOGLE_APPS_SCRIPT_URL)}
-      </div>
-    </div>
+    <div id="adminAccountSavedStatus" class="account-saved-status">Conta salva com sucesso.</div>
   </div>`;
 }
 
+function addAdminPurchaseEmailField(){
+  const box=document.querySelector('.admin-purchase-emails');
+  if(!box)return;
+  const input=document.createElement('input');
+  input.className='adminPurchaseEmail';
+  input.type='email';
+  input.placeholder='novo@email.com';
+  input.style.marginBottom='6px';
+  box.insertBefore(input,box.lastElementChild);
+}
 function saveAccount(){
   db.account.adminName=acc_name.value.trim()||'Anibal';
   db.account.adminPassword=acc_pass.value||db.account.adminPassword;
@@ -3346,7 +3453,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.61 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.62 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

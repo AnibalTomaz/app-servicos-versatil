@@ -582,3 +582,14 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Aviso destacado ao hóspede para solicitações do dia de hoje.
 - Botões com efeito visual de pressionamento.
 - Botão `Publicar alterações` repetido nas páginas administrativas editáveis; páginas de consulta permanecem sem ele.
+
+## v1.62 — cabeçalho fixo, espera visual e conta
+- `Publicar alterações` existe apenas uma vez, fixo no cabeçalho do Admin.
+- O botão `Publicar alterações` tem a mesma altura do botão `Sair`.
+- A saudação fica branca e, no celular, ocupa duas linhas para evitar sobreposição.
+- A logo permanece quadrada.
+- Ações com espera podem usar o loader da logo sendo montada em blocos estilo Tetris.
+- A sincronização inicial, publicação e salvamento da Conta exibem o loader.
+- A página Conta recebeu olho para mostrar/ocultar senha.
+- O salvamento da Conta foi refeito para persistir nome, senha, e-mail de recuperação e e-mails de pedidos, com confirmação visual.
+- Mantidas todas as regras da v1.61, inclusive antecedência mínima de 24h.
