@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:12:30.345Z",
+  "updatedAt": "2026-08-20T17:12:38.132Z",
   "data": {
     "rooms": [
       {
@@ -721,7 +721,7 @@
       {
         "id": "pkg-express4",
         "cat": "pacotes",
-        "name": "Pacote de limpeza express 4x",
+        "name": "Pacote de limpeza express: 4X",
         "icon": "🎁",
         "desc": "Quatro limpezas dentro do período de sua hospedagem.",
         "q": 400,
