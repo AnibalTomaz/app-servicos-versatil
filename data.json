@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:01:00.607Z",
+  "updatedAt": "2026-08-20T17:01:18.057Z",
   "data": {
     "rooms": [
       {
@@ -745,7 +745,7 @@
         "icon": "🎁",
         "desc": "Quatro limpezas dentro do período de sua hospedagem.",
         "q": 280,
-        "a": 280,
+        "a": 400,
         "halfDay": false
       },
       {
