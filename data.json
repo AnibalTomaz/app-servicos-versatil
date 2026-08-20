@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:13:33.818Z",
+  "updatedAt": "2026-08-20T17:13:57.126Z",
   "data": {
     "rooms": [
       {
@@ -761,7 +761,7 @@
       {
         "id": "pkg-sala2-sem",
         "cat": "pacotes",
-        "name": "Pacote de locação de sala: 2x SEM serviço",
+        "name": "Pacote de locação de sala: 2X SEM serviço",
         "icon": "🎁",
         "desc": "Duas diárias de sala sem serviço dentro do período de sua hospedagem.",
         "q": 550,
