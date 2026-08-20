@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.56';
+const APP_VERSION='1.57';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -891,7 +891,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.56';
+  badge.textContent='v1.57';
 }
 
 function isPwaStandalone(){
@@ -1358,6 +1358,15 @@ function showClientCartToast(){
     el.classList.remove('show');
     setTimeout(()=>el.remove(),220);
   },1400);
+}
+
+
+function confirmClearCart(){
+  if(!cart.length)return;
+  if(confirm('Deseja excluir todos os itens do carrinho?')){
+    cart=[];
+    render();
+  }
 }
 
 function cartPage(){
@@ -3220,7 +3229,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.56 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.57 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

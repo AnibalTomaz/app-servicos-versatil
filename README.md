@@ -545,3 +545,11 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 - O menu Carrinho mostra a quantidade de itens.
 - Toda a lógica existente de preço, disponibilidade, diárias, pacotes, carrinho e base pública foi preservada.
 - Apps Script muda somente a versão central para 1.56.
+
+## v1.57 — carrinho mobile
+- Barra de rolagem horizontal reforçada e permanentemente disponível na área rolável do carrinho.
+- No celular, aparece a indicação discreta `← Deslize para ver todos os dados →`.
+- Botões `Excluir` ficam compactos.
+- `Excluir tudo` fica compacto e alinhado à direita, acompanhando a coluna de exclusão.
+- `Excluir tudo` pede confirmação antes de esvaziar o carrinho.
+- Mantém o catálogo simplificado e toda a sincronização da v1.56.

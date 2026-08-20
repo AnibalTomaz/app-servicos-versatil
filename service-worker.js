@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-56";
+const CACHE="versatil-v1-57";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=156',
-  './app.js?v=156',
+  './style.css?v=157',
+  './app.js?v=157',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

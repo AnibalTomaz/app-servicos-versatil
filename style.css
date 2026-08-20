@@ -1175,3 +1175,58 @@ button.central-status:hover{
     min-width:0;
   }
 }
+
+
+/* v1.57 — Carrinho mais claro no celular */
+.cart-mobile-scroll-hint{
+  display:none;
+}
+.cart-clear-row{
+  display:flex;
+  justify-content:flex-end;
+  width:100%;
+  margin-top:8px;
+}
+.cart-delete-small{
+  width:auto !important;
+  min-width:0 !important;
+  padding:6px 9px !important;
+  font-size:11px !important;
+  line-height:1.15 !important;
+  border-radius:7px !important;
+  white-space:nowrap;
+}
+.cart-scroll-area{
+  overflow-x:scroll !important;
+  scrollbar-gutter:stable;
+  padding-bottom:7px;
+}
+.cart-scroll-area::-webkit-scrollbar{
+  height:10px;
+}
+.cart-scroll-area::-webkit-scrollbar-track{
+  background:#e4e9ed;
+  border-radius:999px;
+}
+.cart-scroll-area::-webkit-scrollbar-thumb{
+  background:#7d8b96;
+  border-radius:999px;
+  border:2px solid #e4e9ed;
+}
+.cart-scroll-area{
+  scrollbar-width:auto;
+  scrollbar-color:#7d8b96 #e4e9ed;
+}
+@media(max-width:700px){
+  .cart-mobile-scroll-hint{
+    display:block;
+    margin:2px 0 7px;
+    color:#6f7f8d;
+    font-size:11px;
+    text-align:right;
+  }
+  .cart-scroll-area{
+    overflow-x:scroll !important;
+    -webkit-overflow-scrolling:touch;
+  }
+}
