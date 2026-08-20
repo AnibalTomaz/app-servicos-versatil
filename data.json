@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:04:17.740Z",
+  "updatedAt": "2026-08-20T17:04:40.657Z",
   "data": {
     "rooms": [
       {
@@ -641,7 +641,7 @@
       {
         "id": "sala-meio-sem",
         "cat": "locacoes",
-        "name": "Locação de sala de reunião por meia diária sem serviço",
+        "name": "Locação de sala de reunião por meia diária SEM serviço",
         "icon": "🕐",
         "desc": "Apenas a locação do espaço está compreendida nesta modalidade.",
         "q": 150,
