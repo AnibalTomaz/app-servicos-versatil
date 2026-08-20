@@ -1305,3 +1305,5 @@ button.central-status:hover{
   font-weight:700;
   line-height:1.2;
 }
+
+.central-status.publicando{color:#805b12;background:#fff8e8;border-color:#efd8a5}

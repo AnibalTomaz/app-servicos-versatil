@@ -1,10 +1,11 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.59';
+const APP_VERSION='1.60';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
 let centralSyncInFlight=false;
+const PENDING_PUBLICATION_KEY='versatil_pending_publication';
 const seed={
  account:{recoveryEmail:'anibal@starlis.com.br',adminEmails:['anibal@starlis.com.br','versatil@starlis.com.br'],adminName:'Anibal',adminPassword:'1234'},
  rooms:[{"id":"unit_101","name":"Apartamento 101","number":"101","type":"apartamento"},{"id":"unit_102","name":"Apartamento 102","number":"102","type":"apartamento"},{"id":"unit_103","name":"Apartamento 103","number":"103","type":"apartamento"},{"id":"unit_104","name":"Apartamento 104","number":"104","type":"apartamento"},{"id":"unit_105","name":"Apartamento 105","number":"105","type":"apartamento"},{"id":"unit_106","name":"Apartamento 106","number":"106","type":"apartamento"},{"id":"unit_107","name":"Apartamento 107","number":"107","type":"apartamento"},{"id":"unit_108a","name":"Quarto 108A","number":"108A","type":"quarto"},{"id":"unit_108b","name":"Quarto 108B","number":"108B","type":"quarto"},{"id":"unit_201","name":"Apartamento 201","number":"201","type":"apartamento"},{"id":"unit_202","name":"Apartamento 202","number":"202","type":"apartamento"},{"id":"unit_203","name":"Apartamento 203","number":"203","type":"apartamento"},{"id":"unit_204","name":"Apartamento 204","number":"204","type":"apartamento"},{"id":"unit_205","name":"Apartamento 205","number":"205","type":"apartamento"},{"id":"unit_206","name":"Apartamento 206","number":"206","type":"apartamento"},{"id":"unit_207a","name":"Quarto 207A","number":"207A","type":"quarto"},{"id":"unit_207b","name":"Quarto 207B","number":"207B","type":"quarto"},{"id":"unit_208a","name":"Quarto 208A","number":"208A","type":"quarto"},{"id":"unit_208b","name":"Quarto 208B","number":"208B","type":"quarto"},{"id":"unit_301a","name":"Quarto 301A","number":"301A","type":"quarto"},{"id":"unit_301b","name":"Quarto 301B","number":"301B","type":"quarto"},{"id":"unit_302a","name":"Quarto 302A","number":"302A","type":"quarto"},{"id":"unit_302b","name":"Quarto 302B","number":"302B","type":"quarto"},{"id":"unit_303a","name":"Quarto 303A","number":"303A","type":"quarto"},{"id":"unit_303b","name":"Quarto 303B","number":"303B","type":"quarto"},{"id":"unit_304","name":"Apartamento 304","number":"304","type":"apartamento"},{"id":"unit_305a","name":"Quarto 305A","number":"305A","type":"quarto"},{"id":"unit_305b","name":"Quarto 305B","number":"305B","type":"quarto"},{"id":"unit_306a","name":"Quarto 306A","number":"306A","type":"quarto"},{"id":"unit_306b","name":"Quarto 306B","number":"306B","type":"quarto"},{"id":"unit_307a","name":"Quarto 307A","number":"307A","type":"quarto"},{"id":"unit_307b","name":"Quarto 307B","number":"307B","type":"quarto"},{"id":"unit_308a","name":"Quarto 308A","number":"308A","type":"quarto"},{"id":"unit_308b","name":"Quarto 308B","number":"308B","type":"quarto"},{"id":"unit_401a","name":"Quarto 401A","number":"401A","type":"quarto"},{"id":"unit_401b","name":"Quarto 401B","number":"401B","type":"quarto"},{"id":"unit_402a","name":"Quarto 402A","number":"402A","type":"quarto"},{"id":"unit_402b","name":"Quarto 402B","number":"402B","type":"quarto"},{"id":"unit_403a","name":"Quarto 403A","number":"403A","type":"quarto"},{"id":"unit_403b","name":"Quarto 403B","number":"403B","type":"quarto"},{"id":"unit_404a","name":"Quarto 404A","number":"404A","type":"quarto"},{"id":"unit_404b","name":"Quarto 404B","number":"404B","type":"quarto"},{"id":"unit_405a","name":"Quarto 405A","number":"405A","type":"quarto"},{"id":"unit_405b","name":"Quarto 405B","number":"405B","type":"quarto"},{"id":"unit_406a","name":"Quarto 406A","number":"406A","type":"quarto"},{"id":"unit_406b","name":"Quarto 406B","number":"406B","type":"quarto"},{"id":"unit_407a","name":"Quarto 407A","number":"407A","type":"quarto"},{"id":"unit_407b","name":"Quarto 407B","number":"407B","type":"quarto"},{"id":"unit_408a","name":"Quarto 408A","number":"408A","type":"quarto"},{"id":"unit_408b","name":"Quarto 408B","number":"408B","type":"quarto"},{"id":"unit_501a","name":"Quarto 501A","number":"501A","type":"quarto"},{"id":"unit_501b","name":"Quarto 501B","number":"501B","type":"quarto"},{"id":"unit_502a","name":"Quarto 502A","number":"502A","type":"quarto"},{"id":"unit_502b","name":"Quarto 502B","number":"502B","type":"quarto"},{"id":"unit_503a","name":"Quarto 503A","number":"503A","type":"quarto"},{"id":"unit_503b","name":"Quarto 503B","number":"503B","type":"quarto"},{"id":"unit_504a","name":"Quarto 504A","number":"504A","type":"quarto"},{"id":"unit_504b","name":"Quarto 504B","number":"504B","type":"quarto"},{"id":"unit_505a","name":"Quarto 505A","number":"505A","type":"quarto"},{"id":"unit_505b","name":"Quarto 505B","number":"505B","type":"quarto"},{"id":"unit_506a","name":"Quarto 506A","number":"506A","type":"quarto"},{"id":"unit_506b","name":"Quarto 506B","number":"506B","type":"quarto"},{"id":"unit_507a","name":"Quarto 507A","number":"507A","type":"quarto"},{"id":"unit_507b","name":"Quarto 507B","number":"507B","type":"quarto"},{"id":"unit_508","name":"Apartamento 508","number":"508","type":"apartamento"},{"id":"unit_601a","name":"Quarto 601A","number":"601A","type":"quarto"},{"id":"unit_601b","name":"Quarto 601B","number":"601B","type":"quarto"},{"id":"unit_602a","name":"Quarto 602A","number":"602A","type":"quarto"},{"id":"unit_602b","name":"Quarto 602B","number":"602B","type":"quarto"},{"id":"unit_603a","name":"Quarto 603A","number":"603A","type":"quarto"},{"id":"unit_603b","name":"Quarto 603B","number":"603B","type":"quarto"},{"id":"unit_604a","name":"Quarto 604A","number":"604A","type":"quarto"},{"id":"unit_604b","name":"Quarto 604B","number":"604B","type":"quarto"},{"id":"unit_605a","name":"Quarto 605A","number":"605A","type":"quarto"},{"id":"unit_605b","name":"Quarto 605B","number":"605B","type":"quarto"},{"id":"unit_606a","name":"Quarto 606A","number":"606A","type":"quarto"},{"id":"unit_606b","name":"Quarto 606B","number":"606B","type":"quarto"},{"id":"unit_607a","name":"Quarto 607A","number":"607A","type":"quarto"},{"id":"unit_607b","name":"Quarto 607B","number":"607B","type":"quarto"},{"id":"unit_608a","name":"Quarto 608A","number":"608A","type":"quarto"},{"id":"unit_608b","name":"Quarto 608B","number":"608B","type":"quarto"}],
@@ -784,6 +785,23 @@ async function centralRead(action,params={}){
 
 function publicCentralSnapshot(){return {rooms:db.rooms||[],categories:db.categories||[],products:db.products||[],availabilityClosures:db.availabilityClosures||[]}}
 
+
+function setPendingPublicPublication(){
+  const marker={at:Date.now(),iso:new Date().toISOString()};
+  localStorage.setItem(PENDING_PUBLICATION_KEY,JSON.stringify(marker));
+  return marker;
+}
+function getPendingPublicPublication(){
+  try{return JSON.parse(localStorage.getItem(PENDING_PUBLICATION_KEY)||'null')}catch(e){return null}
+}
+function clearPendingPublicPublication(){localStorage.removeItem(PENDING_PUBLICATION_KEY)}
+function remotePublicationIsNewEnough(remoteUpdatedAt,pending){
+  if(!pending)return true;
+  const remoteMs=Date.parse(remoteUpdatedAt||'');
+  if(!Number.isFinite(remoteMs))return false;
+  return remoteMs >= (Number(pending.at||0)-2000);
+}
+
 async function loadCentralData(options={}){
   const force=!!options.force;
   const quiet=!!options.quiet;
@@ -801,6 +819,14 @@ async function loadCentralData(options={}){
     const p=await centralRead('bootstrapPublic');
     if(!p?.ok)throw new Error(p?.error||'Resposta inválida.');
 
+    const pending=getPendingPublicPublication();
+    if(pending && !remotePublicationIsNewEnough(p.updatedAt,pending)){
+      centralDataStatus='publicando';
+      updateCentralStatusUI();
+      setTimeout(()=>loadCentralData({force:true,quiet:true}),3000);
+      return;
+    }
+
     const c=p.data||{};
     if(Array.isArray(c.rooms)&&c.rooms.length)db.rooms=c.rooms;
     if(Array.isArray(c.categories)&&c.categories.length)db.categories=c.categories;
@@ -810,6 +836,7 @@ async function loadCentralData(options={}){
     db.centralVersion=p.version||'';
     db.centralUpdatedAt=p.updatedAt||'';
     save();
+    if(pending)clearPendingPublicPublication();
 
     centralLastSyncAt=Date.now();
     localStorage.setItem('versatil_public_last_sync',String(centralLastSyncAt));
@@ -837,13 +864,22 @@ function centralPost(action,payload={}){
   return fetch(GOOGLE_APPS_SCRIPT_URL+'?v='+APP_VERSION+'&t='+Date.now(),{method:'POST',mode:'no-cors',cache:'no-store',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,clientVersion:APP_VERSION,...payload})});
 }
 async function publishPublicDataToCentral(showMessage=true){
+  const marker=setPendingPublicPublication();
+  centralDataStatus='publicando';
+  updateCentralStatusUI();
   try{
-    await centralPost('savePublicData',{data:publicCentralSnapshot()});
-    if(showMessage)alert('Alterações enviadas para publicação. A base será atualizada automaticamente.');
-    setTimeout(()=>loadCentralData({force:true,quiet:true}),2500);
+    await centralPost('savePublicData',{data:publicCentralSnapshot(),clientPublishedAt:marker.iso});
+    if(showMessage)alert('Alteração salva. A publicação está sendo concluída e o novo valor será mantido enquanto o GitHub atualiza.');
+    setTimeout(()=>loadCentralData({force:true,quiet:true}),3000);
     return true
+  }catch(e){
+    console.error(e);
+    clearPendingPublicPublication();
+    centralDataStatus='offline';
+    updateCentralStatusUI();
+    if(showMessage)alert('Falha ao enviar alterações para a base pública.');
+    return false
   }
-  catch(e){console.error(e);if(showMessage)alert('Falha ao enviar alterações para a base pública.');return false}
 }
 function saveAndPublishPublicData(showMessage=false){save();publishPublicDataToCentral(showMessage)}
 
@@ -856,6 +892,7 @@ function centralStatusLabel(){
   }
   if(centralDataStatus==='offline')return 'Modo local';
   if(centralDataStatus==='atualizacao')return 'Atualização necessária';
+  if(centralDataStatus==='publicando')return 'Publicando alterações…';
   return 'Sincronizando…';
 }
 
@@ -891,7 +928,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.59';
+  badge.textContent='v1.60';
 }
 
 function isPwaStandalone(){
@@ -3278,7 +3315,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.59 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.60 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

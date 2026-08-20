@@ -569,3 +569,6 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 - Exemplo: produto avulso R$ 50,00 × 2 = R$ 100,00; pacote R$ 90,00; economia exibida R$ 10,00.
 - Se não houver economia positiva, a mensagem não é exibida.
 - Nenhuma outra regra, layout ou comportamento do aplicativo foi alterado.
+
+## v1.60 — persistência das alterações
+Corrige o caso em que um preço recém-editado voltava ao valor anterior enquanto o GitHub Pages ainda servia um `data.json` antigo. O aplicativo marca a publicação como pendente e não deixa uma base anterior sobrescrever a alteração. O status mostra `Publicando alterações…` até a nova base chegar.
