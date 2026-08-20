@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:03:05.608Z",
+  "updatedAt": "2026-08-20T17:03:14.967Z",
   "data": {
     "rooms": [
       {
@@ -611,7 +611,7 @@
       {
         "id": "sala-dia-serv",
         "cat": "locacoes",
-        "name": "Locação diária de sala de reunião com serviço",
+        "name": "Locação diária de sala de reunião COM serviço",
         "icon": "🏢",
         "desc": "Locação do espaço, máquina de café e 8 xícaras, açúcar, adoçante, água mineral, descartáveis e limpeza de louça ao meio dia.",
         "q": 400,
