@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T16:59:21.183Z",
+  "updatedAt": "2026-08-20T17:00:39.381Z",
   "data": {
     "rooms": [
       {
@@ -724,8 +724,8 @@
         "name": "Pacote de limpeza express 4x",
         "icon": "🎁",
         "desc": "Quatro limpezas dentro do período de sua hospedagem.",
-        "q": 480,
-        "a": 800,
+        "q": 400,
+        "a": 480,
         "halfDay": false
       },
       {
