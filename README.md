@@ -517,3 +517,11 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 - Isso contorna celulares que abrem `/exec`, mas falham quando a URL contém parâmetros.
 - As rotas com `?action=centralStatus` e `?action=bootstrapPublic` são mantidas apenas para diagnóstico.
 - Atualize o Apps Script e gere uma nova versão da mesma implantação.
+
+## v1.54 — publicação automática da base no GitHub
+- O app deixa de ler a base pública diretamente do Apps Script.
+- Todos os clientes passam a ler `data.json` no mesmo domínio GitHub Pages.
+- Ao salvar alterações públicas no Admin, o Apps Script atualiza a planilha central e publica automaticamente `data.json` no GitHub usando a API oficial.
+- É necessário criar um Fine-grained Personal Access Token no GitHub com acesso somente ao repositório `app-servicos-versatil` e permissão `Contents: Read and write`.
+- O token é salvo em Script Properties, não no código público do GitHub.
+- Funções de configuração/teste: `definirTokenGitHubV154`, `testarPublicacaoGitHubV154`, `statusPublicacaoGitHubV154`.

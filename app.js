@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.53';
+const APP_VERSION='1.54';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 const seed={
@@ -751,112 +751,32 @@ preserveCafeDefaultV149();
 
 
 
-function centralJsonp(action,params={}){
-  return new Promise((resolve,reject)=>{
-    const callback='versatil_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-    const script=document.createElement('script');
-    let finished=false;
-
-    const timeout=setTimeout(()=>{
-      if(finished)return;
-      finished=true;
-      cleanup();
-      reject(new Error('JSONP indisponível neste navegador.'));
-    },6000);
-
-    function cleanup(){
-      clearTimeout(timeout);
-      try{delete window[callback]}catch(e){}
-      script.remove();
-    }
-
-    window[callback]=(payload)=>{
-      if(finished)return;
-      finished=true;
-      cleanup();
-      resolve(payload);
-    };
-
-    const q=new URLSearchParams({
-      action,
-      callback,
-      ...Object.fromEntries(Object.entries(params).map(([k,v])=>[k,String(v)]))
-    });
-
-    script.src=GOOGLE_APPS_SCRIPT_URL+'?'+q.toString()+'&t='+Date.now();
-    script.async=true;
-    script.onerror=()=>{
-      if(finished)return;
-      finished=true;
-      cleanup();
-      reject(new Error('Falha JSONP.'));
-    };
-
-    document.head.appendChild(script);
-  });
-}
-
-
-function centralIframeBootstrap(){
-  return new Promise((resolve,reject)=>{
-    const iframe=document.createElement('iframe');
-    iframe.style.display='none';
-    iframe.setAttribute('aria-hidden','true');
-
-    let finished=false;
-    const timeout=setTimeout(()=>{
-      if(finished)return;
-      finished=true;
-      cleanup();
-      reject(new Error('Tempo limite ao carregar a base central.'));
-    },CENTRAL_SYNC_TIMEOUT_MS);
-
-    function cleanup(){
-      clearTimeout(timeout);
-      window.removeEventListener('message',onMessage);
-      iframe.remove();
-    }
-
-    function onMessage(event){
-      const data=event.data;
-      if(!data||data.type!=='VERSATIL_CENTRAL_BOOTSTRAP')return;
-      if(finished)return;
-
-      finished=true;
-      cleanup();
-
-      if(data.payload?.ok)resolve(data.payload);
-      else reject(new Error(data.payload?.error||'Falha na base central.'));
-    }
-
-    window.addEventListener('message',onMessage);
-
-    // IMPORTANTE: sem query string. Alguns celulares conseguiam abrir /exec,
-    // mas não conseguiam abrir a implantação quando havia ?action=...
-    iframe.src=GOOGLE_APPS_SCRIPT_URL+'#v153_'+Date.now();
-    document.body.appendChild(iframe);
-  });
-}
 
 async function centralRead(action,params={}){
-  // A leitura pública agora usa sempre a URL /exec sem parâmetros.
-  // O Apps Script devolve os dados por postMessage a partir de um HtmlOutput.
-  if(action==='bootstrapPublic'||action==='centralStatus'){
-    const payload=await centralIframeBootstrap();
-
-    if(action==='centralStatus'){
-      return {
-        ok:payload.ok,
-        version:payload.version,
-        updatedAt:payload.updatedAt,
-        spreadsheetId:payload.spreadsheetId||''
-      };
-    }
-
-    return payload;
+  if(action!=='bootstrapPublic'&&action!=='centralStatus'){
+    throw new Error('Ação de leitura central não suportada.');
   }
 
-  throw new Error('Ação de leitura central não suportada.');
+  const response=await fetch('./data.json?v='+Date.now(),{
+    method:'GET',
+    cache:'no-store',
+    credentials:'same-origin'
+  });
+
+  if(!response.ok)throw new Error('Base pública indisponível: HTTP '+response.status);
+
+  const payload=await response.json();
+  if(!payload?.ok)throw new Error(payload?.error||'Base pública inválida.');
+
+  if(action==='centralStatus'){
+    return {
+      ok:true,
+      version:payload.version||'',
+      updatedAt:payload.updatedAt||''
+    };
+  }
+
+  return payload;
 }
 
 function publicCentralSnapshot(){return {rooms:db.rooms||[],categories:db.categories||[],products:db.products||[],availabilityClosures:db.availabilityClosures||[]}}
@@ -874,18 +794,18 @@ async function loadCentralData(){
     centralDataStatus='ok';
     if(p.version&&p.version!==APP_VERSION){centralDataStatus='atualizacao';showMandatoryUpdateNotice(p.version);return}
     render();
-  }catch(err){console.warn('Base central:',err);centralDataStatus='offline';localStorage.setItem('versatil_central_last_error',String(err?.message||err));render();}
+  }catch(err){console.warn('Base pública:',err);centralDataStatus='offline';localStorage.setItem('versatil_central_last_error',String(err?.message||err));render();}
 }
 function centralPost(action,payload={}){
   return fetch(GOOGLE_APPS_SCRIPT_URL+'?v='+APP_VERSION+'&t='+Date.now(),{method:'POST',mode:'no-cors',cache:'no-store',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,clientVersion:APP_VERSION,...payload})});
 }
 async function publishPublicDataToCentral(showMessage=true){
-  try{await centralPost('savePublicData',{data:publicCentralSnapshot()});if(showMessage)alert('Alterações enviadas para a base central.');return true}
-  catch(e){console.error(e);if(showMessage)alert('Falha ao enviar alterações para a base central.');return false}
+  try{await centralPost('savePublicData',{data:publicCentralSnapshot()});if(showMessage)alert('Alterações enviadas para a base pública.');return true}
+  catch(e){console.error(e);if(showMessage)alert('Falha ao enviar alterações para a base pública.');return false}
 }
 function saveAndPublishPublicData(showMessage=false){save();publishPublicDataToCentral(showMessage)}
-function centralStatusHtml(){const t=centralDataStatus==='ok'?'Base central atualizada':centralDataStatus==='offline'?'Modo local/offline':centralDataStatus==='atualizacao'?'Atualização necessária':'Sincronizando…';return `<div id="centralStatusBadge" class="central-status ${centralDataStatus}">${t}</div>`}
-function updateCentralStatusUI(){const el=document.getElementById('centralStatusBadge');if(!el)return;const t=centralDataStatus==='ok'?'Base central atualizada':centralDataStatus==='offline'?'Modo local/offline':centralDataStatus==='atualizacao'?'Atualização necessária':'Sincronizando…';el.textContent=t;el.className='central-status '+centralDataStatus}
+function centralStatusHtml(){const t=centralDataStatus==='ok'?'Base pública atualizada':centralDataStatus==='offline'?'Modo local':centralDataStatus==='atualizacao'?'Atualização necessária':'Sincronizando…';return `<div id="centralStatusBadge" class="central-status ${centralDataStatus}">${t}</div>`}
+function updateCentralStatusUI(){const el=document.getElementById('centralStatusBadge');if(!el)return;const t=centralDataStatus==='ok'?'Base pública atualizada':centralDataStatus==='offline'?'Modo local':centralDataStatus==='atualizacao'?'Atualização necessária':'Sincronizando…';el.textContent=t;el.className='central-status '+centralDataStatus}
 function showMandatoryUpdateNotice(serverVersion){
   document.getElementById('mandatoryUpdateModal')?.remove();
   const m=document.createElement('div');m.id='mandatoryUpdateModal';m.className='modal-overlay';
@@ -907,7 +827,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.53';
+  badge.textContent='v1.54';
 }
 
 function isPwaStandalone(){
@@ -1626,7 +1546,7 @@ function adminPageContent(){
 function dashboard(){
   let active=db.orders.filter(o=>o.status==='ativo'),total=active.reduce((a,o)=>a+o.total,0);
   return `<div class="grid"><div class="card"><div class="muted">Pedidos ativos</div><div class="kpi">${active.length}</div></div><div class="card"><div class="muted">Vendas consolidadas</div><div class="kpi">${money(total)}</div></div><div class="card"><div class="muted">Unidades cadastradas</div><div class="kpi">${db.rooms.length}</div></div><div class="card"><div class="muted">Produtos</div><div class="kpi">${db.products.length}</div></div></div>
-  <div class="card" style="margin-top:14px"><div class="row between"><div><h3 style="margin:0">Base central</h3><p class="muted">Produtos, categorias, unidades e disponibilidade compartilhados entre todos os usuários.</p></div><div class="row"><button class="btn" onclick="loadCentralData()">↻ Baixar base central</button><button class="btn primary" onclick="publishPublicDataToCentral(true)">Publicar alterações</button></div></div>${centralStatusHtml()}</div>`;
+  <div class="card" style="margin-top:14px"><div class="row between"><div><h3 style="margin:0">Base pública</h3><p class="muted">Produtos, categorias, unidades e disponibilidade compartilhados entre todos os usuários.</p></div><div class="row"><button class="btn" onclick="loadCentralData()">↻ Baixar base pública</button><button class="btn primary" onclick="publishPublicDataToCentral(true)">Publicar alterações</button></div></div>${centralStatusHtml()}</div>`;
 }
 function focusNewRoomNumber(){
   setTimeout(()=>{
@@ -3081,7 +3001,7 @@ function bootVersatilV140(){
   try{
     render();
     loadCentralData();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.53 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.54 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

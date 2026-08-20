@@ -1,10 +1,11 @@
-const CACHE="versatil-v1-53";
+const CACHE="versatil-v1-54";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=153',
-  './app.js?v=153',
+  './style.css?v=154',
+  './app.js?v=154',
   './manifest.json',
+  './data.json',
   './logo-versatil.jpg',
   './icon-192.png',
   './icon-512.png',
@@ -42,6 +43,20 @@ self.addEventListener('fetch',event=>{
           return response;
         })
         .catch(()=>caches.match('./index.html'))
+    );
+    return;
+  }
+
+
+  if(sameOrigin && url.pathname.endsWith('/data.json')){
+    event.respondWith(
+      fetch(event.request,{cache:'no-store'})
+        .then(response=>{
+          const copy=response.clone();
+          caches.open(CACHE).then(cache=>cache.put(event.request,copy));
+          return response;
+        })
+        .catch(()=>caches.match(event.request))
     );
     return;
   }
