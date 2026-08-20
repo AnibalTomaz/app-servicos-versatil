@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "1.60",
-  "updatedAt": "2026-08-20T17:11:42.409Z",
+  "updatedAt": "2026-08-20T17:12:00.805Z",
   "data": {
     "rooms": [
       {
@@ -681,7 +681,7 @@
       {
         "id": "pkg-diarista2",
         "cat": "pacotes",
-        "name": "Pacote de diarista 2x",
+        "name": "Pacote de diarista: 2X",
         "icon": "🎁",
         "desc": "Duas faxinas dentro do período de sua hospedagem.",
         "q": 400,
