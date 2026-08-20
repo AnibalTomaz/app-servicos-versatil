@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.55';
+const APP_VERSION='1.56';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -43,7 +43,8 @@ const seed={
   {id:'pkg-sala5-serv',cat:'pacotes',name:'Pacote semanal de locação de sala com serviço',icon:'🎁',desc:'Locação de sala por 5 dias corridos com serviço.',q:1800,a:1800},
   {id:'pkg-sala5-sem',cat:'pacotes',name:'Pacote semanal de locação de sala sem serviço',icon:'🎁',desc:'Locação de sala por 5 dias corridos sem serviço.',q:1250,a:1250}
  ],closedDates:[],closedSlots:[],orders:[]};
-let db=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(seed),session=null,page='catalog',adminPage='dashboard',selectedCat='servicos',cart=[];
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(seed),session=null,page='catalog',adminPage='dashboard',selectedCat='',cart=[];
+let expandedClientProductId='';
 let productAdminCategoryFilter='all';
 let deferredInstallPrompt=null;
 let pwaInstallReady=false;
@@ -890,7 +891,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.55';
+  badge.textContent='v1.56';
 }
 
 function isPwaStandalone(){
@@ -1035,6 +1036,8 @@ function clientLogin(){
     roomName:roomLabel(registered)
   };
   cart=[];
+  selectedCat="";
+  expandedClientProductId="";
   page="catalog";
   render();
 }
@@ -1078,57 +1081,167 @@ function recoverAdmin(){
   }).finally(()=>{if(btn)btn.disabled=false});
 }
 function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><div class="row">${centralStatusHtml()}${pwaInstallButtonHtml()}<button class="btn" onclick="signout()">Sair</button></div></header><div class="wrap">${admin?adminView():clientView()}</div>`}
-function signout(){if(session?.role==='client'&&page!=='confirmation')cart=[];session=null;page='catalog';render()}
-function clientView(){return `<nav class="nav">${[['catalog','Catálogo'],['cart','Carrinho'],['confirmation','Confirmação']].map(([k,v])=>`<button class="${page===k?'active':''}" onclick="page='${k}';render()">${v}</button>`).join('')}</nav>${page==='catalog'?catalogPage():page==='cart'?cartPage():confirmationPage()}`}
+function signout(){if(session?.role==='client'&&page!=='confirmation')cart=[];session=null;selectedCat='';expandedClientProductId='';page='catalog';render()}
+function clientView(){
+  const menus=[
+    ['catalog','Catálogo'],
+    ['cart',`Carrinho${cart.length?` (${cart.length})`:''}`],
+    ['confirmation','Confirmação']
+  ];
+  return `<nav class="nav">${menus.map(([k,v])=>`<button class="${page===k?'active':''}" onclick="page='${k}';render()">${v}</button>`).join('')}</nav>${page==='catalog'?catalogPage():page==='cart'?cartPage():confirmationPage()}`;
+}
+
+
+function selectClientCategory(cid){
+  selectedCat=cid;
+  expandedClientProductId='';
+  render();
+}
+
+function changeClientCategory(){
+  selectedCat='';
+  expandedClientProductId='';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleClientProduct(pid){
+  expandedClientProductId=expandedClientProductId===pid?'':pid;
+  render();
+  if(expandedClientProductId){
+    setTimeout(()=>{
+      document.getElementById('client_product_'+pid)?.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },0);
+  }
+}
+
+function clientCategoryChangeButton(){
+  return `<button class="client-change-category-btn" onclick="changeClientCategory()">↔&nbsp; Trocar de categoria</button>`;
+}
 
 function catalogPage(){
-  let cats=db.categories;
-  let products=db.products.filter(p=>p.cat===selectedCat);
-  let cat=cats.find(c=>c.id===selectedCat);
-  let tones={
-    servicos:{bg:'#eaf4fb',border:'#1769aa',selected:'#0b3f6d'},
-    enxoval:{bg:'#e7f0fb',border:'#2f6fb3',selected:'#1e4f83'},
-    locacoes:{bg:'#edf5ff',border:'#4a7fb8',selected:'#285a8d'},
-    pacotes:{bg:'#e3eef9',border:'#5d83a8',selected:'#234866'}
-  };
+  const cats=db.categories||[];
 
-  return `<div class="category-selector-grid">
-    ${cats.map(c=>{
-      let t=tones[c.id]||tones.servicos;
-      let active=c.id===selectedCat;
-      return `<button class="category-select-btn${active?' selected':''}"
-        style="--cat-bg:${t.bg};--cat-border:${t.border};--cat-selected:${t.selected}"
-        onclick="selectedCat='${c.id}';render()">
-        <div class="icon">${c.icon}</div>
-        <div><h3>${esc(c.name)}</h3><div class="category-desc">${esc(c.description)}</div></div>
-      </button>`;
-    }).join('')}
-  </div>
-  <section class="category-page category-${selectedCat}">
-    <h2>${cat?.icon||''} ${esc(cat?.name||'Catálogo')}</h2>
-    <div class="grid">${products.map(productCard).join('')}</div>
+  if(!selectedCat){
+    return `<section class="client-category-home">
+      <div class="client-catalog-intro">
+        <h2>O que você precisa?</h2>
+        <p class="muted">Escolha uma categoria para ver os produtos disponíveis.</p>
+      </div>
+
+      <div class="client-category-grid">
+        ${cats.map(c=>`<button class="client-category-card" onclick="selectClientCategory('${c.id}')">
+          <div class="client-category-icon">${c.icon||''}</div>
+          <div class="client-category-copy">
+            <h3>${esc(c.name)}</h3>
+            <p>${esc(c.description||'')}</p>
+          </div>
+        </button>`).join('')}
+      </div>
+    </section>`;
+  }
+
+  const cat=cats.find(c=>c.id===selectedCat);
+  if(!cat){
+    selectedCat='';
+    return catalogPage();
+  }
+
+  const products=(db.products||[]).filter(p=>p.cat===selectedCat);
+
+  return `<section class="client-category-products">
+    <div class="client-category-toolbar">
+      <div class="client-selected-category">
+        <span class="client-category-icon small">${cat.icon||''}</span>
+        <strong>${esc(cat.name)}</strong>
+      </div>
+      ${clientCategoryChangeButton()}
+    </div>
+
+    <div class="client-products-list">
+      ${products.map(clientProductAccordion).join('')}
+    </div>
+
+    <div class="client-category-bottom-action">
+      ${clientCategoryChangeButton()}
+    </div>
   </section>`;
 }
 
-
-
-
-
-
-function productCard(p){
-  const price=productPrice(p),unavailable=price<=0,defaultDate=today(),requiresPeriod=productRequiresPeriod(p),isPackage=p.cat==='pacotes',daily=isDailyRentalProduct(p);
+function clientProductAccordion(p){
+  const price=productPrice(p);
+  const unavailable=price<=0;
+  const defaultDate=today();
+  const requiresPeriod=productRequiresPeriod(p);
+  const isPackage=p.cat==='pacotes';
+  const daily=isDailyRentalProduct(p);
   const slots=(requiresPeriod||daily)?availableSlotsForProductDate(p,defaultDate):[];
   const noAvailability=(requiresPeriod||daily)&&!slots.length;
   const lockQty=isPackage||requiresPeriod||daily;
-  return `<div class="card product-card"><div class="icon">${p.icon}</div><h3>${esc(p.name)}</h3><p class="muted">${esc(p.desc)}</p><div class="price">${unavailable?'Preço a cadastrar':money(price)}</div>
-    ${isPackage?`<div class="package-schedule"><div class="notice"><b>Este pacote possui ${packageUseCount(p)} utilização(ões).</b> Selecione a data e o período de cada utilização.</div>${Array.from({length:packageUseCount(p)},(_,i)=>renderPackageUseRow(p,i,defaultDate)).join('')}</div>`:
-    `<div class="field"><label>Data</label><input id="date_${p.id}" type="date" min="${today()}" value="${defaultDate}" onchange="refreshProductAvailability('${p.id}')"></div>
-     ${requiresPeriod?`<div class="field"><label>Período</label><select id="period_${p.id}" ${noAvailability?'disabled':''}>${slots.map(s=>`<option value="${periodValueForProduct(p,s)}">${periodOptionLabelForProduct(p,s)}</option>`).join('')}</select><div id="period_msg_${p.id}" class="availability-message ${noAvailability?'show':''}">${noAvailability?'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.':''}</div></div>`:''}
-     ${daily?`<div id="period_msg_${p.id}" class="availability-message ${noAvailability?'show':''}">${noAvailability?'Lamentamos mas nesta data não há disponibilidade para esta locação diária.':''}</div>`:''}`}
-    <div class="row"><input id="qty_${p.id}" type="number" min="1" max="${lockQty?1:''}" value="1" style="width:85px" ${lockQty?'disabled':''}><button id="addbtn_${p.id}" class="btn primary" ${(unavailable||(!isPackage&&noAvailability))?'disabled':''} onclick="addToCart('${p.id}')">Enviar ao carrinho</button></div>
-  </div>`;
+  const open=expandedClientProductId===p.id;
+
+  return `<article id="client_product_${p.id}" class="client-product-accordion${open?' open':''}">
+    <button class="client-product-summary" onclick="toggleClientProduct('${p.id}')" aria-expanded="${open?'true':'false'}">
+      <div class="client-product-summary-left">
+        <div class="client-product-icon">${p.icon||''}</div>
+        <div class="client-product-summary-copy">
+          <div class="client-product-name">${esc(p.name)}</div>
+          <div class="client-product-price">${unavailable?'Preço a cadastrar':money(price)}</div>
+          <div class="client-product-hint">Clique para ver a composição</div>
+        </div>
+      </div>
+      <span class="client-product-chevron" aria-hidden="true"></span>
+    </button>
+
+    ${open?`<div class="client-product-details">
+      <p class="client-product-description">${esc(p.desc||'')}</p>
+
+      ${isPackage
+        ?`<div class="package-schedule">
+            <div class="notice"><b>Este pacote possui ${packageUseCount(p)} utilização(ões).</b> Selecione a data e o período de cada utilização.</div>
+            ${Array.from({length:packageUseCount(p)},(_,i)=>renderPackageUseRow(p,i,defaultDate)).join('')}
+          </div>`
+        :`<div class="client-product-form">
+            <div class="field">
+              <label>Quantidade</label>
+              <input id="qty_${p.id}" type="number" min="1" max="${lockQty?1:''}" value="1" ${lockQty?'disabled':''}>
+            </div>
+
+            <div class="field">
+              <label>Data</label>
+              <input id="date_${p.id}" type="date" min="${today()}" value="${defaultDate}" onchange="refreshProductAvailability('${p.id}')">
+            </div>
+
+            ${requiresPeriod
+              ?`<div class="field">
+                  <label>Período</label>
+                  <select id="period_${p.id}" ${noAvailability?'disabled':''}>
+                    ${slots.map(s=>`<option value="${periodValueForProduct(p,s)}">${periodOptionLabelForProduct(p,s)}</option>`).join('')}
+                  </select>
+                </div>`
+              :`<div class="field">
+                  <label>Período</label>
+                  <input value="${daily?'Diária':'Dia selecionado'}" disabled>
+                </div>`}
+          </div>
+
+          <div id="period_msg_${p.id}" class="availability-message ${noAvailability?'show':''}">
+            ${noAvailability
+              ?(daily?'Lamentamos mas nesta data não há disponibilidade para esta locação diária.':'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.')
+              :''}
+          </div>`}
+
+      ${isPackage?`<div class="client-package-qty-note">Quantidade do pacote: <b>1</b></div>`:''}
+
+      <button id="addbtn_${p.id}" class="btn primary client-add-cart-btn"
+        ${(unavailable||(!isPackage&&noAvailability))?'disabled':''}
+        onclick="addToCart('${p.id}')">Enviar para o carrinho</button>
+    </div>`:''}
+  </article>`;
 }
 
+// Mantido como alias para outras referências internas, se existirem.
+function productCard(p){return clientProductAccordion(p)}
 function refreshProductAvailability(pid){
   const p=db.products.find(x=>x.id===pid);if(!p)return;
   const date=document.getElementById('date_'+pid)?.value||'',addBtn=document.getElementById('addbtn_'+pid),qty=document.getElementById('qty_'+pid),requiresPeriod=productRequiresPeriod(p),daily=isDailyRentalProduct(p);
@@ -1170,8 +1283,10 @@ function addToCart(pid){
       schedule
     });
 
-    page='cart';
+    expandedClientProductId='';
+    page='catalog';
     render();
+    showClientCartToast();
     return;
   }
 
@@ -1224,8 +1339,25 @@ function addToCart(pid){
     period
   });
 
-  page='cart';
+  expandedClientProductId='';
+  page='catalog';
   render();
+  showClientCartToast();
+}
+
+
+function showClientCartToast(){
+  document.getElementById('clientCartToast')?.remove();
+  const el=document.createElement('div');
+  el.id='clientCartToast';
+  el.className='client-cart-toast';
+  el.textContent='Item adicionado ao carrinho';
+  document.body.appendChild(el);
+  requestAnimationFrame(()=>el.classList.add('show'));
+  setTimeout(()=>{
+    el.classList.remove('show');
+    setTimeout(()=>el.remove(),220);
+  },1400);
 }
 
 function cartPage(){
@@ -3088,7 +3220,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.55 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.56 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

@@ -532,3 +532,16 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 - O selo mostra também a data/hora da última publicação carregada.
 - Após o Admin publicar uma alteração, o próprio aparelho tenta reler a base pública automaticamente.
 - Evita situações em que um aparelho já esteja na versão correta, mas continue exibindo valores antigos até uma recarga manual.
+
+## v1.56 — catálogo simplificado para clientes
+- Ao entrar no Catálogo, o cliente vê somente as categorias.
+- Ao selecionar uma categoria, as demais desaparecem.
+- A categoria escolhida fica no topo.
+- Botão `Trocar de categoria` no topo e no fim da lista, com aparência idêntica e alinhamento à direita.
+- Produtos exibidos em lista compacta com preço e texto `Clique para ver a composição`.
+- A seta dos produtos replica o estilo preto do seletor de período.
+- Ao clicar no produto, abre descrição, quantidade, data, período e botão `Enviar para o carrinho`.
+- Ao enviar para o carrinho, o item fecha e o cliente permanece na lista de produtos da categoria.
+- O menu Carrinho mostra a quantidade de itens.
+- Toda a lógica existente de preço, disponibilidade, diárias, pacotes, carrinho e base pública foi preservada.
+- Apps Script muda somente a versão central para 1.56.
