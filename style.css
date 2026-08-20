@@ -1295,3 +1295,13 @@ button.central-status:hover{
     min-width:820px;
   }
 }
+
+
+/* v1.59 — economia exibida nos pacotes promocionais */
+.client-package-savings{
+  margin-top:3px;
+  color:#238636;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.2;
+}

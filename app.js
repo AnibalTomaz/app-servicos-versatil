@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.58';
+const APP_VERSION='1.59';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -891,7 +891,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.58';
+  badge.textContent='v1.59';
 }
 
 function isPwaStandalone(){
@@ -1168,6 +1168,33 @@ function catalogPage(){
   </section>`;
 }
 
+
+function packageSavingsValue(product){
+  if(!product||product.cat!=='pacotes')return 0;
+
+  const baseIds=packageBaseProductIds(product);
+  if(!baseIds.length)return 0;
+
+  const uses=Math.max(1,Number(packageUseCount(product)||1));
+  const packagePrice=Number(productPrice(product)||0);
+
+  // Os pacotes atuais são vinculados a um produto-base.
+  // Se futuramente houver mais de um produto-base, soma-se o valor
+  // de uma unidade de cada base e aplica-se o número de utilizações.
+  const baseUnitTotal=baseIds.reduce((sum,id)=>{
+    const base=db.products.find(p=>p.id===id);
+    return sum+Number(base?productPrice(base):0);
+  },0);
+
+  return Math.max(0,(baseUnitTotal*uses)-packagePrice);
+}
+
+function packageSavingsHtml(product){
+  const saving=packageSavingsValue(product);
+  if(product?.cat!=='pacotes'||saving<=0)return '';
+  return `<div class="client-package-savings">Você poupará ${money(saving)}</div>`;
+}
+
 function clientProductAccordion(p){
   const price=productPrice(p);
   const unavailable=price<=0;
@@ -1187,6 +1214,7 @@ function clientProductAccordion(p){
         <div class="client-product-summary-copy">
           <div class="client-product-name">${esc(p.name)}</div>
           <div class="client-product-price">${unavailable?'Preço a cadastrar':money(price)}</div>
+          ${packageSavingsHtml(p)}
           <div class="client-product-hint">Clique para ver a composição</div>
         </div>
       </div>
@@ -3250,7 +3278,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.58 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.59 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

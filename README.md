@@ -562,3 +562,10 @@ Produtos, categorias, unidades e disponibilidade passam a ser compartilhados por
 - `Excluir tudo` foi movido para o cabeçalho da mesma coluna onde ficam os botões `Excluir`.
 - `Excluir tudo` e `Excluir` têm o mesmo tamanho compacto.
 - Mantida confirmação antes de excluir todo o carrinho.
+
+## v1.59 — economia nos pacotes promocionais
+- Somente na categoria `Pacotes promocionais`, logo abaixo do preço aparece `Você poupará R$ XX,XX`.
+- O valor é calculado automaticamente por: `(preço do produto-base × número de utilizações) − preço do pacote`.
+- Exemplo: produto avulso R$ 50,00 × 2 = R$ 100,00; pacote R$ 90,00; economia exibida R$ 10,00.
+- Se não houver economia positiva, a mensagem não é exibida.
+- Nenhuma outra regra, layout ou comportamento do aplicativo foi alterado.
