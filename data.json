@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "version": "1.54",
-  "updatedAt": "2026-08-19T17:11:47.520Z",
+  "version": "1.55",
+  "updatedAt": "2026-08-20T01:37:34.417Z",
   "data": {
     "rooms": [
       {
@@ -674,8 +674,8 @@
         "name": "Locação de moto elétrica por meia diária",
         "icon": "⚡",
         "desc": "Locação do veículo com capacete. Das 6 às 12h ou das 13 às 19h.",
-        "q": 50,
-        "a": 50,
+        "q": 90,
+        "a": 90,
         "halfDay": true
       },
       {
