@@ -632,3 +632,11 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Signout do Admin alterado para: `Até breve (nome do usuário)!`
 - Signout do Cliente permanece: `Obrigado por seu pedido,` / `até breve, Nome.`
 - Cache-buster atualizado para `1644`.
+
+## v1.65 — lista completa de Lazer e Conveniências
+- Releitura integral das 561 linhas da lista original.
+- 41 menus/submenus e 220 locais finais (261 registros).
+- Incluídos todos os Parques, Museus, Aquário, Marcos geográficos, destinos turísticos, Mercados, Farmácias, Postos, Shoppings, Mecânicos, Cartórios, Restaurantes por especialidade, Bares por tipo, Lanchonetes por especialidade e Espaços de eventos.
+- Corrigida a classificação de itens com numeração repetida no texto original.
+- Admin possui inclusão, edição e exclusão da árvore completa.
+- A planilha `LEISURE` é recarregada uma única vez com a lista integral nesta versão; depois disso, alterações futuras do Admin são preservadas normalmente.
