@@ -600,3 +600,16 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Alimentação usa quatro níveis: Alimentação → Restaurantes/Bares/Lanchonetes → especialidade/tipo → local.
 - Cada item final pode mostrar uma foto, descrição, distância, telefone e botão Google Maps.
 - Fotos foram priorizadas por fidelidade: fachada/local real quando localizada; quando a entrada é uma especialidade genérica, imagem literal do produto (ex.: espeto, pizza, peixe, hambúrguer), evitando imagens abstratas.
+
+## v1.64 — Lazer e Conveniências integrado à base pública e ao Admin
+- Corrige a v1.63 para que `Lazer e Conveniências` apareça sempre no Catálogo do Cliente.
+- Inclui a estrutura completa fornecida para Turismo, Conveniências, Alimentação e Espaços de eventos (228 registros entre menus e locais).
+- Alimentação mantém níveis adicionais: Restaurantes/Bares/Lanchonetes → especialidade/tipo → estabelecimento.
+- Nova página Admin `Lazer e Conveniências` com inclusão, edição e exclusão de menus, submenus e locais.
+- Cada local pode editar: nome, descrição, distância, telefone, URL da foto e busca/link do Google Maps.
+- Exclusão de um menu exclui também os itens contidos nele, mediante confirmação.
+- O botão `Publicar alterações` continua único e fixo no cabeçalho do Admin.
+- `leisureGuide` passa a fazer parte da base pública e do `data.json`.
+- Apps Script cria automaticamente a planilha `LEISURE` na primeira leitura, usando a estrutura inicial quando ainda estiver vazia.
+- Corrigido o horário mostrado em `Base pública atualizada`: toda publicação GitHub recebe um novo `publishedAt` e também atualiza `updatedAt`.
+- Imagens reais previamente verificadas foram preservadas; quando não havia uma foto específica confiável, foi usada imagem literal da especialidade quando possível ou o campo ficou administrável para substituição.
