@@ -624,3 +624,11 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Corrigidos dois textos hard-coded restantes em `app.js` que ainda exibiam `v1.63`.
 - O `APP_VERSION` já estava 1.64, mas o badge inferior e a mensagem de console ainda estavam fixos em 1.63.
 - Cache-buster atualizado para `1643` para forçar o carregamento do arquivo corrigido.
+
+## FIX v1.64 — Catálogo Lazer + saída do Admin
+- `Lazer e Conveniências` agora é inserido diretamente como a 5ª opção do Catálogo do Cliente.
+- A opção abre a árvore completa `leisureGuidePage()`.
+- Mantida a saudação em duas linhas no cabeçalho.
+- Signout do Admin alterado para: `Até breve (nome do usuário)!`
+- Signout do Cliente permanece: `Obrigado por seu pedido,` / `até breve, Nome.`
+- Cache-buster atualizado para `1644`.

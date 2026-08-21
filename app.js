@@ -1253,15 +1253,26 @@ function appView(){let admin=session.role==='admin';return `<header class="top">
       <button class="btn header-signout-btn" onclick="signout()">Sair</button>
     </div></header><div class="wrap">${admin?adminView():clientView()}</div>`}
 
+
 function signout(){
   const accessName=session?.name||session?.email||'';
-  if(session?.role==='client'&&page!=='confirmation')cart=[];
+  const role=session?.role||'';
+
+  if(role==='client'&&page!=='confirmation')cart=[];
+
   session=null;
   selectedCat='';
   expandedClientProductId='';
   page='catalog';
   render();
-  setTimeout(()=>alert(`Obrigado por seu pedido,\naté breve, ${accessName}.`),50);
+
+  setTimeout(()=>{
+    if(role==='admin'){
+      alert(`Até breve ${accessName}!`);
+    }else{
+      alert(`Obrigado por seu pedido,\naté breve, ${accessName}.`);
+    }
+  },50);
 }
 function clientView(){
   const menus=[
@@ -1269,10 +1280,17 @@ function clientView(){
     ['cart',`Carrinho${cart.length?` (${cart.length})`:''}`],
     ['confirmation','Confirmação']
   ];
-  return `<nav class="nav">${menus.map(([k,v])=>`<button class="${page===k?'active':''}" onclick="page='${k}';render()">${v}</button>`).join('')}</nav>${page==='catalog'?catalogPage():page==='cart'?cartPage():confirmationPage()}`;
+
+  const nav=`<nav class="nav">${menus.map(([k,v])=>`<button class="${page===k?'active':''}" onclick="page='${k}';render()">${v}</button>`).join('')}</nav>`;
+
+  if(page==='leisure') return nav+leisureGuidePage();
+
+  return nav+(page==='catalog'
+    ?catalogPage()
+    :page==='cart'
+      ?cartPage()
+      :confirmationPage());
 }
-
-
 function selectClientCategory(cid){
   selectedCat=cid;
   expandedClientProductId='';
@@ -1300,13 +1318,15 @@ function clientCategoryChangeButton(){
   return `<button class="client-change-category-btn" onclick="changeClientCategory()">↔&nbsp; Trocar de categoria</button>`;
 }
 
+
 function catalogPage(){
   const cats=db.categories||[];
 
   if(!selectedCat){
     return `<section class="client-category-home">
       <div class="client-catalog-intro">
-        <h2>O que você precisa?</h2><div class="guest-today-notice">Prezado Hóspede para solicitações, para o dia de hoje, contate nossa portaria, para avaliarmos a possibilidade.</div>
+        <h2>O que você precisa?</h2>
+        <div class="guest-today-notice">Prezado Hóspede para solicitações, para o dia de hoje, contate nossa portaria, para avaliarmos a possibilidade.</div>
         <p class="muted">Escolha uma categoria para ver os produtos disponíveis.</p>
       </div>
 
@@ -1318,6 +1338,14 @@ function catalogPage(){
             <p>${esc(c.description||'')}</p>
           </div>
         </button>`).join('')}
+
+        <button class="client-category-card leisure-client-entry" onclick="page='leisure';render()">
+          <div class="client-category-icon">📍</div>
+          <div class="client-category-copy">
+            <h3>Lazer e Conveniências</h3>
+            <p>Turismo, alimentação, conveniências e espaços de eventos.</p>
+          </div>
+        </button>
       </div>
     </section>`;
   }
@@ -1348,8 +1376,6 @@ function catalogPage(){
     </div>
   </section>`;
 }
-
-
 function packageSavingsValue(product){
   if(!product||product.cat!=='pacotes')return 0;
 
