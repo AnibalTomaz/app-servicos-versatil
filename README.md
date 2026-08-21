@@ -613,3 +613,9 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Apps Script cria automaticamente a planilha `LEISURE` na primeira leitura, usando a estrutura inicial quando ainda estiver vazia.
 - Corrigido o horário mostrado em `Base pública atualizada`: toda publicação GitHub recebe um novo `publishedAt` e também atualiza `updatedAt`.
 - Imagens reais previamente verificadas foram preservadas; quando não havia uma foto específica confiável, foi usada imagem literal da especialidade quando possível ou o campo ficou administrável para substituição.
+
+## FIX v1.64 — atualização do PWA
+- Corrigido `APP_VERSION` dentro de `app.js`, que ainda estava marcado como `1.63`.
+- O botão `Atualizar agora` agora remove service workers e caches antigos antes de recarregar.
+- Novo cache-buster `1642` força o navegador/PWA a buscar `app.js` e `style.css` novamente.
+- A versão pública continua sendo `1.64`; não é necessário mudar o Apps Script novamente por causa deste fix.

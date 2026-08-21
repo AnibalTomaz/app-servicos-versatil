@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.63';
+const APP_VERSION='1.64';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -916,7 +916,32 @@ function showMandatoryUpdateNotice(serverVersion){
   m.innerHTML=`<div class="modal-card" style="max-width:520px"><h2>Atualização disponível</h2><p>Há uma versão mais recente do aplicativo.</p><div class="notice"><b>Instalada:</b> v${esc(APP_VERSION)}<br><b>Atual:</b> v${esc(serverVersion)}</div><button class="btn primary" style="width:100%" onclick="forceAppUpdate()">Atualizar agora</button></div>`;
   document.body.appendChild(m);
 }
-async function forceAppUpdate(){try{if('serviceWorker'in navigator){for(const r of await navigator.serviceWorker.getRegistrations())await r.update()}const u=new URL(location.href);u.searchParams.set('update',Date.now());location.replace(u.toString())}catch(e){location.reload()}}
+async function forceAppUpdate(){
+  try{
+    showVersatilLoading?.('Atualizando aplicativo…');
+
+    if('serviceWorker' in navigator){
+      const regs=await navigator.serviceWorker.getRegistrations();
+      for(const r of regs){
+        try{await r.update()}catch(e){}
+        try{await r.unregister()}catch(e){}
+      }
+    }
+
+    if('caches' in window){
+      const keys=await caches.keys();
+      await Promise.all(keys.map(k=>caches.delete(k)));
+    }
+
+    const u=new URL(location.href);
+    u.searchParams.set('update',Date.now());
+    location.replace(u.toString());
+  }catch(e){
+    const u=new URL(location.href);
+    u.searchParams.set('update',Date.now());
+    location.href=u.toString();
+  }
+}
 
 
 function ensureVersatilLoader(){
