@@ -619,3 +619,8 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - O botão `Atualizar agora` agora remove service workers e caches antigos antes de recarregar.
 - Novo cache-buster `1642` força o navegador/PWA a buscar `app.js` e `style.css` novamente.
 - A versão pública continua sendo `1.64`; não é necessário mudar o Apps Script novamente por causa deste fix.
+
+## FIX v1.64 — identificação visual da versão
+- Corrigidos dois textos hard-coded restantes em `app.js` que ainda exibiam `v1.63`.
+- O `APP_VERSION` já estava 1.64, mas o badge inferior e a mensagem de console ainda estavam fixos em 1.63.
+- Cache-buster atualizado para `1643` para forçar o carregamento do arquivo corrigido.

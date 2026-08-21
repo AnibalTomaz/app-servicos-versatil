@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-64-fix-update";
+const CACHE="versatil-v1-64-fix-badge";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1642',
-  './app.js?v=1642',
+  './style.css?v=1643',
+  './app.js?v=1643',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

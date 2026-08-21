@@ -1055,7 +1055,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.63';
+  badge.textContent='v1.64';
 }
 
 function isPwaStandalone(){
@@ -3509,7 +3509,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.63 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.64 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 
