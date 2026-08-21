@@ -640,3 +640,14 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Corrigida a classificação de itens com numeração repetida no texto original.
 - Admin possui inclusão, edição e exclusão da árvore completa.
 - A planilha `LEISURE` é recarregada uma única vez com a lista integral nesta versão; depois disso, alterações futuras do Admin são preservadas normalmente.
+
+## v1.66 — correções Lazer e Conveniências
+- Corrigido `Laser` para `Lazer` e removida a forma singular `Conveniência`; o título é `Lazer e Conveniências`.
+- Texto da categoria alterado para `Encontre tudo ao seu redor.`
+- `TURISMO`, `CONVENIÊNCIAS`, `ALIMENTAÇÃO` e `ESPAÇOS DE EVENTOS` aparecem em maiúsculas.
+- Restaurantes, Bares e Lanchonetes usam a mesma apresentação visual dos demais submenus.
+- Menus abertos em Lazer são preservados durante sincronizações automáticas, evitando fechamento espontâneo.
+- Distâncias existentes na lista original continuam sendo exibidas; quando não houver distância, aparece `Consulte no Google Maps`.
+- Quando o telefone não estiver cadastrado, aparece `(65) 3313-0050 (Sec. de Turismo)`.
+- Fotos externas que falharem passam automaticamente para uma imagem local relacionada à especialidade, garantindo que nunca fique um quadro vazio.
+- Mantidas as URLs reais já cadastradas para locais que possuem foto específica; o Admin pode substituí-las.
