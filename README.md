@@ -660,3 +660,9 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Quando não há telefone próprio, usa `(65) 3313-0050 (Sec. de Turismo)`.
 - Fotos externas continuam aceitas; se falharem ou estiverem vazias, o próprio HTML contém uma ilustração embutida relacionada à categoria. Portanto, não depende de pasta adicional para evitar imagem quebrada.
 - A base LEISURE é reconstruída uma única vez nesta versão para remover dados antigos corrompidos/duplicados.
+
+## FIX v1.67 — inicialização do aplicativo
+- Corrigido `Cannot access 'save' before initialization`.
+- A migração inicial de `Lazer e Conveniências` agora grava diretamente no `localStorage` antes da declaração de `save`, evitando erro de inicialização.
+- Nenhuma regra funcional da v1.67 foi alterada.
+- Cache-buster atualizado para `1671`.
