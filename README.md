@@ -651,3 +651,12 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Quando o telefone não estiver cadastrado, aparece `(65) 3313-0050 (Sec. de Turismo)`.
 - Fotos externas que falharem passam automaticamente para uma imagem local relacionada à especialidade, garantindo que nunca fique um quadro vazio.
 - Mantidas as URLs reais já cadastradas para locais que possuem foto específica; o Admin pode substituí-las.
+
+## v1.67 — reconstrução limpa de Lazer e Conveniências
+- Nome único corrigido: `Lazer e Conveniências`.
+- Removida a categoria duplicada dentro da própria página; a árvore começa diretamente por TURISMO, CONVENIÊNCIAS, ALIMENTAÇÃO e ESPAÇOS DE EVENTOS.
+- Cabeçalho da página em duas linhas: `Conheça Cuiabá e arredores.` e, abaixo em tom mais claro, `Encontre tudo ao seu redor.`
+- As distâncias fornecidas originalmente foram preservadas e as 48 entradas sem distância receberam distância aproximada pesquisada/estimada pela localização do ponto.
+- Quando não há telefone próprio, usa `(65) 3313-0050 (Sec. de Turismo)`.
+- Fotos externas continuam aceitas; se falharem ou estiverem vazias, o próprio HTML contém uma ilustração embutida relacionada à categoria. Portanto, não depende de pasta adicional para evitar imagem quebrada.
+- A base LEISURE é reconstruída uma única vez nesta versão para remover dados antigos corrompidos/duplicados.

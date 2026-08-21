@@ -1591,3 +1591,17 @@ button:active,.btn:active{transform:scale(.96);box-shadow:inset 0 2px 5px rgba(0
 }
 .leisure-place-img{display:block!important}
 .leisure-client-entry h3{white-space:normal}
+
+/* v1.67 — apresentação final de Lazer */
+.leisure-card-soft{color:#7b8c99;font-weight:400}
+.leisure-page-line1{margin-top:3px;color:#40596d;font-size:14px;font-weight:600}
+.leisure-page-line2{margin-top:2px;color:#84939e;font-size:13px;font-weight:400}
+.leisure-level-1>summary{
+  background:#edf5fb!important;color:#0f4c81!important;font-size:15px!important;font-weight:800!important;
+  text-transform:none!important
+}
+.leisure-level-2>summary,.leisure-level-3>summary,.leisure-level-4>summary,.leisure-level-5>summary{
+  background:#fff!important;color:#203040!important;font-size:14px!important;font-weight:700!important;
+  padding:13px 14px!important
+}
+.leisure-place-img{display:block!important;object-fit:cover!important}
