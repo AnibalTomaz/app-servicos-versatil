@@ -666,3 +666,9 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - A migração inicial de `Lazer e Conveniências` agora grava diretamente no `localStorage` antes da declaração de `save`, evitando erro de inicialização.
 - Nenhuma regra funcional da v1.67 foi alterada.
 - Cache-buster atualizado para `1671`.
+
+## FIX v1.67 — inicialização 2
+- Removida toda chamada a `save()` existente antes da inicialização de `const save`.
+- As migrações iniciais agora gravam diretamente em `localStorage`.
+- Verificação automática confirmou que não restou nenhuma chamada prematura a `save()`.
+- Cache-buster atualizado para `1672`.

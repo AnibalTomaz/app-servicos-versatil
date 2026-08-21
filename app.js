@@ -51,7 +51,7 @@ if(!Array.isArray(db.leisureGuide)||!db.leisureGuide.length)db.leisureGuide=stru
 const LEISURE_CLEAN_MIGRATION_V167='versatil_leisure_clean_v167';
 if(!localStorage.getItem(LEISURE_CLEAN_MIGRATION_V167)){
   db.leisureGuide=structuredClone(seed.leisureGuide||[]);
-  save();
+  localStorage.setItem(KEY,JSON.stringify(db));
   localStorage.setItem(LEISURE_CLEAN_MIGRATION_V167,'1');
 }
 
