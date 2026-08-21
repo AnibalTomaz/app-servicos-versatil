@@ -672,3 +672,30 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - As migrações iniciais agora gravam diretamente em `localStorage`.
 - Verificação automática confirmou que não restou nenhuma chamada prematura a `save()`.
 - Cache-buster atualizado para `1672`.
+
+## FIX DEFINITIVO v1.67 — save hoisted
+- `save` agora é uma declaração `function save()` em vez de `const save = ...`.
+- Isso elimina a zona temporal morta do JavaScript e impede o erro `Cannot access 'save' before initialization`, mesmo que uma migração chame `save()` durante o carregamento.
+- Removida a migração local antiga da v1.65.
+- Cache e service worker usam o identificador `1673`.
+- Marcador interno de build: `1673-save-hoisted`.
+
+## v1.68
+- 26 locais receberam fotos reais pesquisadas na internet; os demais continuam com imagem estável e link para pesquisa visual.
+- Corrigido o salto automático da página de Lazer durante sincronizações.
+- Ao abrir outra opção, ramos anteriores fecham automaticamente sem fechar os ancestrais necessários.
+- Botão `Enviar para Roteiro` em cada local.
+- Nova página `MEU ROTEIRO` e envio do roteiro por e-mail.
+- Nova página Admin `Roteiros`.
+- Relatórios incluem gráficos de roteiros e locais mais escolhidos.
+
+## v1.69 — limite diário invisível de Serviços
+- A Diarista fica sempre com quantidade 1 na seleção e no Carrinho.
+- O mesmo usuário não consegue inserir uma segunda Diarista no mesmo carrinho.
+- Todos os produtos da categoria `Serviços` compartilham um estoque invisível de 3 solicitações por data.
+- O limite é diário, não por período: manhã e tarde consomem o mesmo total de 3.
+- Pacotes, Enxoval e Locações não consomem esse estoque.
+- Quando as 3 solicitações do dia são alcançadas, os produtos de Serviços deixam a data/período indisponível automaticamente.
+- A disponibilidade considera a base pública, pedidos confirmados no aparelho e itens ainda no carrinho.
+- O Apps Script publica `serviceDailyCapacity` de forma agregada, sem dados pessoais.
+- Ao confirmar ou excluir um pedido, `data.json` é republicado para abrir/fechar a disponibilidade nos demais dispositivos.
