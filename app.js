@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.62';
+const APP_VERSION='1.63';
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -225,7 +225,7 @@ function packageScheduleFieldId(pid,index,type){
 function renderPackageUseRow(p,index,date=today()){
   const slots=availableSlotsForProductDate(p,date);
   return `<div class="package-use-row" data-package-use="${index}">
-    <div class="package-use-title">Utilização ${index+1}</div>
+    <div class="package-use-title">Utilização ${index+1}</div><button class="cat leisure-entry-card" onclick="page='leisure';render()"><div class="ico">📍</div><h3>Lazer e Conveniências</h3><p>Turismo, alimentação, conveniências e espaços de eventos</p></button>
     <div class="field">
       <label>Data</label>
       <input id="${packageScheduleFieldId(p.id,index,'date')}" type="date" min="${today()}" value="${date}" onchange="refreshPackageUseAvailability('${p.id}',${index})">
@@ -986,6 +986,37 @@ async function publishWithLoading(){
   });
 }
 
+
+const LEISURE_GUIDE={"Turismo": {"Parques": [{"name": "Parque Estadual Mãe Bonifácia", "desc": "Parque urbano de cerrado com trilhas, caminhada, equipamentos de ginástica e mirante.", "distance": "aprox. 2 km", "phone": "(65) 3623-4965", "img": "https://museucerrado.com.br/wp-content/uploads/2019/09/mae-bonif%C3%A1cia-1024x640.jpg"}], "Museus": [{"name": "Museu de Arte Sacra de Mato Grosso", "desc": "Museu instalado no antigo Seminário da Conceição, com acervo de arte sacra e memória histórica de Mato Grosso.", "distance": "a calcular a partir do Versátil", "phone": "(65) 99965-0319", "img": "https://stppprod01.blob.core.windows.net/pp-prod-container/2021/11/Museu-da-Arte-Sacra.jpg"}]}, "Conveniências": {"Shoppings": [{"name": "Shopping Estação Cuiabá", "desc": "Centro de compras, gastronomia, cinema, lazer e serviços na Avenida Miguel Sutil.", "distance": "aprox. 3,1 km", "phone": "(65) 93300-7001", "img": "https://noticiapositiva.com.br/wp-content/uploads/2023/07/shopping-estacao.jpeg"}], "Mercados": [{"name": "Mercado do Porto", "desc": "Mercado tradicional de Cuiabá com produtos regionais, alimentos, pescados, hortifrúti e gastronomia.", "distance": "aprox. 3 km", "phone": "a verificar", "img": "https://www.gov.br/sudeco/pt-br/assuntos/noticias/2020/mercado-do-porto-em-cuiaba-mt-recebe-r-1-5-milhao-para-sua-ampliacao-e-modernizacao/mercado-do-porto_velho.jpg"}]}, "Alimentação": {"Restaurantes": {"Massas": [{"name": "Massas", "desc": "Sugestões de restaurantes especializados em massas. A imagem ilustra diretamente a especialidade.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://img05.restaurantguru.com/r197-Diletto-Massas-dessert.jpg"}], "Peixes": [{"name": "Peixes", "desc": "Sugestões de restaurantes especializados em peixes e culinária regional.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://img02.restaurantguru.com/cbf3-interior-Restaurante-e-Peixaria-Okada-CPA-1.jpg"}], "Carnes": [{"name": "Nativas Grill Cuiabá", "desc": "Churrascaria e restaurante com rodízio, buffet e seleção de carnes.", "distance": "a calcular a partir do Versátil", "phone": "(65) 3621-4642", "img": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"}], "Orientais": [{"name": "Orientais", "desc": "Sugestões de culinária japonesa e oriental em Cuiabá.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80"}], "Rodízios": [{"name": "Nativas Grill Cuiabá", "desc": "Rodízio de carnes e buffet em Cuiabá.", "distance": "a calcular a partir do Versátil", "phone": "(65) 3621-4642", "img": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"}], "Regionais": [{"name": "Regionais", "desc": "Culinária cuiabana e mato-grossense, com pratos e sabores locais.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80"}], "Pizzarias": [{"name": "Pizzarias", "desc": "Pizzarias e casas com pizzas assadas em forno, priorizando imagens que mostrem o produto.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://www.primeiramesa.com.br/storage/restaurants/6093/gallery/152ce4b76c8af1ce1251c887e1d1a5a1.webp"}], "Buffets": [{"name": "Buffets", "desc": "Restaurantes em sistema de buffet e refeições variadas.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80"}], "Feijoadas": [{"name": "Feijoadas", "desc": "Casas e restaurantes com feijoada.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80"}]}, "Bares": {"Sport": [{"name": "Bares Sport", "desc": "Bares voltados a transmissões esportivas, bebidas e petiscos.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"}], "Happy hour / jantar": [{"name": "Restaurante e Bar Varadero", "desc": "Bar e restaurante no Quilombo, com risotos, carnes, peixes, caipirinhas e opções para happy hour.", "distance": "aprox. 1,4 km", "phone": "(65) 3027-5001", "img": "https://static.wixstatic.com/media/08952b_c0344eafc2624daca0a23a19bac10dc3~mv2.jpg/v1/fill/w_980%2Ch_651%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_auto/08952b_c0344eafc2624daca0a23a19bac10dc3~mv2.jpg"}], "Noite": [{"name": "Malcom Pub", "desc": "Pub e casa noturna em Cuiabá com música, bebidas e programação noturna.", "distance": "a calcular a partir do Versátil", "phone": "(65) 99902-0020", "img": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&q=80"}]}, "Lanchonetes": {"Hamburguerias": [{"name": "Hamburguerias", "desc": "Hambúrgueres artesanais; a imagem mostra diretamente o produto da especialidade.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://www.olharconceito.com.br/uploads/qualityburguer6.jpg"}], "Espetinhos": [{"name": "Espetinhos", "desc": "Espetos e churrasco. A imagem foi escolhida para representar literalmente a especialidade, evitando imagem abstrata.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://static.menustic.com/70832ms-albums-4.jpg"}], "Cachorro quente (baguncinha & prensados)": [{"name": "Cachorro quente / baguncinha", "desc": "Lanches prensados, cachorro-quente e x-bagunça.", "distance": "consulte o estabelecimento", "phone": "consulte o estabelecimento", "img": "https://images.unsplash.com/photo-1612392062631-94dd858cba88?auto=format&fit=crop&w=900&q=80"}]}}, "Espaços de eventos": {"Centros de convenções": [{"name": "Centro de Eventos do Pantanal", "desc": "Complexo de eventos e convenções para feiras, congressos, encontros corporativos e grandes eventos.", "distance": "a calcular a partir do Versátil", "phone": "(65) 3318-1600", "img": "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=900&q=80"}]}};
+
+function leisureMapUrl(name){
+  return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(name+', Cuiabá MT');
+}
+function leisurePlaceHtml(p){
+  return `<details class="leisure-place"><summary>${esc(p.name)}<span>›</span></summary>
+    <div class="leisure-place-body"><div class="leisure-place-grid">
+      <img class="leisure-place-img" src="${esc(p.img||'')}" alt="${esc(p.name)}" onerror="this.style.display='none'">
+      <div><div class="leisure-desc">${esc(p.desc||'')}</div>
+      <div class="leisure-meta"><b>Distância do Versátil:</b> ${esc(p.distance||'')}<br><b>Telefone:</b> ${esc(p.phone||'')}</div>
+      <a class="btn primary leisure-map-btn" href="${leisureMapUrl(p.name)}" target="_blank" rel="noopener">Abrir no Google Maps</a></div>
+    </div></div></details>`;
+}
+function leisureNodeHtml(label,node,depth=1){
+  const cls='leisure-level-'+Math.min(depth,3);
+  if(Array.isArray(node)){
+    return `<details class="${cls}"><summary>${esc(label)}<span>⌄</span></summary><div class="leisure-inside">${node.map(leisurePlaceHtml).join('')}</div></details>`;
+  }
+  return `<details class="${cls}"><summary>${esc(label)}<span>⌄</span></summary><div class="leisure-inside">${Object.entries(node).map(([k,v])=>leisureNodeHtml(k,v,depth+1)).join('')}</div></details>`;
+}
+function leisureGuidePage(){
+  return `<div class="card leisure-guide-card">
+    <div class="row between leisure-guide-head"><div><h2>Lazer e Conveniências</h2><div class="muted">Guia de consulta do hóspede</div></div>
+    <button class="btn" onclick="page='catalog';render()">Voltar ao catálogo</button></div>
+    <div class="notice leisure-notice"><b>Explore Cuiabá e região.</b><br>Abra as categorias até chegar ao local ou especialidade desejada. Esta área é somente para consulta.</div>
+    ${Object.entries(LEISURE_GUIDE).map(([k,v])=>leisureNodeHtml(k,v,1)).join('')}
+  </div>`;
+}
+
 function render(){
   document.getElementById('app').innerHTML=session?appView():loginView();
   renderVersionBadge();
@@ -999,7 +1030,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.62';
+  badge.textContent='v1.63';
 }
 
 function isPwaStandalone(){
@@ -3453,7 +3484,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.62 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.63 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

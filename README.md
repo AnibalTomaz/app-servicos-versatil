@@ -593,3 +593,10 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - A página Conta recebeu olho para mostrar/ocultar senha.
 - O salvamento da Conta foi refeito para persistir nome, senha, e-mail de recuperação e e-mails de pedidos, com confirmação visual.
 - Mantidas todas as regras da v1.61, inclusive antecedência mínima de 24h.
+
+## v1.63 — Lazer e Conveniências
+- Nova área somente de consulta no catálogo do cliente.
+- Navegação progressiva por Turismo, Conveniências, Alimentação e Espaços de eventos.
+- Alimentação usa quatro níveis: Alimentação → Restaurantes/Bares/Lanchonetes → especialidade/tipo → local.
+- Cada item final pode mostrar uma foto, descrição, distância, telefone e botão Google Maps.
+- Fotos foram priorizadas por fidelidade: fachada/local real quando localizada; quando a entrada é uma especialidade genérica, imagem literal do produto (ex.: espeto, pizza, peixe, hambúrguer), evitando imagens abstratas.
