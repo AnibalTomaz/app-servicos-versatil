@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "1.67",
-  "updatedAt": "2026-08-21T07:24:10.841Z",
-  "publishedAt": "2026-08-21T07:24:11.478Z",
+  "version": "1.69",
+  "updatedAt": "2026-08-21T16:26:18.642Z",
+  "publishedAt": "2026-08-21T16:26:20.430Z",
   "data": {
     "rooms": [
       {
@@ -3912,6 +3912,17 @@
         "mapQuery": "Chácara das Flores / Espaço Vitoria (Estrada da Guia / Sucuri), Cuiabá MT",
         "sort": 261
       }
-    ]
+    ],
+    "itineraryStats": {
+      "total": 0,
+      "today": 0,
+      "month": 0,
+      "byMonth": [],
+      "topPlaces": []
+    },
+    "serviceDailyCapacity": {
+      "2026-08-20": 1,
+      "2026-08-22": 1
+    }
   }
 }
