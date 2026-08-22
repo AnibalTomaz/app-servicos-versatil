@@ -775,3 +775,23 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Lixos e resíduos usa lixeira.
 - Acomodações preserva a ordem: Loft Solo, Loft Solteiro, Loft Casal, Studio Casal, Studio Triplo casal, Master, Apartamento de 2 quartos.
 - Acordeões revisados em todas as páginas: ao abrir um item, o item irmão anteriormente aberto fecha automaticamente.
+
+## v1.80
+- Os 8 ícones enviados pelo usuário foram embutidos diretamente no `app.js` como data URI; não dependem mais de pasta, cache ou caminho relativo.
+- Corrigido texto do Correio Versátil para não ficar em branco quando `data.json` trouxer configuração antiga ou vazia.
+- Frente do postal: foto lateral superior fixada em 2/3 da altura e foto inferior em 1/3.
+- Removida a caixa marrom da fachada; `Reserve já. • Starlis Home Versátil • www.starlis.com.br` aparece somente como texto no rodapé da foto.
+
+## v1.81
+- Ícones enviados pelo usuário mantêm exatamente a mesma imagem e o mesmo dimensionamento no PC e no celular.
+- Pacotes promocionais agora usam pacote colorido por família:
+  - Diarista: amarelo.
+  - Limpeza padrão: verde.
+  - Limpeza Express: laranja.
+  - Limpeza de WC: azul.
+- Demais pacotes promocionais mantêm pacote roxo para não confundir as quatro famílias definidas.
+
+## v1.82
+- Em Lazer e Conveniência, os dados de cada local usam uma grade invisível de duas colunas.
+- A primeira coluna contém o rótulo e a segunda contém a distância/valor, mantendo todas as distâncias alinhadas verticalmente.
+- A mesma estrutura é preservada no PC e no celular.

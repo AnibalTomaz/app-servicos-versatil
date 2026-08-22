@@ -2131,3 +2131,178 @@ body{
   .institution-item>summary{grid-template-columns:76px minmax(0,1fr) auto!important}
   .institution-detail>summary{grid-template-columns:46px minmax(0,1fr) auto!important}
 }
+
+/* v1.80 — ícones enviados pelo usuário embutidos diretamente no app */
+.institution-reference-icon{
+  width:88px!important;
+  height:64px!important;
+  min-width:88px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:visible!important;
+}
+.institution-reference-icon img{
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:84px!important;
+  max-height:60px!important;
+  object-fit:contain!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+.institution-reference-icon.master-ref img{
+  max-width:92px!important;
+  max-height:66px!important;
+}
+.institution-item>summary{
+  grid-template-columns:94px minmax(0,1fr) auto!important;
+}
+
+/* Postal frente: foto lateral superior ocupa exatamente 2/3 da altura. */
+.postal-versatil-stack{
+  display:grid!important;
+  grid-template-rows:2fr 1fr!important;
+  gap:7px!important;
+  min-height:0!important;
+}
+.postal-facade{
+  position:relative!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.postal-facade>img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  display:block!important;
+  background:#eee7d7!important;
+}
+.postal-pool-photo{
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.postal-pool-photo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  display:block!important;
+}
+.postal-reserve-overlay{display:none!important}
+.postal-facade-footer{
+  position:absolute;
+  left:7px;
+  right:7px;
+  bottom:5px;
+  z-index:3;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive!important;
+  font-size:11px!important;
+  line-height:1.2!important;
+  text-align:center!important;
+  text-shadow:0 1px 3px #000,0 0 5px rgba(0,0,0,.9);
+}
+.postal-facade-footer b{font-size:13px!important}
+@media(max-width:700px){
+  .institution-reference-icon{width:74px!important;height:56px!important;min-width:74px!important}
+  .institution-reference-icon img{max-width:70px!important;max-height:52px!important}
+  .institution-reference-icon.master-ref img{max-width:77px!important;max-height:56px!important}
+  .institution-item>summary{grid-template-columns:78px minmax(0,1fr) auto!important}
+  .postal-facade-footer{font-size:9px!important;left:4px;right:4px;bottom:3px}
+  .postal-facade-footer b{font-size:10px!important}
+}
+
+/* v1.81 — mesmos ícones no PC e celular + cores dos pacotes */
+.institution-reference-icon{
+  width:88px!important;
+  height:64px!important;
+  min-width:88px!important;
+}
+.institution-reference-icon img{
+  max-width:84px!important;
+  max-height:60px!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+.institution-reference-icon.master-ref img{
+  max-width:92px!important;
+  max-height:66px!important;
+}
+.institution-item>summary{
+  grid-template-columns:94px minmax(0,1fr) auto!important;
+}
+.package-icon-v181{
+  width:42px;
+  height:42px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 42px;
+}
+.package-icon-v181 svg{
+  width:40px;
+  height:40px;
+  display:block;
+}
+/* Neutraliza os redimensionamentos antigos no celular: mesma arte e mesmo tamanho. */
+@media(max-width:700px){
+  .institution-reference-icon{
+    width:88px!important;
+    height:64px!important;
+    min-width:88px!important;
+  }
+  .institution-reference-icon img{
+    max-width:84px!important;
+    max-height:60px!important;
+  }
+  .institution-reference-icon.master-ref img{
+    max-width:92px!important;
+    max-height:66px!important;
+  }
+  .institution-item>summary{
+    grid-template-columns:94px minmax(0,1fr) auto!important;
+  }
+  .package-icon-v181{
+    width:42px!important;
+    height:42px!important;
+    flex-basis:42px!important;
+  }
+  .package-icon-v181 svg{
+    width:40px!important;
+    height:40px!important;
+  }
+}
+
+/* v1.82 — Lazer e Conveniência: linhas invisíveis em duas colunas */
+.leisure-meta-v182{
+  display:grid!important;
+  gap:4px!important;
+  width:100%!important;
+}
+.leisure-meta-row-v182{
+  display:grid!important;
+  grid-template-columns:minmax(150px,42%) minmax(0,58%)!important;
+  align-items:start!important;
+  column-gap:10px!important;
+  width:100%!important;
+}
+.leisure-meta-label-v182,
+.leisure-meta-value-v182{
+  min-width:0!important;
+}
+.leisure-meta-value-v182{
+  text-align:left!important;
+}
+/* A estrutura permanece idêntica no celular para manter as distâncias alinhadas verticalmente. */
+@media(max-width:700px){
+  .leisure-meta-row-v182{
+    grid-template-columns:minmax(122px,42%) minmax(0,58%)!important;
+    column-gap:7px!important;
+  }
+}

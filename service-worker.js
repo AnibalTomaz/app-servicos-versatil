@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-79-reference-icons-exclusive-details";
+const CACHE="versatil-v1-82-leisure-distance-columns";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1790',
-  './app.js?v=1790',
+  './style.css?v=1820',
+  './app.js?v=1820',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
