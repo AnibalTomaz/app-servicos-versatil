@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-72-fix-async-runtime";
+const CACHE="versatil-v1-74-header-normas";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1720',
-  './app.js?v=1720',
+  './style.css?v=1740',
+  './app.js?v=1740',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

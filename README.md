@@ -722,3 +722,20 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Corrigido erro de inicialização `Uncaught ReferenceError: async is not defined`.
 - Removido token `async` isolado antes da função `sendPostalV170`.
 - Cache/PWA atualizado para forçar carregamento do JavaScript corrigido.
+
+## v1.73
+- Conheça o Versátil: novos ícones de camas, mesa lateral, sofá pastel, Smart TV, estacionamento, piscina, academia, churrasqueira, loja 24h, ferro de passar, elevador e sinais de proibição sobre carro/cachorro.
+- Título Acomodações com cama de casal; Áreas comuns com sofá pastel; Morador mensalista com caneta.
+- Lei do silêncio adicionada em Normas gerais.
+- Lazer e Conveniência: categorias/subcategorias em ordem alfabética e locais ordenados por proximidade.
+- Feijoadas: panela de barro; Sport: bola de futebol americano; Noite: bola de espelhos.
+- Restaurante Choppão incluído em Regionais com foto, distância, telefone, Maps e Roteiro.
+- Botões Maps/Roteiro alinhados e com o mesmo tamanho.
+- Postal: fotos fixas do Parque das Águas, fachada inteira do Versátil e piscina do Versátil; mesmas fotos também no e-mail.
+
+## v1.74
+- Adicionada norma `Check-in / Check-out` com ícone de pessoa dando um passo e texto em três linhas.
+- Cabeçalho do celular reorganizado em duas linhas compactas.
+- Linha 1: logo/nome do APP à esquerda e Sair à direita.
+- Linha 2: boas-vindas + texto de atualização da base à esquerda e botão `Normas gerais` à direita.
+- O botão `Normas gerais` abre uma página dedicada com todas as normas.

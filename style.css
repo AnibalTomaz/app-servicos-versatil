@@ -1657,3 +1657,53 @@ button:active,.btn:active{transform:scale(.96);box-shadow:inset 0 2px 5px rgba(0
 .postal-page-intro,.postal-back,.postal-back *,.postal-front .postal-reserve-overlay,.postal-tourism-caption{font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive!important}
 .postal-card.sending{animation-duration:2.07s!important}
 .postal-sent-screen{min-height:55vh;display:grid;place-items:center}.postal-sent-popup{background:#fff;border:1px solid #d8e3eb;border-radius:16px;padding:30px 42px;text-align:center;box-shadow:0 18px 50px #0002}.postal-sent-popup h2{color:#10578f}
+
+/* v1.73 ajustes visuais */
+.leisure-place-actions{display:grid!important;grid-template-columns:repeat(2,minmax(150px,1fr))!important;gap:8px!important}
+.leisure-place-actions>*{width:100%!important;min-width:0!important;height:42px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.leisure-group-icon svg{display:block!important}
+.institution-category-icon{font-size:28px;width:42px;text-align:center}
+.institution-item>summary{grid-template-columns:88px 1fr auto!important;min-height:66px}
+.institution-item-ico-svg{display:flex;width:82px;height:52px;align-items:center;justify-content:center;overflow:visible}
+.institution-item-ico-svg svg{max-width:80px;max-height:50px;display:block}
+.double-single-bed,.mixed-bed-icons{width:82px;height:52px;display:flex;align-items:center;justify-content:center;gap:1px;overflow:visible}
+.double-single-bed svg{width:40px;height:36px}.mixed-bed-icons svg:first-child{width:51px;height:38px}.mixed-bed-icons svg:last-child{width:30px;height:35px}
+.institution-item-ico{width:82px;font-size:28px;text-align:center;white-space:nowrap;overflow:visible}
+.institution-item-title{min-width:0}
+.postal-facade img{object-fit:contain!important;background:#eee7d7}
+.postal-pool-photo{min-height:0;overflow:hidden}.postal-pool-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.postal-versatil-stack{grid-template-rows:2fr 1fr!important}
+.postal-tourism img{object-fit:cover!important}
+@media(max-width:780px){.leisure-place-actions{grid-template-columns:1fr!important}.institution-item>summary{grid-template-columns:74px 1fr auto!important}.institution-item-ico-svg,.institution-item-ico,.double-single-bed,.mixed-bed-icons{width:68px}}
+
+/* v1.74 — cabeçalho móvel compacto e atalho Normas gerais */
+.top-v174{display:block!important;padding:9px 12px!important}
+.header-line-one,.header-line-two{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px}
+.header-line-two{margin-top:6px}
+.brand-v174{min-width:0}
+.brand-v174 img{width:46px!important;height:46px!important;border-radius:0!important;flex:0 0 46px}
+.brand-copy{min-width:0}
+.brand-copy h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:17px!important}
+.brand-copy small{display:block;margin-top:2px;font-size:11px}
+.header-line-one-actions,.header-secondary-actions{display:flex;align-items:center;justify-content:flex-end;gap:7px}
+.header-line-one-actions>.btn,.header-line-one-actions button{height:34px;min-height:34px;padding:6px 10px;font-size:11px}
+.header-user-block{min-width:0}
+.app-welcome-v174{width:auto!important;order:initial!important;text-align:left!important;white-space:normal!important;margin:0!important;font-size:12px!important;line-height:1.15!important}
+.central-status-text-v174{font-size:9.5px;line-height:1.15;color:#d4e7f4;margin-top:3px;white-space:normal}
+.header-normas-btn{height:34px;border:1px solid #9bc8e7;background:#dff2ff;color:#c62828;font-weight:800;border-radius:8px;padding:6px 10px;font-size:11px;white-space:nowrap}
+.normas-page-list{margin-top:10px}.normas-direct-item{background:#fff}
+@media(max-width:600px){
+  .top-v174{position:sticky!important;padding:7px 8px!important}
+  .header-line-one,.header-line-two{grid-template-columns:minmax(0,1fr) auto!important;gap:6px!important}
+  .header-line-two{margin-top:4px!important}
+  .brand-v174{gap:6px!important}
+  .brand-v174 img{width:38px!important;height:38px!important;flex-basis:38px!important;border-width:1px!important}
+  .brand-copy h1{font-size:12px!important;letter-spacing:-.15px}
+  .brand-copy small{font-size:9px!important;line-height:1.1}
+  .header-line-one-actions{gap:4px!important}
+  .header-line-one-actions>.btn,.header-line-one-actions button{height:29px!important;min-height:29px!important;padding:4px 7px!important;font-size:10px!important;border-radius:7px!important}
+  .app-welcome-v174{font-size:10px!important;line-height:1.08!important}
+  .central-status-text-v174{font-size:8px!important;margin-top:2px!important}
+  .header-normas-btn{height:29px!important;padding:4px 7px!important;font-size:9.5px!important;border-radius:7px!important}
+  .header-secondary-actions .central-status{font-size:8px!important;padding:4px 6px!important;min-height:26px!important}
+}
