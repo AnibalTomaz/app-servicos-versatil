@@ -753,3 +753,17 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Botão `Normas gerais` aumentado em 30%.
 - Animação a cada 3 segundos: laranja com letras azul-claro, retornando ao estado original.
 - Ao clicar em `Normas gerais`, a animação é encerrada durante o acesso atual.
+
+## v1.77
+- Corrigida animação do botão `Normas gerais`: as cores anteriores estavam com `!important`, impedindo os keyframes.
+- A cada 3 segundos o botão fica laranja com texto azul-claro e volta ao padrão.
+- Após o primeiro clique no botão, a animação permanece desligada durante o acesso atual.
+- Corrigido o posicionamento do scroll no celular para que a primeira fileira de botões não fique sob o cabeçalho sticky.
+- O app mede a altura real do cabeçalho e aplica `scroll-padding` dinamicamente.
+
+## v1.78
+- Ícones de Acomodações redesenhados em SVG com base apenas nas referências fornecidas pelo usuário.
+- Solteiro: cama estreita com um travesseiro.
+- Casal: cama larga com dois travesseiros.
+- Master: mesmo modelo de casal, exibido maior.
+- Nenhuma imagem nova foi gerada.
