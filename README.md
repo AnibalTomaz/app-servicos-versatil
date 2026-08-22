@@ -767,3 +767,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Casal: cama larga com dois travesseiros.
 - Master: mesmo modelo de casal, exibido maior.
 - Nenhuma imagem nova foi gerada.
+
+## v1.79
+- Ícones enviados pelo usuário incorporados diretamente ao aplicativo (sem geração de imagem).
+- Check-in/Check-out, proibição de visitantes, proibição de pets e todos os ícones de Acomodações usam os arquivos fornecidos.
+- Áreas comuns usa o mesmo sofá pastel em desktop e celular.
+- Lixos e resíduos usa lixeira.
+- Acomodações preserva a ordem: Loft Solo, Loft Solteiro, Loft Casal, Studio Casal, Studio Triplo casal, Master, Apartamento de 2 quartos.
+- Acordeões revisados em todas as páginas: ao abrir um item, o item irmão anteriormente aberto fecha automaticamente.

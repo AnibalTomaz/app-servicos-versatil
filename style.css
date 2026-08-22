@@ -2107,3 +2107,27 @@ body{
   .mixed-bed-icons svg:first-child{width:49px!important;height:48px!important}
   .mixed-bed-icons svg:last-child{width:28px!important;height:44px!important}
 }
+
+/* v1.79 — ícones de referência fornecidos pelo usuário e acordeões exclusivos */
+.institution-category-svg{width:48px;height:42px;display:flex;align-items:center;justify-content:center;overflow:visible}
+.institution-category-svg svg{width:46px;height:40px;display:block}
+.accommodation-title-bed svg{width:50px;height:42px}
+.institution-reference-icon{width:86px;height:60px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:transparent}
+.institution-reference-icon img{display:block;max-width:82px;max-height:58px;width:auto;height:auto;object-fit:contain;background:transparent}
+.institution-reference-icon.master-ref img{max-width:88px;max-height:62px}
+.institution-reference-icon.rule-ref{width:70px;height:54px}
+.institution-reference-icon.rule-ref img{max-width:62px;max-height:50px}
+.trash-bin-v179{width:70px!important;height:52px!important}
+.trash-bin-v179 svg{width:48px!important;height:48px!important}
+.institution-item>summary{grid-template-columns:92px minmax(0,1fr) auto!important;align-items:center!important}
+.institution-detail>summary{grid-template-columns:52px minmax(0,1fr) auto!important;align-items:center!important}
+.institution-item-title{min-width:0!important;overflow-wrap:anywhere}
+@media(max-width:700px){
+  .institution-reference-icon{width:72px;height:52px}
+  .institution-reference-icon img{max-width:68px;max-height:50px}
+  .institution-reference-icon.master-ref img{max-width:74px;max-height:54px}
+  .institution-reference-icon.rule-ref{width:62px;height:48px}
+  .institution-reference-icon.rule-ref img{max-width:56px;max-height:44px}
+  .institution-item>summary{grid-template-columns:76px minmax(0,1fr) auto!important}
+  .institution-detail>summary{grid-template-columns:46px minmax(0,1fr) auto!important}
+}

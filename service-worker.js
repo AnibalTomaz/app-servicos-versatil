@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-78-accommodation-icons";
+const CACHE="versatil-v1-79-reference-icons-exclusive-details";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1780',
-  './app.js?v=1780',
+  './style.css?v=1790',
+  './app.js?v=1790',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
