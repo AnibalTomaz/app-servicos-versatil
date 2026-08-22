@@ -795,3 +795,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Em Lazer e Conveniência, os dados de cada local usam uma grade invisível de duas colunas.
 - A primeira coluna contém o rótulo e a segunda contém a distância/valor, mantendo todas as distâncias alinhadas verticalmente.
 - A mesma estrutura é preservada no PC e no celular.
+
+## v1.83
+- Postal: fachada substituída pela imagem vertical fornecida pelo usuário e exibida inteira.
+- Conheça o Versátil: Acomodações usa a imagem da pessoa na cama e Áreas comuns usa o sofá amarelo fornecido.
+- Lazer e Conveniência: Alimentação usa a imagem do prato/talheres fornecida.
+- Ícones de categorias ficaram maiores; subcategorias menores, com padronização idêntica no PC e celular.
+- O ícone continua visível junto ao título ao entrar na categoria.
+- O pedido menciona uma quinta imagem para Conveniência, mas somente quatro imagens vieram anexadas nesta mensagem; o ícone atual de Conveniência foi preservado nesta versão.

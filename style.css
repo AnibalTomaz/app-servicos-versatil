@@ -2306,3 +2306,126 @@ body{
     column-gap:7px!important;
   }
 }
+
+/* v1.83 — ícones de categoria padronizados e postal vertical */
+.category-image-icon-v183{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:58px!important;
+  height:58px!important;
+  min-width:58px!important;
+  background:#fff!important;
+  border-radius:8px!important;
+  overflow:hidden!important;
+}
+.category-image-icon-v183 img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  background:#fff!important;
+}
+.leisure-level-1 .leisure-group-icon{
+  width:58px!important;
+  min-width:58px!important;
+  height:58px!important;
+}
+.leisure-level-1 .leisure-group-icon>svg,
+.leisure-level-1 .leisure-group-icon>.category-image-icon-v183{
+  width:54px!important;
+  height:54px!important;
+}
+.leisure-level-2 .leisure-group-icon,
+.leisure-level-3 .leisure-group-icon,
+.leisure-level-4 .leisure-group-icon,
+.leisure-level-5 .leisure-group-icon{
+  width:40px!important;
+  min-width:40px!important;
+  height:40px!important;
+}
+.leisure-level-2 .leisure-group-icon svg,
+.leisure-level-3 .leisure-group-icon svg,
+.leisure-level-4 .leisure-group-icon svg,
+.leisure-level-5 .leisure-group-icon svg{
+  width:36px!important;
+  height:36px!important;
+}
+.institution-detail>summary .category-image-icon-v183,
+.institution-detail>summary .institution-category-icon,
+.institution-detail>summary .institution-category-svg{
+  width:58px!important;
+  min-width:58px!important;
+  height:58px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.institution-item>summary .institution-reference-icon,
+.institution-item>summary .institution-item-ico-svg,
+.institution-item>summary .institution-item-ico{
+  width:44px!important;
+  min-width:44px!important;
+  height:44px!important;
+}
+.institution-item>summary{
+  grid-template-columns:52px minmax(0,1fr) auto!important;
+}
+.catalog-category-icon-v183.large{
+  display:inline-flex;
+  width:54px;
+  height:54px;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+}
+.catalog-category-icon-v183.small{
+  display:inline-flex;
+  width:38px;
+  height:38px;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+}
+/* A fachada enviada é vertical; mostrar inteira, sem corte horizontal. */
+.postal-facade>img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:#d94810!important;
+}
+/* Mesmos tamanhos de ícone no PC e celular. */
+@media(max-width:700px){
+  .category-image-icon-v183{width:58px!important;height:58px!important;min-width:58px!important}
+  .leisure-level-1 .leisure-group-icon{width:58px!important;min-width:58px!important;height:58px!important}
+  .leisure-level-2 .leisure-group-icon,
+  .leisure-level-3 .leisure-group-icon,
+  .leisure-level-4 .leisure-group-icon,
+  .leisure-level-5 .leisure-group-icon{width:40px!important;min-width:40px!important;height:40px!important}
+  .institution-detail>summary .category-image-icon-v183,
+  .institution-detail>summary .institution-category-icon,
+  .institution-detail>summary .institution-category-svg{width:58px!important;min-width:58px!important;height:58px!important}
+  .institution-item>summary{grid-template-columns:52px minmax(0,1fr) auto!important}
+}
+
+/* v1.84 — título da página Meu roteiro */
+.itinerary-title-v184{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  text-transform:none!important;
+}
+.itinerary-title-icon-v184{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:34px!important;
+  height:34px!important;
+  flex:0 0 34px!important;
+}
+.itinerary-title-icon-v184 svg{
+  width:32px!important;
+  height:32px!important;
+  display:block!important;
+}
