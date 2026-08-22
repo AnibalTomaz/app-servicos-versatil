@@ -717,3 +717,8 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 
 ## v1.71
 Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; novas categorias Teatros e Hospitais e UPA.
+
+## v1.72 — correção de carregamento
+- Corrigido erro de inicialização `Uncaught ReferenceError: async is not defined`.
+- Removido token `async` isolado antes da função `sendPostalV170`.
+- Cache/PWA atualizado para forçar carregamento do JavaScript corrigido.
