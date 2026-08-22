@@ -1,7 +1,10 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.69';
-const APP_BUILD='1690-service-daily-capacity';
+const APP_VERSION='1.70';
+const APP_BUILD='1700-approved-fake-postal';
+const DEFAULT_VERSATIL_GUIDE=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama king e 1 cama de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"master","name":"Master","description":"1 cama King","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"Apartamento com dois quartos","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"sofa","type":"gallery","items":[{"id":"recepcao","name":"Recepção interna","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"sala-reuniao","name":"Sala de reunião","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"cowork","name":"Espaço cowork","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"lounge","name":"Lounge","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"tv","name":"Sala de TV","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"garagem","name":"Garagem","icon":"car","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"lazer-interno","name":"Lazer","icon":"gym","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"piscina","name":"Piscina","description":"","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/9d32d0c9.jpg?impolicy=resizecrop&ra=fill&rh=575&rw=575","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"churrasqueira","name":"Churrasqueira","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"comodidades","name":"Comodidades","icon":"bell","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":""},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":""},{"id":"c3","name":"Wifi","description":""},{"id":"c4","name":"Dois elevadores panorâmicos","description":""},{"id":"c5","name":"Loja de conveniência no local","description":""},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":""},{"id":"c7","name":"Passadoria no 4º andar","description":""},{"id":"c8","name":"Voltagem 110V","description":""},{"id":"c9","name":"Áreas externas para fumantes","description":""}]},{"id":"normas","name":"Normas gerais","icon":"book","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":""},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":""},{"id":"n3","name":"Uma vaga de garagem por reserva","description":""},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":""},{"id":"n5","name":"Não aceitamos pets","description":""},{"id":"n6","name":"Uso de churrasqueira e sala de reunião apenas por locação","description":""}]},{"id":"mensalista","name":"Morador mensalista","icon":"pen","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300"}]}];
+const DEFAULT_STARLIS_GUIDE=[{"id":"delmond","name":"Delmond Hotel","image":"https://delmond.com.br/wp-content/uploads/2021/12/fachada-frente-hotel-delmond-19.jpg","description":"Sofisticação, acomodações bem equipadas, gastronomia e estrutura de lazer e eventos.","map":"Delmond Hotel Cuiabá","reserve":"https://www.starlis.com.br"},{"id":"delcas","name":"Delcas Hotel","image":"https://delcashotel.com.br/wp-content/uploads/2025/11/delcas-fachada-print-1.png","description":"Localização, lazer, conforto e gastronomia para viagens a negócios ou lazer.","map":"Delcas Hotel Cuiabá","reserve":"https://www.starlis.com.br"},{"id":"hotel365","name":"Hotel 365","image":"https://hotel365.com.br/wp-content/uploads/2025/11/fachada-at.jpg","description":"Hospedagem funcional com conforto, praticidade e boa relação custo-benefício.","map":"Hotel 365 Cuiabá","reserve":"https://www.starlis.com.br"},{"id":"versatil","name":"Versátil","image":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","description":"Esperamos que esteja gostando de estar conosco. Qualquer coisa basta avisar a portaria e faremos o possível para atendê-lo","map":"Starlis Home Versátil Cuiabá","reserve":""}];
+const DEFAULT_POSTAL_CONFIG={"address":"Rua Presidente Afonso Pena, 282 – Quilombo – Cuiabá – CEP: 78.043-505","phone":"(65) 2121 3300","site":"https://www.starlis.com.br","message":"Caro amigo(a) estou em Cuiabá, ficando no Versátil e estou adorando o lugar. Envio este postal pois lembrei de você durante minha viagem. Espero que estejas bem, mande notícias!","couponText":"Use meu cupom de desconto e ganhe um up-grade na sua reserva","frontFaçade":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","frontRoom":"https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","frontPool":"https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/9d32d0c9.jpg?impolicy=resizecrop&ra=fill&rh=575&rw=575"};
 const CENTRAL_SYNC_TIMEOUT_MS=12000;
 let centralDataStatus='carregando';
 let centralLastSyncAt=0;
@@ -64,6 +67,25 @@ let pwaInstallReady=false;
 function save(){
   localStorage.setItem(KEY,JSON.stringify(db));
 }
+
+if(!Array.isArray(db.versatilGuide)||!db.versatilGuide.length)db.versatilGuide=structuredClone(DEFAULT_VERSATIL_GUIDE);
+if(!Array.isArray(db.starlisGuide)||!db.starlisGuide.length)db.starlisGuide=structuredClone(DEFAULT_STARLIS_GUIDE);
+if(!db.postalConfig||typeof db.postalConfig!=='object')db.postalConfig=structuredClone(DEFAULT_POSTAL_CONFIG);
+save();
+
+const SESSION_ACTIVITY_KEY='versatil_session_activity';
+let sessionActivity={order:false,route:false};
+try{sessionActivity=JSON.parse(sessionStorage.getItem(SESSION_ACTIVITY_KEY)||'{"order":false,"route":false}')||{order:false,route:false}}catch(e){}
+function setSessionActivity(type){
+  if(type==='order')sessionActivity.order=true;
+  if(type==='route')sessionActivity.route=true;
+  sessionStorage.setItem(SESSION_ACTIVITY_KEY,JSON.stringify(sessionActivity));
+}
+function resetSessionActivity(){
+  sessionActivity={order:false,route:false};
+  sessionStorage.removeItem(SESSION_ACTIVITY_KEY);
+}
+
 const LEISURE_RESEARCHED_PHOTOS_V168={"Parque Estadual Mãe Bonifácia":"https://photos.wikimapia.org/p/00/00/81/39/19_big.jpg","Parque das Águas \"Seo Fiote\"":"https://www.midianews.com.br/storage/webdisco/2017/01/02/886x590/7f1ab3a4177923599e0cf1ff7835e5a8.jpg","Parque Tia Nair":"https://str1.lnmimg.net/img/2025/08/14/1f0cefb5a82e11c2b291942077129efc.webp","Museu de História Natural de Mato Grosso (Casa Dom Aquino)":"https://www.secel.mt.gov.br/documents/362998/14597620/Museu%2Bde%2Bhist%C3%B3ria%2Bnatural%2B-%2Bfrente%2Brio%2Bcuiab%C3%A1.jpg/70cbe33e-a4ef-3ae6-70c5-e996e17a8d4c?t=1650471365613","Museu de Arte Sacra de Mato Grosso":"https://stppprod01.blob.core.windows.net/pp-prod-container/2021/11/Museu-da-Arte-Sacra.jpg","Museu do Morro da Caixa d'Água Velha":"https://ihgmt.nyc3.digitaloceanspaces.com/storage/webdisco/2021/08/04/800x600/4960fb9811a9e6e2dc8ba0319d14623d.jpg","Museu da Imagem e do Som de Cuiabá (MISC)":"https://www.cuiaba.mt.gov.br/storage/webdisco/2025/02/27/original/2025-02-27-17-43-088a9399-67c0dc6c328fc.jpg","Centro Geodésico da América do Sul":"https://www.folhamax.com/storage/webdisco/2022/09/20/810x519/47ed7c1ec8e843192b65d1a00e13365b.jpg","Orla do Porto":"https://www.midianews.com.br/storage/webdisco/2017/02/16/886x590/7828c9bf8660987ec3b80ccb8c083e31.jpg","Aquário Encantado e Rio Salobra":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","Lagoa das Araras":"https://upack.tur.br/wp-content/uploads/2021/06/upack-nobres-lagoa-das-araras.jpg","Cachoeira Véu de Noiva":"https://www.vidadeturista.com/wp-content/uploads/2020/11/parque-nacional-chapada-dos-guimaraes-mt-1.jpg","Rodovia Transpantaneira":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","Mercado do Porto":"https://www.gov.br/sudeco/pt-br/assuntos/noticias/2020/mercado-do-porto-em-cuiaba-mt-recebe-r-1-5-milhao-para-sua-ampliacao-e-modernizacao/mercado-do-porto_velho.jpg","Shopping Estação Cuiabá":"https://noticiapositiva.com.br/wp-content/uploads/2023/07/shopping-estacao.jpeg","Goiabeiras Shopping":"https://www.midianews.com.br/storage/webdisco/2022/06/07/886x590/58197bde5b422b24e3e4ab575aa5f167.jpg","Pantanal Shopping":"https://www.imagens.cuiaba.mt.gov.br/1_shopping_pantanal.jpg","Nativas Grill Cuiabá (Jardim Aclimação / Miguel Sutil)":"https://www.midianews.com.br/storage/webdisco/2025/07/29/886x590/cd39a7884dda40e0f7307e076db5b205.jpg","Lélis Peixaria (Bairro Goiabeiras)":"https://veja.abril.com.br/wp-content/uploads/2017/05/dsc9264.jpg?quality=70&strip=info&w=919","Malcom Pub (Av. Miguel Sutil / Santa Rosa)":"https://www.folhamax.com/storage/webdisco/2024/12/01/810x519/b2373c065d27b26cd0e853f25ea15014.jpg","Musiva (Av. Beira Rio)":"https://photos.wikimapia.org/p/00/04/11/98/04_big.jpg","Due Ladroni":"https://www.olharconceito.com.br/imgsite/noticias/016768/amp-_RFP9776.jpg","Olga Cozinha Italiana":"https://www.tvmaisnews.com.br/imgsite/noticias/amp-WhatsApp-Image-2023-10-09-at-08.31.02.jpeg","Outback Steakhouse (Shopping Estação Cuiabá)":"https://www.rdnews.com.br/storage/webdisco/2019/02/06/1024x656/e0b8d8912dc0b250e2339d191acedfb5.jpg","Bar do Jarbas (Praça Popular / Bairro Popular)":"https://www.rdnews.com.br/storage/webdisco/2018/01/07/1024x656/d6a2f1e91c1af45fabafc1165cb2e213.jpg","Bar do Jarbas (Praça Popular)":"https://www.rdnews.com.br/storage/webdisco/2018/01/07/1024x656/d6a2f1e91c1af45fabafc1165cb2e213.jpg"};
 const LEISURE_PHOTO_MIGRATION_V168='versatil_leisure_photos_v168';
 if(!localStorage.getItem(LEISURE_PHOTO_MIGRATION_V168)){
@@ -256,7 +278,7 @@ function packageScheduleFieldId(pid,index,type){
 function renderPackageUseRow(p,index,date=today()){
   const slots=availableSlotsForProductDate(p,date);
   return `<div class="package-use-row" data-package-use="${index}">
-    <div class="package-use-title">Utilização ${index+1}</div><button class="cat leisure-entry-card" onclick="page='leisure';render()"><div class="ico">📍</div><h3>Lazer e Conveniências</h3><p>Conheça Cuiabá e arredores.<br><span class="leisure-card-soft">Encontre tudo ao seu redor.</span></p></button>
+    <div class="package-use-title">Utilização ${index+1}</div><button class="cat leisure-entry-card" onclick="page='leisure';render()"><div class="ico">📍</div><h3>Lazer e Conveniência</h3><p>Conheça Cuiabá e arredores.<br><span class="leisure-card-soft">Encontre tudo ao seu redor.</span></p></button>
     <div class="field">
       <label>Data</label>
       <input id="${packageScheduleFieldId(p.id,index,'date')}" type="date" min="${today()}" value="${date}" onchange="refreshPackageUseAvailability('${p.id}',${index})">
@@ -873,7 +895,7 @@ async function centralRead(action,params={}){
   return payload;
 }
 
-function publicCentralSnapshot(){return {rooms:db.rooms||[],categories:db.categories||[],products:db.products||[],availabilityClosures:db.availabilityClosures||[],leisureGuide:db.leisureGuide||[]}}
+function publicCentralSnapshot(){return {rooms:db.rooms||[],categories:db.categories||[],products:db.products||[],availabilityClosures:db.availabilityClosures||[],leisureGuide:db.leisureGuide||[],versatilGuide:db.versatilGuide||[],starlisGuide:db.starlisGuide||[],postalConfig:db.postalConfig||{}}}
 
 
 function setPendingPublicPublication(){
@@ -927,6 +949,9 @@ async function loadCentralData(options={}){
     if(Array.isArray(c.leisureGuide)&&c.leisureGuide.length)db.leisureGuide=c.leisureGuide;
     if(c.itineraryStats&&typeof c.itineraryStats==='object')db.itineraryStats=c.itineraryStats;
     if(c.serviceDailyCapacity&&typeof c.serviceDailyCapacity==='object')db.serviceDailyCapacity=c.serviceDailyCapacity;
+    if(Array.isArray(c.versatilGuide)&&c.versatilGuide.length)db.versatilGuide=c.versatilGuide;
+    if(Array.isArray(c.starlisGuide)&&c.starlisGuide.length)db.starlisGuide=c.starlisGuide;
+    if(c.postalConfig&&typeof c.postalConfig==='object')db.postalConfig=c.postalConfig;
 
     db.centralVersion=p.version||'';
     db.centralUpdatedAt=p.publishedAt||p.updatedAt||'';
@@ -1150,9 +1175,77 @@ async function confirmMyItinerary(){
   showVersatilLoading('Enviando seu roteiro…');
   try{
     await fetch(GOOGLE_APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',cache:'no-store',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'sendItinerary',clientVersion:APP_VERSION,client:{name:session?.name||'',email,roomName:session?.roomName||session?.room||''},items})});
-    alert('Roteiro enviado para o seu e-mail. Aproveite sua estada em Cuiabá!');
+    setSessionActivity('route');alert('Roteiro enviado para o seu e-mail. Aproveite sua estada em Cuiabá!');
     setTimeout(()=>loadCentralData({force:true,quiet:true}),2500);
   }catch(e){alert('Não foi possível enviar o roteiro agora. Tente novamente.')}finally{hideVersatilLoading()}
+}
+
+
+const UI_ICONS={
+  book:`<svg viewBox="0 0 82 60" aria-hidden="true"><path d="M41 14C31 7 20 6 8 9v37c13-3 24-2 33 4z" fill="#fff" stroke="#0f4c81" stroke-width="2.5"/><path d="M41 14c10-7 21-8 33-5v37c-13-3-24-2-33 4z" fill="#fff" stroke="#0f4c81" stroke-width="2.5"/><path class="page1" d="M41 17c8-5 17-6 27-4v29c-10-2-19-1-27 3z" fill="#eaf4fb"/><path class="page2" d="M41 17c-8-5-17-6-27-4v29c10-2 19-1 27 3z" fill="#f7fbfe"/><path d="M41 14v36" stroke="#0f4c81" stroke-width="2.3"/></svg>`,
+  hiker:`<svg viewBox="0 0 72 72" aria-hidden="true"><g stroke="#263a24" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="39" cy="13" r="7.5" fill="#f2ad69"/><path d="M32 11c2-7 11-9 16-4l7 1-8 3-14 4z" fill="#f3a82d"/><path d="M31 22c5-5 11-4 14 2l6 11-7 3-6-10-4 13-10-4 3-12z" fill="#69a34d"/><path d="M24 21c-7-1-10 3-11 9l-2 15c0 4 2 6 6 7l8-2 2-27z" fill="#e88a22"/><path d="M28 39l13 8 7 16h-9l-8-12-8 10 7 5H18l-6-5 14-18z" fill="#bd6d22"/><path d="M42 34c4 4 8 6 14 5l5-3" fill="none"/><path d="M61 26v38" fill="none"/></g></svg>`,
+  map:`<svg viewBox="0 0 72 72" aria-hidden="true"><path d="M9 17l17-7 20 7 17-7v45l-17 7-20-7-17 7z" fill="#eaf4fb" stroke="#0f4c81" stroke-width="2.5"/><path d="M26 10v45M46 17v45" stroke="#0f4c81" stroke-width="2"/><path d="M36 24c-6 0-10 4-10 10 0 8 10 18 10 18s10-10 10-18c0-6-4-10-10-10z" fill="#e47b22"/><circle cx="36" cy="34" r="3.4" fill="#fff"/></svg>`,
+  cart:`<svg viewBox="0 0 72 72" aria-hidden="true"><path d="M11 16h8l6 29h28l7-21H24" fill="none" stroke="#0f4c81" stroke-width="4" stroke-linejoin="round"/><circle cx="30" cy="56" r="5" fill="#0f4c81"/><circle cx="52" cy="56" r="5" fill="#0f4c81"/></svg>`,
+  check:`<svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="27" fill="#26a844"/><path d="M22 37l9 9 19-21" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  mailbox:`<svg viewBox="0 0 72 72" aria-hidden="true"><path d="M9 31c0-9 7-16 16-16h21c8 0 14 6 14 14v24H9V31z" fill="#fff" stroke="#7c6500" stroke-width="2.4"/><path d="M9 31h20c8 0 14 6 14 14v8H9V31z" fill="#fff"/><path d="M27 53v12" stroke="#7c6500" stroke-width="4.5" stroke-linecap="round"/><path d="M49 16v21" stroke="#c9362e" stroke-width="3.5"/><path d="M49 16h12v9H49z" fill="#e54a3e" stroke="#9d2d25" stroke-width="1.6"/><path d="M13 36h17" stroke="#7c6500" stroke-width="2.3"/></svg>`,
+  tree:`<svg viewBox="0 0 72 72"><circle cx="36" cy="27" r="20" fill="#58a64b" stroke="#2f6f38" stroke-width="2.5"/><rect x="32" y="43" width="8" height="20" rx="2" fill="#8a5a2b"/></svg>`,
+  museum:`<svg viewBox="0 0 72 72"><path d="M10 25L36 9l26 16z" fill="#eaf4fb" stroke="#183f63" stroke-width="2.5"/><path d="M14 28h44M12 57h48M9 63h54" stroke="#183f63" stroke-width="3"/><path d="M18 29v27M29 29v27M43 29v27M54 29v27" stroke="#183f63" stroke-width="4"/></svg>`,
+  fishgold:`<svg viewBox="0 0 72 72"><path d="M15 36c10-15 30-18 43-5-13 17-33 17-43 5z" fill="#f0a51f" stroke="#a9680b" stroke-width="2.5"/><path d="M15 36L5 25v22z" fill="#f0a51f" stroke="#a9680b" stroke-width="2.5"/><circle cx="50" cy="31" r="2.5"/></svg>`,
+  pin:`<svg viewBox="0 0 72 72"><path d="M36 7c-13 0-23 10-23 23 0 17 23 35 23 35s23-18 23-35C59 17 49 7 36 7z" fill="#e54a3e" stroke="#9c2c25" stroke-width="2.5"/><circle cx="36" cy="30" r="9" fill="#fff"/><circle cx="36" cy="30" r="4" fill="#0f4c81"/></svg>`,
+  convenience:`<svg viewBox="0 0 72 72"><g fill="none" stroke="#20262c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M28 17h17l2 25H25z" fill="#fff"/><path d="M31 17c0-6 3-9 7-9s7 3 7 9"/><path d="M11 47l11-6c3-2 7-1 9 1l4 4 9-3c4-1 7 1 8 4 1 3-1 5-4 6l-15 6c-3 1-6 1-9-1l-9-5"/><path d="M8 45l8 12-7 5-8-12z" fill="#eaf4fb"/></g></svg>`,
+  food:`<svg viewBox="0 0 72 72"><circle cx="36" cy="37" r="20" fill="#fff" stroke="#0f4c81" stroke-width="3"/><circle cx="36" cy="37" r="10" fill="#eef5fa" stroke="#0f4c81" stroke-width="2"/><path d="M12 13v20M17 13v20M22 13v20M17 33v26" stroke="#20262c" stroke-width="3"/><path d="M55 13c5 8 5 15 0 21v25" fill="none" stroke="#20262c" stroke-width="3"/></svg>`,
+  event:`<svg viewBox="0 0 72 72"><g fill="#202124"><path d="M8 34c0-6 5-11 11-13 10-4 24-5 34-2 7 2 11 6 11 12v7H8z"/><path d="M12 38h48v24H12z"/><rect x="17" y="43" width="9" height="15" rx="4" fill="#fff"/><rect x="31" y="43" width="9" height="15" rx="4" fill="#fff"/><rect x="45" y="43" width="9" height="15" rx="4" fill="#fff"/><rect x="6" y="58" width="60" height="7"/><rect x="18" y="10" width="2.5" height="12"/><path d="M20.5 10l10 5-10 5z"/><rect x="34.5" y="4" width="2.5" height="15"/><path d="M37 4l12 6-12 6z"/><rect x="52" y="10" width="2.5" height="12"/><path d="M54.5 10l10 5-10 5z"/></g></svg>`,
+  restaurant:`<svg viewBox="0 0 72 72"><g stroke="#2d3d46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="25" y="27" width="22" height="10" rx="4" fill="#ef4a3c" stroke="#c52f27"/><path d="M36 37v23M30 60h12"/><path d="M10 15l5 31h13M12 15h10l4 22H15" fill="#8fa6b2"/><path d="M62 15l-5 31H44M60 15H50l-4 22h11" fill="#8fa6b2"/><path d="M18 46l-3 16M25 46l3 16M54 46l3 16M47 46l-3 16"/></g></svg>`,
+  pizza:`<svg viewBox="0 0 72 72"><path d="M13 18c16-7 31-2 44 13L22 58z" fill="#f4c247" stroke="#a66d14" stroke-width="2.5"/><path d="M17 20c14-5 27-1 37 11" fill="none" stroke="#d99a28" stroke-width="5"/><circle cx="31" cy="33" r="4" fill="#d64a37"/><circle cx="42" cy="38" r="4" fill="#d64a37"/></svg>`,
+  skewer:`<svg viewBox="0 0 72 72"><path d="M14 60L58 16" stroke="#9b6a37" stroke-width="3.2"/><rect x="19" y="43" width="13" height="9" rx="2" transform="rotate(-45 25.5 47.5)" fill="#a64d30"/><rect x="31" y="31" width="13" height="9" rx="2" transform="rotate(-45 37.5 35.5)" fill="#cf8732"/><rect x="43" y="19" width="13" height="9" rx="2" transform="rotate(-45 49.5 23.5)" fill="#a64d30"/></svg>`,
+  cloche:`<svg viewBox="0 0 72 72"><path d="M13 46c2-15 12-24 23-24s21 9 23 24z" fill="#d8dee2" stroke="#69757c" stroke-width="2.5"/><path d="M10 48h52" stroke="#69757c" stroke-width="4"/><circle cx="36" cy="18" r="4" fill="#69757c"/></svg>`,
+  football:`<svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="24" fill="#fff" stroke="#202124" stroke-width="2.5"/><path d="M36 23l8 6-3 10H31l-3-10z" fill="#202124"/><path d="M18 31l10-2M54 31l-10-2M23 52l8-13M49 52l-8-13" stroke="#202124" stroke-width="2"/></svg>`
+};
+
+function leisureDisplayNameV170(node,depth){
+  const raw=String(node?.name||'');
+  const low=raw.toLowerCase();
+  if(depth===1){
+    if(low.includes('turismo'))return 'TURISMO';
+    if(low.includes('conveni'))return 'CONVENIÊNCIAS';
+    if(low.includes('alimenta'))return 'ALIMENTAÇÃO';
+    if(low.includes('espa')&&low.includes('evento'))return 'ESPAÇOS DE EVENTOS';
+  }
+  const map={
+    'museus':'Museus','bares':'Bares','lanchonetes':'Lanchonetes','shoppings':'Shopping',
+    'happy hour / jantar':'Happy hour','cachorro quente (baguncinha & prensados)':'Cachorro quente',
+    'centros de convenções':'Centro de eventos'
+  };
+  return map[low]||raw;
+}
+function leisureGroupIconV170(node,depth){
+  const n=leisureDisplayNameV170(node,depth).toLowerCase();
+  if(depth===1){
+    if(n==='turismo')return UI_ICONS.map;
+    if(n==='conveniências')return UI_ICONS.convenience;
+    if(n==='alimentação')return UI_ICONS.food;
+    if(n==='espaços de eventos')return UI_ICONS.event;
+  }
+  if(n==='parques')return UI_ICONS.tree;
+  if(n==='museus')return UI_ICONS.museum;
+  if(n==='aquários')return UI_ICONS.fishgold;
+  if(n==='marcos geográficos')return UI_ICONS.pin;
+  if(n==='locais turísticos')return UI_ICONS.map;
+  if(n==='restaurantes')return UI_ICONS.restaurant;
+  if(n==='pizzarias')return UI_ICONS.pizza;
+  if(n==='rodízios')return UI_ICONS.skewer;
+  if(n==='buffets')return UI_ICONS.cloche;
+  if(n==='sport')return UI_ICONS.football;
+  const symbol={
+    'massas':'🍝','peixes':'🐟','carnes':'🥩','orientais':'🍣','regionais':'🍗','feijoadas':'🫕',
+    'happy hour':'🍻','noite':'🪩','hamburguerias':'🍔🍟','espetinhos':'🍢','cachorro quente':'🌭',
+    'mercados':'🛒','farmácias':'➕','posto de combustível':'⛽','shopping':'🛍️','mecânico':'🔧','cartório':'📄',
+    'centro de eventos':'🏟️','festas e buffets':'🎈'
+  }[n];
+  return symbol?`<span class="emoji-group-icon">${symbol}</span>`:'';
+}
+function leisureGroupSubtitleV170(node,depth){
+  return leisureDisplayNameV170(node,depth)==='Rodízios'?'Carnes / Peixes / Orientais / Pizzarias':'';
 }
 
 function leisureChildren(parentId=''){
@@ -1217,7 +1310,7 @@ function leisurePlaceHtml(p){
         <div class="leisure-place-actions">
           <a class="btn primary leisure-map-btn" href="${esc(leisureMapUrl(p))}" target="_blank" rel="noopener">Abrir no Google Maps</a>
           <button class="btn itinerary-send-btn" onclick="addToItinerary('${esc(p.id)}')">Enviar para Roteiro</button>
-          ${!p.imageUrl?`<a class="btn small" href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(p.name+' Cuiabá')}" target="_blank" rel="noopener">Ver fotos na internet</a>`:''}
+
         </div>
       </div>
     </div></div></details>`;
@@ -1256,25 +1349,37 @@ function leisureDisplayName(node,depth){
   }
   return String(node?.name||'');
 }
+
 function leisureNodeHtml(node,depth=1){
   if(node.type==='place')return leisurePlaceHtml(node);
   const children=leisureChildren(node.id);
-  return `<details class="leisure-level-${Math.min(depth,5)}" data-leisure-id="${esc(node.id)}"><summary>${esc(leisureDisplayName(node,depth))}<span>⌄</span></summary>
-    <div class="leisure-inside">${children.map(n=>leisureNodeHtml(n,depth+1)).join('')}</div></details>`;
+  const label=leisureDisplayNameV170(node,depth);
+  const icon=leisureGroupIconV170(node,depth);
+  const subtitle=leisureGroupSubtitleV170(node,depth);
+  return `<details class="leisure-level-${Math.min(depth,5)}" data-leisure-id="${esc(node.id)}">
+    <summary>
+      <span class="leisure-group-summary">
+        ${icon?`<span class="leisure-group-icon">${icon}</span>`:''}
+        <span><b>${esc(label)}</b>${subtitle?`<small>${esc(subtitle)}</small>`:''}</span>
+      </span>
+      <span>⌄</span>
+    </summary>
+    <div class="leisure-inside">${children.map(n=>leisureNodeHtml(n,depth+1)).join('')}</div>
+  </details>`;
 }
+
 function leisureGuidePage(){
   const roots=leisureChildren('');
   return `<div class="card leisure-guide-card">
-    <div class="row between leisure-guide-head"><div><h2>Lazer e Conveniências</h2><div class="leisure-page-line1">Conheça Cuiabá e arredores.</div><div class="leisure-page-line2">Encontre tudo ao seu redor.</div></div>
+    <div class="row between leisure-guide-head"><div><h2>Lazer e Conveniência</h2><div class="leisure-page-line1">Conheça Cuiabá e arredores.</div><div class="leisure-page-line2">Encontre tudo ao seu redor.</div></div>
     <button class="btn" onclick="page='catalog';render()">Voltar ao catálogo</button></div>
     ${roots.map(n=>leisureNodeHtml(n,1)).join('')}
   </div>`;
 }
-
 function render(){
   document.getElementById('app').innerHTML=session?appView():loginView();
   renderVersionBadge();
-  setTimeout(()=>{updatePwaInstallUI();updateCentralStatusUI();updateItineraryCountUI();if(page==='leisure')setupLeisureExclusiveAccordion();},0);
+  setTimeout(()=>{updatePwaInstallUI();updateCentralStatusUI();updateItineraryCountUI();if(page==='leisure')setupLeisureExclusiveAccordion();if(page==='postal')bindPostalValidation();},0);
 }
 
 function renderVersionBadge(){
@@ -1284,7 +1389,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.69';
+  badge.textContent='v1.70';
 }
 
 function isPwaStandalone(){
@@ -1474,6 +1579,151 @@ function recoverAdmin(){
   }).finally(()=>{if(btn)btn.disabled=false});
 }
 
+
+function appMenuButton(pageId,label,iconHtml,extra=''){
+  return `<button class="app-menu-btn ${page===pageId?'active':''} ${extra}" onclick="page='${pageId}';render()">
+    <span class="app-menu-icon">${iconHtml}</span><span class="app-menu-text">${label}</span>
+  </button>`;
+}
+function starlisStarsIcon(){
+  return `<img src="starlis-stars.png" alt="Starlis" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'"><span style="display:none;font-size:30px;color:#1898d0">☆彡</span>`;
+}
+function versatilIcon(){return `<img src="logo-versatil.jpg" alt="Versátil">`}
+
+function versatilGuideIcon(name){
+  const map={'Acomodações':'🛏️','Áreas comuns':'🛋️','Garagem':'🚗','Lazer':'🏋️☂️','Comodidades':'🛎️','Normas gerais':'📖','Morador mensalista':'✍️'};
+  return map[name]||'•';
+}
+function versatilGuidePage(){
+  const sections=db.versatilGuide||[];
+  return `<div class="card institutional-page"><h2>Conheça o Versátil</h2><p class="muted">Estrutura, acomodações e informações úteis durante a sua estada.</p></div>
+    ${sections.map(sec=>`<details class="institution-detail"><summary><span>${versatilGuideIcon(sec.name)} ${esc(sec.name)}</span><span>⌄</span></summary>
+      <div class="institution-inside">
+        ${(sec.items||[]).map(item=>sec.type==='gallery'
+          ?`<details class="institution-item"><summary>${esc(item.name)}<span>⌄</span></summary><div class="institution-item-body">
+              <div class="institution-photos">${(item.images||[]).slice(0,2).map(u=>`<img src="${esc(u)}" alt="${esc(item.name)}" onerror="this.classList.add('img-failed')">`).join('')}</div>
+              ${item.description?`<p>${esc(item.description)}</p>`:''}
+            </div></details>`
+          :`<details class="institution-item"><summary>${esc(item.name)}<span>⌄</span></summary><div class="institution-item-body"><p>${esc(item.description||item.name)}</p></div></details>`
+        ).join('')}
+      </div>
+    </details>`).join('')}`;
+}
+
+function starlisGuidePage(){
+  return `<div class="card institutional-page"><h2>Conheça a Starlis</h2><div class="starlis-page-brand">${starlisStarsIcon()}<b>STARLIS GROUP HOTELS</b></div></div>
+  <div class="starlis-grid">${(db.starlisGuide||[]).map(h=>`<div class="starlis-hotel-card">
+    <img src="${esc(h.image||'')}" alt="${esc(h.name)}" onerror="this.classList.add('img-failed')">
+    <div class="starlis-hotel-body"><h3>${esc(h.name)}</h3><p>${esc(h.description||'')}</p>
+      ${h.id==='versatil'?'':`<div class="equal-external-actions">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.map||h.name)}">Google Maps</a>
+        <a class="btn itinerary-send-btn" target="_blank" rel="noopener" href="${esc(h.reserve||'https://www.starlis.com.br')}">Reservar</a>
+      </div>`}
+    </div></div>`).join('')}</div>`;
+}
+
+function stableCouponFor(email){
+  let h=2166136261;for(const c of String(email||'')){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}
+  return 'VST-'+(Math.abs(h)>>>0).toString(36).toUpperCase().slice(0,7);
+}
+function postalTourismItem(){
+  const semester=(()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()<6?'H1':'H2')})();
+  const key='versatil_postal_tour_'+semester;
+  const tourismRoot=(db.leisureGuide||[]).find(n=>n.parentId===''&&String(n.name).toUpperCase().includes('TURISMO'));
+  const all=[];const walk=id=>{for(const n of leisureChildren(id)){if(n.type==='place'&&n.imageUrl)all.push(n);else if(n.type==='group')walk(n.id)}};if(tourismRoot)walk(tourismRoot.id);
+  if(!all.length)return {name:'Cuiabá',imageUrl:'leisure-assets/turismo.svg',mapQuery:'Cuiabá MT'};
+  let idx=Number(localStorage.getItem(key)||0)%all.length;
+  const item=all[idx];localStorage.setItem(key,String((idx+1)%all.length));return item;
+}
+function postalPage(){
+  const cfg=db.postalConfig||DEFAULT_POSTAL_CONFIG;
+  const tour=postalTourismItem();
+  const accessEmail=String(session?.email||'');
+  const accessName=String(session?.name||'');
+  return `<div class="card"><h2>Correio Versátil</h2><p class="muted">Preencha o postal. O botão “Vire” aparece somente quando os campos estiverem completos.</p></div>
+  <div class="postal-stage"><div id="postalCard" class="postal-card">
+    <button id="postalFlipBtn" class="postal-center-btn postal-flip-btn" style="display:none" onclick="flipPostalV170()">Vire</button>
+    <div class="postal-face postal-back">
+      <div class="postal-message-column">
+        <div class="postal-hand">Caro(a) <input id="postalRecipientName" class="postal-input" placeholder="nome do destinatário"></div>
+        <input id="postalRecipientEmail" class="postal-input full" placeholder="e-mail do destinatário">
+        <p class="postal-hand postal-main-message">${esc(cfg.message||'')}</p>
+        <div class="postal-hand">Abraços, <input id="postalSenderName" class="postal-input" value="${esc(accessName)}"></div>
+        <div id="postalError" class="postal-error"></div>
+      </div>
+      <div class="postal-address-column">
+        <div class="postal-stamp-zone"><div class="postal-cancel-lines">${'<span></span>'.repeat(5)}</div><div class="postal-cancel-circle"></div>
+          <div class="postal-stamp"><img src="logo-versatil.jpg" alt="Versátil"></div></div>
+        <div class="postal-address"><b>Starlis Home Versátil</b><br><br>${esc(cfg.address||'')}<br><br>Reservas: ${esc(cfg.phone||'')}</div>
+        <div class="postal-coupon">${esc(cfg.couponText||'')}:<br><b>${stableCouponFor(accessEmail)}</b></div>
+      </div>
+    </div>
+    <div class="postal-face postal-front">
+      <button id="postalSendBtn" class="postal-center-btn postal-send-btn" style="display:none" onclick="sendPostalV170()">Enviar</button>
+      <div class="postal-front-grid">
+        <div class="postal-tourism"><img src="${esc(tour.imageUrl||'')}" alt="${esc(tour.name||'')}"><div class="postal-tourism-caption"><b>${esc(tour.name||'')}</b><br><a target="_blank" rel="noopener" href="${esc(leisureMapUrl(tour))}">Cuiabá • Google Maps</a></div></div>
+        <div class="postal-versatil-stack">
+          <div class="postal-facade"><img src="${esc(cfg['frontFaçade']||cfg.frontFacade||'')}" alt="Versátil"><div class="postal-reserve-overlay"><b>Reserve já.</b><br><span>Starlis Home Versátil</span><br><a target="_blank" rel="noopener" href="${esc(cfg.site||'https://www.starlis.com.br')}">www.starlis.com.br</a></div></div>
+          <div class="postal-small-photos"><img src="${esc(cfg.frontRoom||'')}" alt="Quarto"><img src="${esc(cfg.frontPool||'')}" alt="Piscina"></div>
+        </div>
+      </div>
+    </div>
+  </div></div><div id="postalStatus" class="postal-status">Preencha nome, e-mail e assinatura.</div>`;
+}
+function bindPostalValidation(){
+  const name=document.getElementById('postalRecipientName'),email=document.getElementById('postalRecipientEmail'),sender=document.getElementById('postalSenderName');
+  if(!name||!email||!sender)return;
+  [name,email,sender].forEach(el=>el.addEventListener('input',updatePostalFlipV170));
+  updatePostalFlipV170();
+}
+function updatePostalFlipV170(){
+  const name=document.getElementById('postalRecipientName'),email=document.getElementById('postalRecipientEmail'),sender=document.getElementById('postalSenderName'),btn=document.getElementById('postalFlipBtn'),err=document.getElementById('postalError');
+  if(!name||!email||!sender||!btn)return;
+  const em=email.value.trim().toLowerCase(),valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em),self=em===String(session?.email||'').toLowerCase();
+  if(err)err.textContent=self?'Você não pode enviar o postal para o mesmo e-mail do acesso.':'';
+  btn.style.display=(name.value.trim()&&valid&&sender.value.trim()&&!self&&!document.getElementById('postalCard')?.classList.contains('flipped'))?'block':'none';
+}
+function flipPostalV170(){
+  updatePostalFlipV170();const btn=document.getElementById('postalFlipBtn');if(!btn||btn.style.display==='none')return;
+  const card=document.getElementById('postalCard');card?.classList.add('flipped');btn.style.display='none';
+  const status=document.getElementById('postalStatus');if(status)status.textContent='Postal virado. O botão “Enviar” aparecerá em 7 segundos.';
+  setTimeout(()=>{const s=document.getElementById('postalSendBtn');if(s)s.style.display='block';if(status)status.textContent='Pronto para enviar.'},7000);
+}
+async function sendPostalV170(){
+  const card=document.getElementById('postalCard'),btn=document.getElementById('postalSendBtn'),status=document.getElementById('postalStatus');
+  if(!card||card.classList.contains('sending'))return;
+  const payload={
+    action:'sendPostcard',clientVersion:APP_VERSION,
+    sender:{name:document.getElementById('postalSenderName')?.value.trim()||session?.name||'',email:session?.email||'',roomName:session?.roomName||room()?.name||''},
+    recipient:{name:document.getElementById('postalRecipientName')?.value.trim()||'',email:document.getElementById('postalRecipientEmail')?.value.trim()||''},
+    coupon:stableCouponFor(session?.email||''),
+    config:db.postalConfig||DEFAULT_POSTAL_CONFIG
+  };
+  btn.style.display='none';card.classList.add('sending');if(status)status.textContent='Enviando seu postal…';
+  try{await centralPost('sendPostcard',payload)}catch(e){console.warn(e)}
+  setTimeout(()=>{if(status)status.textContent='Postal enviado! ✉️'},1150);
+}
+
+function signoutMessageV170(name){
+  if(sessionActivity.order&&sessionActivity.route)return `Obrigado por seu pedido e aproveite seu passeio, até breve ${name}!`;
+  if(sessionActivity.route)return `Maravilha ${name}, esperamos que aproveite seu passeio e curta Cuiabá!`;
+  if(sessionActivity.order)return `Obrigado por seu pedido, até breve ${name}!`;
+  return `Até breve ${name}!`;
+}
+function completeSignoutV170(){
+  const role=session?.role||'';
+  if(role==='client'&&page!=='confirmation')cart=[];
+  session=null;selectedCat='';expandedClientProductId='';page='catalog';resetSessionActivity();render();
+}
+function showSignoutPopupV170(){
+  const name=session?.name||session?.email||'';
+  const msg=session?.role==='admin'?`Até breve ${name}!`:signoutMessageV170(name);
+  document.getElementById('signoutReadModal')?.remove();
+  const m=document.createElement('div');m.id='signoutReadModal';m.className='signout-read-modal';
+  m.innerHTML=`<div class="signout-read-box"><div class="signout-thumb">👍</div><h3>${esc(msg)}</h3><button class="btn primary signout-valeu" onclick="document.getElementById('signoutReadModal')?.remove();completeSignoutV170()">👍 Valeu!</button></div>`;
+  document.body.appendChild(m);
+}
+
 function appView(){let admin=session.role==='admin';return `<header class="top"><div class="brand"><img src="logo-versatil.jpg"><div><h1>APP SERVIÇOS VERSÁTIL</h1><small>${admin?'ADMIN':esc(session.name+' • '+room()?.name)}</small></div></div><div class="app-welcome"><span>Seja bem vindo</span><br><b>${esc(session?.name||session?.email||'')}</b>!</div>
     <div class="row header-action-row">
       ${session?.role==='admin'?`<button class="btn header-publish-btn" onclick="publishWithLoading()">Publicar alterações</button>`:''}
@@ -1483,39 +1733,28 @@ function appView(){let admin=session.role==='admin';return `<header class="top">
     </div></header><div class="wrap">${admin?adminView():clientView()}</div>`}
 
 
+
 function signout(){
-  const accessName=session?.name||session?.email||'';
-  const role=session?.role||'';
-
-  if(role==='client'&&page!=='confirmation')cart=[];
-
-  session=null;
-  selectedCat='';
-  expandedClientProductId='';
-  page='catalog';
-  render();
-
-  setTimeout(()=>{
-    if(role==='admin'){
-      alert(`Até breve ${accessName}!`);
-    }else{
-      alert(`Obrigado por seu pedido,\naté breve, ${accessName}.`);
-    }
-  },50);
+  showSignoutPopupV170();
 }
 
 function clientView(){
-  const menus=[
-    ['catalog','Catálogo'],
-    ['leisure','Lazer e Conveniências'],
-    ['itinerary',`MEU ROTEIRO<span data-itinerary-count>${myItinerary.length?` (${myItinerary.length})`:''}</span>`],
-    ['cart',`Carrinho${cart.length?` (${cart.length})`:''}`],
-    ['confirmation','Confirmação']
-  ];
-  const nav=`<nav class="nav">${menus.map(([k,v])=>`<button class="${page===k?'active':''}" onclick="page='${k}';render()">${v}</button>`).join('')}</nav>`;
-  if(page==='leisure')return nav+leisureGuidePage();
-  if(page==='itinerary')return nav+itineraryPage();
-  return nav+(page==='catalog'?catalogPage():page==='cart'?cartPage():confirmationPage());
+  const menu=`<nav class="app-menu-grid">
+    ${appMenuButton('catalog','Catálogo',UI_ICONS.book)}
+    ${appMenuButton('leisure','Lazer e Conveniência',UI_ICONS.hiker)}
+    ${appMenuButton('itinerary',`Meu Roteiro${myItinerary.length?` (${myItinerary.length})`:''}`,UI_ICONS.map)}
+    ${appMenuButton('cart',`Carrinho${cart.length?` (${cart.length})`:''}`,UI_ICONS.cart)}
+    ${appMenuButton('confirmation','Confirmação',UI_ICONS.check)}
+    ${appMenuButton('versatil','Conheça o Versátil',versatilIcon())}
+    ${appMenuButton('starlis','Conheça a Starlis',starlisStarsIcon())}
+    ${appMenuButton('postal','Correio Versátil',UI_ICONS.mailbox,'postal-menu-btn')}
+  </nav>`;
+  if(page==='leisure')return menu+leisureGuidePage();
+  if(page==='itinerary')return menu+itineraryPage();
+  if(page==='versatil')return menu+versatilGuidePage();
+  if(page==='starlis')return menu+starlisGuidePage();
+  if(page==='postal')return menu+postalPage();
+  return menu+(page==='catalog'?catalogPage():page==='cart'?cartPage():confirmationPage());
 }
 function selectClientCategory(cid){
   selectedCat=cid;
@@ -1568,7 +1807,7 @@ function catalogPage(){
         <button class="client-category-card leisure-client-entry" onclick="page='leisure';render()">
           <div class="client-category-icon">📍</div>
           <div class="client-category-copy">
-            <h3>Lazer e Conveniências</h3>
+            <h3>Lazer e Conveniência</h3>
             <p>Encontre tudo ao seu redor.</p>
           </div>
         </button>
@@ -2010,7 +2249,7 @@ function confirmOrder(){
 
   session.lastOrderId=order.id;
   cart=[];
-  page='confirmation';
+  setSessionActivity('order');page='confirmation';
 
   sendConfirmationEmails(order);
   render();
@@ -2344,22 +2583,81 @@ function deleteLeisureNode(nodeId){
 
 
 
-function itineraryStatsData(){return db.itineraryStats||{total:0,today:0,month:0,byMonth:[],topPlaces:[]}}
-function itinerariesAdmin(){
-  const s=itineraryStatsData();
-  const monthItems=(s.byMonth||[]).map(x=>({label:x.label||x.month||'',value:Number(x.value||x.count||0)}));
-  return `<div class="row between"><div><h2>Roteiros</h2><p class="muted">Monitoramento dos roteiros confirmados pelos hóspedes.</p></div></div>
-  <div class="stats"><div class="card"><span>Total de roteiros</span><b>${Number(s.total||0)}</b></div><div class="card"><span>Roteiros hoje</span><b>${Number(s.today||0)}</b></div><div class="card"><span>Roteiros no mês</span><b>${Number(s.month||0)}</b></div></div>
-  <div class="card" style="margin-top:14px"><h3>Roteiros por mês</h3>${monthItems.length?reportColumnChart(monthItems,v=>String(v)):'<div class="muted">Ainda não há dados suficientes.</div>'}</div>
-  <div class="card" style="margin-top:14px"><h3>Locais mais adicionados aos roteiros</h3>${(s.topPlaces||[]).length?`<div class="tablewrap"><table class="table"><thead><tr><th>Local</th><th>Inclusões</th></tr></thead><tbody>${s.topPlaces.map(x=>`<tr><td>${esc(x.name||x.label||'')}</td><td>${Number(x.count||x.value||0)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="muted">Nenhum roteiro confirmado ainda.</div>'}</div>`;
+
+function contentAdminPage(kind){
+  const cfg={
+    versatil:{title:'Conheça o Versátil',data:db.versatilGuide||[]},
+    starlis:{title:'Conheça a Starlis',data:db.starlisGuide||[]},
+    postal:{title:'Correio Versátil',data:[db.postalConfig||{}]}
+  }[kind];
+  if(kind==='postal')return `<div class="card"><h2>${cfg.title}</h2><p class="muted">Edite os textos e imagens do postal. Depois use “Publicar alterações” no cabeçalho.</p>
+    <div class="field"><label>Endereço</label><input id="postal_admin_address" value="${esc(db.postalConfig?.address||'')}"></div>
+    <div class="field"><label>Telefone</label><input id="postal_admin_phone" value="${esc(db.postalConfig?.phone||'')}"></div>
+    <div class="field"><label>Mensagem</label><textarea id="postal_admin_message" rows="5">${esc(db.postalConfig?.message||'')}</textarea></div>
+    <div class="field"><label>Texto do cupom</label><input id="postal_admin_coupon" value="${esc(db.postalConfig?.couponText||'')}"></div>
+    <div class="field"><label>Foto fachada</label><input id="postal_admin_facade" value="${esc(db.postalConfig?.['frontFaçade']||db.postalConfig?.frontFacade||'')}"></div>
+    <div class="field"><label>Foto quarto</label><input id="postal_admin_room" value="${esc(db.postalConfig?.frontRoom||'')}"></div>
+    <div class="field"><label>Foto piscina</label><input id="postal_admin_pool" value="${esc(db.postalConfig?.frontPool||'')}"></div>
+    <button class="btn primary" onclick="savePostalAdminV170()">Salvar</button></div>`;
+  return `<div class="card"><div class="row between"><div><h2>${cfg.title}</h2><p class="muted">Inclua, altere ou exclua itens. Depois publique pelo cabeçalho.</p></div><button class="btn primary" onclick="openContentEditorV170('${kind}')">+ Adicionar</button></div>
+    <div class="content-admin-list">${cfg.data.map((x,i)=>`<div class="content-admin-row"><div><b>${esc(x.name||x.id||'Item')}</b><div class="small muted">${esc(x.description||x.type||'')}</div></div><div class="row"><button class="btn small" onclick="openContentEditorV170('${kind}',${i})">Editar</button><button class="btn red small" onclick="deleteContentV170('${kind}',${i})">Excluir</button></div></div>`).join('')}</div></div>`;
+}
+function openContentEditorV170(kind,index=-1){
+  const arr=kind==='versatil'?(db.versatilGuide||[]):(db.starlisGuide||[]);
+  const x=index>=0?arr[index]:{};
+  document.getElementById('contentV170Modal')?.remove();
+  const m=document.createElement('div');m.id='contentV170Modal';m.className='modal-overlay';
+  m.innerHTML=`<div class="modal-card leisure-editor-modal"><div class="row between"><h2>${index>=0?'Editar':'Adicionar'} item</h2><button class="btn" onclick="document.getElementById('contentV170Modal')?.remove()">Fechar</button></div>
+    <div class="field"><label>Nome</label><input id="cv_name" value="${esc(x.name||'')}"></div>
+    <div class="field"><label>Descrição</label><textarea id="cv_desc" rows="4">${esc(x.description||'')}</textarea></div>
+    ${kind==='starlis'?`<div class="field"><label>Imagem</label><input id="cv_image" value="${esc(x.image||'')}"></div><div class="field"><label>Busca Google Maps</label><input id="cv_map" value="${esc(x.map||'')}"></div><div class="field"><label>Link reservar</label><input id="cv_reserve" value="${esc(x.reserve||'')}"></div>`:`<div class="field"><label>Tipo</label><select id="cv_type"><option value="gallery" ${x.type==='gallery'?'selected':''}>Galeria</option><option value="text" ${x.type==='text'?'selected':''}>Texto</option></select></div>`}
+    <button class="btn primary" onclick="saveContentV170('${kind}',${index})">Salvar</button></div>`;
+  document.body.appendChild(m);
+}
+function saveContentV170(kind,index){
+  const arr=kind==='versatil'?(db.versatilGuide||[]):(db.starlisGuide||[]);
+  const old=index>=0?arr[index]:{};
+  const obj={...old,id:old.id||id(),name:document.getElementById('cv_name')?.value.trim()||'',description:document.getElementById('cv_desc')?.value.trim()||''};
+  if(kind==='starlis'){obj.image=document.getElementById('cv_image')?.value.trim()||'';obj.map=document.getElementById('cv_map')?.value.trim()||'';obj.reserve=document.getElementById('cv_reserve')?.value.trim()||''}
+  else{obj.type=document.getElementById('cv_type')?.value||'text';if(!Array.isArray(obj.items))obj.items=[]}
+  if(!obj.name)return alert('Informe o nome.');
+  if(index>=0)arr[index]=obj;else arr.push(obj);
+  if(kind==='versatil')db.versatilGuide=arr;else db.starlisGuide=arr;
+  save();document.getElementById('contentV170Modal')?.remove();render();
+}
+function deleteContentV170(kind,index){
+  const arr=kind==='versatil'?(db.versatilGuide||[]):(db.starlisGuide||[]);
+  if(!confirm('Excluir este item?'))return;arr.splice(index,1);if(kind==='versatil')db.versatilGuide=arr;else db.starlisGuide=arr;save();render();
+}
+function savePostalAdminV170(){
+  db.postalConfig={...(db.postalConfig||{}),address:document.getElementById('postal_admin_address')?.value.trim()||'',phone:document.getElementById('postal_admin_phone')?.value.trim()||'',message:document.getElementById('postal_admin_message')?.value.trim()||'',couponText:document.getElementById('postal_admin_coupon')?.value.trim()||'',frontFaçade:document.getElementById('postal_admin_facade')?.value.trim()||'',frontRoom:document.getElementById('postal_admin_room')?.value.trim()||'',frontPool:document.getElementById('postal_admin_pool')?.value.trim()||''};save();alert('Configuração salva. Use Publicar alterações no cabeçalho.');render();
+}
+let adminItinerariesTodayData=[];
+async function loadAdminItinerariesTodayV170(){
+  const box=document.getElementById('todayRoutesBox');if(box)box.innerHTML='<div class="muted">Carregando…</div>';
+  try{
+    const url=GOOGLE_APPS_SCRIPT_URL+'?action=adminItinerariesToday&adminPassword='+encodeURIComponent(db.account?.adminPassword||'')+'&t='+Date.now();
+    const r=await fetch(url,{cache:'no-store'}),p=await r.json();adminItinerariesTodayData=Array.isArray(p.items)?p.items:[];render();
+  }catch(e){if(box)box.innerHTML='<div class="danger">Não foi possível carregar os roteiros de hoje.</div>'}
 }
 
+function itineraryStatsData(){return db.itineraryStats||{total:0,today:0,month:0,byMonth:[],topPlaces:[]}}
+
+function itinerariesAdmin(){
+  return `<div class="row between"><div><h2>Roteiros de hoje</h2><p class="muted">Somente roteiros confirmados hoje, com os dados do usuário.</p></div><button class="btn" onclick="loadAdminItinerariesTodayV170()">↻ Atualizar</button></div>
+  <div id="todayRoutesBox" class="card" style="margin-top:12px">
+    ${adminItinerariesTodayData.length?`<div class="tablewrap"><table class="table"><thead><tr><th>Horário</th><th>Usuário</th><th>E-mail</th><th>Quarto</th><th>Locais</th></tr></thead><tbody>${adminItinerariesTodayData.map(x=>`<tr><td>${esc(x.time||'')}</td><td>${esc(x.clientName||'')}</td><td>${esc(x.clientEmail||'')}</td><td>${esc(x.roomName||'')}</td><td>${Number(x.itemCount||0)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="muted">Clique em Atualizar para carregar os roteiros confirmados hoje.</div>'}
+  </div>`;
+}
 function adminView(){let menus=[
   ['dashboard','Visão geral'],
   ['rooms','Quartos/Apartamentos'],
   ['categories','Categorias'],
   ['products','Produtos/Preços'],
-  ['leisure','Lazer e Conveniências'],
+  ['leisure','Lazer e Conveniência'],
+  ['versatilContent','Conheça o Versátil'],
+  ['starlisContent','Conheça a Starlis'],
+  ['postalContent','Correio Versátil'],
   ['itineraries','Roteiros'],
   ['calendar','Calendário'],
   ['orders','Pedidos'],
@@ -2374,6 +2672,9 @@ function adminPageContent(){
          adminPage==='categories'?categoriesAdmin():
          adminPage==='products'?productsAdmin():
          adminPage==='leisure'?leisureAdmin():
+         adminPage==='versatilContent'?contentAdminPage('versatil'):
+         adminPage==='starlisContent'?contentAdminPage('starlis'):
+         adminPage==='postalContent'?contentAdminPage('postal'):
          adminPage==='itineraries'?itinerariesAdmin():
          adminPage==='calendar'?calendarAdmin():
          adminPage==='orders'?ordersAdmin():
@@ -3767,12 +4068,14 @@ function reportsAdmin(){
     <h4 class="chart-title">Gráfico de colunas</h4>
     ${reportColumnChart(previousItems)}
   </div>
-  <div class="card" style="margin-top:14px">
+  <div class="card report-box" style="margin-top:14px">
+    ${pdfHeader('itineraryMonthly')}
     <h3>Roteiros criados</h3>
     <div class="muted">Total: ${Number(itineraryStats.total||0)} • Mês atual: ${Number(itineraryStats.month||0)}</div>
     ${itineraryMonthItems.length?reportColumnChart(itineraryMonthItems,v=>String(v)):'<div class="muted">Ainda não há dados de roteiros.</div>'}
   </div>
-  <div class="card" style="margin-top:14px">
+  <div class="card report-box" style="margin-top:14px">
+    ${pdfHeader('itineraryPlaces')}
     <h3>Locais mais escolhidos nos roteiros</h3>
     ${(itineraryStats.topPlaces||[]).length?reportColumnChart((itineraryStats.topPlaces||[]).slice(0,10).map(x=>({label:x.name||x.label||'',value:Number(x.count||x.value||0)})),v=>String(v)):'<div class="muted">Ainda não há dados de roteiros.</div>'}
   </div>`;
@@ -3912,7 +4215,7 @@ function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.69 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.70 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 

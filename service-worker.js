@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-69-service-capacity";
+const CACHE="versatil-v1-70-approved-fake-postal";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1690',
-  './app.js?v=1690',
+  './style.css?v=1700',
+  './app.js?v=1700',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

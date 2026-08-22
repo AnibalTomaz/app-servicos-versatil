@@ -699,3 +699,18 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - A disponibilidade considera a base pública, pedidos confirmados no aparelho e itens ainda no carrinho.
 - O Apps Script publica `serviceDailyCapacity` de forma agregada, sem dados pessoais.
 - Ao confirmar ou excluir um pedido, `data.json` é republicado para abrir/fechar a disponibilidade nos demais dispositivos.
+
+## v1.70 — configurações aprovadas no fake + cartão postal
+- Menu do Cliente em 8 botões, 4 colunas x 2 filas no desktop e 2 colunas no celular.
+- Ícones aprovados: livro aberto animado, caminhante com mochila, mapa, carrinho, check verde, logo Versátil, estrelas Starlis e caixa de correio branca no botão amarelo.
+- `Lazer e Conveniência` com os ícones aprovados em Turismo, Conveniências, Alimentação e Espaços de eventos e suas subcategorias.
+- Restaurantes: mesa com duas cadeiras; Pizzarias: pizza; Rodízios: espeto + texto `Carnes / Peixes / Orientais / Pizzarias`; Buffets: cloche; Sport: bola de futebol.
+- Botões dos locais em Lazer com tamanho padronizado e sem `Ver fotos na internet`.
+- Nova página `Conheça o Versátil` com as 7 categorias solicitadas.
+- Nova página `Conheça a Starlis`.
+- `Correio Versátil` com postal clássico aprovado: verso clássico, selo com logo Versátil, carimbo, cupom individual, bloqueio de autoenvio, virada, botão Enviar em 7 segundos e animação vertical saindo pela lateral esquerda.
+- Envio do postal ao destinatário e cópia para o e-mail principal do Admin.
+- Signout do Cliente com 3 mensagens contextuais e confirmação `👍 Valeu!`.
+- Admin: páginas editáveis para Conheça o Versátil, Conheça a Starlis e Correio Versátil.
+- Admin Roteiros: somente roteiros do dia, com dados do usuário carregados diretamente do Apps Script.
+- Relatórios: quadros de roteiros integrados ao mesmo sistema de seleção e geração de PDF.
