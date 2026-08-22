@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "1.70",
-  "updatedAt": "2026-08-22T00:31:48.924Z",
-  "publishedAt": "2026-08-22T00:31:51.050Z",
+  "version": "1.71",
+  "updatedAt": "2026-08-22T18:19:32.600Z",
+  "publishedAt": "2026-08-22T18:19:34.329Z",
   "data": {
     "rooms": [
       {
@@ -3911,6 +3911,150 @@
         "imageUrl": "",
         "mapQuery": "Chácara das Flores / Espaço Vitoria (Estrada da Guia / Sucuri), Cuiabá MT",
         "sort": 261
+      },
+      {
+        "id": "grp_teatros_v171",
+        "parentId": "",
+        "type": "group",
+        "name": "TEATROS",
+        "description": "Teatros e artes cênicas em Cuiabá.",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 50
+      },
+      {
+        "id": "cine_teatro_v171",
+        "parentId": "grp_teatros_v171",
+        "type": "place",
+        "name": "Cine Teatro Cuiabá",
+        "description": "Cinema, teatro, dança e música.",
+        "distance": "aprox. 2,5 km",
+        "phone": "(65) 2129-3848",
+        "imageUrl": "",
+        "mapQuery": "Cine Teatro Cuiabá, Avenida Presidente Getúlio Vargas 247, Cuiabá MT",
+        "sort": 10
+      },
+      {
+        "id": "zulmira_v171",
+        "parentId": "grp_teatros_v171",
+        "type": "place",
+        "name": "Teatro do Cerrado Zulmira Canavarros",
+        "description": "Teatro para eventos e manifestações artísticas.",
+        "distance": "aprox. 5 km",
+        "phone": "(65) 3313-6876",
+        "imageUrl": "",
+        "mapQuery": "Teatro Cerrado Zulmira Canavarros Cuiabá",
+        "sort": 20
+      },
+      {
+        "id": "grp_hospitais_v171",
+        "parentId": "",
+        "type": "group",
+        "name": "HOSPITAIS E UPA",
+        "description": "Hospitais e pronto atendimento em Cuiabá.",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 60
+      },
+      {
+        "id": "santarosa_v171",
+        "parentId": "grp_hospitais_v171",
+        "type": "place",
+        "name": "Hospital Santa Rosa",
+        "description": "Hospital 24 horas.",
+        "distance": "aprox. 1,4 km",
+        "phone": "(65) 3618-8000",
+        "imageUrl": "",
+        "mapQuery": "Hospital Santa Rosa Cuiabá",
+        "sort": 10
+      },
+      {
+        "id": "hmc_v171",
+        "parentId": "grp_hospitais_v171",
+        "type": "place",
+        "name": "Hospital Municipal de Cuiabá - HMC",
+        "description": "Hospital municipal e pronto-socorro 24 horas.",
+        "distance": "aprox. 4,2 km",
+        "phone": "(65) 3318-6900",
+        "imageUrl": "",
+        "mapQuery": "Hospital Municipal de Cuiabá HMC",
+        "sort": 20
+      },
+      {
+        "id": "hujm_v171",
+        "parentId": "grp_hospitais_v171",
+        "type": "place",
+        "name": "Hospital Universitário Júlio Müller",
+        "description": "Hospital universitário da UFMT/Ebserh.",
+        "distance": "aprox. 2,5 km",
+        "phone": "(65) 3615-7249",
+        "imageUrl": "",
+        "mapQuery": "Hospital Universitário Júlio Müller Cuiabá",
+        "sort": 30
+      },
+      {
+        "id": "complexo_v171",
+        "parentId": "grp_hospitais_v171",
+        "type": "place",
+        "name": "Complexo Hospitalar de Cuiabá",
+        "description": "Hospital 24 horas.",
+        "distance": "aprox. 2 km",
+        "phone": "(65) 3051-3000",
+        "imageUrl": "",
+        "mapQuery": "Complexo Hospitalar de Cuiabá",
+        "sort": 40
+      },
+      {
+        "id": "upa_verdao_v171",
+        "parentId": "grp_hospitais_v171",
+        "type": "place",
+        "name": "UPA Verdão",
+        "description": "Unidade de Pronto Atendimento 24 horas.",
+        "distance": "aprox. 3,5 km",
+        "phone": "(65) 3617-1458",
+        "imageUrl": "",
+        "mapQuery": "UPA Verdão Cuiabá",
+        "sort": 50
+      },
+      {
+        "id": "upa_morada_v171",
+        "parentId": "grp_hospitais_v171",
+        "type": "place",
+        "name": "UPA Morada do Ouro",
+        "description": "Unidade de Pronto Atendimento 24 horas.",
+        "distance": "aprox. 5,3 km",
+        "phone": "(65) 3645-5700",
+        "imageUrl": "",
+        "mapQuery": "UPA Morada do Ouro Cuiabá",
+        "sort": 60
+      },
+      {
+        "id": "upa_pascoal_v171",
+        "parentId": "grp_hospitais_v171",
+        "type": "place",
+        "name": "UPA Pascoal Ramos",
+        "description": "Unidade de Pronto Atendimento 24 horas.",
+        "distance": "aprox. 12 km",
+        "phone": "(65) 3667-4129",
+        "imageUrl": "",
+        "mapQuery": "UPA Pascoal Ramos Cuiabá",
+        "sort": 70
+      },
+      {
+        "id": "upa_leblon_v171",
+        "parentId": "grp_hospitais_v171",
+        "type": "place",
+        "name": "UPA Leblon",
+        "description": "Unidade de Pronto Atendimento 24 horas.",
+        "distance": "aprox. 2,4 km",
+        "phone": "(65) 3318-6542",
+        "imageUrl": "",
+        "mapQuery": "UPA Leblon Cuiabá",
+        "sort": 80
       }
     ],
     "itineraryStats": {
