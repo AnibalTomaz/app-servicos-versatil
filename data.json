@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "1.69",
-  "updatedAt": "2026-08-21T16:26:18.642Z",
-  "publishedAt": "2026-08-21T16:26:20.430Z",
+  "version": "1.70",
+  "updatedAt": "2026-08-22T00:31:48.924Z",
+  "publishedAt": "2026-08-22T00:31:51.050Z",
   "data": {
     "rooms": [
       {
@@ -3923,6 +3923,9 @@
     "serviceDailyCapacity": {
       "2026-08-20": 1,
       "2026-08-22": 1
-    }
+    },
+    "versatilGuide": [],
+    "starlisGuide": [],
+    "postalConfig": {}
   }
 }
