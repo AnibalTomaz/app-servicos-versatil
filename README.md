@@ -746,3 +746,10 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Coluna 2: mensagem de boas-vindas.
 - Coluna 3: botões `Sair` e `Normas gerais`.
 - Layout móvel compactado para manter as três colunas na mesma faixa horizontal.
+
+## v1.76 — ajustes finais do cabeçalho
+- Logo e bloco das 3 linhas de texto com a mesma caixa/altura.
+- Mensagem de boas-vindas aproximada da coluna da logo.
+- Botão `Normas gerais` aumentado em 30%.
+- Animação a cada 3 segundos: laranja com letras azul-claro, retornando ao estado original.
+- Ao clicar em `Normas gerais`, a animação é encerrada durante o acesso atual.

@@ -1875,3 +1875,125 @@ button:active,.btn:active{transform:scale(.96);box-shadow:inset 0 2px 5px rgba(0
     padding:2px 4px!important;
   }
 }
+
+/* v1.76 — ajustes finais do cabeçalho */
+
+/* Logo e bloco das três linhas passam a ter exatamente a mesma caixa */
+.header-col-brand{
+  grid-template-columns:48px 48px!important;
+  justify-content:start!important;
+  column-gap:8px!important;
+}
+.header-logo-v175{
+  width:48px!important;
+  height:48px!important;
+}
+.header-brand-text-v175{
+  width:48px!important;
+  height:48px!important;
+  display:grid!important;
+  grid-template-rows:repeat(3,1fr)!important;
+  align-items:center!important;
+  overflow:visible!important;
+}
+.header-app-name-v175,
+.header-unit-v175,
+.header-updated-v175{
+  width:max-content!important;
+  max-width:none!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+}
+
+/* A coluna central se aproxima da coluna da logo */
+.top-v175{
+  grid-template-columns:minmax(150px,1.18fr) minmax(105px,.68fr) auto!important;
+  column-gap:5px!important;
+}
+.header-col-welcome{
+  justify-content:flex-start!important;
+  padding-left:0!important;
+  text-align:left!important;
+}
+.app-welcome-v175{
+  text-align:left!important;
+}
+
+/* Normas gerais 30% maior que o botão padrão do cabeçalho */
+.header-normas-btn.header-action-v175{
+  height:38px!important;
+  min-height:38px!important;
+  padding:6px 12px!important;
+  font-size:13px!important;
+  border-radius:8px!important;
+  transform-origin:center!important;
+  animation:normasPulseV176 3s ease-in-out infinite!important;
+}
+@keyframes normasPulseV176{
+  0%,72%,100%{
+    background:#dff2ff;
+    color:#c62828;
+    border-color:#9bc8e7;
+  }
+  80%,92%{
+    background:#ee7b22;
+    color:#bfe7ff;
+    border-color:#ee7b22;
+  }
+}
+.header-normas-btn.normas-animation-stopped{
+  animation:none!important;
+  background:#dff2ff!important;
+  color:#c62828!important;
+  border-color:#9bc8e7!important;
+}
+
+/* No celular, manter logo e caixa das 3 linhas do mesmo tamanho */
+@media(max-width:700px){
+  .header-col-brand{
+    grid-template-columns:38px 38px!important;
+    column-gap:5px!important;
+  }
+  .header-logo-v175{
+    width:38px!important;
+    height:38px!important;
+  }
+  .header-brand-text-v175{
+    width:38px!important;
+    height:38px!important;
+  }
+  .top-v175{
+    grid-template-columns:minmax(112px,1.18fr) minmax(76px,.62fr) 98px!important;
+    column-gap:3px!important;
+  }
+  .header-normas-btn.header-action-v175{
+    height:33px!important;
+    min-height:33px!important;
+    padding:4px 8px!important;
+    font-size:10.5px!important;
+  }
+}
+@media(max-width:420px){
+  .header-col-brand{
+    grid-template-columns:34px 34px!important;
+    column-gap:4px!important;
+  }
+  .header-logo-v175{
+    width:34px!important;
+    height:34px!important;
+  }
+  .header-brand-text-v175{
+    width:34px!important;
+    height:34px!important;
+  }
+  .top-v175{
+    grid-template-columns:minmax(101px,1.14fr) minmax(68px,.58fr) 90px!important;
+    column-gap:2px!important;
+  }
+  .header-normas-btn.header-action-v175{
+    height:30px!important;
+    min-height:30px!important;
+    padding:3px 6px!important;
+    font-size:9.5px!important;
+  }
+}
