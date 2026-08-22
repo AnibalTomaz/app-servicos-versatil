@@ -714,3 +714,6 @@ Corrige o caso em que um preço recém-editado voltava ao valor anterior enquant
 - Admin: páginas editáveis para Conheça o Versátil, Conheça a Starlis e Correio Versátil.
 - Admin Roteiros: somente roteiros do dia, com dados do usuário carregados diretamente do Apps Script.
 - Relatórios: quadros de roteiros integrados ao mesmo sistema de seleção e geração de PDF.
+
+## v1.71
+Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; novas categorias Teatros e Hospitais e UPA.

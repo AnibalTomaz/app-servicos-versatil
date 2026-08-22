@@ -1,7 +1,8 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.70';
-const APP_BUILD='1700-approved-fake-postal';
+const APP_VERSION='1.71';
+const APP_BUILD='1710-corrections';
+const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama king e 1 cama de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"master","name":"Master","description":"1 cama King","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"Apartamento com dois quartos","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"sofa","type":"gallery","items":[{"id":"recepcao","name":"Recepção interna","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"sala-reuniao","name":"Sala de reunião","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"cowork","name":"Espaço cowork","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"lounge","name":"Lounge","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"tv","name":"Sala de TV","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"garagem","name":"Garagem","icon":"car","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"lazer-interno","name":"Lazer","icon":"gym","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"piscina","name":"Piscina","description":"","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/9d32d0c9.jpg?impolicy=resizecrop&ra=fill&rh=575&rw=575","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"churrasqueira","name":"Churrasqueira","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"comodidades","name":"Comodidades","icon":"bell","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":""},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":""},{"id":"c3","name":"Wifi","description":""},{"id":"c4","name":"Dois elevadores panorâmicos","description":""},{"id":"c5","name":"Loja de conveniência no local","description":""},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":""},{"id":"c7","name":"Passadoria no 4º andar","description":""},{"id":"c8","name":"Voltagem 110V","description":""},{"id":"c9","name":"Áreas externas para fumantes","description":""}]},{"id":"normas","name":"Normas gerais","icon":"book","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":""},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":""},{"id":"n3","name":"Uma vaga de garagem por reserva","description":""},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":""},{"id":"n5","name":"Não aceitamos pets","description":""},{"id":"n6","name":"Uso de churrasqueira e sala de reunião apenas por locação","description":""}]},{"id":"mensalista","name":"Morador mensalista","icon":"pen","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300"}]}];
 const DEFAULT_STARLIS_GUIDE=[{"id":"delmond","name":"Delmond Hotel","image":"https://delmond.com.br/wp-content/uploads/2021/12/fachada-frente-hotel-delmond-19.jpg","description":"Sofisticação, acomodações bem equipadas, gastronomia e estrutura de lazer e eventos.","map":"Delmond Hotel Cuiabá","reserve":"https://www.starlis.com.br"},{"id":"delcas","name":"Delcas Hotel","image":"https://delcashotel.com.br/wp-content/uploads/2025/11/delcas-fachada-print-1.png","description":"Localização, lazer, conforto e gastronomia para viagens a negócios ou lazer.","map":"Delcas Hotel Cuiabá","reserve":"https://www.starlis.com.br"},{"id":"hotel365","name":"Hotel 365","image":"https://hotel365.com.br/wp-content/uploads/2025/11/fachada-at.jpg","description":"Hospedagem funcional com conforto, praticidade e boa relação custo-benefício.","map":"Hotel 365 Cuiabá","reserve":"https://www.starlis.com.br"},{"id":"versatil","name":"Versátil","image":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","description":"Esperamos que esteja gostando de estar conosco. Qualquer coisa basta avisar a portaria e faremos o possível para atendê-lo","map":"Starlis Home Versátil Cuiabá","reserve":""}];
 const DEFAULT_POSTAL_CONFIG={"address":"Rua Presidente Afonso Pena, 282 – Quilombo – Cuiabá – CEP: 78.043-505","phone":"(65) 2121 3300","site":"https://www.starlis.com.br","message":"Caro amigo(a) estou em Cuiabá, ficando no Versátil e estou adorando o lugar. Envio este postal pois lembrei de você durante minha viagem. Espero que estejas bem, mande notícias!","couponText":"Use meu cupom de desconto e ganhe um up-grade na sua reserva","frontFaçade":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","frontRoom":"https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","frontPool":"https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/9d32d0c9.jpg?impolicy=resizecrop&ra=fill&rh=575&rw=575"};
@@ -67,6 +68,12 @@ let pwaInstallReady=false;
 function save(){
   localStorage.setItem(KEY,JSON.stringify(db));
 }
+const LEISURE_EXTRA_V171='versatil_leisure_extra_v171';
+if(!localStorage.getItem(LEISURE_EXTRA_V171)){const add=[{"id":"grp_teatros_v171","parentId":"","type":"group","name":"TEATROS","description":"Teatros e artes cênicas em Cuiabá.","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":50},{"id":"cine_teatro_v171","parentId":"grp_teatros_v171","type":"place","name":"Cine Teatro Cuiabá","description":"Cinema, teatro, dança e música.","distance":"aprox. 2,5 km","phone":"(65) 2129-3848","imageUrl":"","mapQuery":"Cine Teatro Cuiabá, Avenida Presidente Getúlio Vargas 247, Cuiabá MT","sort":10},{"id":"zulmira_v171","parentId":"grp_teatros_v171","type":"place","name":"Teatro do Cerrado Zulmira Canavarros","description":"Teatro para eventos e manifestações artísticas.","distance":"aprox. 5 km","phone":"(65) 3313-6876","imageUrl":"","mapQuery":"Teatro Cerrado Zulmira Canavarros Cuiabá","sort":20},{"id":"grp_hospitais_v171","parentId":"","type":"group","name":"HOSPITAIS E UPA","description":"Hospitais e pronto atendimento em Cuiabá.","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":60},{"id":"santarosa_v171","parentId":"grp_hospitais_v171","type":"place","name":"Hospital Santa Rosa","description":"Hospital 24 horas.","distance":"aprox. 1,4 km","phone":"(65) 3618-8000","imageUrl":"","mapQuery":"Hospital Santa Rosa Cuiabá","sort":10},{"id":"hmc_v171","parentId":"grp_hospitais_v171","type":"place","name":"Hospital Municipal de Cuiabá - HMC","description":"Hospital municipal e pronto-socorro 24 horas.","distance":"aprox. 4,2 km","phone":"(65) 3318-6900","imageUrl":"","mapQuery":"Hospital Municipal de Cuiabá HMC","sort":20},{"id":"hujm_v171","parentId":"grp_hospitais_v171","type":"place","name":"Hospital Universitário Júlio Müller","description":"Hospital universitário da UFMT/Ebserh.","distance":"aprox. 2,5 km","phone":"(65) 3615-7249","imageUrl":"","mapQuery":"Hospital Universitário Júlio Müller Cuiabá","sort":30},{"id":"complexo_v171","parentId":"grp_hospitais_v171","type":"place","name":"Complexo Hospitalar de Cuiabá","description":"Hospital 24 horas.","distance":"aprox. 2 km","phone":"(65) 3051-3000","imageUrl":"","mapQuery":"Complexo Hospitalar de Cuiabá","sort":40},{"id":"upa_verdao_v171","parentId":"grp_hospitais_v171","type":"place","name":"UPA Verdão","description":"Unidade de Pronto Atendimento 24 horas.","distance":"aprox. 3,5 km","phone":"(65) 3617-1458","imageUrl":"","mapQuery":"UPA Verdão Cuiabá","sort":50},{"id":"upa_morada_v171","parentId":"grp_hospitais_v171","type":"place","name":"UPA Morada do Ouro","description":"Unidade de Pronto Atendimento 24 horas.","distance":"aprox. 5,3 km","phone":"(65) 3645-5700","imageUrl":"","mapQuery":"UPA Morada do Ouro Cuiabá","sort":60},{"id":"upa_pascoal_v171","parentId":"grp_hospitais_v171","type":"place","name":"UPA Pascoal Ramos","description":"Unidade de Pronto Atendimento 24 horas.","distance":"aprox. 12 km","phone":"(65) 3667-4129","imageUrl":"","mapQuery":"UPA Pascoal Ramos Cuiabá","sort":70},{"id":"upa_leblon_v171","parentId":"grp_hospitais_v171","type":"place","name":"UPA Leblon","description":"Unidade de Pronto Atendimento 24 horas.","distance":"aprox. 2,4 km","phone":"(65) 3318-6542","imageUrl":"","mapQuery":"UPA Leblon Cuiabá","sort":80}];const ids=new Set((db.leisureGuide||[]).map(n=>n.id));add.forEach(n=>{if(!ids.has(n.id))db.leisureGuide.push(n)});save();localStorage.setItem(LEISURE_EXTRA_V171,'1')}
+
+const CONTENT_MIGRATION_V171='versatil_content_migration_v171';
+if(!localStorage.getItem(CONTENT_MIGRATION_V171)){db.versatilGuide=structuredClone(DEFAULT_VERSATIL_GUIDE_V171);save();localStorage.setItem(CONTENT_MIGRATION_V171,'1')}
+
 
 if(!Array.isArray(db.versatilGuide)||!db.versatilGuide.length)db.versatilGuide=structuredClone(DEFAULT_VERSATIL_GUIDE);
 if(!Array.isArray(db.starlisGuide)||!db.starlisGuide.length)db.starlisGuide=structuredClone(DEFAULT_STARLIS_GUIDE);
@@ -84,6 +91,7 @@ function setSessionActivity(type){
 function resetSessionActivity(){
   sessionActivity={order:false,route:false};
   sessionStorage.removeItem(SESSION_ACTIVITY_KEY);
+  sessionStorage.removeItem(POSTAL_SENT_ACCESS_KEY);
 }
 
 const LEISURE_RESEARCHED_PHOTOS_V168={"Parque Estadual Mãe Bonifácia":"https://photos.wikimapia.org/p/00/00/81/39/19_big.jpg","Parque das Águas \"Seo Fiote\"":"https://www.midianews.com.br/storage/webdisco/2017/01/02/886x590/7f1ab3a4177923599e0cf1ff7835e5a8.jpg","Parque Tia Nair":"https://str1.lnmimg.net/img/2025/08/14/1f0cefb5a82e11c2b291942077129efc.webp","Museu de História Natural de Mato Grosso (Casa Dom Aquino)":"https://www.secel.mt.gov.br/documents/362998/14597620/Museu%2Bde%2Bhist%C3%B3ria%2Bnatural%2B-%2Bfrente%2Brio%2Bcuiab%C3%A1.jpg/70cbe33e-a4ef-3ae6-70c5-e996e17a8d4c?t=1650471365613","Museu de Arte Sacra de Mato Grosso":"https://stppprod01.blob.core.windows.net/pp-prod-container/2021/11/Museu-da-Arte-Sacra.jpg","Museu do Morro da Caixa d'Água Velha":"https://ihgmt.nyc3.digitaloceanspaces.com/storage/webdisco/2021/08/04/800x600/4960fb9811a9e6e2dc8ba0319d14623d.jpg","Museu da Imagem e do Som de Cuiabá (MISC)":"https://www.cuiaba.mt.gov.br/storage/webdisco/2025/02/27/original/2025-02-27-17-43-088a9399-67c0dc6c328fc.jpg","Centro Geodésico da América do Sul":"https://www.folhamax.com/storage/webdisco/2022/09/20/810x519/47ed7c1ec8e843192b65d1a00e13365b.jpg","Orla do Porto":"https://www.midianews.com.br/storage/webdisco/2017/02/16/886x590/7828c9bf8660987ec3b80ccb8c083e31.jpg","Aquário Encantado e Rio Salobra":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","Lagoa das Araras":"https://upack.tur.br/wp-content/uploads/2021/06/upack-nobres-lagoa-das-araras.jpg","Cachoeira Véu de Noiva":"https://www.vidadeturista.com/wp-content/uploads/2020/11/parque-nacional-chapada-dos-guimaraes-mt-1.jpg","Rodovia Transpantaneira":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","Mercado do Porto":"https://www.gov.br/sudeco/pt-br/assuntos/noticias/2020/mercado-do-porto-em-cuiaba-mt-recebe-r-1-5-milhao-para-sua-ampliacao-e-modernizacao/mercado-do-porto_velho.jpg","Shopping Estação Cuiabá":"https://noticiapositiva.com.br/wp-content/uploads/2023/07/shopping-estacao.jpeg","Goiabeiras Shopping":"https://www.midianews.com.br/storage/webdisco/2022/06/07/886x590/58197bde5b422b24e3e4ab575aa5f167.jpg","Pantanal Shopping":"https://www.imagens.cuiaba.mt.gov.br/1_shopping_pantanal.jpg","Nativas Grill Cuiabá (Jardim Aclimação / Miguel Sutil)":"https://www.midianews.com.br/storage/webdisco/2025/07/29/886x590/cd39a7884dda40e0f7307e076db5b205.jpg","Lélis Peixaria (Bairro Goiabeiras)":"https://veja.abril.com.br/wp-content/uploads/2017/05/dsc9264.jpg?quality=70&strip=info&w=919","Malcom Pub (Av. Miguel Sutil / Santa Rosa)":"https://www.folhamax.com/storage/webdisco/2024/12/01/810x519/b2373c065d27b26cd0e853f25ea15014.jpg","Musiva (Av. Beira Rio)":"https://photos.wikimapia.org/p/00/04/11/98/04_big.jpg","Due Ladroni":"https://www.olharconceito.com.br/imgsite/noticias/016768/amp-_RFP9776.jpg","Olga Cozinha Italiana":"https://www.tvmaisnews.com.br/imgsite/noticias/amp-WhatsApp-Image-2023-10-09-at-08.31.02.jpeg","Outback Steakhouse (Shopping Estação Cuiabá)":"https://www.rdnews.com.br/storage/webdisco/2019/02/06/1024x656/e0b8d8912dc0b250e2339d191acedfb5.jpg","Bar do Jarbas (Praça Popular / Bairro Popular)":"https://www.rdnews.com.br/storage/webdisco/2018/01/07/1024x656/d6a2f1e91c1af45fabafc1165cb2e213.jpg","Bar do Jarbas (Praça Popular)":"https://www.rdnews.com.br/storage/webdisco/2018/01/07/1024x656/d6a2f1e91c1af45fabafc1165cb2e213.jpg"};
@@ -968,7 +976,7 @@ async function loadCentralData(options={}){
       return;
     }
 
-    if(page==='leisure'){updateCentralStatusUI();setTimeout(()=>setupLeisureExclusiveAccordion(),0)}else{render()}
+    if(['leisure','versatil','starlis','postal'].includes(page)){updateCentralStatusUI();if(page==='leisure')setTimeout(()=>setupLeisureExclusiveAccordion(),0)}else{render()}
   }catch(err){
     console.warn('Base pública:',err);
     centralDataStatus='offline';
@@ -1202,6 +1210,12 @@ const UI_ICONS={
   football:`<svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="24" fill="#fff" stroke="#202124" stroke-width="2.5"/><path d="M36 23l8 6-3 10H31l-3-10z" fill="#202124"/><path d="M18 31l10-2M54 31l-10-2M23 52l8-13M49 52l-8-13" stroke="#202124" stroke-width="2"/></svg>`
 };
 
+
+UI_ICONS.drink=`<svg viewBox="0 0 72 72"><path d="M16 14h40L39 38v18h11v5H22v-5h11V38z" fill="#eaf4fb" stroke="#0f4c81" stroke-width="2.5"/><path d="M22 20h28L39 35H33z" fill="#e47b22"/><circle cx="48" cy="17" r="5" fill="#d9473f"/></svg>`;
+UI_ICONS.burger=`<svg viewBox="0 0 72 72"><path d="M13 31c1-12 11-20 23-20s22 8 23 20z" fill="#e9a43b" stroke="#8d5b18" stroke-width="2.5"/><path d="M12 35h48" stroke="#2f7b3f" stroke-width="5"/><path d="M14 41h44l-5 9H19z" fill="#8b4b25"/><path d="M13 53h46c0 6-5 9-11 9H24c-6 0-11-3-11-9z" fill="#e9a43b" stroke="#8d5b18" stroke-width="2.5"/></svg>`;
+UI_ICONS.pharmacyGreen=`<svg viewBox="0 0 72 72"><rect x="29" y="9" width="14" height="54" rx="3" fill="#19a84b"/><rect x="9" y="29" width="54" height="14" rx="3" fill="#19a84b"/></svg>`;
+UI_ICONS.hospitalRed=`<svg viewBox="0 0 72 72"><rect x="29" y="9" width="14" height="54" rx="3" fill="#d93636"/><rect x="9" y="29" width="54" height="14" rx="3" fill="#d93636"/></svg>`;
+
 function leisureDisplayNameV170(node,depth){
   const raw=String(node?.name||'');
   const low=raw.toLowerCase();
@@ -1210,6 +1224,8 @@ function leisureDisplayNameV170(node,depth){
     if(low.includes('conveni'))return 'CONVENIÊNCIAS';
     if(low.includes('alimenta'))return 'ALIMENTAÇÃO';
     if(low.includes('espa')&&low.includes('evento'))return 'ESPAÇOS DE EVENTOS';
+    if(low.includes('teatro'))return 'TEATROS';
+    if(low.includes('hospital')||low.includes('upa'))return 'HOSPITAIS E UPA';
   }
   const map={
     'museus':'Museus','bares':'Bares','lanchonetes':'Lanchonetes','shoppings':'Shopping',
@@ -1225,6 +1241,8 @@ function leisureGroupIconV170(node,depth){
     if(n==='conveniências')return UI_ICONS.convenience;
     if(n==='alimentação')return UI_ICONS.food;
     if(n==='espaços de eventos')return UI_ICONS.event;
+    if(n==='teatros')return `<span class="emoji-group-icon">🎭</span>`;
+    if(n==='hospitais e upa')return UI_ICONS.hospitalRed;
   }
   if(n==='parques')return UI_ICONS.tree;
   if(n==='museus')return UI_ICONS.museum;
@@ -1232,6 +1250,8 @@ function leisureGroupIconV170(node,depth){
   if(n==='marcos geográficos')return UI_ICONS.pin;
   if(n==='locais turísticos')return UI_ICONS.map;
   if(n==='restaurantes')return UI_ICONS.restaurant;
+  if(n==='bares')return UI_ICONS.drink;
+  if(n==='lanchonetes')return UI_ICONS.burger;
   if(n==='pizzarias')return UI_ICONS.pizza;
   if(n==='rodízios')return UI_ICONS.skewer;
   if(n==='buffets')return UI_ICONS.cloche;
@@ -1239,10 +1259,10 @@ function leisureGroupIconV170(node,depth){
   const symbol={
     'massas':'🍝','peixes':'🐟','carnes':'🥩','orientais':'🍣','regionais':'🍗','feijoadas':'🫕',
     'happy hour':'🍻','noite':'🪩','hamburguerias':'🍔🍟','espetinhos':'🍢','cachorro quente':'🌭',
-    'mercados':'🛒','farmácias':'➕','posto de combustível':'⛽','shopping':'🛍️','mecânico':'🔧','cartório':'📄',
+    'mercados':'🛒','farmácias':UI_ICONS.pharmacyGreen,'posto de combustível':'⛽','shopping':'🛍️','mecânico':'🔧','cartório':'📄',
     'centro de eventos':'🏟️','festas e buffets':'🎈'
   }[n];
-  return symbol?`<span class="emoji-group-icon">${symbol}</span>`:'';
+  return symbol?(String(symbol).startsWith('<svg')?symbol:`<span class="emoji-group-icon">${symbol}</span>`):'';
 }
 function leisureGroupSubtitleV170(node,depth){
   return leisureDisplayNameV170(node,depth)==='Rodízios'?'Carnes / Peixes / Orientais / Pizzarias':'';
@@ -1297,26 +1317,18 @@ function leisureEmbeddedImage(node){
   return LEISURE_EMBEDDED_IMAGES.default;
 }
 
+
 function leisurePlaceHtml(p){
-  const fallback=leisureEmbeddedImage(p);
-  const external=String(p.imageUrl||'').trim();
+  const fallback=leisureEmbeddedImage(p),external=String(p.imageUrl||'').trim();
   const photo=`<img class="leisure-place-img" src="${esc(external||fallback)}" alt="${esc(p.name)}" onerror="this.onerror=null;this.src='${fallback}'">`;
-  return `<details class="leisure-place" data-leisure-id="${esc(p.id)}"><summary>${esc(p.name)}<span>›</span></summary>
-    <div class="leisure-place-body"><div class="leisure-place-grid">
-      ${photo}
-      <div>
-        ${p.description?`<div class="leisure-desc">${esc(p.description)}</div>`:''}
-        <div class="leisure-meta"><b>Distância do Versátil:</b> ${esc(p.distance||'aprox. não informado')}<br><b>Telefone:</b> ${esc(p.phone||'(65) 3313-0050 (Sec. de Turismo)')}</div>
-        <div class="leisure-place-actions">
-          <a class="btn primary leisure-map-btn" href="${esc(leisureMapUrl(p))}" target="_blank" rel="noopener">Abrir no Google Maps</a>
-          <button class="btn itinerary-send-btn" onclick="addToItinerary('${esc(p.id)}')">Enviar para Roteiro</button>
-
-        </div>
-      </div>
-    </div></div></details>`;
+  const parent=(db.leisureGuide||[]).find(n=>n.id===p.parentId),normal=String(parent?.name||'').toLowerCase().includes('locais turísticos');
+  return `<details class="leisure-place ${normal?'leisure-place-normal':''}" data-leisure-id="${esc(p.id)}"><summary><span>${esc(p.name)}</span><span>›</span></summary>
+    <div class="leisure-place-body"><div class="leisure-place-grid">${photo}<div>
+      ${p.description?`<div class="leisure-desc">${esc(p.description)}</div>`:''}
+      <div class="leisure-meta"><b>Distância do Versátil:</b> ${esc(p.distance||'aprox. não informado')}<br><b>Telefone:</b> ${esc(p.phone||'(65) 3313-0050 (Sec. de Turismo)')}</div>
+      <div class="leisure-place-actions"><a class="btn primary leisure-map-btn" href="${esc(leisureMapUrl(p))}" target="_blank" rel="noopener">Abrir no Google Maps</a><button class="btn itinerary-send-btn" onclick="addToItinerary('${esc(p.id)}')">Enviar para Roteiro</button></div>
+    </div></div></div></details>`;
 }
-
-
 function setupLeisureExclusiveAccordion(){
   const root=document.querySelector('.leisure-guide-card');
   if(!root||root.dataset.exclusiveReady==='1')return;
@@ -1389,7 +1401,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.70';
+  badge.textContent='v1.71';
 }
 
 function isPwaStandalone(){
@@ -1590,26 +1602,19 @@ function starlisStarsIcon(){
 }
 function versatilIcon(){return `<img src="logo-versatil.jpg" alt="Versátil">`}
 
+
 function versatilGuideIcon(name){
-  const map={'Acomodações':'🛏️','Áreas comuns':'🛋️','Garagem':'🚗','Lazer':'🏋️☂️','Comodidades':'🛎️','Normas gerais':'📖','Morador mensalista':'✍️'};
+  const map={'Acomodações':'🛏️','Áreas comuns':'🛋️','Garagem':'🅿️','Lazer':'🏖️','Comodidades':'🛎️','Normas gerais':'📖','Morador mensalista':'🏠'};
   return map[name]||'•';
 }
+
 function versatilGuidePage(){
   const sections=db.versatilGuide||[];
   return `<div class="card institutional-page"><h2>Conheça o Versátil</h2><p class="muted">Estrutura, acomodações e informações úteis durante a sua estada.</p></div>
-    ${sections.map(sec=>`<details class="institution-detail"><summary><span>${versatilGuideIcon(sec.name)} ${esc(sec.name)}</span><span>⌄</span></summary>
-      <div class="institution-inside">
-        ${(sec.items||[]).map(item=>sec.type==='gallery'
-          ?`<details class="institution-item"><summary>${esc(item.name)}<span>⌄</span></summary><div class="institution-item-body">
-              <div class="institution-photos">${(item.images||[]).slice(0,2).map(u=>`<img src="${esc(u)}" alt="${esc(item.name)}" onerror="this.classList.add('img-failed')">`).join('')}</div>
-              ${item.description?`<p>${esc(item.description)}</p>`:''}
-            </div></details>`
-          :`<details class="institution-item"><summary>${esc(item.name)}<span>⌄</span></summary><div class="institution-item-body"><p>${esc(item.description||item.name)}</p></div></details>`
-        ).join('')}
-      </div>
+    ${sections.map(sec=>`<details class="institution-detail"><summary><span>${esc(sec.icon||versatilGuideIcon(sec.name))}</span><span>${esc(sec.name)}</span><span>⌄</span></summary>
+      <div class="institution-inside">${(sec.items||[]).map(item=>`<details class="institution-item"><summary><span class="institution-item-ico">${esc(item.icon||'•')}</span><span>${esc(item.name)}</span><span>⌄</span></summary><div class="institution-item-body"><p>${esc(item.description||item.name)}</p></div></details>`).join('')}</div>
     </details>`).join('')}`;
 }
-
 function starlisGuidePage(){
   return `<div class="card institutional-page"><h2>Conheça a Starlis</h2><div class="starlis-page-brand">${starlisStarsIcon()}<b>STARLIS GROUP HOTELS</b></div></div>
   <div class="starlis-grid">${(db.starlisGuide||[]).map(h=>`<div class="starlis-hotel-card">
@@ -1621,6 +1626,11 @@ function starlisGuidePage(){
       </div>`}
     </div></div>`).join('')}</div>`;
 }
+
+
+const POSTAL_SENT_ACCESS_KEY='versatil_postal_sent_access';
+function postalAlreadySentV171(){return sessionStorage.getItem(POSTAL_SENT_ACCESS_KEY)==='1'}
+function postalSentScreenV171(){return `<div class="postal-sent-screen"><div class="postal-sent-popup"><div style="font-size:46px">✉️</div><h2>Seu postal foi enviado!</h2></div></div>`}
 
 function stableCouponFor(email){
   let h=2166136261;for(const c of String(email||'')){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}
@@ -1636,11 +1646,12 @@ function postalTourismItem(){
   const item=all[idx];localStorage.setItem(key,String((idx+1)%all.length));return item;
 }
 function postalPage(){
+  if(postalAlreadySentV171())return postalSentScreenV171();
   const cfg=db.postalConfig||DEFAULT_POSTAL_CONFIG;
   const tour=postalTourismItem();
   const accessEmail=String(session?.email||'');
   const accessName=String(session?.name||'');
-  return `<div class="card"><h2>Correio Versátil</h2><p class="muted">Preencha o postal. O botão “Vire” aparece somente quando os campos estiverem completos.</p></div>
+  return `<div class="card"><h2>Correio Versátil</h2><p class="postal-page-intro">Envie um postal para quem você gosta e dê um brinde de presente!</p></div>
   <div class="postal-stage"><div id="postalCard" class="postal-card">
     <button id="postalFlipBtn" class="postal-center-btn postal-flip-btn" style="display:none" onclick="flipPostalV170()">Vire</button>
     <div class="postal-face postal-back">
@@ -1689,21 +1700,15 @@ function flipPostalV170(){
   const status=document.getElementById('postalStatus');if(status)status.textContent='Postal virado. O botão “Enviar” aparecerá em 7 segundos.';
   setTimeout(()=>{const s=document.getElementById('postalSendBtn');if(s)s.style.display='block';if(status)status.textContent='Pronto para enviar.'},7000);
 }
+async 
 async function sendPostalV170(){
   const card=document.getElementById('postalCard'),btn=document.getElementById('postalSendBtn'),status=document.getElementById('postalStatus');
-  if(!card||card.classList.contains('sending'))return;
-  const payload={
-    action:'sendPostcard',clientVersion:APP_VERSION,
-    sender:{name:document.getElementById('postalSenderName')?.value.trim()||session?.name||'',email:session?.email||'',roomName:session?.roomName||room()?.name||''},
-    recipient:{name:document.getElementById('postalRecipientName')?.value.trim()||'',email:document.getElementById('postalRecipientEmail')?.value.trim()||''},
-    coupon:stableCouponFor(session?.email||''),
-    config:db.postalConfig||DEFAULT_POSTAL_CONFIG
-  };
+  if(!card||card.classList.contains('sending')||postalAlreadySentV171())return;
+  const payload={action:'sendPostcard',clientVersion:APP_VERSION,sender:{name:document.getElementById('postalSenderName')?.value.trim()||session?.name||'',email:session?.email||'',roomName:session?.roomName||room()?.name||''},recipient:{name:document.getElementById('postalRecipientName')?.value.trim()||'',email:document.getElementById('postalRecipientEmail')?.value.trim()||''},coupon:stableCouponFor(session?.email||''),config:db.postalConfig||DEFAULT_POSTAL_CONFIG};
   btn.style.display='none';card.classList.add('sending');if(status)status.textContent='Enviando seu postal…';
-  try{await centralPost('sendPostcard',payload)}catch(e){console.warn(e)}
-  setTimeout(()=>{if(status)status.textContent='Postal enviado! ✉️'},1150);
+  try{await centralPost('sendPostcard',payload);sessionStorage.setItem(POSTAL_SENT_ACCESS_KEY,'1');setTimeout(()=>{page='postal';render()},2100)}
+  catch(e){console.warn(e);card.classList.remove('sending');if(status)status.textContent='Não foi possível enviar. Tente novamente.'}
 }
-
 function signoutMessageV170(name){
   if(sessionActivity.order&&sessionActivity.route)return `Obrigado por seu pedido e aproveite seu passeio, até breve ${name}!`;
   if(sessionActivity.route)return `Maravilha ${name}, esperamos que aproveite seu passeio e curta Cuiabá!`;
@@ -1741,7 +1746,7 @@ function signout(){
 function clientView(){
   const menu=`<nav class="app-menu-grid">
     ${appMenuButton('catalog','Catálogo',UI_ICONS.book)}
-    ${appMenuButton('leisure','Lazer e Conveniência',UI_ICONS.hiker)}
+    ${appMenuButton('leisure','Lazer e Conveniência',UI_ICONS.pin)}
     ${appMenuButton('itinerary',`Meu Roteiro${myItinerary.length?` (${myItinerary.length})`:''}`,UI_ICONS.map)}
     ${appMenuButton('cart',`Carrinho${cart.length?` (${cart.length})`:''}`,UI_ICONS.cart)}
     ${appMenuButton('confirmation','Confirmação',UI_ICONS.check)}
@@ -1803,14 +1808,6 @@ function catalogPage(){
             <p>${esc(c.description||'')}</p>
           </div>
         </button>`).join('')}
-
-        <button class="client-category-card leisure-client-entry" onclick="page='leisure';render()">
-          <div class="client-category-icon">📍</div>
-          <div class="client-category-copy">
-            <h3>Lazer e Conveniência</h3>
-            <p>Encontre tudo ao seu redor.</p>
-          </div>
-        </button>
       </div>
     </section>`;
   }
