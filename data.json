@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "1.72",
-  "updatedAt": "2026-08-22T18:35:25.576Z",
-  "publishedAt": "2026-08-22T18:35:26.406Z",
+  "version": "1.74",
+  "updatedAt": "2026-08-22T19:49:19.074Z",
+  "publishedAt": "2026-08-22T19:49:20.405Z",
   "data": {
     "rooms": [
       {
@@ -4055,6 +4055,18 @@
         "imageUrl": "",
         "mapQuery": "UPA Leblon Cuiabá",
         "sort": 80
+      },
+      {
+        "id": "choppao_regionais_v173",
+        "parentId": "lz_159",
+        "type": "place",
+        "name": "Restaurante Choppão",
+        "description": "Restaurante tradicional de Cuiabá, desde 1974, com culinária regional, carnes, peixes, pizzas, porções e choperia.",
+        "distance": "aprox. 1,2 km",
+        "phone": "(65) 3623-5005",
+        "imageUrl": "https://storage.lucasmendes.dev/site-sp/choppao%20restaurante%2Fimg%2Ffrente-restaurante-noturno-movimentado.webp",
+        "mapQuery": "Restaurante Choppão, Praça 8 de Abril, 44, Goiabeiras, Cuiabá MT",
+        "sort": 1
       }
     ],
     "itineraryStats": {
