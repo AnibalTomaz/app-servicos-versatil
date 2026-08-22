@@ -739,3 +739,10 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Linha 1: logo/nome do APP à esquerda e Sair à direita.
 - Linha 2: boas-vindas + texto de atualização da base à esquerda e botão `Normas gerais` à direita.
 - O botão `Normas gerais` abre uma página dedicada com todas as normas.
+
+## v1.75
+- Cabeçalho reorganizado em 3 colunas.
+- Coluna 1: logo + três linhas com `SERVIÇOS VERSÁTIL`, unidade e `Atualizado data/hora`.
+- Coluna 2: mensagem de boas-vindas.
+- Coluna 3: botões `Sair` e `Normas gerais`.
+- Layout móvel compactado para manter as três colunas na mesma faixa horizontal.

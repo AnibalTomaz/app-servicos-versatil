@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-74-header-normas";
+const CACHE="versatil-v1-75-header-three-columns";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1740',
-  './app.js?v=1740',
+  './style.css?v=1750',
+  './app.js?v=1750',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
