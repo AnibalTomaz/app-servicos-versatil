@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-16-login-intacto-icons";
+const CACHE="versatil-v2-17-observer-fix";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2160',
-  './app.js?v=2160',
+  './style.css?v=2170',
+  './app.js?v=2170',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

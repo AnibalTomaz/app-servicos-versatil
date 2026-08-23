@@ -935,3 +935,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - As animações são uma camada externa via MutationObserver, iniciada somente quando os 8 botões do cliente aparecem.
 - O instante em que o menu aparece inicia a contagem.
 - Primeiro GIF aos 20 segundos; seguintes a cada 20 segundos; sequência e loop aprovados.
+
+## v2.17 — correção real do bloqueio após Entrar
+- Identificada a causa: o MutationObserver da v2.16 reescrevia os ícones ao detectar qualquer mutação.
+- Essa própria reescrita disparava uma nova mutação, criando um ciclo contínuo que impedia a interface de concluir a troca da tela de acesso para o app.
+- O observer agora apenas detecta quando surge um NOVO elemento de menu.
+- Ele não altera mais o DOM durante a detecção.
+- Alterações feitas pelos GIFs não reiniciam o observer nem o relógio.
+- A contagem de 20s continua iniciando apenas no primeiro acesso.
