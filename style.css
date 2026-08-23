@@ -3276,3 +3276,144 @@ button[class*="nav"]{
   align-items:center!important;justify-content:center!important;
   background:#fff!important;font-size:27px!important;line-height:1!important;
 }
+
+/* v2.02 — hierarquia visual azul para categorias e subcategorias */
+
+/*
+  Princípio:
+  - Categoria principal: azul mais escuro.
+  - Cada nível de subcategoria: azul progressivamente mais claro.
+  - Produtos permanecem brancos, para sempre se distinguirem das categorias.
+*/
+
+/* Lazer e Conveniência — categorias por profundidade */
+.leisure-level-1>summary{
+  background:#2f6f9f!important;
+  color:#fff!important;
+  border-color:#2f6f9f!important;
+}
+.leisure-level-2>summary{
+  background:#5f93b8!important;
+  color:#0b2f4a!important;
+  border-color:#5f93b8!important;
+}
+.leisure-level-3>summary{
+  background:#89b1cc!important;
+  color:#12364e!important;
+  border-color:#89b1cc!important;
+}
+.leisure-level-4>summary{
+  background:#b4cfe0!important;
+  color:#173a51!important;
+  border-color:#b4cfe0!important;
+}
+.leisure-level-5>summary{
+  background:#d7e7f1!important;
+  color:#173a51!important;
+  border-color:#d7e7f1!important;
+}
+
+/* Mantém ícone em caixa branca, sem conflitar com o azul */
+.leisure-level-1>summary .leisure-group-icon,
+.leisure-level-2>summary .leisure-group-icon,
+.leisure-level-3>summary .leisure-group-icon,
+.leisure-level-4>summary .leisure-group-icon,
+.leisure-level-5>summary .leisure-group-icon{
+  background:#fff!important;
+  border:1px solid rgba(15,76,129,.12)!important;
+}
+
+/* Seta acompanha o contraste de cada nível */
+.leisure-level-1>summary>span:last-child{color:#fff!important}
+.leisure-level-2>summary>span:last-child,
+.leisure-level-3>summary>span:last-child,
+.leisure-level-4>summary>span:last-child,
+.leisure-level-5>summary>span:last-child{color:#17435f!important}
+
+/* Produtos/locais ficam sempre brancos */
+.leisure-place,
+.leisure-place>summary,
+.leisure-place-normal,
+.leisure-place-normal>summary{
+  background:#fff!important;
+  color:#14273a!important;
+}
+.leisure-place{
+  border-color:#d4e1ea!important;
+}
+.leisure-place>summary{
+  border-color:transparent!important;
+}
+.leisure-place[open]>summary{
+  background:#f8fbfd!important;
+}
+
+/* Conheça o Versátil — categoria principal azul, itens/produtos brancos */
+.institution-detail>summary{
+  background:#5f93b8!important;
+  color:#12364e!important;
+  border-color:#5f93b8!important;
+}
+.institution-detail>summary>:first-child{
+  background:#fff!important;
+}
+.institution-detail .institution-item,
+.institution-detail .institution-item>summary{
+  background:#fff!important;
+  color:#14273a!important;
+}
+.institution-detail .institution-item{
+  border-color:#d6e3eb!important;
+}
+.institution-detail .institution-item[open]>summary{
+  background:#f8fbfd!important;
+}
+
+/* Admin — categorias em azul e produtos em branco */
+.admin-category-detail>summary,
+.admin-products-category-detail>summary{
+  background:#5f93b8!important;
+  color:#12364e!important;
+}
+.admin-category-detail>summary .admin-category-icon,
+.admin-products-category-detail>summary .admin-category-icon{
+  background:#fff!important;
+}
+.admin-category-body,
+.admin-products-list{
+  background:#fff!important;
+}
+.admin-product-row{
+  background:#fff!important;
+}
+
+/* Normas e demais listas institucionais: categoria/subcategoria diferenciada do conteúdo */
+.normas-page-list>.institution-item>summary{
+  background:#d7e7f1!important;
+  color:#173a51!important;
+}
+.normas-page-list>.institution-item[open]>summary{
+  background:#c9deeb!important;
+}
+
+/* Hover discreto sem quebrar a hierarquia */
+@media(hover:hover){
+  .leisure-level-1>summary:hover{filter:brightness(1.04)}
+  .leisure-level-2>summary:hover,
+  .leisure-level-3>summary:hover,
+  .leisure-level-4>summary:hover,
+  .leisure-level-5>summary:hover{filter:brightness(.98)}
+  .leisure-place>summary:hover,
+  .institution-item>summary:hover{background:#f5f9fc!important}
+}
+
+/* Mesma hierarquia no celular */
+@media(max-width:700px){
+  .leisure-level-1>summary{background:#2f6f9f!important;color:#fff!important}
+  .leisure-level-2>summary{background:#5f93b8!important;color:#0b2f4a!important}
+  .leisure-level-3>summary{background:#89b1cc!important;color:#12364e!important}
+  .leisure-level-4>summary{background:#b4cfe0!important;color:#173a51!important}
+  .leisure-level-5>summary{background:#d7e7f1!important;color:#173a51!important}
+  .leisure-place>summary,
+  .institution-detail .institution-item>summary{background:#fff!important;color:#14273a!important}
+}

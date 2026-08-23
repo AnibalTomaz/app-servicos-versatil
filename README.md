@@ -859,3 +859,10 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Cinelaser Cinemas, Cinépolis, Cineflix e Cine Araújo.
 - Mantido o padrão das listas existentes: descrição/local, distância, telefone, Maps e Roteiro.
 - Ordem por proximidade informada pelo usuário.
+
+## v2.02
+- Hierarquia visual aplicada às listas.
+- Categorias principais em azul mais escuro.
+- Subcategorias clareiam progressivamente conforme a profundidade.
+- Produtos/locais permanecem brancos, distinguindo claramente conteúdo de navegação.
+- Mesma lógica aplicada em Lazer e Conveniência, Conheça o Versátil, Admin e listas institucionais.

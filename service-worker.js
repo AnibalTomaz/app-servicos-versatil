@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-01-cinemas";
+const CACHE="versatil-v2-02-blue-list-hierarchy";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2010',
-  './app.js?v=2010',
+  './style.css?v=2020',
+  './app.js?v=2020',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
