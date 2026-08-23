@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-84-meu-roteiro-title";
+const CACHE="versatil-v1-85-leisure-rows-page-icons";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1840',
-  './app.js?v=1840',
+  './style.css?v=1850',
+  './app.js?v=1850',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

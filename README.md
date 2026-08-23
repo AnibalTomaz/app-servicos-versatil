@@ -803,3 +803,10 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Ícones de categorias ficaram maiores; subcategorias menores, com padronização idêntica no PC e celular.
 - O ícone continua visível junto ao título ao entrar na categoria.
 - O pedido menciona uma quinta imagem para Conveniência, mas somente quatro imagens vieram anexadas nesta mensagem; o ícone atual de Conveniência foi preservado nesta versão.
+
+## v1.85
+- Revertida a divisão em duas colunas dentro do descritivo dos locais de Lazer e Conveniência.
+- A distância permanece no descritivo e também é copiada para a linha da lista, em uma segunda coluna invisível, alinhando todas as distâncias.
+- Ícones de Lazer e Conveniência agora ficam restritos a uma coluna própria, com fundo branco e dimensões padronizadas; categorias principais um pouco maiores que subcategorias.
+- O mesmo tamanho/estrutura é preservado no PC e no celular.
+- Os ícones dos botões principais são repetidos junto aos títulos das páginas: Catálogo, Lazer e Conveniência, Carrinho, Confirmação, Conheça o Versátil, Conheça a Starlis e Correio Versátil. Meu roteiro mantém o mapa já aprovado.

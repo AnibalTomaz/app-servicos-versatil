@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='1.84';
+const APP_VERSION='1.85';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -1373,25 +1373,24 @@ function leisureEmbeddedImage(node){
 }
 
 
+
 function leisurePlaceHtml(p){
   const fallback=leisureEmbeddedImage(p),external=String(p.imageUrl||'').trim();
   const photo=`<img class="leisure-place-img" src="${esc(external||fallback)}" alt="${esc(p.name)}" onerror="this.onerror=null;this.src='${fallback}'">`;
   const parent=(db.leisureGuide||[]).find(n=>n.id===p.parentId),normal=String(parent?.name||'').toLowerCase().includes('locais turísticos');
-  return `<details class="leisure-place ${normal?'leisure-place-normal':''}" data-leisure-id="${esc(p.id)}"><summary><span>${esc(p.name)}</span><span>›</span></summary>
+  const distance=esc(p.distance||'aprox. não informado');
+  return `<details class="leisure-place ${normal?'leisure-place-normal':''}" data-leisure-id="${esc(p.id)}">
+    <summary class="leisure-place-summary-v185">
+      <span class="leisure-place-name-v185">${esc(p.name)}</span>
+      <span class="leisure-place-distance-v185">${distance}</span>
+      <span class="leisure-place-chevron-v185">›</span>
+    </summary>
     <div class="leisure-place-body"><div class="leisure-place-grid">${photo}<div>
       ${p.description?`<div class="leisure-desc">${esc(p.description)}</div>`:''}
-      <div class="leisure-meta leisure-meta-v182">
-        <div class="leisure-meta-row-v182 leisure-distance-row-v182">
-          <div class="leisure-meta-label-v182"><b>Distância do Versátil:</b></div>
-          <div class="leisure-meta-value-v182">${esc(p.distance||'aprox. não informado')}</div>
-        </div>
-        <div class="leisure-meta-row-v182">
-          <div class="leisure-meta-label-v182"><b>Telefone:</b></div>
-          <div class="leisure-meta-value-v182">${esc(p.phone||'(65) 3313-0050 (Sec. de Turismo)')}</div>
-        </div>
-      </div>
+      <div class="leisure-meta"><b>Distância do Versátil:</b> ${distance}<br><b>Telefone:</b> ${esc(p.phone||'(65) 3313-0050 (Sec. de Turismo)')}</div>
       <div class="leisure-place-actions"><a class="btn primary leisure-map-btn" href="${esc(leisureMapUrl(p))}" target="_blank" rel="noopener">Abrir no Google Maps</a><button class="btn itinerary-send-btn" onclick="addToItinerary('${esc(p.id)}')">Enviar para Roteiro</button></div>
-    </div></div></div></details>`;
+    </div></div></div>
+  </details>`;
 }
 function setupLeisureExclusiveAccordion(){
   const root=document.querySelector('.leisure-guide-card');
@@ -1444,15 +1443,20 @@ function leisureNodeHtml(node,depth=1){
   </details>`;
 }
 
+
+function pageTitleV185(label,iconHtml,extra=''){
+  return `<h2 class="page-title-v185 ${extra}"><span class="page-title-icon-v185">${iconHtml}</span><span>${label}</span></h2>`;
+}
+
+
 function leisureGuidePage(){
   const roots=leisureChildren('');
   return `<div class="card leisure-guide-card">
-    <div class="row between leisure-guide-head"><div><h2>Lazer e Conveniência</h2><div class="leisure-page-line1">Conheça Cuiabá e arredores.</div><div class="leisure-page-line2">Encontre tudo ao seu redor.</div></div>
+    <div class="row between leisure-guide-head"><div>${pageTitleV185('Lazer e Conveniência',UI_ICONS.pin)}<div class="leisure-page-line1">Conheça Cuiabá e arredores.</div><div class="leisure-page-line2">Encontre tudo ao seu redor.</div></div>
     <button class="btn" onclick="page='catalog';render()">Voltar ao catálogo</button></div>
     ${roots.map(n=>leisureNodeHtml(n,1)).join('')}
   </div>`;
 }
-
 function adjustScrollBelowHeaderV177(forceTop=false){
   requestAnimationFrame(()=>{
     const header=document.querySelector('.top-v175');
@@ -1498,7 +1502,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v1.84';
+  badge.textContent='v1.85';
 }
 
 function isPwaStandalone(){
@@ -1824,7 +1828,7 @@ function versatilItemsOrderedV179(sec){
 
 function versatilGuidePage(){
   const sections=(db.versatilGuide||[]).slice().sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'pt-BR',{sensitivity:'base'}));
-  return `<div class="card institutional-page"><h2>Conheça o Versátil</h2><p class="muted">Estrutura, acomodações e informações úteis durante a sua estada.</p></div>
+  return `<div class="card institutional-page">${pageTitleV185('Conheça o Versátil',versatilIcon())}<p class="muted">Estrutura, acomodações e informações úteis durante a sua estada.</p></div>
     ${sections.map(sec=>`<details class="institution-detail"><summary>${versatilCategoryIconV179(sec)}<span>${esc(sec.name)}</span><span>⌄</span></summary>
       <div class="institution-inside">${versatilItemsOrderedV179(sec).map(item=>`<details class="institution-item"><summary>${versatilItemIconV179(item)}<span class="institution-item-title">${esc(item.name)}</span><span>⌄</span></summary><div class="institution-item-body">
         ${Array.isArray(item.images)&&item.images.length?`<div class="institution-photos">${item.images.slice(0,2).map(u=>`<img src="${esc(u)}" alt="${esc(item.name)}" onerror="this.classList.add('img-failed')">`).join('')}</div>`:''}
@@ -1832,7 +1836,7 @@ function versatilGuidePage(){
     </details>`).join('')}`;
 }
 function starlisGuidePage(){
-  return `<div class="card institutional-page"><h2>Conheça a Starlis</h2><div class="starlis-page-brand">${starlisStarsIcon()}<b>STARLIS GROUP HOTELS</b></div></div>
+  return `<div class="card institutional-page">${pageTitleV185('Conheça a Starlis',starlisStarsIcon())}<div class="starlis-page-brand">${starlisStarsIcon()}<b>STARLIS GROUP HOTELS</b></div></div>
   <div class="starlis-grid">${(db.starlisGuide||[]).map(h=>`<div class="starlis-hotel-card">
     <img src="${esc(h.image||'')}" alt="${esc(h.name)}" onerror="this.classList.add('img-failed')">
     <div class="starlis-hotel-body"><h3>${esc(h.name)}</h3><p>${esc(h.description||'')}</p>
@@ -1889,7 +1893,7 @@ function postalPage(){
   const tour=postalTourismItem();
   const accessEmail=String(session?.email||'');
   const accessName=String(session?.name||'');
-  return `<div class="card"><h2>Correio Versátil</h2><p class="postal-page-intro">${esc(POSTAL_TEXT_V180.intro)}</p></div>
+  return `<div class="card">${pageTitleV185('Correio Versátil',UI_ICONS.mailbox)}<p class="postal-page-intro">${esc(POSTAL_TEXT_V180.intro)}</p></div>
   <div class="postal-stage"><div id="postalCard" class="postal-card">
     <button id="postalFlipBtn" class="postal-center-btn postal-flip-btn" style="display:none" onclick="flipPostalV170()">Vire</button>
     <div class="postal-face postal-back">
@@ -2020,7 +2024,7 @@ function normasGeraisPage(){
   ensureNormasV174();
   const sec=(db.versatilGuide||[]).find(s=>String(s.name||'').toLowerCase()==='normas gerais');
   const items=(sec?.items||[]).slice().sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'pt-BR',{sensitivity:'base'}));
-  return `<div class="card institutional-page normas-page-head"><div class="row between"><div><h2>Normas gerais</h2><p class="muted">Informações importantes para uma boa convivência durante sua estada.</p></div><button class="btn" onclick="page='catalog';render()">Voltar</button></div></div>
+  return `<div class="card institutional-page normas-page-head"><div class="row between"><div>${pageTitleV185('Normas gerais','📖')}<p class="muted">Informações importantes para uma boa convivência durante sua estada.</p></div><button class="btn" onclick="page='catalog';render()">Voltar</button></div></div>
   <div class="normas-page-list">${items.map(item=>`<details class="institution-item normas-direct-item"><summary>${versatilItemIconV179(item)}<span class="institution-item-title">${esc(item.name)}</span><span>⌄</span></summary><div class="institution-item-body"><p>${esc(item.description||item.name).replace(/\n/g,'<br>')}</p></div></details>`).join('')}</div>`;
 }
 function clientView(){
@@ -2081,7 +2085,7 @@ function catalogPage(){
   if(!selectedCat){
     return `<section class="client-category-home">
       <div class="client-catalog-intro">
-        <h2>O que você precisa?</h2>
+        ${pageTitleV185('O que você precisa?',UI_ICONS.book)}
         <div class="guest-today-notice">Prezado Hóspede para solicitações, para o dia de hoje, contate nossa portaria, para avaliarmos a possibilidade.</div>
         <p class="muted">Escolha uma categoria para ver os produtos disponíveis.</p>
       </div>
@@ -2396,7 +2400,7 @@ function confirmClearCart(){
 function cartPage(){
   if(!cart.length){
     return `<div class="card">
-      <h2>Carrinho</h2>
+      ${pageTitleV185('Carrinho',UI_ICONS.cart)}
       <div class="muted">Nenhum item selecionado.</div>
       <button class="btn primary" onclick="page='catalog';render()">Voltar ao catálogo</button>
     </div>`;
@@ -2406,7 +2410,7 @@ function cartPage(){
 
   return `<div class="card cart-card-v158">
     <div class="row between">
-      <h2>Carrinho</h2>
+      ${pageTitleV185('Carrinho',UI_ICONS.cart)}
     </div>
 
     <div class="cart-mobile-scroll-hint">← Deslize para ver todos os dados →</div>
@@ -2563,11 +2567,11 @@ function confirmOrder(){
 }
 function confirmationPage(){
   let o=db.orders.find(x=>x.id===session.lastOrderId);
-  if(!o)return `<div class="card"><h2>Confirmação</h2><div class="muted">Nenhum pedido confirmado nesta sessão.</div></div>`;
+  if(!o)return `<div class="card">${pageTitleV185('Confirmação',UI_ICONS.check)}<div class="muted">Nenhum pedido confirmado nesta sessão.</div></div>`;
 
   return `<div class="card">
     <div class="success"><b>Solicitação registrada.</b><br>Os e-mails e os dados de agenda foram preparados automaticamente.</div>
-    <h2>Confirmação do pedido</h2>
+    ${pageTitleV185('Confirmação do pedido',UI_ICONS.check)}
     <p><b>Cliente:</b> ${esc(o.client.name)} • ${esc(o.client.roomName)}</p>
 
     <table>

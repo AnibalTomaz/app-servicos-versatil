@@ -2429,3 +2429,168 @@ body{
   height:32px!important;
   display:block!important;
 }
+
+/* v1.85 — Lazer: distância alinhada na lista e ícones em coluna fixa */
+
+/* Desfaz o layout v1.82 dentro do descritivo expandido. */
+.leisure-meta-v182,
+.leisure-meta-row-v182{
+  display:block!important;
+}
+.leisure-meta-label-v182,
+.leisure-meta-value-v182{
+  display:inline!important;
+}
+
+/* Cada LOCAL na lista passa a ter duas colunas invisíveis: nome + distância. */
+.leisure-place-summary-v185{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(105px,24%) 18px!important;
+  align-items:center!important;
+  gap:10px!important;
+  width:100%!important;
+}
+.leisure-place-name-v185{
+  min-width:0!important;
+  text-align:left!important;
+}
+.leisure-place-distance-v185{
+  min-width:0!important;
+  text-align:left!important;
+  font-size:12px!important;
+  color:#667985!important;
+  font-weight:400!important;
+  white-space:nowrap!important;
+}
+.leisure-place-chevron-v185{
+  text-align:right!important;
+}
+
+/* Ícones de categorias/subcategorias ficam presos a uma coluna própria e branca. */
+.leisure-group-summary{
+  display:grid!important;
+  grid-template-columns:44px minmax(0,1fr)!important;
+  align-items:center!important;
+  column-gap:9px!important;
+  width:100%!important;
+}
+.leisure-group-icon{
+  width:36px!important;
+  min-width:36px!important;
+  height:36px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#fff!important;
+  border-radius:7px!important;
+  overflow:hidden!important;
+  padding:2px!important;
+  box-sizing:border-box!important;
+}
+.leisure-group-icon svg,
+.leisure-group-icon img,
+.leisure-group-icon .category-image-icon-v183{
+  width:30px!important;
+  height:30px!important;
+  max-width:30px!important;
+  max-height:30px!important;
+  min-width:0!important;
+  object-fit:contain!important;
+  background:#fff!important;
+  border-radius:4px!important;
+}
+.leisure-level-1 .leisure-group-summary{
+  grid-template-columns:50px minmax(0,1fr)!important;
+}
+.leisure-level-1 .leisure-group-icon{
+  width:42px!important;
+  min-width:42px!important;
+  height:42px!important;
+}
+.leisure-level-1 .leisure-group-icon svg,
+.leisure-level-1 .leisure-group-icon img,
+.leisure-level-1 .leisure-group-icon .category-image-icon-v183{
+  width:36px!important;
+  height:36px!important;
+  max-width:36px!important;
+  max-height:36px!important;
+}
+/* Neutraliza regras antigas que aumentavam demais os ícones. */
+.leisure-level-2 .leisure-group-icon,
+.leisure-level-3 .leisure-group-icon,
+.leisure-level-4 .leisure-group-icon,
+.leisure-level-5 .leisure-group-icon{
+  width:36px!important;
+  min-width:36px!important;
+  height:36px!important;
+}
+.category-image-icon-v183.leisure-category-image{
+  background:#fff!important;
+  overflow:hidden!important;
+}
+
+/* Ícone do botão principal repetido junto ao título de cada página. */
+.page-title-v185{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  margin-top:0!important;
+  text-transform:none!important;
+}
+.page-title-icon-v185{
+  width:36px!important;
+  height:36px!important;
+  flex:0 0 36px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#fff!important;
+  border-radius:7px!important;
+  overflow:hidden!important;
+}
+.page-title-icon-v185 svg,
+.page-title-icon-v185 img{
+  display:block!important;
+  width:32px!important;
+  height:32px!important;
+  max-width:32px!important;
+  max-height:32px!important;
+  object-fit:contain!important;
+}
+.page-title-icon-v185 .app-menu-icon{
+  width:32px!important;
+  height:32px!important;
+  flex-basis:32px!important;
+}
+.page-title-icon-v185 .app-menu-icon img,
+.page-title-icon-v185 .app-menu-icon svg{
+  width:30px!important;
+  height:30px!important;
+}
+
+/* Mesma geometria no celular; apenas a coluna da distância fica um pouco menor. */
+@media(max-width:700px){
+  .leisure-place-summary-v185{
+    grid-template-columns:minmax(0,1fr) minmax(88px,28%) 16px!important;
+    gap:6px!important;
+  }
+  .leisure-place-distance-v185{
+    font-size:10.5px!important;
+  }
+  .leisure-group-summary{
+    grid-template-columns:44px minmax(0,1fr)!important;
+  }
+  .leisure-level-1 .leisure-group-summary{
+    grid-template-columns:50px minmax(0,1fr)!important;
+  }
+  .leisure-group-icon{
+    width:36px!important;
+    min-width:36px!important;
+    height:36px!important;
+  }
+  .leisure-level-1 .leisure-group-icon{
+    width:42px!important;
+    min-width:42px!important;
+    height:42px!important;
+  }
+}
