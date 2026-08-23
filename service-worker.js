@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-14-safe-login-animations";
+const CACHE="versatil-v2-15-login-restored-icons";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2140',
-  './app.js?v=2140',
+  './style.css?v=2150',
+  './app.js?v=2150',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

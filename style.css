@@ -4016,11 +4016,8 @@ summary:active{
   filter:brightness(.99)!important;
 }
 
-/* v2.13 — animações sequenciais dos oito ícones principais */
-.app-menu-icon{
-  overflow:hidden!important;
-}
-.app-menu-animated-icon-v213{
+/* v2.15 — GIFs apenas após renderização do acesso */
+.app-menu-animated-icon-v215{
   display:block!important;
   width:100%!important;
   height:100%!important;
