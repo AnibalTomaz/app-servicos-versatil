@@ -937,3 +937,10 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Após Correio Versátil, a sequência reinicia em loop mantendo o intervalo de 20 segundos.
 - Fora da animação, todos os ícones permanecem em seu estado original totalmente visível.
 - Se a página correspondente estiver em uso no momento de sua animação, apenas aquele ícone permanece estático; o relógio e os demais ícones não são alterados.
+
+## v2.14 — correção de entrada
+- Removida a inicialização do scheduler do caminho crítico do botão Entrar.
+- O momento do acesso continua sendo gravado no instante do login.
+- O scheduler dos GIFs passa a iniciar somente após a interface do cliente já ter sido renderizada.
+- Toda a lógica de animação ficou isolada por proteção de erro: falha de GIF/timer jamais pode bloquear login, navegação ou renderização do app.
+- Mantidas sequência, intervalo de 20 segundos, loop e pausa individual da página ativa.
