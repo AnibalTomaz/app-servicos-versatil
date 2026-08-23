@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-09-hospitais-upa";
+const CACHE="versatil-v2-10-unified-categories";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2090',
-  './app.js?v=2090',
+  './style.css?v=2100',
+  './app.js?v=2100',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

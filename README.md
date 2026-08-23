@@ -909,3 +909,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - HOSPITAIS usa a cruz vermelha.
 - UPA usa a logo UPA 24h enviada anteriormente pelo usuário.
 - Hospitais e UPAs são separados automaticamente e os oito registros originais são garantidos nas respectivas subcategorias.
+
+## v2.10
+- Catálogo, Lazer e Conveniência e Conheça o Versátil passam a usar o mesmo formato de apresentação de categorias.
+- Cantos arredondados no padrão do Catálogo.
+- Grade invisível única: 1/6 ícone + 4/6 texto + 1/6 seta.
+- Catálogo recebe seta na terceira coluna para repetir a lógica visual.
+- Todos os dropdowns continuam sob o mesmo controlador global de deslizamento.
+- Pressão ao clicar padronizada e sutil em categorias, dropdowns e botões.
