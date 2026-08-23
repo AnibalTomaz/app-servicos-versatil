@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "1.97",
-  "updatedAt": "2026-08-23T14:29:58.443Z",
-  "publishedAt": "2026-08-23T14:29:59.129Z",
+  "version": "2.01",
+  "updatedAt": "2026-08-23T15:10:18.746Z",
+  "publishedAt": "2026-08-23T15:10:19.954Z",
   "data": {
     "rooms": [
       {
@@ -4175,6 +4175,66 @@
         "imageUrl": "https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg",
         "mapQuery": "Pontes e Lacerda MT pesca esportiva",
         "sort": 3
+      },
+      {
+        "id": "cinemas_root_v201",
+        "parentId": "",
+        "type": "group",
+        "name": "CINEMAS",
+        "description": "Cinemas em Cuiabá.",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 15
+      },
+      {
+        "id": "cinema_cinelaser_v201",
+        "parentId": "cinemas_root_v201",
+        "type": "place",
+        "name": "Cinelaser Cinemas",
+        "description": "Goiabeiras Shopping — Av. José Monteiro de Figueiredo, 500 - Duque de Caxias.",
+        "distance": "aprox. 1,1 km",
+        "phone": "(65) 99992-3626",
+        "imageUrl": "",
+        "mapQuery": "Cinelaser Goiabeiras Shopping Cuiabá MT",
+        "sort": 1
+      },
+      {
+        "id": "cinema_cinepolis_v201",
+        "parentId": "cinemas_root_v201",
+        "type": "place",
+        "name": "Cinépolis",
+        "description": "Shopping Estação Cuiabá — Av. Miguel Sutil, 9300 - Duque de Caxias. Atendimento centralizado online pela Cinépolis.",
+        "distance": "aprox. 2,0 km",
+        "phone": "Atendimento online",
+        "imageUrl": "",
+        "mapQuery": "Cinépolis Shopping Estação Cuiabá MT",
+        "sort": 2
+      },
+      {
+        "id": "cinema_cineflix_v201",
+        "parentId": "cinemas_root_v201",
+        "type": "place",
+        "name": "Cineflix",
+        "description": "Shopping 3 Américas — Av. Brasília, 146 - Jardim das Américas.",
+        "distance": "aprox. 4,8 km",
+        "phone": "(65) 3627-5501 (Shopping)",
+        "imageUrl": "",
+        "mapQuery": "Cineflix Shopping 3 Américas Cuiabá MT",
+        "sort": 3
+      },
+      {
+        "id": "cinema_araujo_v201",
+        "parentId": "cinemas_root_v201",
+        "type": "place",
+        "name": "Cine Araújo",
+        "description": "Pantanal Shopping — Av. Historiador Rubens de Mendonça, 3300 - Jardim Aclimação.",
+        "distance": "aprox. 5,3 km",
+        "phone": "+55 65 3901-4123",
+        "imageUrl": "",
+        "mapQuery": "Cine Araújo Pantanal Shopping Cuiabá MT",
+        "sort": 4
       }
     ],
     "itineraryStats": {
