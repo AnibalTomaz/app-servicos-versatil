@@ -6,8 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Versátil">
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css?v=2170">
-</head><body><div id="appVersionBadge">v2.17</div><div id="app"></div><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css?v=2180">
+</head><body><div id="appVersionBadge">v2.18</div><div id="app"></div><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
 window.addEventListener('error',function(ev){
   const app=document.getElementById('app');
@@ -16,14 +16,41 @@ window.addEventListener('error',function(ev){
   }
 });
 </script>
-<script src="app.js?v=2170"></script><script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',async()=>{
-    try{
+
+<script>
+(async function(){
+  const badge=document.getElementById('appVersionBadge');
+  if(badge)badge.textContent='v2.18';
+
+  try{
+    if('serviceWorker' in navigator){
       const regs=await navigator.serviceWorker.getRegistrations();
-      for(const reg of regs)await reg.update();
-      await navigator.serviceWorker.register('service-worker.js?v=2170',{updateViaCache:'none'});
+      for(const reg of regs){
+        try{await reg.unregister()}catch(e){}
+      }
+    }
+    if('caches' in window){
+      const keys=await caches.keys();
+      await Promise.all(keys.map(k=>caches.delete(k)));
+    }
+  }catch(e){
+    console.warn('Limpeza de cache anterior:',e);
+  }
+
+  const script=document.createElement('script');
+  script.src='app.js?v=2180&fresh='+Date.now();
+  script.onload=async function(){
+    try{
+      if('serviceWorker' in navigator){
+        await navigator.serviceWorker.register('service-worker.js?v=2180',{updateViaCache:'none'});
+      }
     }catch(e){console.warn('Service Worker:',e)}
-  });
-}
-</script></body></html>
+  };
+  script.onerror=function(){
+    const app=document.getElementById('app');
+    if(app)app.innerHTML='<div style="max-width:620px;margin:40px auto;padding:20px;font-family:Arial;background:#fff;border:1px solid #ddd;border-radius:12px"><h2>APP SERVIÇOS VERSÁTIL</h2><p>Não foi possível carregar app.js v2.18.</p><button onclick="location.reload()" style="padding:10px 16px">Tentar novamente</button></div>';
+  };
+  document.body.appendChild(script);
+})();
+</script>
+</body></html>

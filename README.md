@@ -943,3 +943,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Ele não altera mais o DOM durante a detecção.
 - Alterações feitas pelos GIFs não reiniciam o observer nem o relógio.
 - A contagem de 20s continua iniciando apenas no primeiro acesso.
+
+## v2.18 — limpeza forçada de cache antes do app
+- Identificada uma causa compatível com o sintoma: data.json era buscado pela rede, mas app.js podia continuar vindo de um cache antigo do Service Worker.
+- A página agora remove Service Workers e caches antigos antes de carregar app.js.
+- app.js é carregado dinamicamente com parâmetro fresh baseado no horário atual.
+- Depois do carregamento, o novo Service Worker é registrado.
+- O novo Service Worker usa rede primeiro para todos os arquivos do app, usando cache apenas como fallback offline.
+- Isso impede uma versão quebrada antiga de app.js de continuar ativa enquanto a base pública parece atualizada.
