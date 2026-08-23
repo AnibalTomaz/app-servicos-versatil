@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "2.06",
-  "updatedAt": "2026-08-23T16:19:28.132Z",
-  "publishedAt": "2026-08-23T16:19:28.804Z",
+  "version": "2.09",
+  "updatedAt": "2026-08-23T17:12:21.056Z",
+  "publishedAt": "2026-08-23T17:12:22.657Z",
   "data": {
     "rooms": [
       {
@@ -3902,7 +3902,7 @@
       },
       {
         "id": "santarosa_v171",
-        "parentId": "grp_hospitais_v171",
+        "parentId": "grp_hospitais_sub_v191",
         "type": "place",
         "name": "Hospital Santa Rosa",
         "description": "Hospital 24 horas.",
@@ -3914,7 +3914,7 @@
       },
       {
         "id": "hmc_v171",
-        "parentId": "grp_hospitais_v171",
+        "parentId": "grp_hospitais_sub_v191",
         "type": "place",
         "name": "Hospital Municipal de Cuiabá - HMC",
         "description": "Hospital municipal e pronto-socorro 24 horas.",
@@ -3926,7 +3926,7 @@
       },
       {
         "id": "hujm_v171",
-        "parentId": "grp_hospitais_v171",
+        "parentId": "grp_hospitais_sub_v191",
         "type": "place",
         "name": "Hospital Universitário Júlio Müller",
         "description": "Hospital universitário da UFMT/Ebserh.",
@@ -3938,7 +3938,7 @@
       },
       {
         "id": "complexo_v171",
-        "parentId": "grp_hospitais_v171",
+        "parentId": "grp_hospitais_sub_v191",
         "type": "place",
         "name": "Complexo Hospitalar de Cuiabá",
         "description": "Hospital 24 horas.",
@@ -3950,7 +3950,7 @@
       },
       {
         "id": "upa_verdao_v171",
-        "parentId": "grp_hospitais_v171",
+        "parentId": "grp_upa_sub_v191",
         "type": "place",
         "name": "UPA Verdão",
         "description": "Unidade de Pronto Atendimento 24 horas.",
@@ -3962,7 +3962,7 @@
       },
       {
         "id": "upa_morada_v171",
-        "parentId": "grp_hospitais_v171",
+        "parentId": "grp_upa_sub_v191",
         "type": "place",
         "name": "UPA Morada do Ouro",
         "description": "Unidade de Pronto Atendimento 24 horas.",
@@ -3974,7 +3974,7 @@
       },
       {
         "id": "upa_pascoal_v171",
-        "parentId": "grp_hospitais_v171",
+        "parentId": "grp_upa_sub_v191",
         "type": "place",
         "name": "UPA Pascoal Ramos",
         "description": "Unidade de Pronto Atendimento 24 horas.",
@@ -3986,7 +3986,7 @@
       },
       {
         "id": "upa_leblon_v171",
-        "parentId": "grp_hospitais_v171",
+        "parentId": "grp_upa_sub_v191",
         "type": "place",
         "name": "UPA Leblon",
         "description": "Unidade de Pronto Atendimento 24 horas.",
@@ -4235,6 +4235,30 @@
         "imageUrl": "",
         "mapQuery": "Cine Araújo Pantanal Shopping Cuiabá MT",
         "sort": 4
+      },
+      {
+        "id": "grp_hospitais_sub_v191",
+        "parentId": "grp_hospitais_v171",
+        "type": "group",
+        "name": "HOSPITAIS",
+        "description": "Hospitais em Cuiabá.",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 10
+      },
+      {
+        "id": "grp_upa_sub_v191",
+        "parentId": "grp_hospitais_v171",
+        "type": "group",
+        "name": "UPA",
+        "description": "Unidades de Pronto Atendimento 24 horas em Cuiabá.",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 20
       }
     ],
     "itineraryStats": {
