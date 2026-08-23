@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-96-pesca-esportiva";
+const CACHE="versatil-v1-97-fishing-init-fix";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1960',
-  './app.js?v=1960',
+  './style.css?v=1970',
+  './app.js?v=1970',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
