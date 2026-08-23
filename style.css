@@ -4016,18 +4016,10 @@ summary:active{
   filter:brightness(.99)!important;
 }
 
-/* v2.15 — GIFs apenas após renderização do acesso */
-.app-menu-animated-icon-v215{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  max-width:100%!important;
-  max-height:100%!important;
-  object-fit:contain!important;
-  object-position:center!important;
-  background:#fff!important;
-  border:0!important;
-  border-radius:0!important;
-  margin:0!important;
-  padding:0!important;
+/* v2.16 — GIFs restritos ao recipiente original dos ícones */
+.app-menu-animated-icon-v216{
+  display:block!important;width:100%!important;height:100%!important;
+  max-width:100%!important;max-height:100%!important;object-fit:contain!important;
+  object-position:center!important;margin:0!important;padding:0!important;border:0!important;
+  border-radius:0!important;background:#fff!important;
 }

@@ -929,11 +929,9 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - O aviso de que o postal não pode ser enviado ao mesmo e-mail usado no acesso ganhou destaque visual: caixa clara, borda vermelha, texto vermelho em negrito e centralizado.
 - O movimento do botão Virar foi reduzido para um feedback sutil de aproximadamente 1 px e leve escala, eliminando o deslocamento exagerado.
 
-## v2.15 — acesso restaurado com animações isoladas
-- Reconstruída diretamente sobre a v2.12 funcional.
-- Login, appMenuButton e clientView permanecem com a implementação original da v2.12.
-- GIFs não participam da geração síncrona da tela após o clique Entrar.
-- O scheduler é executado somente depois que a área do cliente já foi renderizada.
-- Catálogo inicia aos 20s; demais ícones seguem de 20 em 20s na sequência aprovada e em loop.
-- Página ativa suprime somente a animação do seu próprio ícone.
-- Estado de descanso usa sempre o ícone original totalmente visível.
+## v2.16 — login 100% preservado
+- Reconstruída sobre a v2.12 funcional.
+- Nenhuma função de login, renderização, menu, navegação ou saída foi alterada.
+- As animações são uma camada externa via MutationObserver, iniciada somente quando os 8 botões do cliente aparecem.
+- O instante em que o menu aparece inicia a contagem.
+- Primeiro GIF aos 20 segundos; seguintes a cada 20 segundos; sequência e loop aprovados.
