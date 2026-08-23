@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "1.85",
-  "updatedAt": "2026-08-23T12:39:36.621Z",
-  "publishedAt": "2026-08-23T12:39:37.698Z",
+  "version": "1.96",
+  "updatedAt": "2026-08-23T14:18:36.215Z",
+  "publishedAt": "2026-08-23T14:18:38.019Z",
   "data": {
     "rooms": [
       {
@@ -1261,20 +1261,8 @@
         "sort": 40
       },
       {
-        "id": "lz_041",
-        "parentId": "lz_036",
-        "type": "group",
-        "name": "Atrações em Nobres (Vila Bom Jardim e Região)",
-        "description": "",
-        "distance": "",
-        "phone": "",
-        "imageUrl": "",
-        "mapQuery": "",
-        "sort": 41
-      },
-      {
         "id": "lz_042",
-        "parentId": "lz_041",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Aquário Encantado e Rio Salobra",
         "description": "lagoa azul-cristalina em meio à mata para flutuação com centenas de peixes.",
@@ -1286,7 +1274,7 @@
       },
       {
         "id": "lz_043",
-        "parentId": "lz_041",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Cachoeira da Serra Azul",
         "description": "queda d'água de 45 metros com poço azul para banho e acesso por tirolesa.",
@@ -1298,7 +1286,7 @@
       },
       {
         "id": "lz_044",
-        "parentId": "lz_041",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Lagoa das Araras",
         "description": "ponto de observação ao entardecer para contemplar araras, maritacas e tucanos nos buritizeiros.",
@@ -1310,7 +1298,7 @@
       },
       {
         "id": "lz_045",
-        "parentId": "lz_041",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Reino Encantado e Estância Duto do Quebó",
         "description": "rios cristalinos para flutuação e passeios de bóia-cross por cavernas subterrâneas.",
@@ -1321,20 +1309,8 @@
         "sort": 45
       },
       {
-        "id": "lz_046",
-        "parentId": "lz_036",
-        "type": "group",
-        "name": "Parque Nacional da Chapada dos Guimarães (~65 km)",
-        "description": "",
-        "distance": "",
-        "phone": "",
-        "imageUrl": "",
-        "mapQuery": "",
-        "sort": 46
-      },
-      {
         "id": "lz_047",
-        "parentId": "lz_046",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Cachoeira Véu de Noiva",
         "description": "imponente queda d'água de 86 metros em meio aos paredões.",
@@ -1346,7 +1322,7 @@
       },
       {
         "id": "lz_048",
-        "parentId": "lz_046",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Cidade de Pedra e Mirante Morro dos Ventos",
         "description": "vista panorâmica dos paredões de arenito avermelhado.",
@@ -1358,7 +1334,7 @@
       },
       {
         "id": "lz_049",
-        "parentId": "lz_046",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Circuito das Cachoeiras",
         "description": "trilha que passa por diversas quedas e piscinas naturais cristalinas.",
@@ -1370,7 +1346,7 @@
       },
       {
         "id": "lz_050",
-        "parentId": "lz_046",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Complexo Turístico da Salgadeira",
         "description": "área de lazer estruturada para banho de rio no pé da serra.",
@@ -1381,20 +1357,8 @@
         "sort": 50
       },
       {
-        "id": "lz_051",
-        "parentId": "lz_036",
-        "type": "group",
-        "name": "Portal do Pantanal Norte — Poconé (~100 km)",
-        "description": "",
-        "distance": "",
-        "phone": "",
-        "imageUrl": "",
-        "mapQuery": "",
-        "sort": 51
-      },
-      {
         "id": "lz_052",
-        "parentId": "lz_051",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Rodovia Transpantaneira",
         "description": "ponto de partida para safáris fotográficos para observação de jacarés, capivaras, tuiuiús e onças-pintadas.",
@@ -1406,7 +1370,7 @@
       },
       {
         "id": "lz_053",
-        "parentId": "lz_051",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Pousadas Pantaneiras",
         "description": "focagem noturna, cavalgadas ecológicas e passeios de barco pelos corixos.",
@@ -1417,20 +1381,8 @@
         "sort": 53
       },
       {
-        "id": "lz_054",
-        "parentId": "lz_036",
-        "type": "group",
-        "name": "Jaciara (~140 km)",
-        "description": "",
-        "distance": "",
-        "phone": "",
-        "imageUrl": "",
-        "mapQuery": "",
-        "sort": 54
-      },
-      {
         "id": "lz_055",
-        "parentId": "lz_054",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Esportes de Aventura no Rio Tenente Amaral",
         "description": "polo regional de rafting, cachoeirismo e rapel.",
@@ -1442,7 +1394,7 @@
       },
       {
         "id": "lz_056",
-        "parentId": "lz_054",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Cachoeira da Fumaça e Balneário Thermas",
         "description": "quedas d'água volumosas e poços para banho.",
@@ -1453,20 +1405,8 @@
         "sort": 56
       },
       {
-        "id": "lz_057",
-        "parentId": "lz_036",
-        "type": "group",
-        "name": "Santo Antônio de Leverger (~35 km)",
-        "description": "",
-        "distance": "",
-        "phone": "",
-        "imageUrl": "",
-        "mapQuery": "",
-        "sort": 57
-      },
-      {
         "id": "lz_058",
-        "parentId": "lz_057",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Morro de Santo Antônio",
         "description": "elevação cônica tradicional para trilhas e caminhadas ecológicas.",
@@ -1478,7 +1418,7 @@
       },
       {
         "id": "lz_059",
-        "parentId": "lz_057",
+        "parentId": "lz_036",
         "type": "place",
         "name": "Turismo Fluvial",
         "description": "pesca esportiva e restaurantes de peixe à beira do Rio Cuiabá.",
@@ -4067,6 +4007,174 @@
         "imageUrl": "https://storage.lucasmendes.dev/site-sp/choppao%20restaurante%2Fimg%2Ffrente-restaurante-noturno-movimentado.webp",
         "mapQuery": "Restaurante Choppão, Praça 8 de Abril, 44, Goiabeiras, Cuiabá MT",
         "sort": 1
+      },
+      {
+        "id": "fish_root_v196",
+        "parentId": "",
+        "type": "group",
+        "name": "Pesca esportiva",
+        "description": "Destinos de pesca esportiva em Mato Grosso.",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 55
+      },
+      {
+        "id": "fish_pantanal_v196",
+        "parentId": "fish_root_v196",
+        "type": "group",
+        "name": "Cuiabá e Pantanal",
+        "description": "",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 10
+      },
+      {
+        "id": "fish_cuiaba_v196",
+        "parentId": "fish_pantanal_v196",
+        "type": "place",
+        "name": "Cuiabá",
+        "description": "Espécies: Pacu, pintado, cachara, dourado e piraputanga. Melhor época: Março a Setembro (período da seca e vazante). Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 0 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.midianews.com.br/storage/webdisco/2017/02/16/886x590/7828c9bf8660987ec3b80ccb8c083e31.jpg",
+        "mapQuery": "Cuiabá MT pesca esportiva",
+        "sort": 1
+      },
+      {
+        "id": "fish_caceres_v196",
+        "parentId": "fish_pantanal_v196",
+        "type": "place",
+        "name": "Cáceres",
+        "description": "Espécies: Dourado, pintado, jaú, pacu e cachara. Melhor época: Junho a Setembro. Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 220 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg",
+        "mapQuery": "Cáceres MT pesca esportiva",
+        "sort": 2
+      },
+      {
+        "id": "fish_pocone_v196",
+        "parentId": "fish_pantanal_v196",
+        "type": "place",
+        "name": "Poconé",
+        "description": "Espécies: Pintado, dourado, pacu, piranha e piavuçu. Melhor época: Julho a Setembro. Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 105 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg",
+        "mapQuery": "Poconé MT pesca esportiva",
+        "sort": 3
+      },
+      {
+        "id": "fish_barao_v196",
+        "parentId": "fish_pantanal_v196",
+        "type": "place",
+        "name": "Barão de Melgaço",
+        "description": "Espécies: Pacu, piraputanga, pintado, cachara e dourado. Melhor época: Abril a Agosto. Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 110 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg",
+        "mapQuery": "Barão de Melgaço MT pesca esportiva",
+        "sort": 4
+      },
+      {
+        "id": "fish_norte_v196",
+        "parentId": "fish_root_v196",
+        "type": "group",
+        "name": "Polos do Norte e Bacia Amazônica",
+        "description": "",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 20
+      },
+      {
+        "id": "fish_sinop_v196",
+        "parentId": "fish_norte_v196",
+        "type": "place",
+        "name": "Sinop",
+        "description": "Espécies: Tucunaré, trairão, cachorra, jaú e matrinxã. Melhor época: Maio a Setembro. Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 500 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg",
+        "mapQuery": "Sinop MT pesca esportiva",
+        "sort": 1
+      },
+      {
+        "id": "fish_alta_v196",
+        "parentId": "fish_norte_v196",
+        "type": "place",
+        "name": "Alta Floresta",
+        "description": "Espécies: Tucunaré fogo, trairão, jaú, pirarara e piraíba. Melhor época: Junho a Novembro. Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 800 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg",
+        "mapQuery": "Alta Floresta MT pesca esportiva",
+        "sort": 2
+      },
+      {
+        "id": "fish_novacanaa_v196",
+        "parentId": "fish_norte_v196",
+        "type": "place",
+        "name": "Nova Canaã do Norte",
+        "description": "Espécies: Tucunaré, matrinxã, bicuda, jaú e cachorra. Melhor época: Maio a Outubro. Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 690 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg",
+        "mapQuery": "Nova Canaã do Norte MT pesca esportiva",
+        "sort": 3
+      },
+      {
+        "id": "fish_araguaia_v196",
+        "parentId": "fish_root_v196",
+        "type": "group",
+        "name": "Polos da Região do Araguaia e Fronteiras",
+        "description": "",
+        "distance": "",
+        "phone": "",
+        "imageUrl": "",
+        "mapQuery": "",
+        "sort": 30
+      },
+      {
+        "id": "fish_saofelix_v196",
+        "parentId": "fish_araguaia_v196",
+        "type": "place",
+        "name": "São Félix do Araguaia",
+        "description": "Espécies: Pirarucu, tucunaré, piraíba, pirarara e bargre. Melhor época: Junho a Outubro (época das praias). Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 1.150 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg",
+        "mapQuery": "São Félix do Araguaia MT pesca esportiva",
+        "sort": 1
+      },
+      {
+        "id": "fish_canarana_v196",
+        "parentId": "fish_araguaia_v196",
+        "type": "place",
+        "name": "Canarana",
+        "description": "Espécies: Tucunaré, trairão, cachorra e peixes de couro do Araguaia. Melhor época: Junho a Setembro. Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 640 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg",
+        "mapQuery": "Canarana MT pesca esportiva",
+        "sort": 2
+      },
+      {
+        "id": "fish_pontes_v196",
+        "parentId": "fish_araguaia_v196",
+        "type": "place",
+        "name": "Pontes e Lacerda",
+        "description": "Espécies: Dourado, pintado, cachara, pacu e piau. Melhor época: Março a Agosto. Defeso: 01 de outubro a 31 de janeiro.",
+        "distance": "aprox. 450 km",
+        "phone": "(65) 3313-0050 (Sec. de Turismo)",
+        "imageUrl": "https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg",
+        "mapQuery": "Pontes e Lacerda MT pesca esportiva",
+        "sort": 3
       }
     ],
     "itineraryStats": {
