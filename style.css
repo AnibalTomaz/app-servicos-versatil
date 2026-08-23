@@ -3482,3 +3482,52 @@ img,svg{max-width:100%}
   .app-welcome-v175{font-size:7.7px!important}
   .header-col-actions .btn,.header-action-v175,.header-normas-btn.header-action-v175{font-size:7.8px!important;padding:2px 3px!important}
 }
+
+/* v2.05 — controlador único e estável para TODOS os dropdowns */
+.dropdown-slide-panel-v199{
+  transition:none!important;
+}
+.dropdown-slide-panel-v205{
+  display:block;
+  width:100%;
+  min-width:0;
+  height:0;
+  opacity:0;
+  overflow:hidden;
+  margin:0;
+  padding:0;
+  will-change:height,opacity;
+  contain:layout style;
+}
+details[data-dropdown-ready-v205="1"]{
+  overflow:visible!important;
+}
+details[data-dropdown-ready-v205="1"]>summary{
+  cursor:pointer!important;
+  user-select:none;
+}
+/* Conteúdo aberto participa do fluxo normal e empurra tudo o que está abaixo. */
+details[data-dropdown-target-v205="open"]>.dropdown-slide-panel-v205{
+  display:block;
+}
+/* Nada do painel fechado pode capturar clique ou aparecer por baixo da linha seguinte. */
+details[data-dropdown-target-v205="closed"]>.dropdown-slide-panel-v205{
+  pointer-events:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .dropdown-slide-panel-v205{
+    will-change:auto;
+  }
+}
+
+/* v2.06 — ícone fornecido pelo usuário para Conveniências */
+.conveniencias-user-icon-v206{
+  width:38px!important;
+  height:38px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#fff!important;
+  border-radius:0!important;
+  display:block!important;
+  margin:auto!important;
+}

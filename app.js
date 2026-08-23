@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.04';
+const APP_VERSION='2.06';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -1399,6 +1399,7 @@ function leisureDisplayNameV170(node,depth){
 }
 function leisureGroupIconV170(node,depth){
   const n=leisureDisplayNameV170(node,depth).toLowerCase();
+  if(n==='conveniências'||n==='conveniencias')return `<img class="leisure-group-icon-img conveniencias-user-icon-v206" src="icon-conveniencias-24h.jpg" alt="" aria-hidden="true">`;
   if(n==='cinemas')return `<span class="cinema-clapper-v201" aria-hidden="true">🎬</span>`;
   if(n==='pesca esportiva')return `<span class="fishing-icon-v196" aria-hidden="true">🎣</span>`;
   if(n==='rodízios'||n==='rodizios')return categoryImageIconV183(RODIZIOS_ICON_V194,'rodizios-user-icon-v194');
@@ -1593,20 +1594,10 @@ function leisurePlaceHtml(p){
     </div></div></div>
   </details>`;
 }
-function setupLeisureExclusiveAccordion(){
-  const root=document.querySelector('.leisure-guide-card');
-  if(!root||root.dataset.exclusiveReady==='1')return;
-  root.dataset.exclusiveReady='1';
-  root.addEventListener('toggle',ev=>{
-    const target=ev.target;
-    if(!(target instanceof HTMLDetailsElement)||!target.open)return;
-    root.querySelectorAll('details[open]').forEach(other=>{
-      if(other===target||other.contains(target))return;
-      other.open=false;
-    });
-  },true);
-}
 
+function setupLeisureExclusiveAccordion(){
+  /* v2.05: controle centralizado em setupGlobalDropdownSlideV205 */
+}
 function leisureOpenIds(){
   return Array.from(document.querySelectorAll('#app details[open][data-leisure-id]')).map(d=>d.dataset.leisureId);
 }
@@ -1674,132 +1665,187 @@ function adjustScrollBelowHeaderV177(forceTop=false){
 }
 
 
+
 function setupExclusiveDetailsV179(){
-  const app=document.getElementById('app');
-  if(!app||app.dataset.exclusiveV179==='1')return;
-  app.dataset.exclusiveV179='1';
-  app.addEventListener('toggle',ev=>{
-    const target=ev.target;
-    if(!(target instanceof HTMLDetailsElement)||!target.open)return;
-    const parent=target.parentElement;
-    if(!parent)return;
-    Array.from(parent.children).forEach(other=>{
-      if(other instanceof HTMLDetailsElement&&other!==target&&other.open)other.open=false;
-    });
-  },true);
+  /* v2.05: controle centralizado em setupGlobalDropdownSlideV205 */
 }
-
-
 
 function resetAdminAccordionsClosedV203(){
-  if(session?.role!=='admin')return;
-  if(!['categories','products'].includes(adminPage))return;
-  document.querySelectorAll('.admin-category-accordion > details').forEach(d=>{
-    d.open=false;
-    d.removeAttribute('open');
-    const panel=d.querySelector(':scope > .dropdown-slide-panel-v199');
-    if(panel){
-      panel.style.height='0px';
-      panel.style.opacity='0';
-      panel.style.overflow='hidden';
-    }
-  });
+  /* v2.05: estado inicial tratado pelo controlador global */
 }
-
 function setupAdminExclusiveAccordionsV195(){
-  document.querySelectorAll('.admin-category-accordion').forEach(container=>{
-    if(container.dataset.exclusiveBound==='1')return;
-    container.dataset.exclusiveBound='1';
-    container.addEventListener('toggle',ev=>{
-      const opened=ev.target;
-      if(!(opened instanceof HTMLDetailsElement)||!opened.open)return;
-      Array.from(container.children).forEach(other=>{
-        if(other!==opened && other instanceof HTMLDetailsElement)other.open=false;
-      });
-    },true);
-  });
+  /* v2.05: controle centralizado em setupGlobalDropdownSlideV205 */
 }
-
 
 function setupGlobalDropdownSlideV199(){
-  document.querySelectorAll('details').forEach(detail=>{
-    if(detail.dataset.slideV199==='1')return;
-    const summary=detail.querySelector(':scope > summary');
+  return setupGlobalDropdownSlideV205();
+}
+
+function dropdownPanelV205(detail){
+  return Array.from(detail.children).find(el=>el.classList&&el.classList.contains('dropdown-slide-panel-v205'))||null;
+}
+
+function finishDropdownAnimationV205(detail,isOpen){
+  const panel=dropdownPanelV205(detail);
+  if(!panel)return;
+  if(panel._dropdownAnimation){
+    try{panel._dropdownAnimation.cancel()}catch(e){}
+    panel._dropdownAnimation=null;
+  }
+  detail.dataset.dropdownAnimatingV205='0';
+  detail.dataset.dropdownTargetV205=isOpen?'open':'closed';
+  if(isOpen){
+    detail.open=true;
+    panel.style.height='auto';
+    panel.style.opacity='1';
+    panel.style.overflow='visible';
+    panel.style.pointerEvents='auto';
+  }else{
+    panel.style.height='0px';
+    panel.style.opacity='0';
+    panel.style.overflow='hidden';
+    panel.style.pointerEvents='none';
+    detail.open=false;
+  }
+}
+
+function animateDropdownV205(detail,wantOpen){
+  const panel=dropdownPanelV205(detail);
+  if(!panel)return Promise.resolve();
+
+  if(panel._dropdownAnimation){
+    try{panel._dropdownAnimation.cancel()}catch(e){}
+    panel._dropdownAnimation=null;
+  }
+
+  const currentHeight=Math.max(0,panel.getBoundingClientRect().height);
+  const currentOpacity=parseFloat(getComputedStyle(panel).opacity||'1');
+  detail.dataset.dropdownAnimatingV205='1';
+  detail.dataset.dropdownTargetV205=wantOpen?'open':'closed';
+
+  if(wantOpen){
+    // The native details must be open while measuring/animating its panel.
+    detail.open=true;
+    panel.style.pointerEvents='auto';
+    panel.style.overflow='hidden';
+    panel.style.height='auto';
+    const targetHeight=Math.max(panel.scrollHeight,1);
+    panel.style.height=currentHeight+'px';
+    panel.style.opacity=String(Number.isFinite(currentOpacity)?currentOpacity:0);
+
+    const anim=panel.animate(
+      [
+        {height:currentHeight+'px',opacity:Number.isFinite(currentOpacity)?currentOpacity:0},
+        {height:targetHeight+'px',opacity:1}
+      ],
+      {duration:720,easing:'cubic-bezier(.22,.72,.18,1)',fill:'forwards'}
+    );
+    panel._dropdownAnimation=anim;
+    return anim.finished.then(()=>{
+      if(panel._dropdownAnimation===anim)finishDropdownAnimationV205(detail,true);
+    }).catch(()=>{});
+  }
+
+  // Closing always animates from the actual visible height.
+  if(!detail.open && currentHeight<=0){
+    finishDropdownAnimationV205(detail,false);
+    return Promise.resolve();
+  }
+  detail.open=true;
+  panel.style.pointerEvents='none';
+  panel.style.overflow='hidden';
+  const fromHeight=Math.max(currentHeight,panel.scrollHeight,1);
+  panel.style.height=fromHeight+'px';
+  panel.style.opacity=String(Number.isFinite(currentOpacity)?currentOpacity:1);
+
+  const anim=panel.animate(
+    [
+      {height:fromHeight+'px',opacity:Number.isFinite(currentOpacity)?currentOpacity:1},
+      {height:'0px',opacity:0}
+    ],
+    {duration:640,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'}
+  );
+  panel._dropdownAnimation=anim;
+  return anim.finished.then(()=>{
+    if(panel._dropdownAnimation===anim)finishDropdownAnimationV205(detail,false);
+  }).catch(()=>{});
+}
+
+function closeDropdownSiblingsV205(detail){
+  const parent=detail.parentElement;
+  if(!parent)return;
+  Array.from(parent.children).forEach(other=>{
+    if(!(other instanceof HTMLDetailsElement)||other===detail)return;
+    const target=other.dataset.dropdownTargetV205;
+    if(other.open||target==='open')animateDropdownV205(other,false);
+  });
+}
+
+function setupGlobalDropdownSlideV205(){
+  const details=Array.from(document.querySelectorAll('details'));
+
+  // Pass 1: create one stable panel per details. No nested controller can compete.
+  details.forEach(detail=>{
+    if(detail.dataset.dropdownReadyV205==='1')return;
+    const summary=Array.from(detail.children).find(el=>el.tagName==='SUMMARY');
     if(!summary)return;
 
     const contentEls=Array.from(detail.children).filter(el=>el!==summary);
     if(!contentEls.length)return;
 
-    detail.dataset.slideV199='1';
-
-    // Wrap all content after summary so the whole block can animate as one panel.
-    let panel=document.createElement('div');
-    panel.className='dropdown-slide-panel-v199';
+    const panel=document.createElement('div');
+    panel.className='dropdown-slide-panel-v205';
     contentEls.forEach(el=>panel.appendChild(el));
     detail.appendChild(panel);
+
+    detail.dataset.dropdownReadyV205='1';
+    detail.dataset.dropdownAnimatingV205='0';
+    detail.dataset.dropdownTargetV205=detail.open?'open':'closed';
 
     if(detail.open){
       panel.style.height='auto';
       panel.style.opacity='1';
       panel.style.overflow='visible';
+      panel.style.pointerEvents='auto';
     }else{
       panel.style.height='0px';
       panel.style.opacity='0';
       panel.style.overflow='hidden';
+      panel.style.pointerEvents='none';
     }
+  });
+
+  // Pass 2: bind clicks only after every sibling already has a panel.
+  details.forEach(detail=>{
+    if(detail.dataset.dropdownReadyV205!=='1'||detail.dataset.dropdownClickV205==='1')return;
+    const summary=Array.from(detail.children).find(el=>el.tagName==='SUMMARY');
+    if(!summary)return;
+    detail.dataset.dropdownClickV205='1';
 
     summary.addEventListener('click',ev=>{
       ev.preventDefault();
-      if(detail.dataset.animatingV199==='1')return;
+      ev.stopPropagation();
 
-      const isOpen=detail.open;
-      detail.dataset.animatingV199='1';
+      const targetState=detail.dataset.dropdownTargetV205;
+      const currentlyOpening=targetState==='open';
+      const wantOpen=!currentlyOpening;
 
-      if(!isOpen){
-        detail.open=true;
-        panel.style.display='block';
-        panel.style.overflow='hidden';
-        panel.style.height='0px';
-        panel.style.opacity='0';
-
-        requestAnimationFrame(()=>{
-          const target=panel.scrollHeight;
-          panel.style.height=target+'px';
-          panel.style.opacity='1';
-        });
-
-        const finishOpen=()=>{
-          panel.style.height='auto';
-          panel.style.overflow='visible';
-          detail.dataset.animatingV199='0';
-          panel.removeEventListener('transitionend',finishOpen);
-        };
-        panel.addEventListener('transitionend',finishOpen);
-      }else{
-        panel.style.overflow='hidden';
-        panel.style.height=panel.scrollHeight+'px';
-        panel.style.opacity='1';
-
-        requestAnimationFrame(()=>{
-          panel.style.height='0px';
-          panel.style.opacity='0';
-        });
-
-        const finishClose=()=>{
-          detail.open=false;
-          detail.dataset.animatingV199='0';
-          panel.removeEventListener('transitionend',finishClose);
-        };
-        panel.addEventListener('transitionend',finishClose);
-      }
+      if(wantOpen)closeDropdownSiblingsV205(detail);
+      animateDropdownV205(detail,wantOpen);
     });
   });
 }
-
 function render(){
   document.getElementById('app').innerHTML=session?appView():loginView();
   renderVersionBadge();
-  setTimeout(()=>{updatePwaInstallUI();updateCentralStatusUI();updateItineraryCountUI();setupExclusiveDetailsV179();if(page==='postal')bindPostalValidation();adjustScrollBelowHeaderV177(false);if(session?.role==='admin'){resetAdminAccordionsClosedV203();setupAdminExclusiveAccordionsV195();}setupGlobalDropdownSlideV199();},0);
+  setTimeout(()=>{
+    updatePwaInstallUI();
+    updateCentralStatusUI();
+    updateItineraryCountUI();
+    if(page==='postal')bindPostalValidation();
+    adjustScrollBelowHeaderV177(false);
+    setupGlobalDropdownSlideV205();
+  },0);
 }
 
 function renderVersionBadge(){
@@ -1809,7 +1855,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.04';
+  badge.textContent='v2.06';
 }
 
 function isPwaStandalone(){

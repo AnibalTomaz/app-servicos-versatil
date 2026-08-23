@@ -881,3 +881,16 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Tela inicial passa a abrir na largura integral, sem exigir redução de zoom.
 - Logo inicial e logos do app sempre quadradas.
 - Removido o botão `Voltar ao catálogo` da página Lazer e Conveniência.
+
+## v2.05 — revisão completa dos dropdowns
+- Eliminados os vários controladores concorrentes de abertura/fechamento.
+- Um único controlador passa a reger todos os `<details>` do aplicativo.
+- Abertura e fechamento usam animação consistente em todas as vezes, não apenas no primeiro clique.
+- Fechamento de item irmão também é animado, sem sumir abruptamente.
+- O painel aberto participa do fluxo normal e empurra o conteúdo inferior; ao fechar, recolhe e puxa o conteúdo de volta.
+- Cliques rápidos durante a animação cancelam e recalculam o movimento em vez de travar a lista.
+- Aplicado ao cliente, Lazer e Conveniência, Conheça o Versátil, Normas, Admin e demais listas expansíveis.
+
+## v2.06
+- Conveniências, dentro de Lazer e Conveniência, passa a usar exatamente a imagem fornecida pelo usuário como referência/asset local.
+- Ícone mantido em caixa branca e dimensionado ao padrão das demais categorias.

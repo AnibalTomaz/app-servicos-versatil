@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-04-responsive-dropdowns";
+const CACHE="versatil-v2-06-conveniencias-icon";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2040',
-  './app.js?v=2040',
+  './style.css?v=2060',
+  './app.js?v=2060',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
