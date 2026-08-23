@@ -810,3 +810,26 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Ícones de Lazer e Conveniência agora ficam restritos a uma coluna própria, com fundo branco e dimensões padronizadas; categorias principais um pouco maiores que subcategorias.
 - O mesmo tamanho/estrutura é preservado no PC e no celular.
 - Os ícones dos botões principais são repetidos junto aos títulos das páginas: Catálogo, Lazer e Conveniência, Carrinho, Confirmação, Conheça o Versátil, Conheça a Starlis e Correio Versátil. Meu roteiro mantém o mapa já aprovado.
+
+## v1.86
+- Linhas de categorias/subcategorias divididas invisivelmente em 3 colunas: 20% ícone, 60% texto, 20% seta.
+- Ícones restritos à primeira coluna, com fundo branco e dimensões padronizadas para evitar corte e sobreposição.
+- Mesma estrutura no PC e celular.
+- Acomodações usa exatamente a nova imagem da pessoa na cama enviada nesta mensagem.
+
+## v1.87
+- O produto Lounge, dentro de Áreas comuns, passa a usar exatamente o mesmo ícone/imagem usado na categoria Áreas comuns.
+
+## v1.95
+- Admin > Categorias: lista em acordeão; clique na categoria para abrir dados e ações.
+- Admin > Produtos/Preços: produtos agrupados por categoria em acordeões, seguindo a lógica da área do cliente.
+- Apenas uma categoria do Admin permanece aberta por vez.
+- Corrigida publicação da base pública: `savePublicData` não usa mais `fetch(..., keepalive:true)`, evitando a limitação de aproximadamente 64 KiB que fazia o navegador rejeitar a publicação de bases maiores.
+- Em caso de falha de rede, a mensagem informa que a alteração permanece salva localmente.
+
+## v1.96
+- Nova categoria `Pesca esportiva` em Lazer e Conveniência.
+- Subgrupos: Cuiabá e Pantanal; Polos do Norte e Bacia Amazônica; Polos da Região do Araguaia e Fronteiras.
+- 10 destinos cadastrados com espécies, melhor época, defeso, distância, Maps e envio para Roteiro.
+- Link adicional para o Aquário Municipal Justino Malheiros.
+- Foram reutilizados thumbnails já existentes no próprio guia para preservar a identidade visual sem introduzir imagens externas novas.

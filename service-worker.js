@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-85-leisure-rows-page-icons";
+const CACHE="versatil-v1-96-pesca-esportiva";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1850',
-  './app.js?v=1850',
+  './style.css?v=1960',
+  './app.js?v=1960',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
