@@ -3802,3 +3802,235 @@ button:active,
 summary:active{
   transform:scale(.985)!important;
 }
+
+/* v2.11 — Catálogo com a mesma comunicação visual/funcional de Lazer e Conheça o Versátil */
+
+/* Lista de categorias do catálogo em acordeão, não em cards independentes */
+.client-category-accordion-v211{
+  display:grid!important;
+  gap:8px!important;
+}
+.client-category-detail-v211{
+  border:0!important;
+  margin:0!important;
+  background:transparent!important;
+  overflow:visible!important;
+}
+.client-category-detail-v211>summary{
+  list-style:none!important;
+}
+.client-category-detail-v211>summary::-webkit-details-marker{
+  display:none!important;
+}
+
+/* Categoria: mesma grade invisível 1/6 + 4/6 + 1/6 */
+.client-category-detail-v211>.client-category-card{
+  display:grid!important;
+  grid-template-columns:16.6667% 66.6666% 16.6667%!important;
+  align-items:center!important;
+  width:100%!important;
+  min-height:74px!important;
+  gap:0!important;
+  padding:8px 10px!important;
+  border-radius:14px!important;
+  background:#5f93b8!important;
+  color:#12364e!important;
+  border:1px solid #5f93b8!important;
+  cursor:pointer!important;
+}
+.client-category-detail-v211>.client-category-card .client-category-icon{
+  grid-column:1!important;
+  justify-self:center!important;
+}
+.client-category-detail-v211>.client-category-card .client-category-copy{
+  grid-column:2!important;
+  width:100%!important;
+  min-width:0!important;
+  padding:0 12px!important;
+  box-sizing:border-box!important;
+}
+.client-category-title-v211{
+  display:block!important;
+  font-size:16px!important;
+  font-weight:800!important;
+  line-height:1.15!important;
+}
+.client-category-subtitle-v211{
+  display:block!important;
+  margin-top:4px!important;
+  font-size:12px!important;
+  font-weight:400!important;
+  line-height:1.25!important;
+}
+.client-category-detail-v211>.client-category-card .unified-category-arrow-v210{
+  grid-column:3!important;
+  justify-self:end!important;
+  padding-right:10px!important;
+}
+
+/* Conteúdo da categoria entra no fluxo e empurra a lista abaixo */
+.client-category-inside-v211{
+  display:grid!important;
+  gap:7px!important;
+  padding:8px 0 2px!important;
+}
+
+/* Produtos também viram dropdown, seguindo exatamente a mesma linguagem */
+.client-product-accordion{
+  border:1px solid #d4e1ea!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  overflow:visible!important;
+}
+.client-product-accordion>summary{
+  list-style:none!important;
+}
+.client-product-accordion>summary::-webkit-details-marker{
+  display:none!important;
+}
+.unified-catalog-product-summary-v211{
+  display:grid!important;
+  grid-template-columns:16.6667% 66.6666% 16.6667%!important;
+  align-items:center!important;
+  width:100%!important;
+  min-height:62px!important;
+  gap:0!important;
+  padding:7px 10px!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  color:#14273a!important;
+  cursor:pointer!important;
+}
+.client-product-icon-v211{
+  grid-column:1!important;
+  justify-self:center!important;
+  width:42px!important;
+  height:42px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#fff!important;
+  overflow:hidden!important;
+}
+.client-product-icon-v211 img,
+.client-product-icon-v211 svg{
+  max-width:38px!important;
+  max-height:38px!important;
+  object-fit:contain!important;
+}
+.client-product-title-v211{
+  grid-column:2!important;
+  width:100%!important;
+  min-width:0!important;
+  padding:0 12px!important;
+  box-sizing:border-box!important;
+  font-size:15px!important;
+  font-weight:700!important;
+  line-height:1.2!important;
+}
+.unified-catalog-product-summary-v211>.unified-category-arrow-v210{
+  grid-column:3!important;
+  justify-self:end!important;
+  padding-right:10px!important;
+}
+.client-product-body-v211{
+  border-top:1px solid #edf2f5!important;
+  background:#fff!important;
+}
+.client-product-body-content-v211{
+  padding:12px!important;
+}
+.client-product-desc-v211{
+  margin:0 0 10px!important;
+}
+.client-product-meta-v211{
+  margin-bottom:10px!important;
+}
+.client-product-actions-v211{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  flex-wrap:wrap!important;
+}
+
+/* Pressão leve e uniforme em categorias/produtos */
+.client-category-detail-v211>summary:active,
+.client-product-accordion>summary:active{
+  transform:scale(.985)!important;
+  box-shadow:inset 0 2px 5px rgba(15,76,129,.14)!important;
+}
+
+/* Mobile: mesma divisão e mesmo comportamento */
+@media(max-width:700px){
+  .client-category-detail-v211>.client-category-card,
+  .unified-catalog-product-summary-v211{
+    grid-template-columns:16.6667% 66.6666% 16.6667%!important;
+  }
+  .client-category-detail-v211>.client-category-card{
+    min-height:68px!important;
+    padding:7px 8px!important;
+  }
+  .unified-catalog-product-summary-v211{
+    min-height:58px!important;
+    padding:6px 8px!important;
+  }
+  .client-category-detail-v211>.client-category-card .client-category-copy,
+  .client-product-title-v211{
+    padding-left:9px!important;
+    padding-right:9px!important;
+  }
+  .client-category-subtitle-v211{
+    font-size:11px!important;
+  }
+}
+
+/* v2.12 — Postal: aviso de e-mail próprio com maior destaque */
+#postalError.postal-self-email-warning-v212{
+  display:block!important;
+  width:100%!important;
+  box-sizing:border-box!important;
+  margin:10px 0 8px!important;
+  padding:11px 13px!important;
+  border:2px solid #c62828!important;
+  border-radius:10px!important;
+  background:#fff0f0!important;
+  color:#a31414!important;
+  font-size:14px!important;
+  font-weight:800!important;
+  line-height:1.35!important;
+  text-align:center!important;
+  box-shadow:0 2px 8px rgba(198,40,40,.12)!important;
+}
+
+/* Botão Virar: feedback tátil discreto, sem deslocamento grande */
+#postalFlipBtn{
+  transition:transform .11s ease, box-shadow .11s ease, filter .11s ease!important;
+  transform:translate(0,0) scale(1)!important;
+}
+#postalFlipBtn:hover{
+  transform:translateY(-1px) scale(1.005)!important;
+}
+#postalFlipBtn:active{
+  transform:translateY(1px) scale(.99)!important;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.12)!important;
+  filter:brightness(.99)!important;
+}
+
+/* v2.13 — animações sequenciais dos oito ícones principais */
+.app-menu-icon{
+  overflow:hidden!important;
+}
+.app-menu-animated-icon-v213{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  margin:0!important;
+  padding:0!important;
+}

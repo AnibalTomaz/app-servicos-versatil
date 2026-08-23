@@ -917,3 +917,23 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Catálogo recebe seta na terceira coluna para repetir a lógica visual.
 - Todos os dropdowns continuam sob o mesmo controlador global de deslizamento.
 - Pressão ao clicar padronizada e sutil em categorias, dropdowns e botões.
+
+## v2.11
+- Catálogo passa a usar exatamente a mesma lógica visual e funcional de Lazer e Conveniência e Conheça o Versátil.
+- Categorias do Catálogo agora são dropdowns fechados; ao clicar, abrem deslizando para baixo.
+- Produtos dentro das categorias também são dropdowns fechados e deslizam ao abrir/fechar.
+- Categorias e produtos usam a grade invisível 1/6 ícone + 4/6 texto + 1/6 seta.
+- Pressão ao clicar e animação global de dropdown permanecem padronizadas em todo o app.
+
+## v2.12
+- O aviso de que o postal não pode ser enviado ao mesmo e-mail usado no acesso ganhou destaque visual: caixa clara, borda vermelha, texto vermelho em negrito e centralizado.
+- O movimento do botão Virar foi reduzido para um feedback sutil de aproximadamente 1 px e leve escala, eliminando o deslocamento exagerado.
+
+## v2.13 — ícones principais animados
+- Aplicados os oito GIFs previamente aprovados aos botões principais.
+- Sequência fixa: Catálogo → Lazer e Conveniência → Meu Roteiro → Carrinho → Confirmação → Conheça o Versátil → Conheça a Starlis → Correio Versátil.
+- O relógio começa no momento do acesso do cliente.
+- Catálogo executa sua animação aos 20 segundos; cada ícone seguinte inicia 20 segundos após o anterior.
+- Após Correio Versátil, a sequência reinicia em loop mantendo o intervalo de 20 segundos.
+- Fora da animação, todos os ícones permanecem em seu estado original totalmente visível.
+- Se a página correspondente estiver em uso no momento de sua animação, apenas aquele ícone permanece estático; o relógio e os demais ícones não são alterados.

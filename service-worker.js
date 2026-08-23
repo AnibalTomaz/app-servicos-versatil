@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-10-unified-categories";
+const CACHE="versatil-v2-13-animated-icons";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2100',
-  './app.js?v=2100',
+  './style.css?v=2130',
+  './app.js?v=2130',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
