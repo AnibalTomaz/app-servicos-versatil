@@ -1,9 +1,9 @@
-const CACHE="versatil-v1-97-fishing-init-fix";
+const CACHE="versatil-v2-01-cinemas";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=1970',
-  './app.js?v=1970',
+  './style.css?v=2010',
+  './app.js?v=2010',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

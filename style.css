@@ -2960,3 +2960,319 @@ body{
   height:32px!important;min-height:32px!important;padding:5px 9px!important;
   font-size:11px!important;background:#eef8ff!important;color:#0f4c81!important;border:1px solid #b8d7ec!important;
 }
+
+/* v1.98 — Acomodações: subcategorias em 3 colunas invisíveis (1/6 + 4/6 + 1/6) */
+.institution-detail .institution-item>summary{
+  display:grid!important;
+  grid-template-columns:16.6667% 66.6666% 16.6667%!important;
+  align-items:center!important;
+  width:100%!important;
+  min-height:72px!important;
+  gap:0!important;
+  box-sizing:border-box!important;
+  padding:8px 10px!important;
+}
+
+/* 1ª coluna — ícone */
+.institution-detail .institution-item>summary>:first-child,
+.institution-detail .institution-item>summary>.institution-reference-icon,
+.institution-detail .institution-item>summary>.institution-item-ico-svg,
+.institution-detail .institution-item>summary>.institution-item-ico,
+.institution-detail .institution-item>summary>.double-single-bed,
+.institution-detail .institution-item>summary>.mixed-bed-icons,
+.institution-detail .institution-item>summary>.category-image-icon-v183{
+  grid-column:1!important;
+  justify-self:center!important;
+  align-self:center!important;
+  width:64px!important;
+  min-width:64px!important;
+  max-width:64px!important;
+  height:58px!important;
+  max-height:58px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0!important;
+  background:#fff!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+
+/* Restringe qualquer arte de cama à coluna do ícone */
+.institution-detail .institution-item>summary>:first-child img,
+.institution-detail .institution-item>summary>:first-child svg,
+.institution-detail .institution-item>summary>.institution-reference-icon img,
+.institution-detail .institution-item>summary>.institution-item-ico-svg svg,
+.institution-detail .institution-item>summary>.double-single-bed svg,
+.institution-detail .institution-item>summary>.mixed-bed-icons svg,
+.institution-detail .institution-item>summary>.category-image-icon-v183 img{
+  width:auto!important;
+  height:auto!important;
+  max-width:60px!important;
+  max-height:54px!important;
+  object-fit:contain!important;
+  background:#fff!important;
+  margin:0!important;
+}
+
+/* 2ª coluna — texto */
+.institution-detail .institution-item>summary>.institution-item-title,
+.institution-detail .institution-item>summary>:nth-child(2){
+  grid-column:2!important;
+  justify-self:start!important;
+  align-self:center!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0 12px!important;
+  box-sizing:border-box!important;
+  text-align:left!important;
+  font-family:inherit!important;
+  font-size:16px!important;
+  font-weight:700!important;
+  line-height:1.2!important;
+  white-space:normal!important;
+  overflow:visible!important;
+}
+
+/* 3ª coluna — seta */
+.institution-detail .institution-item>summary>:last-child{
+  grid-column:3!important;
+  justify-self:end!important;
+  align-self:center!important;
+  margin:0!important;
+  padding-right:8px!important;
+  font-size:22px!important;
+  line-height:1!important;
+}
+
+/* Loft Solteiro: duas camas continuam dentro da mesma coluna do ícone */
+.institution-detail .institution-item>summary>.double-single-bed{
+  gap:2px!important;
+}
+.institution-detail .institution-item>summary>.double-single-bed svg{
+  width:28px!important;
+  max-width:28px!important;
+  height:50px!important;
+  max-height:50px!important;
+}
+
+/* Studio Triplo: casal + solteiro sem invadir o texto */
+.institution-detail .institution-item>summary>.mixed-bed-icons{
+  gap:2px!important;
+}
+.institution-detail .institution-item>summary>.mixed-bed-icons svg:first-child{
+  width:38px!important;
+  max-width:38px!important;
+  height:50px!important;
+  max-height:50px!important;
+}
+.institution-detail .institution-item>summary>.mixed-bed-icons svg:last-child{
+  width:20px!important;
+  max-width:20px!important;
+  height:46px!important;
+  max-height:46px!important;
+}
+
+/* Mesma estrutura no celular e PC */
+@media(max-width:700px){
+  .institution-detail .institution-item>summary{
+    grid-template-columns:16.6667% 66.6666% 16.6667%!important;
+    min-height:68px!important;
+    padding:7px 8px!important;
+  }
+  .institution-detail .institution-item>summary>:first-child,
+  .institution-detail .institution-item>summary>.institution-reference-icon,
+  .institution-detail .institution-item>summary>.institution-item-ico-svg,
+  .institution-detail .institution-item>summary>.institution-item-ico,
+  .institution-detail .institution-item>summary>.double-single-bed,
+  .institution-detail .institution-item>summary>.mixed-bed-icons,
+  .institution-detail .institution-item>summary>.category-image-icon-v183{
+    width:58px!important;
+    min-width:58px!important;
+    max-width:58px!important;
+    height:54px!important;
+    max-height:54px!important;
+  }
+  .institution-detail .institution-item>summary>:first-child img,
+  .institution-detail .institution-item>summary>:first-child svg,
+  .institution-detail .institution-item>summary>.institution-reference-icon img,
+  .institution-detail .institution-item>summary>.institution-item-ico-svg svg,
+  .institution-detail .institution-item>summary>.category-image-icon-v183 img{
+    max-width:54px!important;
+    max-height:50px!important;
+  }
+  .institution-detail .institution-item>summary>.institution-item-title,
+  .institution-detail .institution-item>summary>:nth-child(2){
+    font-size:15px!important;
+    padding:0 10px!important;
+  }
+  .institution-detail .institution-item>summary>:last-child{
+    padding-right:4px!important;
+    font-size:20px!important;
+  }
+}
+
+/* v1.99 — animação global de abertura/fechamento de listas */
+.dropdown-slide-panel-v199{
+  height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:
+    height .28s cubic-bezier(.2,.75,.25,1),
+    opacity .20s ease;
+  will-change:height,opacity;
+}
+details[data-slide-v199="1"]>summary{
+  cursor:pointer;
+}
+details[data-slide-v199="1"][open]>.dropdown-slide-panel-v199{
+  display:block;
+}
+/* mantém o fluxo normal: ao abrir empurra o conteúdo abaixo; ao fechar puxa de volta */
+.dropdown-slide-panel-v199>*{
+  position:relative!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .dropdown-slide-panel-v199{
+    transition:none!important;
+  }
+}
+
+/* v2.00 — padronização global de botões e alinhamento por grupos */
+:root{
+  --app-btn-h:40px;
+  --app-btn-min-w:142px;
+  --app-btn-pad-x:16px;
+  --app-btn-radius:10px;
+}
+
+/* Botões de ação: mesma altura, largura mínima, tipografia e alinhamento */
+button.btn,
+a.btn,
+.btn{
+  box-sizing:border-box!important;
+  min-height:var(--app-btn-h)!important;
+  height:var(--app-btn-h)!important;
+  min-width:var(--app-btn-min-w)!important;
+  padding:0 var(--app-btn-pad-x)!important;
+  border-radius:var(--app-btn-radius)!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  line-height:1.1!important;
+  text-align:center!important;
+  vertical-align:middle!important;
+  white-space:nowrap!important;
+}
+
+/* Em cada conjunto de ações, os botões irmãos ocupam a mesma largura */
+.row:has(>.btn),
+.leisure-place-actions,
+.admin-product-actions,
+.admin-category-actions,
+.starlis-actions,
+.institution-actions,
+.cart-actions,
+.confirm-actions{
+  display:flex!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+}
+.row:has(>.btn)>.btn,
+.leisure-place-actions>.btn,
+.admin-category-actions>.btn,
+.starlis-actions>.btn,
+.institution-actions>.btn,
+.cart-actions>.btn,
+.confirm-actions>.btn{
+  flex:0 0 var(--app-btn-min-w)!important;
+  width:var(--app-btn-min-w)!important;
+}
+
+/* Ações de produto do Admin são menores, mas iguais entre si */
+.admin-product-actions>.btn{
+  flex:0 0 92px!important;
+  width:92px!important;
+  min-width:92px!important;
+}
+
+/* Maps e Roteiro permanecem compactos, iguais e perfeitamente alinhados */
+.leisure-place-actions{
+  align-items:center!important;
+}
+.leisure-place-actions>.btn{
+  flex:0 0 112px!important;
+  width:112px!important;
+  min-width:112px!important;
+  height:36px!important;
+  min-height:36px!important;
+  padding:0 10px!important;
+}
+
+/* Conheça a Starlis: Maps e Reservar exatamente iguais */
+.starlis-card .row:has(>.btn),
+.starlis-card .starlis-actions{
+  align-items:center!important;
+}
+.starlis-card .btn{
+  flex:0 0 150px!important;
+  width:150px!important;
+  min-width:150px!important;
+  height:40px!important;
+  min-height:40px!important;
+}
+
+/* Botões grandes de navegação mantêm sua própria grade/tamanho */
+.topnav .btn,
+.main-nav .btn,
+.nav-btn,
+.home-nav-btn,
+button[class*="nav"]{
+  min-width:0!important;
+}
+
+/* Botões especiais de largura total continuam ocupando a área disponível */
+.full,.btn.full,[class*="full-width"].btn{
+  width:100%!important;
+  min-width:0!important;
+}
+
+/* Mobile: grupos continuam alinhados e sem larguras aleatórias */
+@media(max-width:700px){
+  :root{
+    --app-btn-h:38px;
+    --app-btn-min-w:124px;
+    --app-btn-pad-x:12px;
+  }
+  .row:has(>.btn),
+  .leisure-place-actions,
+  .admin-product-actions,
+  .admin-category-actions,
+  .starlis-actions,
+  .institution-actions,
+  .cart-actions,
+  .confirm-actions{
+    gap:7px!important;
+  }
+  .starlis-card .btn{
+    flex-basis:132px!important;
+    width:132px!important;
+    min-width:132px!important;
+  }
+  .leisure-place-actions>.btn{
+    flex-basis:104px!important;
+    width:104px!important;
+    min-width:104px!important;
+  }
+}
+
+/* v2.01 — CINEMAS */
+.cinema-clapper-v201{
+  width:36px!important;height:36px!important;display:flex!important;
+  align-items:center!important;justify-content:center!important;
+  background:#fff!important;font-size:27px!important;line-height:1!important;
+}

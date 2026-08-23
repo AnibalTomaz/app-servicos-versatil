@@ -833,3 +833,29 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - 10 destinos cadastrados com espécies, melhor época, defeso, distância, Maps e envio para Roteiro.
 - Link adicional para o Aquário Municipal Justino Malheiros.
 - Foram reutilizados thumbnails já existentes no próprio guia para preservar a identidade visual sem introduzir imagens externas novas.
+
+## v1.98
+- Acomodações: subcategorias/produtos usam grade invisível 1/6 ícone + 4/6 texto + 1/6 seta.
+- Ícones de cama ficam totalmente restritos à primeira coluna, sem invadir o texto.
+- Mesma geometria no PC e no celular.
+- `Pesca esportiva` corrigido para `Pesca Esportiva`.
+
+## v1.99
+- Todos os elementos `details` do aplicativo passam a abrir/fechar com animação de deslizamento.
+- Ao abrir, a lista cresce para baixo e empurra o conteúdo seguinte.
+- Ao fechar, a lista recolhe e puxa o conteúdo inferior de volta.
+- A animação vale para cliente, Lazer e Conveniência, Conheça o Versátil, Normas, Admin e demais listas expansíveis.
+
+## v2.00
+- Revisão global dos botões do aplicativo.
+- Botões de ação passam a ter altura, largura mínima, padding e alinhamento padronizados.
+- Botões irmãos de uma mesma área ficam com dimensões iguais.
+- Conheça a Starlis: Google Maps e Reservar ficam exatamente alinhados e do mesmo tamanho.
+- Maps/Roteiro continuam compactos, porém iguais entre si.
+- Mantidos tratamentos próprios para navegação principal, largura total e ações compactas do Admin.
+
+## v2.01
+- Nova subcategoria CINEMAS em Lazer e Conveniência, com ícone de claquete.
+- Cinelaser Cinemas, Cinépolis, Cineflix e Cine Araújo.
+- Mantido o padrão das listas existentes: descrição/local, distância, telefone, Maps e Roteiro.
+- Ordem por proximidade informada pelo usuário.
