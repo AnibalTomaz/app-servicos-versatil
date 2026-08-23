@@ -894,3 +894,18 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 ## v2.06
 - Conveniências, dentro de Lazer e Conveniência, passa a usar exatamente a imagem fornecida pelo usuário como referência/asset local.
 - Ícone mantido em caixa branca e dimensionado ao padrão das demais categorias.
+
+## v2.07
+- Substituído o ícone de Conveniências pela nova imagem fornecida pelo usuário.
+- O ícone passa a ocupar praticamente todo o recipiente branco, preservando proporção e sem recriação da imagem.
+
+## v2.08
+- A imagem de rio fornecida pelo usuário foi adicionada como ícone de todas as subcategorias diretamente dentro de PESCA ESPORTIVA.
+- A imagem é usada como asset local, sem geração ou redesenho.
+
+## v2.09
+- HOSPITAIS E UPA agora é normalizado em toda inicialização e após cada sincronização pública.
+- Criadas/garantidas as subcategorias HOSPITAIS e UPA.
+- HOSPITAIS usa a cruz vermelha.
+- UPA usa a logo UPA 24h enviada anteriormente pelo usuário.
+- Hospitais e UPAs são separados automaticamente e os oito registros originais são garantidos nas respectivas subcategorias.

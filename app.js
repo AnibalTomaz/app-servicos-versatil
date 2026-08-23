@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.06';
+const APP_VERSION='2.09';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -89,25 +89,84 @@ const LEISURE_EXTRA_V171='versatil_leisure_extra_v171';
 if(!localStorage.getItem(LEISURE_EXTRA_V171)){const add=[{"id":"grp_teatros_v171","parentId":"","type":"group","name":"TEATROS","description":"Teatros e artes cênicas em Cuiabá.","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":50},{"id":"cine_teatro_v171","parentId":"grp_teatros_v171","type":"place","name":"Cine Teatro Cuiabá","description":"Cinema, teatro, dança e música.","distance":"aprox. 2,5 km","phone":"(65) 2129-3848","imageUrl":"","mapQuery":"Cine Teatro Cuiabá, Avenida Presidente Getúlio Vargas 247, Cuiabá MT","sort":10},{"id":"zulmira_v171","parentId":"grp_teatros_v171","type":"place","name":"Teatro do Cerrado Zulmira Canavarros","description":"Teatro para eventos e manifestações artísticas.","distance":"aprox. 5 km","phone":"(65) 3313-6876","imageUrl":"","mapQuery":"Teatro Cerrado Zulmira Canavarros Cuiabá","sort":20},{"id":"grp_hospitais_v171","parentId":"","type":"group","name":"HOSPITAIS E UPA","description":"Hospitais e pronto atendimento em Cuiabá.","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":60},{"id":"santarosa_v171","parentId":"grp_hospitais_v171","type":"place","name":"Hospital Santa Rosa","description":"Hospital 24 horas.","distance":"aprox. 1,4 km","phone":"(65) 3618-8000","imageUrl":"","mapQuery":"Hospital Santa Rosa Cuiabá","sort":10},{"id":"hmc_v171","parentId":"grp_hospitais_v171","type":"place","name":"Hospital Municipal de Cuiabá - HMC","description":"Hospital municipal e pronto-socorro 24 horas.","distance":"aprox. 4,2 km","phone":"(65) 3318-6900","imageUrl":"","mapQuery":"Hospital Municipal de Cuiabá HMC","sort":20},{"id":"hujm_v171","parentId":"grp_hospitais_v171","type":"place","name":"Hospital Universitário Júlio Müller","description":"Hospital universitário da UFMT/Ebserh.","distance":"aprox. 2,5 km","phone":"(65) 3615-7249","imageUrl":"","mapQuery":"Hospital Universitário Júlio Müller Cuiabá","sort":30},{"id":"complexo_v171","parentId":"grp_hospitais_v171","type":"place","name":"Complexo Hospitalar de Cuiabá","description":"Hospital 24 horas.","distance":"aprox. 2 km","phone":"(65) 3051-3000","imageUrl":"","mapQuery":"Complexo Hospitalar de Cuiabá","sort":40},{"id":"upa_verdao_v171","parentId":"grp_hospitais_v171","type":"place","name":"UPA Verdão","description":"Unidade de Pronto Atendimento 24 horas.","distance":"aprox. 3,5 km","phone":"(65) 3617-1458","imageUrl":"","mapQuery":"UPA Verdão Cuiabá","sort":50},{"id":"upa_morada_v171","parentId":"grp_hospitais_v171","type":"place","name":"UPA Morada do Ouro","description":"Unidade de Pronto Atendimento 24 horas.","distance":"aprox. 5,3 km","phone":"(65) 3645-5700","imageUrl":"","mapQuery":"UPA Morada do Ouro Cuiabá","sort":60},{"id":"upa_pascoal_v171","parentId":"grp_hospitais_v171","type":"place","name":"UPA Pascoal Ramos","description":"Unidade de Pronto Atendimento 24 horas.","distance":"aprox. 12 km","phone":"(65) 3667-4129","imageUrl":"","mapQuery":"UPA Pascoal Ramos Cuiabá","sort":70},{"id":"upa_leblon_v171","parentId":"grp_hospitais_v171","type":"place","name":"UPA Leblon","description":"Unidade de Pronto Atendimento 24 horas.","distance":"aprox. 2,4 km","phone":"(65) 3318-6542","imageUrl":"","mapQuery":"UPA Leblon Cuiabá","sort":80}];const ids=new Set((db.leisureGuide||[]).map(n=>n.id));add.forEach(n=>{if(!ids.has(n.id))db.leisureGuide.push(n)});save();localStorage.setItem(LEISURE_EXTRA_V171,'1')}
 
 
-const HOSPITAIS_UPA_SPLIT_V191='versatil_hospitais_upa_split_v191';
-if(!localStorage.getItem(HOSPITAIS_UPA_SPLIT_V191)){
-  const guide=db.leisureGuide||[];
-  const parent=guide.find(n=>n.id==='grp_hospitais_v171');
-  if(parent){
-    parent.name='Hospitais e UPA';
-    const additions=[
-      {id:'grp_hospitais_sub_v191',parentId:'grp_hospitais_v171',type:'group',name:'Hospitais',description:'Hospitais em Cuiabá.',distance:'',phone:'',imageUrl:'',mapQuery:'',sort:10},
-      {id:'grp_upa_sub_v191',parentId:'grp_hospitais_v171',type:'group',name:'UPA',description:'Unidades de Pronto Atendimento 24 horas em Cuiabá.',distance:'',phone:'',imageUrl:'',mapQuery:'',sort:20}
-    ];
-    additions.forEach(n=>{if(!guide.some(x=>x.id===n.id))guide.push(n)});
-    guide.forEach(n=>{
-      if(n.parentId==='grp_hospitais_v171'&&n.type==='place')
-        n.parentId=/^UPA\b/i.test(String(n.name||''))?'grp_upa_sub_v191':'grp_hospitais_sub_v191';
-    });
-    save();
+
+function ensureHospitaisUpaV209(){
+  if(!Array.isArray(db.leisureGuide))db.leisureGuide=[];
+  const guide=db.leisureGuide;
+
+  let root=guide.find(n=>n.id==='grp_hospitais_v171')
+    ||guide.find(n=>n.type==='group'&&/hospitais?\s*(e|&)\s*upa/i.test(String(n.name||'')));
+
+  if(!root){
+    root={id:'grp_hospitais_v171',parentId:'',type:'group',name:'HOSPITAIS E UPA',description:'Hospitais e pronto atendimento em Cuiabá.',distance:'',phone:'',imageUrl:'',mapQuery:'',sort:60};
+    guide.push(root);
   }
-  localStorage.setItem(HOSPITAIS_UPA_SPLIT_V191,'1');
+  root.parentId='';
+  root.type='group';
+  root.name='HOSPITAIS E UPA';
+  root.description=root.description||'Hospitais e pronto atendimento em Cuiabá.';
+
+  let hospitals=guide.find(n=>n.id==='grp_hospitais_sub_v191');
+  if(!hospitals){
+    hospitals={id:'grp_hospitais_sub_v191',parentId:root.id,type:'group',name:'HOSPITAIS',description:'Hospitais em Cuiabá.',distance:'',phone:'',imageUrl:'',mapQuery:'',sort:10};
+    guide.push(hospitals);
+  }
+  hospitals.parentId=root.id;
+  hospitals.type='group';
+  hospitals.name='HOSPITAIS';
+  hospitals.description='Hospitais em Cuiabá.';
+  hospitals.sort=10;
+
+  let upa=guide.find(n=>n.id==='grp_upa_sub_v191');
+  if(!upa){
+    upa={id:'grp_upa_sub_v191',parentId:root.id,type:'group',name:'UPA',description:'Unidades de Pronto Atendimento 24 horas em Cuiabá.',distance:'',phone:'',imageUrl:'',mapQuery:'',sort:20};
+    guide.push(upa);
+  }
+  upa.parentId=root.id;
+  upa.type='group';
+  upa.name='UPA';
+  upa.description='Unidades de Pronto Atendimento 24 horas em Cuiabá.';
+  upa.sort=20;
+
+  const knownHospitalIds=new Set(['santarosa_v171','hmc_v171','hujm_v171','complexo_v171']);
+  const knownUpaIds=new Set(['upa_verdao_v171','upa_morada_v171','upa_pascoal_v171','upa_leblon_v171']);
+
+  guide.forEach(n=>{
+    if(n.type!=='place')return;
+    const name=String(n.name||'');
+    if(knownUpaIds.has(n.id)||/^UPA\b/i.test(name)){
+      n.parentId=upa.id;
+      return;
+    }
+    if(knownHospitalIds.has(n.id)||/^Hospital\b/i.test(name)||/^Complexo Hospitalar\b/i.test(name)){
+      n.parentId=hospitals.id;
+      return;
+    }
+    // Any direct place left below HOSPITAIS E UPA is classified by its name.
+    if(n.parentId===root.id){
+      n.parentId=/\bUPA\b/i.test(name)?upa.id:hospitals.id;
+    }
+  });
+
+  // Guarantee the original eight establishments are present, even after a stale public sync.
+  const defaults=[
+    {id:'santarosa_v171',parentId:hospitals.id,type:'place',name:'Hospital Santa Rosa',description:'Hospital 24 horas.',distance:'aprox. 1,4 km',phone:'(65) 3618-8000',imageUrl:'',mapQuery:'Hospital Santa Rosa Cuiabá',sort:10},
+    {id:'complexo_v171',parentId:hospitals.id,type:'place',name:'Complexo Hospitalar de Cuiabá',description:'Hospital 24 horas.',distance:'aprox. 2 km',phone:'(65) 3051-3000',imageUrl:'',mapQuery:'Complexo Hospitalar de Cuiabá',sort:20},
+    {id:'hujm_v171',parentId:hospitals.id,type:'place',name:'Hospital Universitário Júlio Müller',description:'Hospital universitário da UFMT/Ebserh.',distance:'aprox. 2,5 km',phone:'(65) 3615-7249',imageUrl:'',mapQuery:'Hospital Universitário Júlio Müller Cuiabá',sort:30},
+    {id:'hmc_v171',parentId:hospitals.id,type:'place',name:'Hospital Municipal de Cuiabá - HMC',description:'Hospital municipal e pronto-socorro 24 horas.',distance:'aprox. 4,2 km',phone:'(65) 3318-6900',imageUrl:'',mapQuery:'Hospital Municipal de Cuiabá HMC',sort:40},
+    {id:'upa_leblon_v171',parentId:upa.id,type:'place',name:'UPA Leblon',description:'Unidade de Pronto Atendimento 24 horas.',distance:'aprox. 2,4 km',phone:'(65) 3318-6542',imageUrl:'',mapQuery:'UPA Leblon Cuiabá',sort:10},
+    {id:'upa_verdao_v171',parentId:upa.id,type:'place',name:'UPA Verdão',description:'Unidade de Pronto Atendimento 24 horas.',distance:'aprox. 3,5 km',phone:'(65) 3617-1458',imageUrl:'',mapQuery:'UPA Verdão Cuiabá',sort:20},
+    {id:'upa_morada_v171',parentId:upa.id,type:'place',name:'UPA Morada do Ouro',description:'Unidade de Pronto Atendimento 24 horas.',distance:'aprox. 5,3 km',phone:'(65) 3645-5700',imageUrl:'',mapQuery:'UPA Morada do Ouro Cuiabá',sort:30},
+    {id:'upa_pascoal_v171',parentId:upa.id,type:'place',name:'UPA Pascoal Ramos',description:'Unidade de Pronto Atendimento 24 horas.',distance:'aprox. 12 km',phone:'(65) 3667-4129',imageUrl:'',mapQuery:'UPA Pascoal Ramos Cuiabá',sort:40}
+  ];
+  defaults.forEach(d=>{
+    const existing=guide.find(n=>n.id===d.id);
+    if(!existing)guide.push({...d});
+    else existing.parentId=d.parentId;
+  });
 }
+ensureHospitaisUpaV209();
+save();
 
 const CONTENT_MIGRATION_V171='versatil_content_migration_v171';
 if(!localStorage.getItem(CONTENT_MIGRATION_V171)){db.versatilGuide=structuredClone(DEFAULT_VERSATIL_GUIDE_V171);save();localStorage.setItem(CONTENT_MIGRATION_V171,'1')}
@@ -1016,6 +1075,7 @@ async function loadCentralData(options={}){
     if(Array.isArray(c.products)&&c.products.length)db.products=c.products;
     if(Array.isArray(c.availabilityClosures))db.availabilityClosures=c.availabilityClosures;
     if(Array.isArray(c.leisureGuide)&&c.leisureGuide.length)db.leisureGuide=c.leisureGuide;
+    ensureHospitaisUpaV209();
     ensureCinemasGuideV201();
     ensureCinemasGuideV201();
 ensureFishingGuideV196();
@@ -1399,6 +1459,7 @@ function leisureDisplayNameV170(node,depth){
 }
 function leisureGroupIconV170(node,depth){
   const n=leisureDisplayNameV170(node,depth).toLowerCase();
+  if(String(node?.parentId||'')==='fish_root_v196')return `<img class="leisure-group-icon-img fishing-subcategory-icon-v208" src="icon-pesca-subcategorias.jpg" alt="" aria-hidden="true">`;
   if(n==='conveniências'||n==='conveniencias')return `<img class="leisure-group-icon-img conveniencias-user-icon-v206" src="icon-conveniencias-24h.jpg" alt="" aria-hidden="true">`;
   if(n==='cinemas')return `<span class="cinema-clapper-v201" aria-hidden="true">🎬</span>`;
   if(n==='pesca esportiva')return `<span class="fishing-icon-v196" aria-hidden="true">🎣</span>`;
@@ -1855,7 +1916,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.06';
+  badge.textContent='v2.09';
 }
 
 function isPwaStandalone(){

@@ -3531,3 +3531,62 @@ details[data-dropdown-target-v205="closed"]>.dropdown-slide-panel-v205{
   display:block!important;
   margin:auto!important;
 }
+
+/* v2.07 — Conveniências: imagem fornecida pelo usuário ocupando o recipiente branco */
+.leisure-group-icon:has(.conveniencias-user-icon-v206){
+  padding:1px!important;
+  overflow:hidden!important;
+}
+.conveniencias-user-icon-v206{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  background:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  transform:scale(1.12);
+  transform-origin:center;
+}
+
+/* v2.08 — imagem fornecida pelo usuário nas subcategorias de PESCA ESPORTIVA */
+.fishing-subcategory-icon-v208{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  display:block!important;
+  margin:0!important;
+  padding:1px!important;
+}
+
+/* v2.09 — HOSPITAIS / UPA */
+.upa-category-v191{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#fff!important;
+  overflow:hidden!important;
+}
+.upa-category-v191 img{
+  width:96%!important;
+  height:96%!important;
+  max-width:96%!important;
+  max-height:96%!important;
+  object-fit:contain!important;
+  background:#fff!important;
+}

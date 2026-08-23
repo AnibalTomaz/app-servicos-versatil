@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-06-conveniencias-icon";
+const CACHE="versatil-v2-09-hospitais-upa";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2060',
-  './app.js?v=2060',
+  './style.css?v=2090',
+  './app.js?v=2090',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
