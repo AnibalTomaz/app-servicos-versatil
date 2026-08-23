@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0f4c81">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0f4c81">
 <title>APP SERVIÇOS VERSÁTIL</title><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Versátil">
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css?v=2020">
-</head><body><div id="appVersionBadge">v2.02</div><div id="app"></div><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css?v=2040">
+</head><body><div id="appVersionBadge">v2.04</div><div id="app"></div><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
 window.addEventListener('error',function(ev){
   const app=document.getElementById('app');
@@ -16,13 +16,13 @@ window.addEventListener('error',function(ev){
   }
 });
 </script>
-<script src="app.js?v=2020"></script><script>
+<script src="app.js?v=2040"></script><script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',async()=>{
     try{
       const regs=await navigator.serviceWorker.getRegistrations();
       for(const reg of regs)await reg.update();
-      await navigator.serviceWorker.register('service-worker.js?v=2020',{updateViaCache:'none'});
+      await navigator.serviceWorker.register('service-worker.js?v=2040',{updateViaCache:'none'});
     }catch(e){console.warn('Service Worker:',e)}
   });
 }

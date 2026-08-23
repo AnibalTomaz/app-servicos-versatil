@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.02';
+const APP_VERSION='2.04';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -944,8 +944,23 @@ async function centralRead(action,params={}){
 function publicCentralSnapshot(){return {rooms:db.rooms||[],categories:db.categories||[],products:db.products||[],availabilityClosures:db.availabilityClosures||[],leisureGuide:db.leisureGuide||[],versatilGuide:db.versatilGuide||[],starlisGuide:db.starlisGuide||[],postalConfig:db.postalConfig||{}}}
 
 
-function setPendingPublicPublication(){
-  const marker={at:Date.now(),iso:new Date().toISOString()};
+function productPublicationSignatureV203(products){
+  const rows=(Array.isArray(products)?products:[]).map(p=>[
+    String(p.id||''),String(p.cat||''),String(p.name||''),String(p.icon||''),
+    String(p.desc||''),Number(p.q||0),Number(p.a||0),p.halfDay===true
+  ]);
+  const str=JSON.stringify(rows);
+  let h=2166136261;
+  for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}
+  return (h>>>0).toString(16);
+}
+function setPendingPublicPublication(snapshot=null){
+  const snap=snapshot||publicCentralSnapshot();
+  const marker={
+    at:Date.now(),
+    iso:new Date().toISOString(),
+    productsSignature:productPublicationSignatureV203(snap.products||[])
+  };
   localStorage.setItem(PENDING_PUBLICATION_KEY,JSON.stringify(marker));
   return marker;
 }
@@ -980,14 +995,22 @@ async function loadCentralData(options={}){
     if(!p?.ok)throw new Error(p?.error||'Resposta inválida.');
 
     const pending=getPendingPublicPublication();
-    if(pending && !remotePublicationIsNewEnough(p.updatedAt,pending)){
-      centralDataStatus='publicando';
-      updateCentralStatusUI();
-      setTimeout(()=>loadCentralData({force:true,quiet:true}),3000);
-      return;
+    const c=p.data||{};
+    if(pending){
+      const remoteProductsSignature=productPublicationSignatureV203(c.products||[]);
+      const pendingProductsSignature=String(pending.productsSignature||'');
+      const isNewEnough=remotePublicationIsNewEnough(p.updatedAt,pending);
+      const sameProducts=!pendingProductsSignature || remoteProductsSignature===pendingProductsSignature;
+
+      if(!isNewEnough || !sameProducts){
+        // Critical: never overwrite a just-edited local product with stale/different public data.
+        centralDataStatus='publicando';
+        updateCentralStatusUI();
+        setTimeout(()=>verifyPendingPublicationV203(0),3000);
+        return;
+      }
     }
 
-    const c=p.data||{};
     if(Array.isArray(c.rooms)&&c.rooms.length)db.rooms=c.rooms;
     if(Array.isArray(c.categories)&&c.categories.length)db.categories=c.categories;
     if(Array.isArray(c.products)&&c.products.length)db.products=c.products;
@@ -1047,6 +1070,69 @@ function centralPost(action,payload={}){
   if(action!=='savePublicData')options.keepalive=true;
   return fetch(GOOGLE_APPS_SCRIPT_URL+'?v='+APP_VERSION+'&t='+Date.now(),options);
 }
+
+async function publishPublicDataToCentral(showMessage=true){
+  // The local edit is the source of truth until the central base confirms the same product snapshot.
+  save();
+  const snapshot=publicCentralSnapshot();
+  const marker=setPendingPublicPublication(snapshot);
+  centralDataStatus='publicando';
+  updateCentralStatusUI();
+
+  try{
+    await centralPost('savePublicData',{data:snapshot,clientPublishedAt:marker.iso});
+    db.centralUpdatedAt=marker.iso;
+    save();
+    centralDataStatus='publicando';
+    updateCentralStatusUI();
+
+    if(showMessage){
+      alert('Alterações enviadas para publicação. O aplicativo manterá esta versão local até confirmar que a base pública recebeu os mesmos dados.');
+    }
+
+    // Verify later, but never replace the local edit with an older/different product list.
+    setTimeout(()=>verifyPendingPublicationV203(0),3500);
+    return true;
+  }catch(e){
+    console.error('Falha ao publicar base:',e);
+    centralDataStatus='offline';
+    updateCentralStatusUI();
+    if(showMessage)alert('Falha ao enviar alterações para a base pública. Suas alterações permanecem salvas neste aparelho.');
+    return false;
+  }
+}
+async function verifyPendingPublicationV203(attempt=0){
+  const pending=getPendingPublicPublication();
+  if(!pending)return true;
+  try{
+    const p=await centralRead('bootstrapPublic');
+    if(!p?.ok)throw new Error(p?.error||'Resposta inválida');
+    const remoteProducts=p?.data?.products||[];
+    const sameProducts=productPublicationSignatureV203(remoteProducts)===String(pending.productsSignature||'');
+    const newEnough=remotePublicationIsNewEnough(p.updatedAt,pending);
+
+    if(sameProducts&&newEnough){
+      clearPendingPublicPublication();
+      localStorage.removeItem('versatil_admin_unsaved_public_changes');
+      db.centralUpdatedAt=p.publishedAt||p.updatedAt||pending.iso;
+      centralDataStatus='ok';
+      save();
+      updateCentralStatusUI();
+      return true;
+    }
+
+    // Do not download/merge a different snapshot while our edit is pending.
+    centralDataStatus='publicando';
+    updateCentralStatusUI();
+    if(attempt<8)setTimeout(()=>verifyPendingPublicationV203(attempt+1),3500);
+    return false;
+  }catch(e){
+    console.warn('Verificação de publicação:',e);
+    if(attempt<8)setTimeout(()=>verifyPendingPublicationV203(attempt+1),4500);
+    return false;
+  }
+}
+
 function saveAndPublishPublicData(showMessage=false){save();publishPublicDataToCentral(showMessage)}
 
 function centralStatusLabel(){
@@ -1400,11 +1486,13 @@ function ensureCinemasGuideV201(){
   EXTRA_CINEMAS_GUIDE_V201.forEach(n=>{if(!ids.has(n.id))db.leisureGuide.push(structuredClone(n));});
 }
 
-const EXTRA_FISHING_GUIDE_V196=[{"id":"fish_root_v196","parentId":"","type":"group","name":"Pesca Esportiva","description":"Destinos de pesca esportiva em Mato Grosso.","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":55},{"id":"fish_pantanal_v196","parentId":"fish_root_v196","type":"group","name":"Cuiabá e Pantanal","description":"","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":10},{"id":"fish_cuiaba_v196","parentId":"fish_pantanal_v196","type":"place","name":"Cuiabá","description":"Espécies: Pacu, pintado, cachara, dourado e piraputanga. Melhor época: Março a Setembro (período da seca e vazante). Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 0 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.midianews.com.br/storage/webdisco/2017/02/16/886x590/7828c9bf8660987ec3b80ccb8c083e31.jpg","mapQuery":"Cuiabá MT pesca esportiva","sort":1},{"id":"fish_caceres_v196","parentId":"fish_pantanal_v196","type":"place","name":"Cáceres","description":"Espécies: Dourado, pintado, jaú, pacu e cachara. Melhor época: Junho a Setembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 220 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","mapQuery":"Cáceres MT pesca esportiva","sort":2},{"id":"fish_pocone_v196","parentId":"fish_pantanal_v196","type":"place","name":"Poconé","description":"Espécies: Pintado, dourado, pacu, piranha e piavuçu. Melhor época: Julho a Setembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 105 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","mapQuery":"Poconé MT pesca esportiva","sort":3},{"id":"fish_barao_v196","parentId":"fish_pantanal_v196","type":"place","name":"Barão de Melgaço","description":"Espécies: Pacu, piraputanga, pintado, cachara e dourado. Melhor época: Abril a Agosto. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 110 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","mapQuery":"Barão de Melgaço MT pesca esportiva","sort":4},{"id":"fish_norte_v196","parentId":"fish_root_v196","type":"group","name":"Polos do Norte e Bacia Amazônica","description":"","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":20},{"id":"fish_sinop_v196","parentId":"fish_norte_v196","type":"place","name":"Sinop","description":"Espécies: Tucunaré, trairão, cachorra, jaú e matrinxã. Melhor época: Maio a Setembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 500 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"Sinop MT pesca esportiva","sort":1},{"id":"fish_alta_v196","parentId":"fish_norte_v196","type":"place","name":"Alta Floresta","description":"Espécies: Tucunaré fogo, trairão, jaú, pirarara e piraíba. Melhor época: Junho a Novembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 800 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"Alta Floresta MT pesca esportiva","sort":2},{"id":"fish_novacanaa_v196","parentId":"fish_norte_v196","type":"place","name":"Nova Canaã do Norte","description":"Espécies: Tucunaré, matrinxã, bicuda, jaú e cachorra. Melhor época: Maio a Outubro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 690 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"Nova Canaã do Norte MT pesca esportiva","sort":3},{"id":"fish_araguaia_v196","parentId":"fish_root_v196","type":"group","name":"Polos da Região do Araguaia e Fronteiras","description":"","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":30},{"id":"fish_saofelix_v196","parentId":"fish_araguaia_v196","type":"place","name":"São Félix do Araguaia","description":"Espécies: Pirarucu, tucunaré, piraíba, pirarara e bargre. Melhor época: Junho a Outubro (época das praias). Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 1.150 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"São Félix do Araguaia MT pesca esportiva","sort":1},{"id":"fish_canarana_v196","parentId":"fish_araguaia_v196","type":"place","name":"Canarana","description":"Espécies: Tucunaré, trairão, cachorra e peixes de couro do Araguaia. Melhor época: Junho a Setembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 640 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"Canarana MT pesca esportiva","sort":2},{"id":"fish_pontes_v196","parentId":"fish_araguaia_v196","type":"place","name":"Pontes e Lacerda","description":"Espécies: Dourado, pintado, cachara, pacu e piau. Melhor época: Março a Agosto. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 450 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","mapQuery":"Pontes e Lacerda MT pesca esportiva","sort":3}];
+const EXTRA_FISHING_GUIDE_V196=[{"id":"fish_root_v196","parentId":"","type":"group","name":"PESCA ESPORTIVA","description":"Destinos de pesca esportiva em Mato Grosso.","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":55},{"id":"fish_pantanal_v196","parentId":"fish_root_v196","type":"group","name":"Cuiabá e Pantanal","description":"","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":10},{"id":"fish_cuiaba_v196","parentId":"fish_pantanal_v196","type":"place","name":"Cuiabá","description":"Espécies: Pacu, pintado, cachara, dourado e piraputanga. Melhor época: Março a Setembro (período da seca e vazante). Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 0 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.midianews.com.br/storage/webdisco/2017/02/16/886x590/7828c9bf8660987ec3b80ccb8c083e31.jpg","mapQuery":"Cuiabá MT pesca esportiva","sort":1},{"id":"fish_caceres_v196","parentId":"fish_pantanal_v196","type":"place","name":"Cáceres","description":"Espécies: Dourado, pintado, jaú, pacu e cachara. Melhor época: Junho a Setembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 220 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","mapQuery":"Cáceres MT pesca esportiva","sort":2},{"id":"fish_pocone_v196","parentId":"fish_pantanal_v196","type":"place","name":"Poconé","description":"Espécies: Pintado, dourado, pacu, piranha e piavuçu. Melhor época: Julho a Setembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 105 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","mapQuery":"Poconé MT pesca esportiva","sort":3},{"id":"fish_barao_v196","parentId":"fish_pantanal_v196","type":"place","name":"Barão de Melgaço","description":"Espécies: Pacu, piraputanga, pintado, cachara e dourado. Melhor época: Abril a Agosto. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 110 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","mapQuery":"Barão de Melgaço MT pesca esportiva","sort":4},{"id":"fish_norte_v196","parentId":"fish_root_v196","type":"group","name":"Polos do Norte e Bacia Amazônica","description":"","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":20},{"id":"fish_sinop_v196","parentId":"fish_norte_v196","type":"place","name":"Sinop","description":"Espécies: Tucunaré, trairão, cachorra, jaú e matrinxã. Melhor época: Maio a Setembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 500 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"Sinop MT pesca esportiva","sort":1},{"id":"fish_alta_v196","parentId":"fish_norte_v196","type":"place","name":"Alta Floresta","description":"Espécies: Tucunaré fogo, trairão, jaú, pirarara e piraíba. Melhor época: Junho a Novembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 800 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"Alta Floresta MT pesca esportiva","sort":2},{"id":"fish_novacanaa_v196","parentId":"fish_norte_v196","type":"place","name":"Nova Canaã do Norte","description":"Espécies: Tucunaré, matrinxã, bicuda, jaú e cachorra. Melhor época: Maio a Outubro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 690 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"Nova Canaã do Norte MT pesca esportiva","sort":3},{"id":"fish_araguaia_v196","parentId":"fish_root_v196","type":"group","name":"Polos da Região do Araguaia e Fronteiras","description":"","distance":"","phone":"","imageUrl":"","mapQuery":"","sort":30},{"id":"fish_saofelix_v196","parentId":"fish_araguaia_v196","type":"place","name":"São Félix do Araguaia","description":"Espécies: Pirarucu, tucunaré, piraíba, pirarara e bargre. Melhor época: Junho a Outubro (época das praias). Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 1.150 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"São Félix do Araguaia MT pesca esportiva","sort":1},{"id":"fish_canarana_v196","parentId":"fish_araguaia_v196","type":"place","name":"Canarana","description":"Espécies: Tucunaré, trairão, cachorra e peixes de couro do Araguaia. Melhor época: Junho a Setembro. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 640 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.cvc.com.br/dicas-de-viagem/wp-content/uploads/2022/04/Aquario-Encantado-768x512.jpg","mapQuery":"Canarana MT pesca esportiva","sort":2},{"id":"fish_pontes_v196","parentId":"fish_araguaia_v196","type":"place","name":"Pontes e Lacerda","description":"Espécies: Dourado, pintado, cachara, pacu e piau. Melhor época: Março a Agosto. Defeso: 01 de outubro a 31 de janeiro.","distance":"aprox. 450 km","phone":"(65) 3313-0050 (Sec. de Turismo)","imageUrl":"https://www.sospantanal.org.br/wp-content/uploads/2021/01/WhatsApp-Image-2021-01-20-at-18.10.03-1024x767.jpeg","mapQuery":"Pontes e Lacerda MT pesca esportiva","sort":3}];
 function ensureFishingGuideV196(){
   if(!Array.isArray(db.leisureGuide))db.leisureGuide=[];
   const ids=new Set(db.leisureGuide.map(n=>String(n.id||'')));
   EXTRA_FISHING_GUIDE_V196.forEach(n=>{if(!ids.has(n.id))db.leisureGuide.push(structuredClone(n));});
+  const fishingRoot=db.leisureGuide.find(n=>n.id==='fish_root_v196'||String(n.name||'').toLowerCase()==='pesca esportiva');
+  if(fishingRoot)fishingRoot.name='PESCA ESPORTIVA';
 }
 function fishingAquariumLinkV196(p){
   if(!String(p?.id||'').startsWith('fish_'))return '';
@@ -1565,8 +1653,7 @@ function pageTitleV185(label,iconHtml,extra=''){
 function leisureGuidePage(){
   const roots=leisureChildren('');
   return `<div class="card leisure-guide-card">
-    <div class="row between leisure-guide-head"><div>${pageTitleV185('Lazer e Conveniência',UI_ICONS.pin)}<div class="leisure-page-line1">Conheça Cuiabá e arredores.</div><div class="leisure-page-line2">Encontre tudo ao seu redor.</div></div>
-    <button class="btn" onclick="page='catalog';render()">Voltar ao catálogo</button></div>
+    <div class="leisure-guide-head"><div>${pageTitleV185('Lazer e Conveniência',UI_ICONS.pin)}<div class="leisure-page-line1">Conheça Cuiabá e arredores.</div><div class="leisure-page-line2">Encontre tudo ao seu redor.</div></div></div>
     ${roots.map(n=>leisureNodeHtml(n,1)).join('')}
   </div>`;
 }
@@ -1602,6 +1689,22 @@ function setupExclusiveDetailsV179(){
   },true);
 }
 
+
+
+function resetAdminAccordionsClosedV203(){
+  if(session?.role!=='admin')return;
+  if(!['categories','products'].includes(adminPage))return;
+  document.querySelectorAll('.admin-category-accordion > details').forEach(d=>{
+    d.open=false;
+    d.removeAttribute('open');
+    const panel=d.querySelector(':scope > .dropdown-slide-panel-v199');
+    if(panel){
+      panel.style.height='0px';
+      panel.style.opacity='0';
+      panel.style.overflow='hidden';
+    }
+  });
+}
 
 function setupAdminExclusiveAccordionsV195(){
   document.querySelectorAll('.admin-category-accordion').forEach(container=>{
@@ -1696,7 +1799,7 @@ function setupGlobalDropdownSlideV199(){
 function render(){
   document.getElementById('app').innerHTML=session?appView():loginView();
   renderVersionBadge();
-  setTimeout(()=>{updatePwaInstallUI();updateCentralStatusUI();updateItineraryCountUI();setupExclusiveDetailsV179();if(page==='postal')bindPostalValidation();adjustScrollBelowHeaderV177(false);if(session?.role==='admin')setupAdminExclusiveAccordionsV195();setupGlobalDropdownSlideV199();},0);
+  setTimeout(()=>{updatePwaInstallUI();updateCentralStatusUI();updateItineraryCountUI();setupExclusiveDetailsV179();if(page==='postal')bindPostalValidation();adjustScrollBelowHeaderV177(false);if(session?.role==='admin'){resetAdminAccordionsClosedV203();setupAdminExclusiveAccordionsV195();}setupGlobalDropdownSlideV199();},0);
 }
 
 function renderVersionBadge(){
@@ -1706,7 +1809,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.02';
+  badge.textContent='v2.04';
 }
 
 function isPwaStandalone(){
@@ -3322,7 +3425,7 @@ function categoriesAdmin(){
     <div class="admin-category-accordion">
       ${cats.map(c=>{
         const count=(db.products||[]).filter(p=>p.cat===c.id).length;
-        return `<details class="admin-category-detail">
+        return `<details class="admin-category-detail" data-admin-start-closed="1">
           <summary>
             <span class="admin-category-icon">${c.icon||'📌'}</span>
             <span class="admin-category-name">${esc(c.name)}</span>
@@ -3365,7 +3468,7 @@ function productsAdmin(){
     </div>
   </div>`;
 
-  const group=(c,items)=>`<details class="admin-products-category-detail">
+  const group=(c,items)=>`<details class="admin-products-category-detail" data-admin-start-closed="1">
     <summary>
       <span class="admin-category-icon">${c.icon||'📌'}</span>
       <span class="admin-category-name">${esc(c.name)}</span>
@@ -3412,7 +3515,8 @@ function editProductTitleInline(pid,el){
     const value=String(el.textContent||'').trim();
     if(saveChange&&value){
       p.name=value;
-      saveAndPublishPublicData();
+      save();
+      localStorage.setItem('versatil_admin_unsaved_public_changes','1');
       el.textContent=value;
     }else{
       el.textContent=original;
@@ -3460,7 +3564,8 @@ function editProductAdmin(pid){
 
   p.icon=prompt('Ícone:',p.icon)||p.icon;
 
-  saveAndPublishPublicData();
+  save();
+  localStorage.setItem('versatil_admin_unsaved_public_changes','1');
   if(p.id==='cafe')preserveCafeDefaultV149();
   render();
 }

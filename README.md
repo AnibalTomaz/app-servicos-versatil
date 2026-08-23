@@ -866,3 +866,18 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Subcategorias clareiam progressivamente conforme a profundidade.
 - Produtos/locais permanecem brancos, distinguindo claramente conteúdo de navegação.
 - Mesma lógica aplicada em Lazer e Conveniência, Conheça o Versátil, Admin e listas institucionais.
+
+## v2.03
+- Admin > Categorias e Produtos: todas as listas iniciam fechadas, abrindo somente ao clicar, como na área do cliente.
+- Produtos editados são salvos localmente primeiro; a edição não dispara mais uma publicação assíncrona concorrente.
+- Restaurada e reforçada a função de publicação pública.
+- Após publicar, o app mantém a edição local até confirmar que a base pública possui a mesma assinatura da lista de produtos.
+- Uma leitura antiga/diferente da base pública não pode mais sobrescrever o produto recém-editado.
+
+## v2.04
+- `PESCA ESPORTIVA` normalizado em caixa alta, inclusive em dados locais já existentes.
+- Dropdowns mais lentos para abertura/fechamento mais fácil de acompanhar.
+- Corrigido overflow horizontal no celular e o botão Normas gerais fica contido na tela.
+- Tela inicial passa a abrir na largura integral, sem exigir redução de zoom.
+- Logo inicial e logos do app sempre quadradas.
+- Removido o botão `Voltar ao catálogo` da página Lazer e Conveniência.

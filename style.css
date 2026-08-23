@@ -3417,3 +3417,68 @@ button[class*="nav"]{
   .leisure-place>summary,
   .institution-detail .institution-item>summary{background:#fff!important;color:#14273a!important}
 }
+
+/* v2.03 — Admin fechado por padrão, igual ao cliente */
+.admin-category-accordion>details:not([open])>.admin-category-body,
+.admin-category-accordion>details:not([open])>.admin-products-list,
+.admin-category-accordion>details:not([open])>.dropdown-slide-panel-v199{
+  display:none!important;
+}
+.admin-category-accordion>details[open]>.dropdown-slide-panel-v199{
+  display:block!important;
+}
+.admin-category-accordion>details>summary{
+  cursor:pointer!important;
+}
+
+/* v2.04 — dropdowns mais lentos, mobile contido e logos quadradas */
+.dropdown-slide-panel-v199{
+  transition:height .62s cubic-bezier(.2,.72,.2,1),opacity .42s ease!important;
+}
+html,body{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important}
+*,*::before,*::after{box-sizing:border-box}
+#app,.wrap,.login,.loginbox,.top-v175{max-width:100%!important;min-width:0!important}
+img,svg{max-width:100%}
+.login-logo,.header-logo-v175,.logo,.logo img,.brand img,.brand-logo,.app-logo,img.logo{
+  border-radius:0!important;clip-path:none!important;
+}
+.login-logo{width:140px!important;height:140px!important;object-fit:contain!important;aspect-ratio:1/1!important}
+
+@media(max-width:700px){
+  .top-v175{
+    width:100%!important;max-width:100vw!important;
+    grid-template-columns:minmax(0,46%) minmax(0,25%) minmax(0,29%)!important;
+    gap:4px!important;padding:6px!important;overflow:hidden!important;
+  }
+  .header-col,.header-col-brand,.header-col-welcome,.header-col-actions{min-width:0!important;max-width:100%!important}
+  .header-col-brand{grid-template-columns:34px minmax(0,1fr)!important;gap:5px!important}
+  .header-logo-v175{width:34px!important;height:34px!important;min-width:34px!important}
+  .header-brand-text-v175{width:auto!important;min-width:0!important;height:34px!important;overflow:hidden!important}
+  .header-app-name-v175,.header-unit-v175,.header-updated-v175{
+    width:100%!important;max-width:100%!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+  }
+  .header-col-welcome{justify-content:flex-start!important;overflow:hidden!important}
+  .app-welcome-v175{width:100%!important;max-width:100%!important;overflow:hidden!important;word-break:break-word!important;font-size:8.5px!important}
+  .header-col-actions{width:100%!important;min-width:0!important;display:grid!important;grid-template-columns:1fr!important;gap:4px!important}
+  .header-col-actions .btn,.header-action-v175,.header-normas-btn.header-action-v175{
+    width:100%!important;max-width:100%!important;min-width:0!important;flex-basis:auto!important;
+    padding:3px 4px!important;font-size:8.4px!important;white-space:normal!important;line-height:1.05!important;
+  }
+  .header-normas-btn.header-action-v175{height:31px!important;min-height:31px!important;font-size:9px!important}
+  .header-signout-btn.header-action-v175{height:24px!important;min-height:24px!important}
+  .login{width:100%!important;padding:8px!important;margin:0!important}
+  .loginbox{width:min(100%,460px)!important;margin:0 auto!important;padding:16px!important;overflow:hidden!important}
+  .login-logo{width:104px!important;height:104px!important}
+  .tabs{width:100%!important;min-width:0!important}
+  .tabs .btn{min-width:0!important;width:auto!important;padding-left:6px!important;padding-right:6px!important}
+  input,select,textarea{width:100%!important;max-width:100%!important;min-width:0!important}
+}
+@media(max-width:390px){
+  .top-v175{grid-template-columns:minmax(0,48%) minmax(0,23%) minmax(0,29%)!important;padding:5px!important;gap:3px!important}
+  .header-col-brand{grid-template-columns:30px minmax(0,1fr)!important;gap:4px!important}
+  .header-logo-v175{width:30px!important;height:30px!important;min-width:30px!important}
+  .header-brand-text-v175{height:30px!important}
+  .header-app-name-v175{font-size:8.8px!important}.header-unit-v175{font-size:7.5px!important}.header-updated-v175{font-size:6.7px!important}
+  .app-welcome-v175{font-size:7.7px!important}
+  .header-col-actions .btn,.header-action-v175,.header-normas-btn.header-action-v175{font-size:7.8px!important;padding:2px 3px!important}
+}

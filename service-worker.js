@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-02-blue-list-hierarchy";
+const CACHE="versatil-v2-04-responsive-dropdowns";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2020',
-  './app.js?v=2020',
+  './style.css?v=2040',
+  './app.js?v=2040',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
