@@ -1014,3 +1014,19 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Badge, APP_VERSION, Apps Script, index e service worker agora apontam todos para v2.30.
 - O botão Atualizar agora remove service workers e caches antigos antes de recarregar.
 - Assets do app passam a usar rede primeiro para evitar retorno persistente de JavaScript antigo.
+
+## v2.31 — Áreas comuns
+- Áreas comuns em Conheça o Versátil usa a mesma configuração visual de Acomodações.
+- Itens aceitam até quatro imagens, com link ou upload, otimização e armazenamento já existentes.
+- Espaços vazios não aparecem no cliente.
+- Thumbnails continuam clicáveis para abrir a imagem completa.
+- O ícone de Áreas comuns foi igualado exatamente ao já usado no Lounge.
+
+## v2.32 — ícones carregáveis e editáveis
+- Categorias e produtos do Catálogo podem receber ícone por upload no Admin.
+- Lazer e Conveniência: menus/submenus/locais podem receber ícone personalizado.
+- Conheça o Versátil: categorias e itens/produtos podem receber ícone personalizado.
+- Conheça a Starlis: itens também recebem campo de ícone, mantendo o padrão quando não houver personalização.
+- Ícones existentes permanecem como fallback e podem ser restaurados pelo botão “Restaurar ícone padrão”.
+- Uploads são otimizados para até 256 px no maior lado; PNG preserva transparência, JPEG é usado apenas quando necessário para reduzir armazenamento.
+- Todos os ícones carregados são encaixados automaticamente no recipiente padrão com object-fit: contain, sem alterar layout.

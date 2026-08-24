@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-30-update-fix";
+const CACHE="versatil-v2-32-editable-icons";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2300',
-  './app.js?v=2300',
+  './style.css?v=2320',
+  './app.js?v=2320',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

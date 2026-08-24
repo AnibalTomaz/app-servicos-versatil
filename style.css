@@ -4565,3 +4565,107 @@ html,body{
 .admin-remove-image-v229{
   margin-top:6px!important;
 }
+
+/* v2.31 — Áreas comuns replica a configuração visual de Acomodações */
+.versatil-gallery-category-v231 .institution-item-body-v227{
+  display:grid!important;
+  grid-template-columns:minmax(280px,2.5fr) minmax(0,5fr)!important;
+  gap:24px!important;
+  align-items:start!important;
+  padding:12px 72px 18px!important;
+}
+.versatil-gallery-category-v231 .institution-gallery-v227{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:14px!important;
+}
+.versatil-gallery-category-v231 .institution-thumb-v227{
+  width:100%!important;
+  aspect-ratio:1/1!important;
+  overflow:hidden!important;
+}
+.versatil-gallery-category-v231 .institution-thumb-v227 img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+}
+/* Ícone de Áreas comuns = mesmo asset e mesma classe visual do Lounge */
+.institution-detail>summary .lounge-common-areas-v187{
+  width:46px!important;
+  height:46px!important;
+  max-width:46px!important;
+  max-height:46px!important;
+  object-fit:contain!important;
+}
+@media(max-width:700px){
+  .versatil-gallery-category-v231 .institution-item-body-v227{
+    grid-template-columns:1fr!important;
+    padding:10px 12px 16px!important;
+    gap:12px!important;
+  }
+  .versatil-gallery-category-v231 .institution-gallery-v227{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+}
+
+/* v2.32 — carregamento e edição de ícones */
+.admin-icon-editor-v232{
+  margin:10px 0!important;
+  padding:10px!important;
+  border:1px solid #d6e2ea!important;
+  border-radius:10px!important;
+  background:#f8fbfd!important;
+}
+.admin-icon-editor-v232>label{
+  display:block!important;
+  font-weight:800!important;
+  margin-bottom:7px!important;
+}
+.admin-icon-preview-v232{
+  width:72px!important;
+  height:72px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#fff!important;
+  border:1px solid #cad7df!important;
+  border-radius:9px!important;
+  overflow:hidden!important;
+  margin-bottom:8px!important;
+}
+.admin-icon-preview-v232 img,
+.admin-icon-preview-v232 svg{
+  width:64px!important;
+  height:64px!important;
+  max-width:64px!important;
+  max-height:64px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+.admin-icon-editor-v232 input[type="file"]{
+  width:100%!important;
+  box-sizing:border-box!important;
+  margin-bottom:7px!important;
+}
+/* Recipiente padrão no app: imagem carregada nunca altera o layout. */
+.admin-custom-icon-v232{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:transparent!important;
+}
+.catalog-category-icon-v183 .admin-custom-icon-v232,
+.admin-product-icon .admin-custom-icon-v232,
+.client-product-icon-v211 .admin-custom-icon-v232,
+.institution-category-icon .admin-custom-icon-v232,
+.institution-item-ico .admin-custom-icon-v232,
+.admin-client-icon-v225 .admin-custom-icon-v232{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+}
