@@ -966,3 +966,13 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Menus internos fecham apenas irmãos do mesmo nível; não derrubam o menu-pai.
 - Ícones dos produtos foram padronizados em 46 px de recipiente / 42 px para SVG e imagens.
 - Produtos de Serviços que usam emojis agora recebem font-size próprio (36 px), corrigindo o tamanho pequeno que não respondia às regras de img/svg.
+
+## v2.24 — Admin expansivo e imagens editáveis
+- Lazer e Conveniência no Admin agora usa listas expansivas, seguindo a mesma lógica de Produtos/Preços.
+- Categorias, subcategorias e locais abrem/fecham por dropdown e usam o controlador global de animação.
+- Lazer permite cadastrar URL de imagem/thumbnail e pré-visualizar no editor.
+- Conheça o Versátil agora mostra categorias expansivas e todos os itens internos individualmente editáveis.
+- Cada item de Conheça o Versátil pode receber até duas imagens; a primeira funciona como thumbnail.
+- Categorias de Conheça o Versátil também podem receber imagem/thumbnail.
+- Conheça a Starlis agora usa lista expansiva e todos os hotéis continuam totalmente editáveis, com imagem/thumbnail, descrição, Maps e Reserva.
+- Previews de thumbnails são exibidos no Admin.

@@ -4351,3 +4351,79 @@ html,body{
     max-height:40px!important;
   }
 }
+
+/* v2.24 — Admin: Lazer/Versátil/Starlis com a mesma lógica expansiva de Produtos/Preços */
+.leisure-admin-tree,
+.nested-admin-accordion-v224{
+  display:grid!important;
+  gap:7px!important;
+}
+.leisure-admin-detail-v224{
+  border:1px solid #d7e3ec!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  overflow:hidden!important;
+}
+.leisure-admin-detail-v224>summary,
+.admin-products-category-summary-v224{
+  list-style:none!important;
+  display:grid!important;
+  grid-template-columns:56px minmax(0,1fr) minmax(80px,auto) 32px!important;
+  align-items:center!important;
+  min-height:62px!important;
+  gap:8px!important;
+  padding:7px 10px!important;
+  cursor:pointer!important;
+}
+.leisure-admin-detail-v224>summary::-webkit-details-marker{display:none!important}
+.admin-leisure-thumb-v224,
+.admin-category-icon{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+}
+.admin-thumb-v224{
+  width:46px!important;
+  height:46px!important;
+  object-fit:cover!important;
+  border-radius:8px!important;
+  background:#fff!important;
+}
+.admin-thumb-empty-v224{
+  width:46px!important;height:46px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  font-size:26px!important;background:#fff!important;border-radius:8px!important;
+}
+.leisure-admin-children-v224,
+.leisure-admin-place-body-v224,
+.versatil-admin-section-body-v224,
+.content-admin-expanded-v224{
+  padding:10px!important;
+}
+.admin-inline-actions-v224{
+  display:flex!important;
+  gap:7px!important;
+  flex-wrap:wrap!important;
+  margin-bottom:8px!important;
+}
+.admin-preview-v224{
+  width:120px!important;
+  height:82px!important;
+  object-fit:cover!important;
+  border-radius:9px!important;
+  display:block!important;
+  margin-bottom:8px!important;
+}
+.admin-image-preview-wrap-v224{
+  min-height:0!important;
+  margin:4px 0 10px!important;
+}
+.admin-image-preview-v224{
+  width:150px!important;
+  height:100px!important;
+  object-fit:cover!important;
+  border-radius:9px!important;
+  border:1px solid #d8e1e8!important;
+  background:#fff!important;
+}

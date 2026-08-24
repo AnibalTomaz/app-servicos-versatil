@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.23';
+const APP_VERSION='2.24';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -1933,7 +1933,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.23';
+  badge.textContent='v2.24';
 }
 
 function isPwaStandalone(){
@@ -3369,16 +3369,45 @@ function leisureAdminParentOptions(selected='',excludeId=''){
       .map(n=>`<option value="${esc(n.id)}" ${n.id===selected?'selected':''}>${esc(leisureBreadcrumb(n.id))}</option>`).join('');
 }
 function leisureAdminRows(parentId='',depth=0){
-  return leisureChildren(parentId).map(n=>`<div class="leisure-admin-node" style="--depth:${depth}">
-    <div class="leisure-admin-node-main">
-      <div class="leisure-admin-node-title"><span class="leisure-admin-type">${n.type==='group'?'MENU':'LOCAL'}</span><b>${esc(n.name)}</b>${n.type==='place'&&n.distance?`<span class="small muted">${esc(n.distance)}</span>`:''}</div>
-      <div class="row leisure-admin-actions">
-        <button class="btn small" onclick="openLeisureEditor('${n.id}')">Editar</button>
-        ${n.type==='group'?`<button class="btn small" onclick="openLeisureEditor('', '${n.id}')">+ Dentro</button>`:''}
-        <button class="btn red small" onclick="deleteLeisureNode('${n.id}')">Excluir</button>
+  return leisureChildren(parentId).map(n=>{
+    const children=n.type==='group'?leisureChildren(n.id):[];
+    const thumb=n.imageUrl?`<img class="admin-thumb-v224" src="${esc(n.imageUrl)}" alt="" onerror="this.classList.add('img-failed')">`:`<span class="admin-thumb-empty-v224">${n.type==='group'?'📁':'🖼️'}</span>`;
+    if(n.type==='group'){
+      return `<details class="leisure-admin-detail-v224" data-admin-start-closed="1" style="--depth:${depth}">
+        <summary class="admin-products-category-summary-v224">
+          <span class="admin-leisure-thumb-v224">${thumb}</span>
+          <span class="admin-category-name">${esc(n.name)}</span>
+          <span class="admin-category-count">${children.length} item${children.length===1?'':'s'}</span>
+          <span class="admin-category-arrow">⌄</span>
+        </summary>
+        <div class="leisure-admin-children-v224">
+          <div class="admin-inline-actions-v224">
+            <button class="btn small" onclick="event.preventDefault();event.stopPropagation();openLeisureEditor('${n.id}')">Editar categoria</button>
+            <button class="btn small" onclick="event.preventDefault();event.stopPropagation();openLeisureEditor('', '${n.id}')">+ Adicionar dentro</button>
+            <button class="btn red small" onclick="event.preventDefault();event.stopPropagation();deleteLeisureNode('${n.id}')">Excluir</button>
+          </div>
+          ${leisureAdminRows(n.id,depth+1)}
+        </div>
+      </details>`;
+    }
+    return `<details class="leisure-admin-detail-v224 leisure-admin-place-v224" data-admin-start-closed="1" style="--depth:${depth}">
+      <summary class="admin-products-category-summary-v224">
+        <span class="admin-leisure-thumb-v224">${thumb}</span>
+        <span class="admin-category-name">${esc(n.name)}</span>
+        <span class="admin-category-count">${esc(n.distance||'')}</span>
+        <span class="admin-category-arrow">⌄</span>
+      </summary>
+      <div class="leisure-admin-place-body-v224">
+        ${n.imageUrl?`<img class="admin-preview-v224" src="${esc(n.imageUrl)}" alt="${esc(n.name)}" onerror="this.classList.add('img-failed')">`:''}
+        ${n.description?`<p>${esc(n.description)}</p>`:''}
+        <div class="small muted">${esc(n.phone||'')}</div>
+        <div class="admin-inline-actions-v224">
+          <button class="btn small" onclick="openLeisureEditor('${n.id}')">Editar</button>
+          <button class="btn red small" onclick="deleteLeisureNode('${n.id}')">Excluir</button>
+        </div>
       </div>
-    </div>${n.type==='group'?leisureAdminRows(n.id,depth+1):''}
-  </div>`).join('');
+    </details>`;
+  }).join('');
 }
 function leisureAdmin(){
   const total=(db.leisureGuide||[]).filter(n=>n.type==='place').length;
@@ -3389,6 +3418,14 @@ function leisureAdmin(){
   <div class="notice">Use o botão <b>Publicar alterações</b> no cabeçalho após concluir as mudanças.</div>
   <div class="leisure-admin-tree">${leisureAdminRows()}</div></div>`;
 }
+function previewAdminImageV224(inputId,previewId){
+  const input=document.getElementById(inputId);
+  const box=document.getElementById(previewId);
+  if(!box)return;
+  const url=input?.value.trim()||'';
+  box.innerHTML=url?`<img src="${esc(url)}" class="admin-image-preview-v224" alt="" onerror="this.classList.add('img-failed')">`:'';
+}
+
 function openLeisureEditor(nodeId='',presetParent=''){
   document.getElementById('leisureEditorModal')?.remove();
   const old=(db.leisureGuide||[]).find(n=>n.id===nodeId)||{id:'',parentId:presetParent,type:'place',name:'',description:'',distance:'',phone:'',imageUrl:'',mapQuery:'',sort:(db.leisureGuide||[]).length+1};
@@ -3408,7 +3445,8 @@ function openLeisureEditor(nodeId='',presetParent=''){
         <div class="field"><label>Distância do Versátil</label><input id="lz_distance" value="${esc(old.distance||'')}"></div>
         <div class="field"><label>Telefone</label><input id="lz_phone" value="${esc(old.phone||'')}"></div>
       </div>
-      <div class="field"><label>Foto — URL</label><input id="lz_image" value="${esc(old.imageUrl||'')}"></div>
+      <div class="field"><label>Imagem / thumbnail — URL</label><input id="lz_image" value="${esc(old.imageUrl||'')}" oninput="previewAdminImageV224('lz_image','lz_image_preview')"></div>
+      <div id="lz_image_preview" class="admin-image-preview-wrap-v224">${old.imageUrl?`<img src="${esc(old.imageUrl)}" class="admin-image-preview-v224" alt="">`:''}</div>
       <div class="field"><label>Google Maps — busca ou link</label><input id="lz_map" value="${esc(old.mapQuery||old.name||'')}"></div>
     </div>
     <div class="row between" style="margin-top:16px"><span class="small muted">Salve e depois publique pelo cabeçalho.</span><button class="btn primary" onclick="saveLeisureNode('${old.id}')">Salvar</button></div>
@@ -3427,7 +3465,7 @@ function saveLeisureNode(nodeId=''){
     description:type==='place'?(document.getElementById('lz_description')?.value.trim()||''):'',
     distance:type==='place'?(document.getElementById('lz_distance')?.value.trim()||''):'',
     phone:type==='place'?(document.getElementById('lz_phone')?.value.trim()||''):'',
-    imageUrl:type==='place'?(document.getElementById('lz_image')?.value.trim()||''):'',
+    imageUrl:document.getElementById('lz_image')?.value.trim()||'',
     mapQuery:type==='place'?(document.getElementById('lz_map')?.value.trim()||name):'',
     sort:Number(document.getElementById('lz_sort')?.value||1)};
   if(!Array.isArray(db.leisureGuide))db.leisureGuide=[];
@@ -3456,6 +3494,7 @@ function contentAdminPage(kind){
     starlis:{title:'Conheça a Starlis',data:db.starlisGuide||[]},
     postal:{title:'Correio Versátil',data:[db.postalConfig||{}]}
   }[kind];
+
   if(kind==='postal')return `<div class="card"><h2>${cfg.title}</h2><p class="muted">Edite os textos e imagens do postal. Depois use “Publicar alterações” no cabeçalho.</p>
     <div class="field"><label>Endereço</label><input id="postal_admin_address" value="${esc(db.postalConfig?.address||'')}"></div>
     <div class="field"><label>Telefone</label><input id="postal_admin_phone" value="${esc(db.postalConfig?.phone||'')}"></div>
@@ -3465,8 +3504,71 @@ function contentAdminPage(kind){
     <div class="field"><label>Foto quarto</label><input id="postal_admin_room" value="${esc(db.postalConfig?.frontRoom||'')}"></div>
     <div class="field"><label>Foto piscina</label><input id="postal_admin_pool" value="${esc(db.postalConfig?.frontPool||'')}"></div>
     <button class="btn primary" onclick="savePostalAdminV170()">Salvar</button></div>`;
-  return `<div class="card"><div class="row between"><div><h2>${cfg.title}</h2><p class="muted">Inclua, altere ou exclua itens. Depois publique pelo cabeçalho.</p></div><button class="btn primary" onclick="openContentEditorV170('${kind}')">+ Adicionar</button></div>
-    <div class="content-admin-list">${cfg.data.map((x,i)=>`<div class="content-admin-row"><div><b>${esc(x.name||x.id||'Item')}</b><div class="small muted">${esc(x.description||x.type||'')}</div></div><div class="row"><button class="btn small" onclick="openContentEditorV170('${kind}',${i})">Editar</button><button class="btn red small" onclick="deleteContentV170('${kind}',${i})">Excluir</button></div></div>`).join('')}</div></div>`;
+
+  if(kind==='starlis'){
+    return `<div class="card admin-accordion-card">
+      <div class="row between"><div><h2>${cfg.title}</h2><p class="muted">Clique em um hotel para abrir e editar. Cada item pode ter imagem/thumbnail.</p></div><button class="btn primary" onclick="openContentEditorV170('starlis')">+ Adicionar</button></div>
+      <div class="admin-category-accordion">
+        ${cfg.data.map((x,i)=>`<details class="admin-products-category-detail starlis-admin-detail-v224" data-admin-start-closed="1">
+          <summary>
+            <span class="admin-category-icon">${x.image?`<img class="admin-thumb-v224" src="${esc(x.image)}" alt="">`:'🏨'}</span>
+            <span class="admin-category-name">${esc(x.name||'Hotel')}</span>
+            <span class="admin-category-count">Editar</span>
+            <span class="admin-category-arrow">⌄</span>
+          </summary>
+          <div class="content-admin-expanded-v224">
+            ${x.image?`<img class="admin-preview-v224" src="${esc(x.image)}" alt="${esc(x.name||'')}">`:''}
+            <p>${esc(x.description||'')}</p>
+            <div class="row"><button class="btn small" onclick="openContentEditorV170('starlis',${i})">Editar</button><button class="btn red small" onclick="deleteContentV170('starlis',${i})">Excluir</button></div>
+          </div>
+        </details>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Conheça o Versátil: sections + nested products/items, all expandable/editable.
+  return `<div class="card admin-accordion-card">
+    <div class="row between"><div><h2>${cfg.title}</h2><p class="muted">Categorias e itens em listas expansivas. Todos os itens podem receber imagem/thumbnail.</p></div><button class="btn primary" onclick="openContentEditorV170('versatil')">+ Categoria</button></div>
+    <div class="admin-category-accordion">
+      ${cfg.data.map((sec,si)=>{
+        const items=Array.isArray(sec.items)?sec.items:[];
+        const secImg=sec.image||sec.imageUrl||(Array.isArray(sec.images)?sec.images[0]:'')||'';
+        return `<details class="admin-products-category-detail versatil-admin-detail-v224" data-admin-start-closed="1">
+          <summary>
+            <span class="admin-category-icon">${secImg?`<img class="admin-thumb-v224" src="${esc(secImg)}" alt="">`:(sec.icon||'📌')}</span>
+            <span class="admin-category-name">${esc(sec.name||'Categoria')}</span>
+            <span class="admin-category-count">${items.length} item${items.length===1?'':'s'}</span>
+            <span class="admin-category-arrow">⌄</span>
+          </summary>
+          <div class="versatil-admin-section-body-v224">
+            <div class="admin-inline-actions-v224">
+              <button class="btn small" onclick="openContentEditorV170('versatil',${si})">Editar categoria</button>
+              <button class="btn small" onclick="openVersatilItemEditorV224(${si})">+ Item</button>
+              <button class="btn red small" onclick="deleteContentV170('versatil',${si})">Excluir categoria</button>
+            </div>
+            <div class="admin-category-accordion nested-admin-accordion-v224">
+              ${items.map((item,ii)=>{
+                const img=(Array.isArray(item.images)&&item.images[0])||item.image||item.imageUrl||'';
+                return `<details class="admin-products-category-detail versatil-admin-item-v224" data-admin-start-closed="1">
+                  <summary>
+                    <span class="admin-category-icon">${img?`<img class="admin-thumb-v224" src="${esc(img)}" alt="">`:(item.icon||'🖼️')}</span>
+                    <span class="admin-category-name">${esc(item.name||'Item')}</span>
+                    <span class="admin-category-count">Editar</span>
+                    <span class="admin-category-arrow">⌄</span>
+                  </summary>
+                  <div class="content-admin-expanded-v224">
+                    ${img?`<img class="admin-preview-v224" src="${esc(img)}" alt="${esc(item.name||'')}">`:''}
+                    <p>${esc(item.description||'')}</p>
+                    <div class="row"><button class="btn small" onclick="openVersatilItemEditorV224(${si},${ii})">Editar</button><button class="btn red small" onclick="deleteVersatilItemV224(${si},${ii})">Excluir</button></div>
+                  </div>
+                </details>`;
+              }).join('')}
+            </div>
+          </div>
+        </details>`;
+      }).join('')}
+    </div>
+  </div>`;
 }
 function openContentEditorV170(kind,index=-1){
   const arr=kind==='versatil'?(db.versatilGuide||[]):(db.starlisGuide||[]);
@@ -3476,7 +3578,7 @@ function openContentEditorV170(kind,index=-1){
   m.innerHTML=`<div class="modal-card leisure-editor-modal"><div class="row between"><h2>${index>=0?'Editar':'Adicionar'} item</h2><button class="btn" onclick="document.getElementById('contentV170Modal')?.remove()">Fechar</button></div>
     <div class="field"><label>Nome</label><input id="cv_name" value="${esc(x.name||'')}"></div>
     <div class="field"><label>Descrição</label><textarea id="cv_desc" rows="4">${esc(x.description||'')}</textarea></div>
-    ${kind==='starlis'?`<div class="field"><label>Imagem</label><input id="cv_image" value="${esc(x.image||'')}"></div><div class="field"><label>Busca Google Maps</label><input id="cv_map" value="${esc(x.map||'')}"></div><div class="field"><label>Link reservar</label><input id="cv_reserve" value="${esc(x.reserve||'')}"></div>`:`<div class="field"><label>Tipo</label><select id="cv_type"><option value="gallery" ${x.type==='gallery'?'selected':''}>Galeria</option><option value="text" ${x.type==='text'?'selected':''}>Texto</option></select></div>`}
+    ${kind==='starlis'?`<div class="field"><label>Imagem / thumbnail — URL</label><input id="cv_image" value="${esc(x.image||'')}" oninput="previewAdminImageV224('cv_image','cv_image_preview')"></div><div id="cv_image_preview" class="admin-image-preview-wrap-v224">${x.image?`<img src="${esc(x.image)}" class="admin-image-preview-v224" alt="">`:''}</div><div class="field"><label>Busca Google Maps</label><input id="cv_map" value="${esc(x.map||'')}"></div><div class="field"><label>Link reservar</label><input id="cv_reserve" value="${esc(x.reserve||'')}"></div>`:`<div class="field"><label>Tipo</label><select id="cv_type"><option value="gallery" ${x.type==='gallery'?'selected':''}>Galeria</option><option value="text" ${x.type==='text'?'selected':''}>Texto</option></select></div>`}
     <button class="btn primary" onclick="saveContentV170('${kind}',${index})">Salvar</button></div>`;
   document.body.appendChild(m);
 }
@@ -3485,12 +3587,55 @@ function saveContentV170(kind,index){
   const old=index>=0?arr[index]:{};
   const obj={...old,id:old.id||id(),name:document.getElementById('cv_name')?.value.trim()||'',description:document.getElementById('cv_desc')?.value.trim()||''};
   if(kind==='starlis'){obj.image=document.getElementById('cv_image')?.value.trim()||'';obj.map=document.getElementById('cv_map')?.value.trim()||'';obj.reserve=document.getElementById('cv_reserve')?.value.trim()||''}
-  else{obj.type=document.getElementById('cv_type')?.value||'text';if(!Array.isArray(obj.items))obj.items=[]}
+  else{obj.type=document.getElementById('cv_type')?.value||'text';obj.image=document.getElementById('cv_image')?.value.trim()||obj.image||'';if(!Array.isArray(obj.items))obj.items=[]}
   if(!obj.name)return alert('Informe o nome.');
   if(index>=0)arr[index]=obj;else arr.push(obj);
   if(kind==='versatil')db.versatilGuide=arr;else db.starlisGuide=arr;
   save();document.getElementById('contentV170Modal')?.remove();render();
 }
+function openVersatilItemEditorV224(sectionIndex,itemIndex=-1){
+  const sec=(db.versatilGuide||[])[sectionIndex];
+  if(!sec)return;
+  const items=Array.isArray(sec.items)?sec.items:[];
+  const old=itemIndex>=0?(items[itemIndex]||{}):{};
+  const imgs=Array.isArray(old.images)?old.images:[old.image||old.imageUrl||''];
+  document.getElementById('versatilItemModalV224')?.remove();
+  const m=document.createElement('div');
+  m.id='versatilItemModalV224';m.className='modal-overlay';
+  m.innerHTML=`<div class="modal-card leisure-editor-modal">
+    <div class="row between"><h2>${itemIndex>=0?'Editar':'Adicionar'} item — ${esc(sec.name||'')}</h2><button class="btn" onclick="document.getElementById('versatilItemModalV224')?.remove()">Fechar</button></div>
+    <div class="field"><label>Nome</label><input id="vi_name" value="${esc(old.name||'')}"></div>
+    <div class="field"><label>Descrição</label><textarea id="vi_desc" rows="5">${esc(old.description||'')}</textarea></div>
+    <div class="field"><label>Imagem / thumbnail 1 — URL</label><input id="vi_image1" value="${esc(imgs[0]||'')}" oninput="previewAdminImageV224('vi_image1','vi_preview1')"></div>
+    <div id="vi_preview1" class="admin-image-preview-wrap-v224">${imgs[0]?`<img src="${esc(imgs[0])}" class="admin-image-preview-v224" alt="">`:''}</div>
+    <div class="field"><label>Imagem 2 — URL (opcional)</label><input id="vi_image2" value="${esc(imgs[1]||'')}" oninput="previewAdminImageV224('vi_image2','vi_preview2')"></div>
+    <div id="vi_preview2" class="admin-image-preview-wrap-v224">${imgs[1]?`<img src="${esc(imgs[1])}" class="admin-image-preview-v224" alt="">`:''}</div>
+    <button class="btn primary" onclick="saveVersatilItemV224(${sectionIndex},${itemIndex})">Salvar</button>
+  </div>`;
+  document.body.appendChild(m);
+}
+function saveVersatilItemV224(sectionIndex,itemIndex){
+  const sec=(db.versatilGuide||[])[sectionIndex];
+  if(!sec)return;
+  if(!Array.isArray(sec.items))sec.items=[];
+  const old=itemIndex>=0?(sec.items[itemIndex]||{}):{};
+  const name=document.getElementById('vi_name')?.value.trim()||'';
+  if(!name)return alert('Informe o nome.');
+  const images=[
+    document.getElementById('vi_image1')?.value.trim()||'',
+    document.getElementById('vi_image2')?.value.trim()||''
+  ].filter(Boolean);
+  const obj={...old,id:old.id||id(),name,description:document.getElementById('vi_desc')?.value.trim()||'',images};
+  if(itemIndex>=0)sec.items[itemIndex]=obj;else sec.items.push(obj);
+  save();document.getElementById('versatilItemModalV224')?.remove();render();
+}
+function deleteVersatilItemV224(sectionIndex,itemIndex){
+  const sec=(db.versatilGuide||[])[sectionIndex];
+  if(!sec||!Array.isArray(sec.items))return;
+  if(!confirm('Excluir este item?'))return;
+  sec.items.splice(itemIndex,1);save();render();
+}
+
 function deleteContentV170(kind,index){
   const arr=kind==='versatil'?(db.versatilGuide||[]):(db.starlisGuide||[]);
   if(!confirm('Excluir este item?'))return;arr.splice(index,1);if(kind==='versatil')db.versatilGuide=arr;else db.starlisGuide=arr;save();render();
