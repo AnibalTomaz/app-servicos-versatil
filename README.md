@@ -976,3 +976,12 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Categorias de Conheça o Versátil também podem receber imagem/thumbnail.
 - Conheça a Starlis agora usa lista expansiva e todos os hotéis continuam totalmente editáveis, com imagem/thumbnail, descrição, Maps e Reserva.
 - Previews de thumbnails são exibidos no Admin.
+
+## v2.25 — Admin uniforme com área do Cliente
+- Categorias do Admin usam exatamente `catalogCategoryIconV183`, o mesmo helper do Cliente.
+- Produtos do Admin mantêm `productIconV181`, o mesmo helper do Cliente.
+- Lazer e Conveniência do Admin usa `leisureGroupIconV170`, o mesmo helper do Cliente para todos os grupos/subgrupos.
+- Conheça o Versátil usa `versatilCategoryIconV179` e `versatilItemIconV179`, os mesmos ícones da área do Cliente.
+- Conheça a Starlis usa a mesma imagem do item; quando ausente, usa o ícone Starlis já existente.
+- Lazer e Conveniência foi remodelado para usar os mesmos botões/summaries da página Admin > Categorias.
+- Corrigido fechamento automático provocado pela sincronização silenciosa da base: no Admin, sync silencioso atualiza status sem renderizar novamente a página.

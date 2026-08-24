@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.24';
+const APP_VERSION='2.25';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -1102,7 +1102,16 @@ ensureFishingGuideV196();
       return;
     }
 
-    if(['leisure','versatil','starlis','postal'].includes(page)){updateCentralStatusUI();if(page==='leisure')setTimeout(()=>setupLeisureExclusiveAccordion(),0)}else{render()}
+    if(session?.role==='admin' && quiet){
+      // v2.25: atualização silenciosa não reconstrói a tela do Admin.
+      // Assim menus abertos permanecem abertos até o usuário clicar.
+      updateCentralStatusUI();
+    }else if(['leisure','versatil','starlis','postal'].includes(page)){
+      updateCentralStatusUI();
+      if(page==='leisure')setTimeout(()=>setupLeisureExclusiveAccordion(),0);
+    }else{
+      render();
+    }
   }catch(err){
     console.warn('Base pública:',err);
     centralDataStatus='offline';
@@ -1933,7 +1942,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.24';
+  badge.textContent='v2.25';
 }
 
 function isPwaStandalone(){
@@ -3371,52 +3380,42 @@ function leisureAdminParentOptions(selected='',excludeId=''){
 function leisureAdminRows(parentId='',depth=0){
   return leisureChildren(parentId).map(n=>{
     const children=n.type==='group'?leisureChildren(n.id):[];
-    const thumb=n.imageUrl?`<img class="admin-thumb-v224" src="${esc(n.imageUrl)}" alt="" onerror="this.classList.add('img-failed')">`:`<span class="admin-thumb-empty-v224">${n.type==='group'?'📁':'🖼️'}</span>`;
-    if(n.type==='group'){
-      return `<details class="leisure-admin-detail-v224" data-admin-start-closed="1" style="--depth:${depth}">
-        <summary class="admin-products-category-summary-v224">
-          <span class="admin-leisure-thumb-v224">${thumb}</span>
-          <span class="admin-category-name">${esc(n.name)}</span>
-          <span class="admin-category-count">${children.length} item${children.length===1?'':'s'}</span>
-          <span class="admin-category-arrow">⌄</span>
-        </summary>
-        <div class="leisure-admin-children-v224">
-          <div class="admin-inline-actions-v224">
-            <button class="btn small" onclick="event.preventDefault();event.stopPropagation();openLeisureEditor('${n.id}')">Editar categoria</button>
-            <button class="btn small" onclick="event.preventDefault();event.stopPropagation();openLeisureEditor('', '${n.id}')">+ Adicionar dentro</button>
-            <button class="btn red small" onclick="event.preventDefault();event.stopPropagation();deleteLeisureNode('${n.id}')">Excluir</button>
-          </div>
-          ${leisureAdminRows(n.id,depth+1)}
-        </div>
-      </details>`;
-    }
-    return `<details class="leisure-admin-detail-v224 leisure-admin-place-v224" data-admin-start-closed="1" style="--depth:${depth}">
-      <summary class="admin-products-category-summary-v224">
-        <span class="admin-leisure-thumb-v224">${thumb}</span>
-        <span class="admin-category-name">${esc(n.name)}</span>
-        <span class="admin-category-count">${esc(n.distance||'')}</span>
+    const clientIcon=n.type==='group'
+      ?leisureGroupIconV170(n,depth+1)
+      :(n.imageUrl?`<img class="admin-client-place-thumb-v225" src="${esc(n.imageUrl)}" alt="">`:'📍');
+
+    return `<details class="admin-category-detail leisure-admin-unified-v225" data-admin-start-closed="1" style="--depth:${depth}">
+      <summary>
+        <span class="admin-category-icon admin-client-icon-v225">${clientIcon||'📌'}</span>
+        <span class="admin-category-name">${esc(leisureDisplayNameV170(n,depth+1)||n.name)}</span>
+        <span class="admin-category-count">${n.type==='group'?(children.length+' item'+(children.length===1?'':'s')):esc(n.distance||'Local')}</span>
         <span class="admin-category-arrow">⌄</span>
       </summary>
-      <div class="leisure-admin-place-body-v224">
-        ${n.imageUrl?`<img class="admin-preview-v224" src="${esc(n.imageUrl)}" alt="${esc(n.name)}" onerror="this.classList.add('img-failed')">`:''}
+      <div class="admin-category-body leisure-admin-unified-body-v225">
+        ${n.type==='place'&&n.imageUrl?`<img class="admin-preview-v224" src="${esc(n.imageUrl)}" alt="${esc(n.name)}">`:''}
         ${n.description?`<p>${esc(n.description)}</p>`:''}
-        <div class="small muted">${esc(n.phone||'')}</div>
-        <div class="admin-inline-actions-v224">
-          <button class="btn small" onclick="openLeisureEditor('${n.id}')">Editar</button>
-          <button class="btn red small" onclick="deleteLeisureNode('${n.id}')">Excluir</button>
+        ${n.type==='place'&&n.phone?`<div class="small muted">${esc(n.phone)}</div>`:''}
+        <div class="row admin-category-actions">
+          <button class="btn" onclick="event.preventDefault();event.stopPropagation();openLeisureEditor('${n.id}')">Editar${n.type==='group'?' categoria':''}</button>
+          ${n.type==='group'?`<button class="btn" onclick="event.preventDefault();event.stopPropagation();openLeisureEditor('', '${n.id}')">+ Adicionar dentro</button>`:''}
+          <button class="btn red" onclick="event.preventDefault();event.stopPropagation();deleteLeisureNode('${n.id}')">Excluir</button>
         </div>
+        ${n.type==='group'?`<div class="admin-category-accordion leisure-admin-nested-v225">${leisureAdminRows(n.id,depth+1)}</div>`:''}
       </div>
     </details>`;
   }).join('');
 }
 function leisureAdmin(){
   const total=(db.leisureGuide||[]).filter(n=>n.type==='place').length;
-  return `<div class="card"><div class="row between">
-    <div><h2 style="margin:0">Lazer e Conveniências</h2><p class="muted">${total} locais finais cadastrados. Edite menus, especialidades e estabelecimentos.</p></div>
-    <button class="btn primary" onclick="openLeisureEditor()">+ Adicionar</button>
-  </div>
-  <div class="notice">Use o botão <b>Publicar alterações</b> no cabeçalho após concluir as mudanças.</div>
-  <div class="leisure-admin-tree">${leisureAdminRows()}</div></div>`;
+  return `<div class="card admin-accordion-card">
+    <div class="row between">
+      <div><h2>Lazer e Conveniência</h2><p class="muted">Clique em uma categoria para abrir seus dados. ${total} locais cadastrados.</p></div>
+      <button class="btn primary" onclick="openLeisureEditor()">+ Categoria / Local</button>
+    </div>
+    <div class="admin-category-accordion leisure-admin-tree">
+      ${leisureAdminRows()}
+    </div>
+  </div>`;
 }
 function previewAdminImageV224(inputId,previewId){
   const input=document.getElementById(inputId);
@@ -3511,7 +3510,7 @@ function contentAdminPage(kind){
       <div class="admin-category-accordion">
         ${cfg.data.map((x,i)=>`<details class="admin-products-category-detail starlis-admin-detail-v224" data-admin-start-closed="1">
           <summary>
-            <span class="admin-category-icon">${x.image?`<img class="admin-thumb-v224" src="${esc(x.image)}" alt="">`:'🏨'}</span>
+            <span class="admin-category-icon admin-client-icon-v225">${x.image?`<img class="admin-thumb-v224" src="${esc(x.image)}" alt="">`:starlisStarsIcon()}</span>
             <span class="admin-category-name">${esc(x.name||'Hotel')}</span>
             <span class="admin-category-count">Editar</span>
             <span class="admin-category-arrow">⌄</span>
@@ -3535,7 +3534,7 @@ function contentAdminPage(kind){
         const secImg=sec.image||sec.imageUrl||(Array.isArray(sec.images)?sec.images[0]:'')||'';
         return `<details class="admin-products-category-detail versatil-admin-detail-v224" data-admin-start-closed="1">
           <summary>
-            <span class="admin-category-icon">${secImg?`<img class="admin-thumb-v224" src="${esc(secImg)}" alt="">`:(sec.icon||'📌')}</span>
+            <span class="admin-category-icon admin-client-icon-v225">${versatilCategoryIconV179(sec)}</span>
             <span class="admin-category-name">${esc(sec.name||'Categoria')}</span>
             <span class="admin-category-count">${items.length} item${items.length===1?'':'s'}</span>
             <span class="admin-category-arrow">⌄</span>
@@ -3551,7 +3550,7 @@ function contentAdminPage(kind){
                 const img=(Array.isArray(item.images)&&item.images[0])||item.image||item.imageUrl||'';
                 return `<details class="admin-products-category-detail versatil-admin-item-v224" data-admin-start-closed="1">
                   <summary>
-                    <span class="admin-category-icon">${img?`<img class="admin-thumb-v224" src="${esc(img)}" alt="">`:(item.icon||'🖼️')}</span>
+                    <span class="admin-category-icon admin-client-icon-v225">${versatilItemIconV179(item)}</span>
                     <span class="admin-category-name">${esc(item.name||'Item')}</span>
                     <span class="admin-category-count">Editar</span>
                     <span class="admin-category-arrow">⌄</span>
@@ -3817,7 +3816,7 @@ function categoriesAdmin(){
         const count=(db.products||[]).filter(p=>p.cat===c.id).length;
         return `<details class="admin-category-detail" data-admin-start-closed="1">
           <summary>
-            <span class="admin-category-icon">${c.icon||'📌'}</span>
+            <span class="admin-category-icon admin-client-icon-v225">${catalogCategoryIconV183(c,'small')}</span>
             <span class="admin-category-name">${esc(c.name)}</span>
             <span class="admin-category-count">${count} produto${count===1?'':'s'}</span>
             <span class="admin-category-arrow">⌄</span>
@@ -3860,7 +3859,7 @@ function productsAdmin(){
 
   const group=(c,items)=>`<details class="admin-products-category-detail" data-admin-start-closed="1">
     <summary>
-      <span class="admin-category-icon">${c.icon||'📌'}</span>
+      <span class="admin-category-icon admin-client-icon-v225">${catalogCategoryIconV183(c,'small')}</span>
       <span class="admin-category-name">${esc(c.name)}</span>
       <span class="admin-category-count">${items.length} produto${items.length===1?'':'s'}</span>
       <span class="admin-category-arrow">⌄</span>

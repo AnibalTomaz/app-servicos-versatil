@@ -4427,3 +4427,82 @@ html,body{
   border:1px solid #d8e1e8!important;
   background:#fff!important;
 }
+
+/* v2.25 — Admin usa os mesmos ícones da área Cliente */
+.admin-client-icon-v225{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:46px!important;
+  min-width:46px!important;
+  height:46px!important;
+  min-height:46px!important;
+  font-size:34px!important;
+  line-height:1!important;
+  background:#fff!important;
+  border-radius:8px!important;
+  overflow:hidden!important;
+}
+.admin-client-icon-v225 svg,
+.admin-client-icon-v225 img,
+.admin-client-icon-v225 .catalog-category-icon-v183,
+.admin-client-icon-v225 .leisure-group-icon-img,
+.admin-client-icon-v225 .institution-category-icon,
+.admin-client-icon-v225 .institution-item-ico-svg{
+  width:42px!important;
+  height:42px!important;
+  max-width:42px!important;
+  max-height:42px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:0!important;
+}
+.admin-client-place-thumb-v225{
+  width:42px!important;
+  height:42px!important;
+  object-fit:cover!important;
+  border-radius:7px!important;
+}
+
+/* Lazer e Conveniência: exatamente a mesma base visual de Categorias */
+.leisure-admin-tree{
+  display:grid!important;
+  gap:8px!important;
+}
+.leisure-admin-unified-v225{
+  border:1px solid #d7e3ec!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  overflow:hidden!important;
+}
+.leisure-admin-unified-v225>summary{
+  list-style:none!important;
+  display:grid!important;
+  grid-template-columns:56px minmax(0,1fr) minmax(80px,auto) 32px!important;
+  align-items:center!important;
+  min-height:62px!important;
+  gap:8px!important;
+  padding:7px 10px!important;
+  cursor:pointer!important;
+  background:#fff!important;
+}
+.leisure-admin-unified-v225>summary::-webkit-details-marker{display:none!important}
+.leisure-admin-unified-body-v225{
+  padding:12px!important;
+  border-top:1px solid #e7eef3!important;
+  background:#fff!important;
+}
+.leisure-admin-nested-v225{
+  margin-top:10px!important;
+  padding-left:10px!important;
+  border-left:2px solid #e5edf3!important;
+}
+
+/* Igualação final: summaries de Categorias, Produtos, Lazer, Versátil e Starlis */
+.admin-category-detail>summary,
+.admin-products-category-detail>summary,
+.leisure-admin-unified-v225>summary{
+  border-radius:12px!important;
+  color:#14273a!important;
+  box-sizing:border-box!important;
+}

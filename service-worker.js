@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-24-admin-editable-content";
+const CACHE="versatil-v2-25-admin-uniform";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2240',
-  './app.js?v=2240',
+  './style.css?v=2250',
+  './app.js?v=2250',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
