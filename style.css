@@ -4029,3 +4029,41 @@ summary:active{
   max-width:100%!important;max-height:100%!important;object-fit:contain!important;
   background:#fff!important;border-radius:0!important;
 }
+
+/* v2.21 — animação visual sem alterar tamanho/layout do ícone original */
+.app-menu-icon{
+  position:relative!important;
+  overflow:hidden!important;
+}
+.app-menu-gif-overlay-v221{
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:#fff!important;
+  pointer-events:none!important;
+}
+/* O ícone original fica no lugar e define permanentemente o tamanho do recipiente. */
+.app-menu-icon>svg,
+.app-menu-icon>img:not(.app-menu-gif-overlay-v221){
+  position:relative!important;
+  z-index:1!important;
+}
+/* Restitui todos os campos funcionais dos produtos dentro dos dropdowns atuais. */
+.restored-product-body-v221{
+  padding:12px!important;
+}
+.restored-price-v221{
+  margin:5px 0 10px!important;
+  font-weight:800!important;
+}

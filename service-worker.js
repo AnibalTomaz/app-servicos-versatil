@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-20-pricefix";
+const CACHE="versatil-v2-21-icons-overlay-catalog-full";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2200',
-  './app.js?v=2200',
+  './style.css?v=2210',
+  './app.js?v=2210',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

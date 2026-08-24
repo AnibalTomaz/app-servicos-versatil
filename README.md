@@ -941,3 +941,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - O catálogo chamava `priceFor(p)`, mas a função existente no aplicativo é `productPrice(p)`.
 - `clientProductAccordionBodyV211()` agora usa `productPrice(p)`.
 - O fluxo de login da v2.19 e as animações dos oito ícones foram preservados.
+
+## v2.21 — ícones isolados e catálogo funcional restaurado
+- GIFs não substituem mais o HTML dos ícones originais.
+- O ícone original permanece sempre no DOM e define exatamente o mesmo tamanho.
+- O GIF é apenas uma camada visual absoluta sobre o ícone, sem reflow e sem interferir nas listas/dropdowns.
+- Foram criadas cópias dos GIFs com as margens brancas de avaliação recortadas, para que a animação ocupe o mesmo espaço visual do ícone.
+- Restaurados no Catálogo: descrição, preço por quarto/apartamento, quantidade, data, períodos, disponibilidade, pacotes com múltiplas utilizações, regra de 24h e envio ao carrinho.
+- Mantida a estrutura atual de categorias/produtos em dropdown; somente o conteúdo funcional perdido foi recuperado.

@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.20';
+const APP_VERSION='2.21';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -1931,7 +1931,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.20';
+  badge.textContent='v2.21';
 }
 
 function isPwaStandalone(){
@@ -2578,17 +2578,62 @@ function catalogCategoryIconV183(cat,size='large'){
 
 function clientProductAccordionBodyV211(p){
   const price=productPrice(p);
-  return `<div class="client-product-body-content-v211">
-    ${p.desc?`<p class="client-product-desc-v211">${esc(p.desc)}</p>`:''}
-    <div class="client-product-meta-v211">
-      <span class="price">${money(price)}</span>
-    </div>
-    <div class="client-product-actions-v211">
-      <button class="btn primary" onclick="event.preventDefault();event.stopPropagation();addToCart('${p.id}')">Adicionar ao carrinho</button>
-    </div>
+  const unavailable=price<=0;
+  const defaultDate=firstAllowedDate24h(p);
+  const requiresPeriod=productRequiresPeriod(p);
+  const isPackage=p.cat==='pacotes';
+  const daily=isDailyRentalProduct(p);
+  const slots=(requiresPeriod||daily)?availableSlotsForProductDate(p,defaultDate):[];
+  const noAvailability=(requiresPeriod||daily)&&!slots.length;
+  const lockQty=isPackage||requiresPeriod||daily||p.id==='diarista';
+
+  return `<div class="client-product-body-content-v211 restored-product-body-v221">
+    <p class="client-product-description">${esc(p.desc||'')}</p>
+    <div class="client-product-price restored-price-v221">${unavailable?'Preço a cadastrar':money(price)}</div>
+    ${packageSavingsHtml(p)}
+
+    ${isPackage
+      ?`<div class="package-schedule">
+          <div class="notice"><b>Este pacote possui ${packageUseCount(p)} utilização(ões).</b> Selecione a data e o período de cada utilização.</div>
+          ${Array.from({length:packageUseCount(p)},(_,i)=>renderPackageUseRow(p,i,defaultDate)).join('')}
+        </div>`
+      :`<div class="client-product-form">
+          <div class="field">
+            <label>Quantidade</label>
+            <input id="qty_${p.id}" type="number" min="1" max="${lockQty?1:''}" value="1" ${lockQty?'disabled':''}>
+          </div>
+
+          <div class="field">
+            <label>Data</label>
+            <input id="date_${p.id}" type="date" min="${today()}" value="${defaultDate}" onchange="refreshProductAvailability('${p.id}')">
+          </div>
+
+          ${requiresPeriod
+            ?`<div class="field">
+                <label>Período</label>
+                <select id="period_${p.id}" ${noAvailability?'disabled':''}>
+                  ${slots.map(s=>`<option value="${periodValueForProduct(p,s)}">${periodOptionLabelForProduct(p,s)}</option>`).join('')}
+                </select>
+              </div>`
+            :`<div class="field">
+                <label>Período</label>
+                <input value="${daily?'Diária':'Dia selecionado'}" disabled>
+              </div>`}
+        </div>
+
+        <div id="period_msg_${p.id}" class="availability-message ${noAvailability?'show':''}">
+          ${noAvailability
+            ?(daily?'Lamentamos mas nesta data não há disponibilidade para esta locação diária.':'Lamentamos mas nesta data e período não há disponibilidade, por favor selecione outra data de sua conveniência.')
+            :''}
+        </div>`}
+
+    ${isPackage?`<div class="client-package-qty-note">Quantidade do pacote: <b>1</b></div>`:''}
+
+    <button id="addbtn_${p.id}" class="btn primary client-add-cart-btn"
+      ${(unavailable||(!isPackage&&noAvailability))?'disabled':''}
+      onclick="event.preventDefault();event.stopPropagation();addToCart('${p.id}')">Enviar para o carrinho</button>
   </div>`;
 }
-
 
 function catalogPage(){
   const cats=db.categories||[];
@@ -5141,26 +5186,37 @@ function staticIconV219(key){
   return '';
 }
 function restoreIconV219(key){
-  const i=MENU_ANIM_V219.sequence.indexOf(key),btn=menuButtonsV219()[i];
-  const holder=btn?.querySelector('.app-menu-icon');
-  if(holder)holder.innerHTML=staticIconV219(key);
+  try{
+    const i=MENU_ANIM_V219.sequence.indexOf(key),btn=menuButtonsV219()[i];
+    btn?.querySelector('.app-menu-gif-overlay-v221')?.remove();
+  }catch(e){}
 }
 function playIconV219(key){
   try{
     const i=MENU_ANIM_V219.sequence.indexOf(key),btn=menuButtonsV219()[i];
     if(!btn)return;
     if(btn.classList.contains('active')){restoreIconV219(key);return}
+
     const holder=btn.querySelector('.app-menu-icon');
     if(!holder)return;
+
+    // Keep the original icon untouched underneath. The GIF is only a visual overlay.
+    holder.querySelector('.app-menu-gif-overlay-v221')?.remove();
     const img=document.createElement('img');
-    img.className='app-menu-animated-icon-v219';
-    img.src=MENU_ANIM_V219.files[key]+'?run='+Date.now();
+    img.className='app-menu-gif-overlay-v221';
+    img.src='anim-'+MENU_ANIM_V219.files[key]+'?run='+Date.now();
     img.alt='';
-    holder.replaceChildren(img);
+    img.setAttribute('aria-hidden','true');
+    holder.appendChild(img);
+
     if(MENU_ANIM_V219.restores[key])clearTimeout(MENU_ANIM_V219.restores[key]);
-    MENU_ANIM_V219.restores[key]=setTimeout(()=>restoreIconV219(key),Number(MENU_ANIM_V219.durations[key]||3000)+150);
+    MENU_ANIM_V219.restores[key]=setTimeout(()=>{
+      img.remove();
+      delete MENU_ANIM_V219.restores[key];
+    },Number(MENU_ANIM_V219.durations[key]||3000)+150);
   }catch(e){console.warn('GIF ignorado:',e)}
 }
+
 setInterval(()=>{
   try{
     if(!session||session.role!=='client')return;
