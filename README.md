@@ -929,25 +929,9 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - O aviso de que o postal não pode ser enviado ao mesmo e-mail usado no acesso ganhou destaque visual: caixa clara, borda vermelha, texto vermelho em negrito e centralizado.
 - O movimento do botão Virar foi reduzido para um feedback sutil de aproximadamente 1 px e leve escala, eliminando o deslocamento exagerado.
 
-## v2.16 — login 100% preservado
-- Reconstruída sobre a v2.12 funcional.
-- Nenhuma função de login, renderização, menu, navegação ou saída foi alterada.
-- As animações são uma camada externa via MutationObserver, iniciada somente quando os 8 botões do cliente aparecem.
-- O instante em que o menu aparece inicia a contagem.
-- Primeiro GIF aos 20 segundos; seguintes a cada 20 segundos; sequência e loop aprovados.
-
-## v2.17 — correção real do bloqueio após Entrar
-- Identificada a causa: o MutationObserver da v2.16 reescrevia os ícones ao detectar qualquer mutação.
-- Essa própria reescrita disparava uma nova mutação, criando um ciclo contínuo que impedia a interface de concluir a troca da tela de acesso para o app.
-- O observer agora apenas detecta quando surge um NOVO elemento de menu.
-- Ele não altera mais o DOM durante a detecção.
-- Alterações feitas pelos GIFs não reiniciam o observer nem o relógio.
-- A contagem de 20s continua iniciando apenas no primeiro acesso.
-
-## v2.18 — limpeza forçada de cache antes do app
-- Identificada uma causa compatível com o sintoma: data.json era buscado pela rede, mas app.js podia continuar vindo de um cache antigo do Service Worker.
-- A página agora remove Service Workers e caches antigos antes de carregar app.js.
-- app.js é carregado dinamicamente com parâmetro fresh baseado no horário atual.
-- Depois do carregamento, o novo Service Worker é registrado.
-- O novo Service Worker usa rede primeiro para todos os arquivos do app, usando cache apenas como fallback offline.
-- Isso impede uma versão quebrada antiga de app.js de continuar ativa enquanto a base pública parece atualizada.
+## v2.19 — acesso corrigido e diagnosticável
+- Corrigido o comparador de versões: uma base pública antiga/diferente não é mais tratada automaticamente como versão mais nova.
+- O botão Entrar usa uma função exclusiva `enterClientV219`, com tratamento de erro visível na própria tela.
+- Se os dados estiverem incompletos ou a unidade não existir, a mensagem aparece abaixo do botão.
+- Se ocorrer exceção JavaScript durante o acesso, a mensagem do erro também aparece abaixo do botão.
+- Animações ficam em polling isolado e só atuam depois de `session.role === client` e do menu existir.
