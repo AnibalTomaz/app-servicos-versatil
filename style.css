@@ -4669,3 +4669,71 @@ html,body{
   height:100%!important;
   object-fit:contain!important;
 }
+
+/* v2.33 — brilho/sombra móvel no texto "Publicando alterações..." */
+.versatil-loading-text.publishing-shimmer-v233{
+  display:inline-block!important;
+  position:relative!important;
+  font-weight:800!important;
+  letter-spacing:.15px!important;
+  color:#506475!important;
+  background:
+    linear-gradient(
+      105deg,
+      #506475 0%,
+      #506475 30%,
+      #aebbc5 42%,
+      #ffffff 50%,
+      #aebbc5 58%,
+      #506475 70%,
+      #506475 100%
+    )!important;
+  background-size:240% 100%!important;
+  background-position:140% 0!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  animation:publishingTextShimmerV233 2.15s ease-in-out infinite!important;
+  filter:drop-shadow(0 2px 2px rgba(31,52,68,.22))!important;
+}
+@keyframes publishingTextShimmerV233{
+  0%{
+    background-position:140% 0;
+    filter:drop-shadow(0 2px 2px rgba(31,52,68,.18));
+  }
+  45%{
+    filter:drop-shadow(0 3px 4px rgba(31,52,68,.34));
+  }
+  100%{
+    background-position:-140% 0;
+    filter:drop-shadow(0 2px 2px rgba(31,52,68,.18));
+  }
+}
+
+/* v2.35 — Conheça a Starlis estruturada como Conheça o Versátil */
+.starlis-category-v235 .institution-item-body-v227{
+  display:grid!important;
+  grid-template-columns:minmax(280px,2.5fr) minmax(0,5fr)!important;
+  gap:24px!important;
+  align-items:start!important;
+  padding:12px 72px 18px!important;
+}
+.starlis-category-v235 .institution-gallery-v227{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:14px!important;
+}
+.starlis-item-actions-v235{
+  margin-top:12px!important;
+}
+@media(max-width:700px){
+  .starlis-category-v235 .institution-item-body-v227{
+    grid-template-columns:1fr!important;
+    padding:10px 12px 16px!important;
+    gap:12px!important;
+  }
+  .starlis-category-v235 .institution-gallery-v227{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+}

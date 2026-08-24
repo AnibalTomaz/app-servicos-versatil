@@ -1030,3 +1030,27 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Ícones existentes permanecem como fallback e podem ser restaurados pelo botão “Restaurar ícone padrão”.
 - Uploads são otimizados para até 256 px no maior lado; PNG preserva transparência, JPEG é usado apenas quando necessário para reduzir armazenamento.
 - Todos os ícones carregados são encaixados automaticamente no recipiente padrão com object-fit: contain, sem alterar layout.
+
+## v2.33 — animação no texto de publicação
+- Mantida a animação Tetris existente.
+- Durante “Publicando alterações…”, o texto recebe um brilho/sombra móvel suave atravessando as letras.
+- A animação é aplicada somente à mensagem de publicação e não altera outros estados de carregamento.
+
+## v2.34 — armazenamento de imagens corrigido
+- Imagens e ícones deixam de ser gravados como Base64 dentro do localStorage.
+- Arquivos otimizados são armazenados no IndexedDB do navegador; o banco principal guarda apenas referências leves `idbimg:...`.
+- Uploads de ícones, fotos de Acomodações/Áreas comuns e conversões de links usam o novo armazenamento.
+- Lazer, Conheça o Versátil, Conheça a Starlis e Correio também convertem URLs editadas para o armazenamento local quando possível.
+- Dados antigos Base64 são migrados automaticamente no carregamento.
+- Ao publicar, as referências são expandidas somente na cópia enviada à base pública; o localStorage continua leve.
+- Se o localStorage já estiver cheio, `save()` não derruba a interface: dispara migração automática e tenta persistir novamente.
+- Mantidas a animação Tetris e a sombra/brilho móvel de “Publicando alterações…”.
+
+## v2.35 — Conheça a Starlis estruturada
+- Conheça a Starlis passa a usar a mesma lógica de categorias expansivas + itens expansivos de Conheça o Versátil.
+- O Admin permite criar, editar e excluir categorias e itens.
+- Cada categoria e item pode receber ícone próprio.
+- Cada item pode receber até 4 imagens por link ou upload, com otimização e armazenamento no IndexedDB.
+- Campos de Google Maps e link de reserva permanecem disponíveis por item.
+- Thumbnails só aparecem quando houver imagem e abrem a imagem completa ao clicar.
+- Conteúdo Starlis antigo em lista simples é migrado automaticamente para a categoria “Hotéis Starlis”, sem apagar os hotéis existentes.
