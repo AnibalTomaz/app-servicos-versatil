@@ -935,3 +935,9 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Se os dados estiverem incompletos ou a unidade não existir, a mensagem aparece abaixo do botão.
 - Se ocorrer exceção JavaScript durante o acesso, a mensagem do erro também aparece abaixo do botão.
 - Animações ficam em polling isolado e só atuam depois de `session.role === client` e do menu existir.
+
+## v2.20 — correção do erro priceFor
+- Corrigido o erro exibido após o login: `priceFor is not defined`.
+- O catálogo chamava `priceFor(p)`, mas a função existente no aplicativo é `productPrice(p)`.
+- `clientProductAccordionBodyV211()` agora usa `productPrice(p)`.
+- O fluxo de login da v2.19 e as animações dos oito ícones foram preservados.
