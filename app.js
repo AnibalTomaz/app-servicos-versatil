@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.26';
+const APP_VERSION='2.28';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -1958,7 +1958,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.26';
+  badge.textContent='v2.28';
 }
 
 function isPwaStandalone(){
@@ -2346,13 +2346,27 @@ function versatilItemsOrderedV179(sec){
 }
 
 
+function versatilItemImagesV227(item){
+  const a=Array.isArray(item?.images)?item.images:[item?.image,item?.image2,item?.image3,item?.image4];
+  return a.map(x=>String(x||'').trim()).filter(Boolean).slice(0,4);
+}
+function openVersatilImageV227(src,title='Imagem'){
+  if(!src)return;
+  document.getElementById('versatilImageViewerV227')?.remove();
+  document.body.insertAdjacentHTML('beforeend',`<div id="versatilImageViewerV227" class="versatil-image-viewer-v227" onclick="if(event.target===this)this.remove()"><div class="versatil-image-viewer-box-v227"><button class="versatil-image-viewer-close-v227" type="button" onclick="document.getElementById('versatilImageViewerV227')?.remove()">×</button><img src="${esc(src)}" alt="${esc(title)}"></div></div>`);
+}
 function versatilGuidePage(){
   const sections=(db.versatilGuide||[]).slice().sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'pt-BR',{sensitivity:'base'}));
   return `<div class="card institutional-page">${pageTitleV185('Conheça o Versátil',versatilIcon())}<p class="muted">Estrutura, acomodações e informações úteis durante a sua estada.</p></div>
     ${sections.map(sec=>`<details class="institution-detail"><summary class="unified-category-control-v210">${versatilCategoryIconV179(sec)}<span>${esc(sec.name)}</span><span>⌄</span></summary>
-      <div class="institution-inside">${versatilItemsOrderedV179(sec).map(item=>`<details class="institution-item"><summary>${versatilItemIconV179(item)}<span class="institution-item-title">${esc(item.name)}</span><span>⌄</span></summary><div class="institution-item-body">
-        ${Array.isArray(item.images)&&item.images.length?`<div class="institution-photos">${item.images.slice(0,2).map(u=>`<img src="${esc(u)}" alt="${esc(item.name)}" onerror="this.classList.add('img-failed')">`).join('')}</div>`:''}
-        <p>${esc(item.description||item.name).replace(/\n/g,'<br>')}</p></div></details>`).join('')}</div>
+      <div class="institution-inside">${versatilItemsOrderedV179(sec).map(item=>{
+        const imgs=versatilItemImagesV227(item);
+        return `<details class="institution-item institution-item-v227"><summary>${versatilItemIconV179(item)}<span class="institution-item-title">${esc(item.name)}</span><span>⌄</span></summary>
+          <div class="institution-item-body institution-item-body-v227">
+            <div class="institution-item-copy-v227"><p>${esc(item.description||item.name).replace(/\n/g,'<br>')}</p></div>
+            ${imgs.length?`<div class="institution-gallery-v227">${imgs.map((u,i)=>`<button type="button" class="institution-thumb-v227" onclick="openVersatilImageV227('${esc(u)}','${esc(item.name)} — imagem ${i+1}')"><img src="${esc(u)}" alt="${esc(item.name)}" onerror="this.closest('button').style.display='none'"></button>`).join('')}</div>`:''}
+          </div></details>`;
+      }).join('')}</div>
     </details>`).join('')}`;
 }
 function starlisGuidePage(){
@@ -3626,7 +3640,7 @@ function openVersatilItemEditorV224(sectionIndex,itemIndex=-1){
   if(!sec)return;
   const items=Array.isArray(sec.items)?sec.items:[];
   const old=itemIndex>=0?(items[itemIndex]||{}):{};
-  const imgs=Array.isArray(old.images)?old.images:[old.image||old.imageUrl||''];
+  const imgs=versatilItemImagesV227(old);
   document.getElementById('versatilItemModalV224')?.remove();
   const m=document.createElement('div');
   m.id='versatilItemModalV224';m.className='modal-overlay';
@@ -3634,28 +3648,53 @@ function openVersatilItemEditorV224(sectionIndex,itemIndex=-1){
     <div class="row between"><h2>${itemIndex>=0?'Editar':'Adicionar'} item — ${esc(sec.name||'')}</h2><button class="btn" onclick="document.getElementById('versatilItemModalV224')?.remove()">Fechar</button></div>
     <div class="field"><label>Nome</label><input id="vi_name" value="${esc(old.name||'')}"></div>
     <div class="field"><label>Descrição</label><textarea id="vi_desc" rows="5">${esc(old.description||'')}</textarea></div>
-    <div class="field"><label>Imagem / thumbnail 1 — URL</label><input id="vi_image1" value="${esc(imgs[0]||'')}" oninput="previewAdminImageV224('vi_image1','vi_preview1')"></div>
-    <div id="vi_preview1" class="admin-image-preview-wrap-v224">${imgs[0]?`<img src="${esc(imgs[0])}" class="admin-image-preview-v224" alt="">`:''}</div>
-    <div class="field"><label>Imagem 2 — URL (opcional)</label><input id="vi_image2" value="${esc(imgs[1]||'')}" oninput="previewAdminImageV224('vi_image2','vi_preview2')"></div>
-    <div id="vi_preview2" class="admin-image-preview-wrap-v224">${imgs[1]?`<img src="${esc(imgs[1])}" class="admin-image-preview-v224" alt="">`:''}</div>
+    <div class="admin-four-images-v227">${[0,1,2,3].map(i=>`<div><div class="field"><label>Imagem ${i+1} — URL</label><input id="vi_image${i+1}" value="${esc(imgs[i]||'')}" placeholder="Cole o link da imagem" oninput="previewAdminImageV227(${i+1})"></div><div id="vi_preview${i+1}" class="admin-image-preview-slot-v227 ${imgs[i]?'has-image':''}">${imgs[i]?`<img src="${esc(imgs[i])}" alt="">`:''}</div></div>`).join('')}</div>
+    <p class="small muted">Até 4 imagens. Se um campo estiver vazio, nenhum espaço de imagem aparecerá para o cliente.</p>
     <button class="btn primary" onclick="saveVersatilItemV224(${sectionIndex},${itemIndex})">Salvar</button>
   </div>`;
   document.body.appendChild(m);
 }
-function saveVersatilItemV224(sectionIndex,itemIndex){
-  const sec=(db.versatilGuide||[])[sectionIndex];
-  if(!sec)return;
+function previewAdminImageV227(n){
+  const src=document.getElementById(`vi_image${n}`)?.value.trim()||'', box=document.getElementById(`vi_preview${n}`);
+  if(!box)return;box.classList.toggle('has-image',!!src);box.innerHTML=src?`<img src="${esc(src)}" alt="">`:'';
+}
+async function urlToStoredImageV227(url){
+  url=String(url||'').trim(); if(!url)return '';
+  if(/^data:image\/(?:png|jpeg);base64,/i.test(url))return url;
+  try{
+    const res=await fetch(url,{mode:'cors',cache:'no-store'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const blob=await res.blob();
+    if(!String(blob.type||'').startsWith('image/'))throw new Error('Link não retornou imagem');
+    const bmp=await createImageBitmap(blob), max=1400, scale=Math.min(1,max/Math.max(bmp.width,bmp.height));
+    const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bmp.width*scale));canvas.height=Math.max(1,Math.round(bmp.height*scale));
+    canvas.getContext('2d').drawImage(bmp,0,0,canvas.width,canvas.height);if(bmp.close)bmp.close();
+    return canvas.toDataURL('image/jpeg',0.84);
+  }catch(err){
+    console.warn('v2.28 imagem externa não pôde ser incorporada',url,err);
+    const conversionError=new Error('Não foi possível converter este link em imagem. Troque o link e tente novamente:\n\n'+url);
+    conversionError.imageUrl=url;
+    throw conversionError;
+  }
+}
+async function saveVersatilItemV224(sectionIndex,itemIndex){
+  const sec=(db.versatilGuide||[])[sectionIndex];if(!sec)return;
   if(!Array.isArray(sec.items))sec.items=[];
   const old=itemIndex>=0?(sec.items[itemIndex]||{}):{};
-  const name=document.getElementById('vi_name')?.value.trim()||'';
-  if(!name)return alert('Informe o nome.');
-  const images=[
-    document.getElementById('vi_image1')?.value.trim()||'',
-    document.getElementById('vi_image2')?.value.trim()||''
-  ].filter(Boolean);
-  const obj={...old,id:old.id||id(),name,description:document.getElementById('vi_desc')?.value.trim()||'',images};
-  if(itemIndex>=0)sec.items[itemIndex]=obj;else sec.items.push(obj);
-  save();markAdminLocalDirtyV226();document.getElementById('versatilItemModalV224')?.remove();render();
+  const name=document.getElementById('vi_name')?.value.trim()||'';if(!name)return alert('Informe o nome.');
+  const button=event?.target;if(button){button.disabled=true;button.textContent='Salvando...'}
+  try{
+    const urls=[1,2,3,4].map(n=>document.getElementById(`vi_image${n}`)?.value.trim()||'').filter(Boolean);
+    const images=[];for(const u of urls)images.push(await urlToStoredImageV227(u));
+    const obj={...old,id:old.id||id(),name,description:document.getElementById('vi_desc')?.value.trim()||'',images:images.slice(0,4)};
+    obj.image=obj.images[0]||'';obj.image2=obj.images[1]||'';obj.image3=obj.images[2]||'';obj.image4=obj.images[3]||'';
+    if(itemIndex>=0)sec.items[itemIndex]=obj;else sec.items.push(obj);
+    save();markAdminLocalDirtyV226();document.getElementById('versatilItemModalV224')?.remove();render();
+  }catch(err){
+    console.error(err);
+    alert(err?.imageUrl ? err.message : 'Erro ao salvar: '+(err?.message||err));
+    if(button){button.disabled=false;button.textContent='Salvar'}
+  }
 }
 function deleteVersatilItemV224(sectionIndex,itemIndex){
   const sec=(db.versatilGuide||[])[sectionIndex];

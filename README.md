@@ -992,3 +992,9 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Escala de azuis do Admin igual à área Cliente, do mais escuro ao mais claro.
 - Correio Versátil no Admin abre preenchido com textos atuais e URLs efetivamente usadas.
 - Links editáveis para Parque das Águas, fachada, quarto e piscina, todos com preview.
+
+## v2.28 — alerta obrigatório para link de imagem inválido
+- Se uma URL não puder ser baixada e convertida para a imagem armazenada, o salvamento é interrompido.
+- O Admin mostra alerta com a URL problemática e solicita sua substituição.
+- A URL externa não é mais silenciosamente preservada como fallback.
+- Nenhum conjunto parcialmente convertido é gravado quando uma das imagens falha.

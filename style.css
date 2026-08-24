@@ -4524,3 +4524,18 @@ html,body{
 .admin-level-v226-4>summary .admin-category-icon,
 .admin-level-v226-5>summary .admin-category-icon{background:#fff!important}
 #postal_admin_park,#postal_admin_facade,#postal_admin_room,#postal_admin_pool{font-size:12px!important}
+
+/* v2.27 — layout de Acomodações conforme esboço fornecido */
+.institution-item-body-v227{display:grid!important;grid-template-columns:minmax(280px,2.5fr) minmax(0,5fr)!important;gap:24px!important;align-items:start!important;padding:12px 72px 18px!important}
+.institution-item-copy-v227 p{margin:0!important}
+.institution-gallery-v227{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important}
+.institution-thumb-v227{width:100%!important;aspect-ratio:1/1!important;padding:0!important;border:1px solid #6e7880!important;background:#fff!important;overflow:hidden!important;cursor:pointer!important}
+.institution-thumb-v227 img{width:100%!important;height:100%!important;display:block!important;object-fit:cover!important}
+.versatil-image-viewer-v227{position:fixed!important;inset:0!important;z-index:100000!important;background:rgba(0,0,0,.8)!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:20px!important}
+.versatil-image-viewer-box-v227{position:relative!important;max-width:94vw!important;max-height:92vh!important}
+.versatil-image-viewer-box-v227 img{display:block!important;max-width:94vw!important;max-height:92vh!important;width:auto!important;height:auto!important;object-fit:contain!important}
+.versatil-image-viewer-close-v227{position:absolute!important;right:-12px!important;top:-12px!important;width:38px!important;height:38px!important;border-radius:50%!important;border:0!important;font-size:25px!important;cursor:pointer!important}
+.admin-four-images-v227{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important}
+.admin-image-preview-slot-v227{display:none!important}.admin-image-preview-slot-v227.has-image{display:block!important}
+.admin-image-preview-slot-v227 img{width:100%!important;max-height:160px!important;object-fit:cover!important;border-radius:8px!important}
+@media(max-width:700px){.institution-item-body-v227{grid-template-columns:1fr!important;padding:10px 12px 16px!important;gap:12px!important}.institution-gallery-v227{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.admin-four-images-v227{grid-template-columns:1fr!important}}
