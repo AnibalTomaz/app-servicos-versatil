@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-22-native-icon-animations";
+const CACHE="versatil-v2-23-stable-icons-accordion";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2220',
-  './app.js?v=2220',
+  './style.css?v=2230',
+  './app.js?v=2230',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

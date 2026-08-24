@@ -4253,3 +4253,101 @@ summary:active{
     padding-right:4px!important;
   }
 }
+
+/* v2.23 — estabilidade visual: animações nunca alteram viewport/layout */
+html,body{
+  overflow-x:hidden!important;
+}
+.app-menu-grid{
+  overflow-x:clip!important;
+}
+.app-menu-btn{
+  min-width:0!important;
+  overflow:hidden!important;
+}
+.app-menu-icon{
+  position:relative!important;
+  overflow:hidden!important;
+  contain:layout paint!important;
+  isolation:isolate!important;
+}
+.app-menu-icon svg,
+.app-menu-icon img{
+  display:block!important;
+  margin:auto!important;
+  flex:none!important;
+}
+/* Brilho e transforms ficam recortados dentro do recipiente original. */
+.menu-anim-v222-versatil::after{
+  overflow:hidden!important;
+}
+.app-menu-icon.menu-anim-v222-catalog,
+.app-menu-icon.menu-anim-v222-leisure,
+.app-menu-icon.menu-anim-v222-itinerary,
+.app-menu-icon.menu-anim-v222-cart,
+.app-menu-icon.menu-anim-v222-confirmation,
+.app-menu-icon.menu-anim-v222-versatil,
+.app-menu-icon.menu-anim-v222-starlis,
+.app-menu-icon.menu-anim-v222-postal{
+  overflow:hidden!important;
+}
+
+/* v2.23 — ícones de produtos:
+   SVG/imagem e emojis passam a ter a mesma presença visual usada em Lazer e Conveniência. */
+.client-product-icon-v211{
+  width:46px!important;
+  min-width:46px!important;
+  height:46px!important;
+  min-height:46px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:36px!important;
+  line-height:1!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+.client-product-icon-v211 svg,
+.client-product-icon-v211 img{
+  width:42px!important;
+  height:42px!important;
+  max-width:42px!important;
+  max-height:42px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  flex:none!important;
+}
+/* Serviços usam emojis em vários produtos; esta regra é o ponto que faltava
+   nas versões anteriores, porque width/height de img/svg não altera emoji-texto. */
+.unified-catalog-product-v211 .client-product-icon-v211{
+  font-size:36px!important;
+}
+
+/* Evita qualquer crescimento horizontal durante abertura/fechamento de listas. */
+.dropdown-slide-panel-v205,
+.client-category-inside-v211,
+.client-product-body-v211,
+.institution-inside,
+.leisure-guide-card{
+  max-width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+}
+
+/* Mobile mantém a mesma proporção visual dos ícones. */
+@media(max-width:700px){
+  .client-product-icon-v211{
+    width:44px!important;
+    min-width:44px!important;
+    height:44px!important;
+    min-height:44px!important;
+    font-size:34px!important;
+  }
+  .client-product-icon-v211 svg,
+  .client-product-icon-v211 img{
+    width:40px!important;
+    height:40px!important;
+    max-width:40px!important;
+    max-height:40px!important;
+  }
+}

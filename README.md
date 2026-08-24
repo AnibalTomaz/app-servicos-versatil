@@ -958,3 +958,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Linhas dos produtos do Catálogo passam a usar 4 colunas invisíveis: 1/6 ícone, 3/6 título, 1/6 preço, 1/6 seta.
 - O preço aparece diretamente na linha do nome.
 - Ícones dos produtos foram ampliados e padronizados com a referência visual de Lazer e Conveniência.
+
+## v2.23 — estabilidade, acordeões e tamanho dos ícones
+- Eliminado o deslocamento horizontal esporádico causado pelas animações extrapolando o recipiente dos ícones.
+- Os ícones animados ficam recortados e contidos dentro do mesmo espaço do ícone original, sem alterar viewport ou layout.
+- Restaurado o comportamento de acordeão: ao abrir o próximo menu, o menu anterior do mesmo nível fecha deslizando.
+- Menus internos fecham apenas irmãos do mesmo nível; não derrubam o menu-pai.
+- Ícones dos produtos foram padronizados em 46 px de recipiente / 42 px para SVG e imagens.
+- Produtos de Serviços que usam emojis agora recebem font-size próprio (36 px), corrigindo o tamanho pequeno que não respondia às regras de img/svg.
