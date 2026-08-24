@@ -3635,12 +3635,38 @@ function saveContentV170(kind,index){
   if(kind==='versatil')db.versatilGuide=arr;else db.starlisGuide=arr;
   save();markAdminLocalDirtyV226();document.getElementById('contentV170Modal')?.remove();render();
 }
+let versatilImageStateV229=['','','',''];
+
+function isStoredImageV229(src){
+  return /^data:image\/(?:png|jpeg);base64,/i.test(String(src||''));
+}
+function imageLabelV229(src){
+  return isStoredImageV229(src)?'Imagem armazenada no app':'';
+}
+function renderVersatilImagePreviewV229(n){
+  const idx=n-1, box=document.getElementById(`vi_preview${n}`);
+  if(!box)return;
+  const src=String(versatilImageStateV229[idx]||'').trim();
+  box.classList.toggle('has-image',!!src);
+  box.innerHTML=src?`<img src="${esc(src)}" alt=""><button type="button" class="btn red small admin-remove-image-v229" onclick="removeVersatilImageV229(${n})">Remover imagem</button>`:'';
+}
+function removeVersatilImageV229(n){
+  versatilImageStateV229[n-1]='';
+  const input=document.getElementById(`vi_image${n}`);
+  if(input)input.value='';
+  const file=document.getElementById(`vi_file${n}`);
+  if(file)file.value='';
+  renderVersatilImagePreviewV229(n);
+}
+
 function openVersatilItemEditorV224(sectionIndex,itemIndex=-1){
   const sec=(db.versatilGuide||[])[sectionIndex];
   if(!sec)return;
   const items=Array.isArray(sec.items)?sec.items:[];
   const old=itemIndex>=0?(items[itemIndex]||{}):{};
   const imgs=versatilItemImagesV227(old);
+  versatilImageStateV229=[0,1,2,3].map(i=>imgs[i]||'');
+
   document.getElementById('versatilItemModalV224')?.remove();
   const m=document.createElement('div');
   m.id='versatilItemModalV224';m.className='modal-overlay';
@@ -3648,30 +3674,104 @@ function openVersatilItemEditorV224(sectionIndex,itemIndex=-1){
     <div class="row between"><h2>${itemIndex>=0?'Editar':'Adicionar'} item — ${esc(sec.name||'')}</h2><button class="btn" onclick="document.getElementById('versatilItemModalV224')?.remove()">Fechar</button></div>
     <div class="field"><label>Nome</label><input id="vi_name" value="${esc(old.name||'')}"></div>
     <div class="field"><label>Descrição</label><textarea id="vi_desc" rows="5">${esc(old.description||'')}</textarea></div>
-    <div class="admin-four-images-v227">${[0,1,2,3].map(i=>`<div><div class="field"><label>Imagem ${i+1} — URL</label><input id="vi_image${i+1}" value="${esc(imgs[i]||'')}" placeholder="Cole o link da imagem" oninput="previewAdminImageV227(${i+1})"></div><div id="vi_preview${i+1}" class="admin-image-preview-slot-v227 ${imgs[i]?'has-image':''}">${imgs[i]?`<img src="${esc(imgs[i])}" alt="">`:''}</div></div>`).join('')}</div>
-    <p class="small muted">Até 4 imagens. Se um campo estiver vazio, nenhum espaço de imagem aparecerá para o cliente.</p>
+
+    <div class="admin-four-images-v227">
+      ${[0,1,2,3].map(i=>{
+        const n=i+1, src=imgs[i]||'', stored=isStoredImageV229(src);
+        return `<div class="admin-image-source-v229">
+          <div class="field">
+            <label>Imagem ${n} — link</label>
+            <input id="vi_image${n}" value="${stored?'':esc(src)}" placeholder="${stored?'Imagem já armazenada no app — cole um link somente para substituir':'Cole o link da imagem'}" oninput="previewAdminImageV227(${n})">
+          </div>
+          <div class="admin-image-or-v229">ou</div>
+          <div class="field">
+            <label>Imagem ${n} — upload</label>
+            <input id="vi_file${n}" type="file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleVersatilImageUploadV229(${n},this.files?.[0])">
+          </div>
+          ${stored?`<div class="small muted admin-image-stored-label-v229">Imagem atual já otimizada e armazenada.</div>`:''}
+          <div id="vi_preview${n}" class="admin-image-preview-slot-v227 ${src?'has-image':''}">
+            ${src?`<img src="${esc(src)}" alt=""><button type="button" class="btn red small admin-remove-image-v229" onclick="removeVersatilImageV229(${n})">Remover imagem</button>`:''}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+
+    <p class="small muted">Você pode usar link ou upload. O upload é redimensionado e comprimido antes de ser armazenado. São permitidas até 4 imagens; campos vazios não criam espaço na página do cliente.</p>
     <button class="btn primary" onclick="saveVersatilItemV224(${sectionIndex},${itemIndex})">Salvar</button>
   </div>`;
   document.body.appendChild(m);
 }
 function previewAdminImageV227(n){
-  const src=document.getElementById(`vi_image${n}`)?.value.trim()||'', box=document.getElementById(`vi_preview${n}`);
-  if(!box)return;box.classList.toggle('has-image',!!src);box.innerHTML=src?`<img src="${esc(src)}" alt="">`:'';
+  const src=document.getElementById(`vi_image${n}`)?.value.trim()||'';
+  if(src){
+    versatilImageStateV229[n-1]=src;
+    const file=document.getElementById(`vi_file${n}`);
+    if(file)file.value='';
+  }else if(!isStoredImageV229(versatilImageStateV229[n-1])){
+    versatilImageStateV229[n-1]='';
+  }
+  renderVersatilImagePreviewV229(n);
+}
+async function optimizeImageBlobV229(blob){
+  if(!blob||!String(blob.type||'').startsWith('image/'))throw new Error('O arquivo selecionado não é uma imagem válida.');
+  const bmp=await createImageBitmap(blob);
+  try{
+    const maxSide=1400;
+    const scale=Math.min(1,maxSide/Math.max(bmp.width,bmp.height));
+    const w=Math.max(1,Math.round(bmp.width*scale));
+    const h=Math.max(1,Math.round(bmp.height*scale));
+    const canvas=document.createElement('canvas');
+    canvas.width=w;canvas.height=h;
+    const ctx=canvas.getContext('2d',{alpha:false});
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
+    ctx.drawImage(bmp,0,0,w,h);
+    let quality=0.82;
+    let data=canvas.toDataURL('image/jpeg',quality);
+    // Compress a little further when still unusually large for database storage.
+    while(data.length>850000 && quality>0.58){
+      quality-=0.06;
+      data=canvas.toDataURL('image/jpeg',quality);
+    }
+    return data;
+  }finally{
+    if(bmp.close)bmp.close();
+  }
+}
+async function handleVersatilImageUploadV229(n,file){
+  if(!file)return;
+  const maxInputBytes=18*1024*1024;
+  if(file.size>maxInputBytes){
+    alert('Esta imagem é muito grande. Escolha um arquivo de até 18 MB.');
+    const input=document.getElementById(`vi_file${n}`);if(input)input.value='';
+    return;
+  }
+  const box=document.getElementById(`vi_preview${n}`);
+  if(box){box.classList.add('has-image');box.innerHTML='<div class="small muted">Otimizando imagem...</div>'}
+  try{
+    const stored=await optimizeImageBlobV229(file);
+    versatilImageStateV229[n-1]=stored;
+    const link=document.getElementById(`vi_image${n}`);
+    if(link){link.value='';link.placeholder='Imagem de upload já otimizada e pronta para armazenar'}
+    renderVersatilImagePreviewV229(n);
+  }catch(err){
+    console.error(err);
+    versatilImageStateV229[n-1]='';
+    alert('Não foi possível processar esta imagem. Escolha outro arquivo PNG, JPEG ou WebP.');
+    const input=document.getElementById(`vi_file${n}`);if(input)input.value='';
+    renderVersatilImagePreviewV229(n);
+  }
 }
 async function urlToStoredImageV227(url){
-  url=String(url||'').trim(); if(!url)return '';
-  if(/^data:image\/(?:png|jpeg);base64,/i.test(url))return url;
+  url=String(url||'').trim();
+  if(!url)return '';
+  if(isStoredImageV229(url))return url;
   try{
     const res=await fetch(url,{mode:'cors',cache:'no-store'});
     if(!res.ok)throw new Error('HTTP '+res.status);
     const blob=await res.blob();
-    if(!String(blob.type||'').startsWith('image/'))throw new Error('Link não retornou imagem');
-    const bmp=await createImageBitmap(blob), max=1400, scale=Math.min(1,max/Math.max(bmp.width,bmp.height));
-    const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bmp.width*scale));canvas.height=Math.max(1,Math.round(bmp.height*scale));
-    canvas.getContext('2d').drawImage(bmp,0,0,canvas.width,canvas.height);if(bmp.close)bmp.close();
-    return canvas.toDataURL('image/jpeg',0.84);
+    return await optimizeImageBlobV229(blob);
   }catch(err){
-    console.warn('v2.28 imagem externa não pôde ser incorporada',url,err);
+    console.warn('v2.29 imagem externa não pôde ser incorporada',url,err);
     const conversionError=new Error('Não foi possível converter este link em imagem. Troque o link e tente novamente:\n\n'+url);
     conversionError.imageUrl=url;
     throw conversionError;
@@ -3683,13 +3783,35 @@ async function saveVersatilItemV224(sectionIndex,itemIndex){
   const old=itemIndex>=0?(sec.items[itemIndex]||{}):{};
   const name=document.getElementById('vi_name')?.value.trim()||'';if(!name)return alert('Informe o nome.');
   const button=event?.target;if(button){button.disabled=true;button.textContent='Salvando...'}
+
   try{
-    const urls=[1,2,3,4].map(n=>document.getElementById(`vi_image${n}`)?.value.trim()||'').filter(Boolean);
-    const images=[];for(const u of urls)images.push(await urlToStoredImageV227(u));
-    const obj={...old,id:old.id||id(),name,description:document.getElementById('vi_desc')?.value.trim()||'',images:images.slice(0,4)};
-    obj.image=obj.images[0]||'';obj.image2=obj.images[1]||'';obj.image3=obj.images[2]||'';obj.image4=obj.images[3]||'';
+    const finalImages=[];
+    for(let n=1;n<=4;n++){
+      const typed=document.getElementById(`vi_image${n}`)?.value.trim()||'';
+      let current=String(versatilImageStateV229[n-1]||'').trim();
+
+      if(typed){
+        current=await urlToStoredImageV227(typed);
+        versatilImageStateV229[n-1]=current;
+      }else if(current && !isStoredImageV229(current)){
+        // Existing external URL must also be converted before saving.
+        current=await urlToStoredImageV227(current);
+        versatilImageStateV229[n-1]=current;
+      }
+
+      if(current)finalImages.push(current);
+    }
+
+    const obj={...old,id:old.id||id(),name,description:document.getElementById('vi_desc')?.value.trim()||'',images:finalImages.slice(0,4)};
+    obj.image=obj.images[0]||'';
+    obj.image2=obj.images[1]||'';
+    obj.image3=obj.images[2]||'';
+    obj.image4=obj.images[3]||'';
+
     if(itemIndex>=0)sec.items[itemIndex]=obj;else sec.items.push(obj);
-    save();markAdminLocalDirtyV226();document.getElementById('versatilItemModalV224')?.remove();render();
+    save();markAdminLocalDirtyV226();
+    document.getElementById('versatilItemModalV224')?.remove();
+    render();
   }catch(err){
     console.error(err);
     alert(err?.imageUrl ? err.message : 'Erro ao salvar: '+(err?.message||err));

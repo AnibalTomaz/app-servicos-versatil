@@ -998,3 +998,13 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - O Admin mostra alerta com a URL problemática e solicita sua substituição.
 - A URL externa não é mais silenciosamente preservada como fallback.
 - Nenhum conjunto parcialmente convertido é gravado quando uma das imagens falha.
+
+## v2.29 — upload de imagens no Admin
+- Cada uma das quatro posições de imagem em Acomodações aceita tanto URL quanto upload local.
+- Uploads aceitam PNG, JPEG, WebP e GIF como entrada.
+- A imagem é redimensionada para no máximo 1400 px no maior lado e convertida para JPEG antes de ser armazenada.
+- Qualidade inicial 0,82, com compressão adicional automática quando o resultado ainda estiver grande.
+- Arquivos de entrada acima de 18 MB são recusados para evitar uso excessivo de memória no navegador.
+- Imagens já armazenadas não precisam ser reconvertidas a cada edição.
+- É possível remover individualmente qualquer imagem.
+- A regra de alerta para links externos que não possam ser convertidos continua ativa.

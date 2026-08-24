@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-28-alerta-link-imagem";
+const CACHE="versatil-v2-29-upload-images";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2280',
-  './app.js?v=2280',
+  './style.css?v=2290',
+  './app.js?v=2290',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
