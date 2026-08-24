@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-29-upload-images";
+const CACHE="versatil-v2-30-update-fix";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2290',
-  './app.js?v=2290',
+  './style.css?v=2300',
+  './app.js?v=2300',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
@@ -63,18 +63,15 @@ self.addEventListener('fetch',event=>{
 
   if(sameOrigin){
     event.respondWith(
-      caches.match(event.request).then(cached=>{
-        const network=fetch(event.request,{cache:'no-store'})
-          .then(response=>{
-            if(response && response.ok){
-              const copy=response.clone();
-              caches.open(CACHE).then(cache=>cache.put(event.request,copy));
-            }
-            return response;
-          })
-          .catch(()=>cached);
-        return cached||network;
-      })
+      fetch(event.request,{cache:'no-store'})
+        .then(response=>{
+          if(response && response.ok){
+            const copy=response.clone();
+            caches.open(CACHE).then(cache=>cache.put(event.request,copy));
+          }
+          return response;
+        })
+        .catch(()=>caches.match(event.request))
     );
   }
 });

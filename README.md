@@ -1008,3 +1008,9 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Imagens já armazenadas não precisam ser reconvertidas a cada edição.
 - É possível remover individualmente qualquer imagem.
 - A regra de alerta para links externos que não possam ser convertidos continua ativa.
+
+## v2.30 — correção do loop de atualização
+- Corrigida a divergência interna que fazia a interface v2.29 ainda declarar APP_VERSION 2.28.
+- Badge, APP_VERSION, Apps Script, index e service worker agora apontam todos para v2.30.
+- O botão Atualizar agora remove service workers e caches antigos antes de recarregar.
+- Assets do app passam a usar rede primeiro para evitar retorno persistente de JavaScript antigo.
