@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "2.24",
-  "updatedAt": "2026-08-24T02:56:18.741Z",
-  "publishedAt": "2026-08-24T02:56:21.259Z",
+  "updatedAt": "2026-08-24T03:05:19.531Z",
+  "publishedAt": "2026-08-24T03:05:20.005Z",
   "data": {
     "rooms": [
       {
@@ -4269,8 +4269,7 @@
       "topPlaces": []
     },
     "serviceDailyCapacity": {
-      "2026-08-20": 1,
-      "2026-08-22": 1
+      "2026-08-20": 1
     },
     "versatilGuide": [],
     "starlisGuide": [],
