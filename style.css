@@ -4506,3 +4506,21 @@ html,body{
   color:#14273a!important;
   box-sizing:border-box!important;
 }
+
+/* v2.26 — hierarquia cromática do Admin = área Cliente */
+.admin-level-v226-1>summary{background:#2f6f9f!important;color:#fff!important}
+.admin-level-v226-2>summary{background:#5f93b8!important;color:#0b2f4a!important}
+.admin-level-v226-3>summary{background:#89b1cc!important;color:#12364e!important}
+.admin-level-v226-4>summary{background:#b4cfe0!important;color:#173a51!important}
+.admin-level-v226-5>summary{background:#d7e7f1!important;color:#173a51!important}
+.admin-level-v226-1>summary .admin-category-count{color:#eaf4fb!important}
+.admin-level-v226-2>summary .admin-category-count,
+.admin-level-v226-3>summary .admin-category-count,
+.admin-level-v226-4>summary .admin-category-count,
+.admin-level-v226-5>summary .admin-category-count{color:#274b63!important}
+.admin-level-v226-1>summary .admin-category-icon,
+.admin-level-v226-2>summary .admin-category-icon,
+.admin-level-v226-3>summary .admin-category-icon,
+.admin-level-v226-4>summary .admin-category-icon,
+.admin-level-v226-5>summary .admin-category-icon{background:#fff!important}
+#postal_admin_park,#postal_admin_facade,#postal_admin_room,#postal_admin_pool{font-size:12px!important}

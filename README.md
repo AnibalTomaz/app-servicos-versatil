@@ -985,3 +985,10 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Conheça a Starlis usa a mesma imagem do item; quando ausente, usa o ícone Starlis já existente.
 - Lazer e Conveniência foi remodelado para usar os mesmos botões/summaries da página Admin > Categorias.
 - Corrigido fechamento automático provocado pela sincronização silenciosa da base: no Admin, sync silencioso atualiza status sem renderizar novamente a página.
+
+## v2.26
+- Proteção contra sobrescrita de edições locais no Admin antes da publicação.
+- Acomodações/Conheça o Versátil permanecem salvas ao editar o item seguinte.
+- Escala de azuis do Admin igual à área Cliente, do mais escuro ao mais claro.
+- Correio Versátil no Admin abre preenchido com textos atuais e URLs efetivamente usadas.
+- Links editáveis para Parque das Águas, fachada, quarto e piscina, todos com preview.

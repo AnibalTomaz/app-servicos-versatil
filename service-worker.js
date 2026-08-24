@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-25-admin-uniform";
+const CACHE="versatil-v2-26-admin-persist-colors-postal";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2250',
-  './app.js?v=2250',
+  './style.css?v=2260',
+  './app.js?v=2260',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',
