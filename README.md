@@ -949,3 +949,12 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Foram criadas cópias dos GIFs com as margens brancas de avaliação recortadas, para que a animação ocupe o mesmo espaço visual do ícone.
 - Restaurados no Catálogo: descrição, preço por quarto/apartamento, quantidade, data, períodos, disponibilidade, pacotes com múltiplas utilizações, regra de 24h e envio ao carrinho.
 - Mantida a estrutura atual de categorias/produtos em dropdown; somente o conteúdo funcional perdido foi recuperado.
+
+## v2.22 — animação nativa dos ícones, preços nas linhas e menus estáveis
+- As animações não usam mais GIFs na interface. Elas são aplicadas diretamente aos SVGs/imagens originais já existentes no menu.
+- Portanto não há troca de arquivo, fundo branco, mudança de tamanho ou alteração de layout dos ícones.
+- Catálogo: folha do próprio livro; Lazer: pin girando; Roteiro: mapa abrindo; Carrinho: deslocamento; Confirmação: check surgindo; Versátil: brilho; Starlis: revelação; Correio: bandeira baixando/levantando.
+- Os dropdowns não fecham mais seus irmãos automaticamente. Um menu só fecha quando o próprio usuário o fecha.
+- Linhas dos produtos do Catálogo passam a usar 4 colunas invisíveis: 1/6 ícone, 3/6 título, 1/6 preço, 1/6 seta.
+- O preço aparece diretamente na linha do nome.
+- Ícones dos produtos foram ampliados e padronizados com a referência visual de Lazer e Conveniência.

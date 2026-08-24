@@ -4067,3 +4067,189 @@ summary:active{
   margin:5px 0 10px!important;
   font-weight:800!important;
 }
+
+/* v2.22 — linha de produto em 4 colunas invisíveis:
+   1/6 ícone | 3/6 título | 1/6 preço | 1/6 seta */
+.unified-catalog-product-summary-v211{
+  grid-template-columns:16.6667% 50% 16.6667% 16.6666%!important;
+}
+.client-product-icon-v211{
+  grid-column:1!important;
+}
+.client-product-title-v211{
+  grid-column:2!important;
+  padding:0 10px!important;
+}
+.client-product-row-price-v222{
+  grid-column:3!important;
+  justify-self:end!important;
+  width:100%!important;
+  min-width:0!important;
+  padding:0 6px!important;
+  box-sizing:border-box!important;
+  text-align:right!important;
+  font-size:14px!important;
+  font-weight:800!important;
+  white-space:nowrap!important;
+  color:#0f4c81!important;
+}
+.unified-catalog-product-summary-v211>.unified-category-arrow-v210{
+  grid-column:4!important;
+  justify-self:end!important;
+  padding-right:10px!important;
+}
+
+/* Padronização dos ícones dos produtos com a referência visual de Lazer e Conveniência */
+.client-product-icon-v211{
+  width:46px!important;
+  min-width:46px!important;
+  height:46px!important;
+  min-height:46px!important;
+  background:#fff!important;
+}
+.client-product-icon-v211 svg,
+.client-product-icon-v211 img{
+  width:42px!important;
+  height:42px!important;
+  max-width:42px!important;
+  max-height:42px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  display:block!important;
+}
+
+/* v2.22 — animações diretamente nos ícones originais.
+   Nenhuma imagem extra é inserida; nenhuma dimensão é alterada. */
+.app-menu-icon{
+  position:relative!important;
+  overflow:visible!important;
+}
+.app-menu-icon svg,
+.app-menu-icon img{
+  transform-origin:center center;
+}
+
+/* Catálogo: página do próprio SVG folheando */
+.menu-anim-v222-catalog svg path:nth-of-type(2){
+  transform-box:fill-box;
+  transform-origin:left center;
+  animation:v222BookPage 2.31s ease-in-out 1;
+}
+@keyframes v222BookPage{
+  0%,12%,88%,100%{transform:perspective(120px) rotateY(0deg)}
+  48%{transform:perspective(120px) rotateY(-78deg)}
+  62%{transform:perspective(120px) rotateY(18deg)}
+}
+
+/* Lazer: pin original girando 360° no eixo vertical */
+.menu-anim-v222-leisure svg{
+  animation:v222SpinY 2.64s ease-in-out 1;
+}
+@keyframes v222SpinY{
+  0%{transform:perspective(140px) rotateY(0deg)}
+  50%{transform:perspective(140px) rotateY(180deg)}
+  100%{transform:perspective(140px) rotateY(360deg)}
+}
+
+/* Meu roteiro: mapa original "desdobrando" */
+.menu-anim-v222-itinerary svg{
+  animation:v222MapOpen 3.08s cubic-bezier(.22,.72,.18,1) 1;
+}
+@keyframes v222MapOpen{
+  0%,8%{transform:scaleX(.18)}
+  42%{transform:scaleX(.62)}
+  72%,100%{transform:scaleX(1)}
+}
+
+/* Carrinho: o próprio SVG entra suavemente da esquerda e para na posição original */
+.menu-anim-v222-cart svg{
+  animation:v222CartSlide 2.7s cubic-bezier(.22,.72,.18,1) 1;
+}
+@keyframes v222CartSlide{
+  0%{transform:translateX(-34px)}
+  82%,100%{transform:translateX(0)}
+}
+
+/* Confirmação: somente o check branco original é desenhado */
+.menu-anim-v222-confirmation svg path{
+  stroke-dasharray:45;
+  stroke-dashoffset:45;
+  animation:v222CheckDraw 3.04s ease-out 1 forwards;
+}
+@keyframes v222CheckDraw{
+  0%,16%{stroke-dashoffset:45}
+  78%,100%{stroke-dashoffset:0}
+}
+
+/* Conheça o Versátil: brilho sobre a própria imagem existente */
+.menu-anim-v222-versatil::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  top:0;
+  bottom:0;
+  width:34%;
+  left:-45%;
+  pointer-events:none;
+  background:linear-gradient(110deg,transparent,rgba(255,255,255,.68),transparent);
+  transform:skewX(-18deg);
+  animation:v222Shine 3.56s ease-in-out 1;
+}
+@keyframes v222Shine{
+  0%,12%{left:-45%}
+  82%,100%{left:115%}
+}
+
+/* Conheça a Starlis: a própria imagem original é revelada a partir da esquerda */
+.menu-anim-v222-starlis img{
+  animation:v222StarsReveal 4.24s ease-in-out 1;
+}
+@keyframes v222StarsReveal{
+  0%,8%{clip-path:circle(0% at 0% 55%)}
+  30%{clip-path:circle(32% at 0% 55%)}
+  58%{clip-path:circle(70% at 0% 55%)}
+  100%{clip-path:circle(145% at 0% 55%)}
+}
+
+/* Correio: apenas a haste e a bandeira vermelha do SVG original movimentam */
+.menu-anim-v222-postal svg path:nth-of-type(4),
+.menu-anim-v222-postal svg path:nth-of-type(5){
+  transform-box:fill-box;
+  transform-origin:0% 100%;
+  animation:v222MailboxFlag 5.88s ease-in-out 1;
+}
+@keyframes v222MailboxFlag{
+  0%,10%,90%,100%{transform:rotate(0deg)}
+  42%,58%{transform:rotate(78deg)}
+}
+
+/* Remove qualquer efeito residual das versões com GIF-overlay */
+.app-menu-gif-overlay-v221,
+.app-menu-animated-icon-v219{
+  display:none!important;
+}
+
+/* Mobile conserva exatamente a mesma divisão de 4 colunas */
+@media(max-width:700px){
+  .unified-catalog-product-summary-v211{
+    grid-template-columns:16.6667% 50% 16.6667% 16.6666%!important;
+  }
+  .client-product-icon-v211{
+    width:44px!important;
+    min-width:44px!important;
+    height:44px!important;
+    min-height:44px!important;
+  }
+  .client-product-icon-v211 svg,
+  .client-product-icon-v211 img{
+    width:40px!important;
+    height:40px!important;
+    max-width:40px!important;
+    max-height:40px!important;
+  }
+  .client-product-row-price-v222{
+    font-size:12px!important;
+    padding-left:2px!important;
+    padding-right:4px!important;
+  }
+}
