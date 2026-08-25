@@ -1055,10 +1055,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Thumbnails só aparecem quando houver imagem e abrem a imagem completa ao clicar.
 - Conteúdo Starlis antigo em lista simples é migrado automaticamente para a categoria “Hotéis Starlis”, sem apagar os hotéis existentes.
 
-## v2.37 — conteúdo preservado e botão Sair corrigido
-- Reconstruída diretamente sobre a v2.35, preservando integralmente Conheça o Versátil e Conheça a Starlis.
-- Atualização não substitui conteúdo local existente por uma base remota antiga/igual.
-- Conteúdo remoto só entra quando for realmente mais recente e não houver edição local pendente.
-- Migrações de seed não reinicializam Versátil ou Lazer quando já existem dados.
-- Publicação bem-sucedida grava a data usada para decidir futuras sincronizações.
-- Botão Sair foi reforçado: fecha loaders/modais, abre confirmação e possui fallback para concluir a saída mesmo se o popup falhar.
+## v2.38 — recuperação real de Versátil/Starlis
+- Reconstruída diretamente sobre a v2.35.
+- Recuperação conservadora: conteúdo que ainda existe no navegador nunca é substituído.
+- Se categorias padrão de Conheça o Versátil desapareceram, elas são reinseridas sem apagar categorias/itens sobreviventes.
+- Starlis é recuperada para a estrutura em categorias/itens; hotéis padrão são adicionados somente se estiverem ausentes.
+- Sincronização remota passa a fazer união conservadora, nunca exclusão.
+- Backup editorial local é gravado antes de publicação.
+- Botão Sair reforçado e mantido acessível no cabeçalho.

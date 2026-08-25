@@ -4738,7 +4738,13 @@ html,body{
   }
 }
 
-.content-preservation-v237{
-  margin-bottom:12px!important;
-  border-radius:10px!important;
+/* v2.38 — recuperação/preservação e acesso ao botão Sair */
+.recovery-notice-v238{margin-bottom:12px!important;border-radius:10px!important}
+.top-v175,.header-col-actions{max-width:100%!important;box-sizing:border-box!important}
+.header-col-actions{overflow:visible!important;min-width:0!important}
+.header-signout-btn{position:relative!important;z-index:20!important;flex:0 0 auto!important}
+@media(max-width:900px){
+  .top-v175{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:8px!important}
+  .header-col-welcome{grid-column:1/2!important}
+  .header-col-actions{grid-column:2/3!important;grid-row:1/3!important;width:auto!important}
 }

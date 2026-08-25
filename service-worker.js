@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-37-preserve-content-signout";
+const CACHE="versatil-v2-38-recovery";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2370',
-  './app.js?v=2370',
+  './style.css?v=2380',
+  './app.js?v=2380',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

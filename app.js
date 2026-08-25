@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.37';
+const APP_VERSION='2.38';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -193,52 +193,73 @@ function isQuotaErrorV234(err){
 }
 
 
-const CONTENT_META_KEY_V237='versatil_content_meta_v237';
-function contentMetaV237(){
-  try{return JSON.parse(localStorage.getItem(CONTENT_META_KEY_V237)||'{}')||{}}catch(e){return {}}
+const RECOVERY_MARK_V238='versatil_recovery_v238';
+const CONTENT_BACKUP_KEY_V238='versatil_content_backup_v238';
+
+function keyForRecordV238(x){
+  return String(x?.id||x?.name||'').trim().toLowerCase();
 }
-function saveContentMetaV237(meta={}){
-  try{
-    localStorage.setItem(CONTENT_META_KEY_V237,JSON.stringify({
-      publishedAt:meta.publishedAt||'',
-      sourceVersion:meta.sourceVersion||APP_VERSION
-    }));
-  }catch(e){}
-}
-function epochV237(v){
-  const n=Date.parse(String(v||''));return Number.isFinite(n)?n:0;
-}
-function localEditorialDirtyV237(){
-  try{
-    return localStorage.getItem('versatil_admin_unsaved_public_changes')==='1'
-      || adminLocalDirtyV226();
-  }catch(e){return false}
-}
-function hasEditorialContentV237(x){
-  if(!x||typeof x!=='object')return false;
-  return ['categories','products','leisureGuide','versatilGuide','starlisGuide','postalConfig'].some(k=>{
-    const v=x[k];
-    return Array.isArray(v)?v.length>0:(v&&typeof v==='object'&&Object.keys(v).length>0);
-  });
-}
-function shouldAcceptRemoteEditorialV237(remoteUpdatedAt){
-  if(localEditorialDirtyV237())return false;
-  if(!hasEditorialContentV237(db))return true;
-  const localTime=Math.max(epochV237(db.centralUpdatedAt),epochV237(contentMetaV237().publishedAt));
-  const remoteTime=epochV237(remoteUpdatedAt);
-  return remoteTime>localTime;
-}
-function mergeRemoteEditorialV237(c){
-  for(const k of ['rooms','categories','products','availabilityClosures','leisureGuide','versatilGuide','starlisGuide','postalConfig']){
-    if(!(k in c))continue;
-    const v=c[k];
-    db[k]=(v&&typeof v==='object')?structuredClone(v):v;
+function mergeItemsPreservingLocalV238(localItems=[],fallbackItems=[]){
+  const out=Array.isArray(localItems)?structuredClone(localItems):[];
+  const map=new Map(out.map((x,i)=>[keyForRecordV238(x),i]).filter(x=>x[0]));
+  for(const f of (fallbackItems||[])){
+    const k=keyForRecordV238(f);
+    if(!k||!map.has(k)){out.push(structuredClone(f));continue}
+    const i=map.get(k),cur=out[i]||{};
+    // Existing Admin values always win. Only restore fields/items that disappeared.
+    if(Array.isArray(f.items)){
+      cur.items=mergeItemsPreservingLocalV238(cur.items||[],f.items);
+    }
+    for(const [field,val] of Object.entries(f)){
+      if(field==='items')continue;
+      if((cur[field]===undefined||cur[field]===null||cur[field]==='') && val!==undefined)cur[field]=structuredClone(val);
+    }
+    out[i]=cur;
   }
-  // Normalize only the data received, preserving all existing Starlis structure.
-  db.starlisGuide=normalizeStarlisStructureV235(db.starlisGuide||[]);
+  return out;
+}
+function recoverVersatilV238(){
+  db.versatilGuide=mergeItemsPreservingLocalV238(db.versatilGuide||[],DEFAULT_VERSATIL_GUIDE_V173||[]);
+}
+function recoverStarlisV238(){
+  let current=normalizeStarlisStructureV235(db.starlisGuide||[]);
+  const fallbackItems=(DEFAULT_STARLIS_GUIDE||[]).map((x,i)=>({...x,id:x.id||('starlis_'+i),images:Array.isArray(x.images)?x.images:[x.image].filter(Boolean)}));
+  if(!current.length){
+    current=[{id:'starlis_hoteis_v235',name:'Hotéis Starlis',description:'Conheça as unidades Starlis.',icon:'⭐',type:'gallery',items:fallbackItems}];
+  }else{
+    let target=current.find(x=>/hot[eé]is starlis/i.test(String(x.name||'')))||current[0];
+    if(!Array.isArray(target.items))target.items=[];
+    target.items=mergeItemsPreservingLocalV238(target.items,fallbackItems);
+  }
+  db.starlisGuide=current;
+}
+function createEditorialBackupV238(){
+  try{
+    const backup={
+      at:new Date().toISOString(),
+      versatilGuide:db.versatilGuide||[],
+      starlisGuide:db.starlisGuide||[],
+      leisureGuide:db.leisureGuide||[],
+      categories:db.categories||[],
+      products:db.products||[],
+      postalConfig:db.postalConfig||{}
+    };
+    localStorage.setItem(CONTENT_BACKUP_KEY_V238,JSON.stringify(backup));
+  }catch(e){console.warn('Backup editorial local:',e)}
+}
+function recoverEditorialContentV238(){
+  // First preserve anything that still exists in this browser.
+  createEditorialBackupV238();
+  recoverVersatilV238();
+  recoverStarlisV238();
+  try{localStorage.setItem(RECOVERY_MARK_V238,'1')}catch(e){}
+}
+function conservativeRemoteMergeV238(localArr=[],remoteArr=[]){
+  return mergeItemsPreservingLocalV238(localArr||[],remoteArr||[]);
 }
 
 let db=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(seed),session=null,page='catalog',adminPage='dashboard',selectedCat='',cart=[];
+recoverEditorialContentV238();
 
 if(!Array.isArray(db.leisureGuide)||!db.leisureGuide.length)db.leisureGuide=structuredClone(seed.leisureGuide||[]);
 
@@ -1292,18 +1313,19 @@ async function loadCentralData(options={}){
       }
     }
 
-    const remoteUpdatedAt=p.publishedAt||p.updatedAt||'';
-    const acceptRemoteEditorial=shouldAcceptRemoteEditorialV237(remoteUpdatedAt);
+    // v2.38: remote sync may add/complete content, but never remove or replace
+    // Admin content already present on this device.
+    if(Array.isArray(c.rooms)&&c.rooms.length)db.rooms=conservativeRemoteMergeV238(db.rooms||[],c.rooms);
+    if(Array.isArray(c.categories)&&c.categories.length)db.categories=conservativeRemoteMergeV238(db.categories||[],c.categories);
+    if(Array.isArray(c.products)&&c.products.length)db.products=conservativeRemoteMergeV238(db.products||[],c.products);
+    if(Array.isArray(c.availabilityClosures))db.availabilityClosures=conservativeRemoteMergeV238(db.availabilityClosures||[],c.availabilityClosures);
+    if(Array.isArray(c.leisureGuide)&&c.leisureGuide.length)db.leisureGuide=conservativeRemoteMergeV238(db.leisureGuide||[],c.leisureGuide);
+    if(Array.isArray(c.versatilGuide)&&c.versatilGuide.length)db.versatilGuide=conservativeRemoteMergeV238(db.versatilGuide||[],c.versatilGuide);
+    if(Array.isArray(c.starlisGuide)&&c.starlisGuide.length)db.starlisGuide=conservativeRemoteMergeV238(normalizeStarlisStructureV235(db.starlisGuide||[]),normalizeStarlisStructureV235(c.starlisGuide));
+    if(c.postalConfig&&typeof c.postalConfig==='object')db.postalConfig={...(c.postalConfig||{}),...(db.postalConfig||{})};
 
-    if(acceptRemoteEditorial){
-      mergeRemoteEditorialV237(c);
-      saveContentMetaV237({publishedAt:remoteUpdatedAt,sourceVersion:p.version||APP_VERSION});
-    }else{
-      // Preserve categories/products/Versátil/Starlis/Lazer/Correio already present locally.
-      // Non-editorial status metadata may still update below.
-      if(Array.isArray(c.rooms)&&(!Array.isArray(db.rooms)||!db.rooms.length))db.rooms=structuredClone(c.rooms);
-      if(Array.isArray(c.availabilityClosures)&&localEditorialDirtyV237()===false)db.availabilityClosures=structuredClone(c.availabilityClosures);
-    }
+    recoverVersatilV238();
+    recoverStarlisV238();
     db.centralVersion=p.version||'';
     db.centralUpdatedAt=p.publishedAt||p.updatedAt||'';
     await migrateEmbeddedImagesV234(db);
@@ -1359,6 +1381,7 @@ function centralPost(action,payload={}){
 }
 
 async function publishPublicDataToCentral(showMessage=true){
+  createEditorialBackupV238();
   // The local edit is the source of truth until the central base confirms the same product snapshot.
   await migrateEmbeddedImagesV234(db);
   save();
@@ -1369,7 +1392,6 @@ async function publishPublicDataToCentral(showMessage=true){
 
   try{
     await centralPost('savePublicData',{data:snapshot,clientPublishedAt:marker.iso});
-    saveContentMetaV237({publishedAt:marker.iso,sourceVersion:APP_VERSION});
     clearAdminLocalDirtyV226();
     db.centralUpdatedAt=marker.iso;
     save();
@@ -1403,7 +1425,6 @@ async function verifyPendingPublicationV203(attempt=0){
 
     if(sameProducts&&newEnough){
       clearPendingPublicPublication();
-      saveContentMetaV237({publishedAt:p.publishedAt||p.updatedAt||pending.iso,sourceVersion:p.version||APP_VERSION});
       localStorage.removeItem('versatil_admin_unsaved_public_changes');
       db.centralUpdatedAt=p.publishedAt||p.updatedAt||pending.iso;
       centralDataStatus='ok';
@@ -2167,7 +2188,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.37';
+  badge.textContent='v2.38';
 }
 
 function isPwaStandalone(){
@@ -2764,20 +2785,15 @@ function completeSignoutV170(){
   try{
     const role=session?.role||'';
     if(role==='client'&&page!=='confirmation')cart=[];
-    session=null;
-    selectedCat='';
-    expandedClientProductId='';
-    page='catalog';
-    adminPage='dashboard';
+    session=null;selectedCat='';expandedClientProductId='';page='catalog';adminPage='dashboard';
     resetSessionActivity();
     document.getElementById('signoutReadModal')?.remove();
     hideVersatilLoading();
     render();
-    window.scrollTo({top:0,left:0,behavior:'auto'});
-  }catch(err){
-    console.error('Falha ao concluir saída:',err);
-    session=null;
-    location.reload();
+    window.scrollTo(0,0);
+  }catch(e){
+    console.error('Conclusão de saída:',e);
+    session=null;location.reload();
   }
 }
 function showSignoutPopupV170(){
@@ -2785,7 +2801,7 @@ function showSignoutPopupV170(){
   const msg=session?.role==='admin'?`Até breve ${name}!`:signoutMessageV170(name);
   document.getElementById('signoutReadModal')?.remove();
   const m=document.createElement('div');m.id='signoutReadModal';m.className='signout-read-modal';
-  m.innerHTML=`<div class="signout-read-box"><div class="signout-thumb">👍</div><h3>${esc(msg)}</h3><button type="button" class="btn primary signout-valeu" onclick="document.getElementById('signoutReadModal')?.remove();completeSignoutV170()">👍 Valeu!</button></div>`;
+  m.innerHTML=`<div class="signout-read-box"><div class="signout-thumb">👍</div><h3>${esc(msg)}</h3><button class="btn primary signout-valeu" onclick="document.getElementById('signoutReadModal')?.remove();completeSignoutV170()">👍 Valeu!</button></div>`;
   document.body.appendChild(m);
 }
 
@@ -2835,12 +2851,12 @@ function appView(){
 }
 function signout(ev){
   try{
-    if(ev){ev.preventDefault();ev.stopPropagation()}
+    ev?.preventDefault?.();ev?.stopPropagation?.();
     hideVersatilLoading();
     document.getElementById('mandatoryUpdateModal')?.remove();
     showSignoutPopupV170();
-  }catch(err){
-    console.error('Falha ao sair:',err);
+  }catch(e){
+    console.error('Sair:',e);
     completeSignoutV170();
   }
   return false;
@@ -3893,10 +3909,10 @@ function deleteLeisureNode(nodeId){
 
 
 
-function contentPreservationBannerV237(){
-  const meta=contentMetaV237();
-  const when=meta.publishedAt?new Date(meta.publishedAt).toLocaleString('pt-BR'):'';
-  return `<div class="notice success content-preservation-v237"><b>Conteúdo preservado.</b> Esta versão mantém os dados existentes no Admin e só aceita conteúdo remoto quando a publicação for realmente mais recente.${when?` Referência publicada: ${esc(when)}.`:''}</div>`;
+function recoveryNoticeV238(){
+  const v=Array.isArray(db.versatilGuide)?db.versatilGuide.length:0;
+  const s=Array.isArray(db.starlisGuide)?db.starlisGuide.length:0;
+  return `<div class="notice success recovery-notice-v238"><b>Conteúdo recuperado e preservado.</b> Conheça o Versátil: ${v} categorias. Conheça a Starlis: ${s} categorias. A sincronização não pode mais excluir conteúdo existente.</div>`;
 }
 
 function contentAdminPage(kind){
@@ -3905,11 +3921,11 @@ function contentAdminPage(kind){
     starlis:{title:'Conheça a Starlis',data:db.starlisGuide||[]},
     postal:{title:'Correio Versátil',data:[db.postalConfig||{}]}
   }[kind];
-  const preserveBanner=contentPreservationBannerV237();
+  const recoveryBanner=recoveryNoticeV238();
 
   if(kind==='postal'){
     const pc=postalConfigV180();
-    return `${preserveBanner}<div class="card admin-accordion-card"><h2>${cfg.title}</h2><p class="muted">Os campos abaixo mostram exatamente os textos e links de imagens atualmente usados no postal. Edite, salve e depois publique.</p>
+    return `${recoveryBanner}<div class="card admin-accordion-card"><h2>${cfg.title}</h2><p class="muted">Os campos abaixo mostram exatamente os textos e links de imagens atualmente usados no postal. Edite, salve e depois publique.</p>
       <div class="field"><label>Endereço</label><input id="postal_admin_address" value="${esc(pc.address)}"></div>
       <div class="field"><label>Telefone</label><input id="postal_admin_phone" value="${esc(pc.phone)}"></div>
       <div class="field"><label>Mensagem do postal</label><textarea id="postal_admin_message" rows="6">${esc(pc.message)}</textarea></div>
@@ -3929,7 +3945,7 @@ function contentAdminPage(kind){
   if(kind==='starlis'){
     ensureStarlisStructureV235();
     const sections=db.starlisGuide||[];
-    return `${preserveBanner}<div class="card admin-accordion-card">
+    return `${recoveryBanner}<div class="card admin-accordion-card">
       <div class="row between">
         <div><h2>${cfg.title}</h2><p class="muted">Categorias e itens em listas expansivas, com ícone, descrição e até 4 imagens por item.</p></div>
         <button class="btn primary" onclick="openStarlisCategoryEditorV235()">+ Categoria</button>
@@ -3979,7 +3995,7 @@ function contentAdminPage(kind){
   }
 
   // Conheça o Versátil: sections + nested products/items, all expandable/editable.
-  return `${preserveBanner}<div class="card admin-accordion-card">
+  return `${recoveryBanner}<div class="card admin-accordion-card">
     <div class="row between"><div><h2>${cfg.title}</h2><p class="muted">Categorias e itens em listas expansivas. Todos os itens podem receber imagem/thumbnail.</p></div><button class="btn primary" onclick="openContentEditorV170('versatil')">+ Categoria</button></div>
     <div class="admin-category-accordion">
       ${cfg.data.map((sec,si)=>{
