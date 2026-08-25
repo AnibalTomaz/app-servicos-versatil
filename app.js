@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.39';
+const APP_VERSION='2.40';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -2168,17 +2168,34 @@ function setupGlobalDropdownSlideV205(){
   });
 }
 function render(){
-  document.getElementById('app').innerHTML=session?appView():loginView();
-  renderVersionBadge();
-  setTimeout(()=>{
-    updatePwaInstallUI();
-    updateCentralStatusUI();
-    updateItineraryCountUI();
-    if(page==='postal')bindPostalValidation();
-    adjustScrollBelowHeaderV177(false);
-    setupGlobalDropdownSlideV205();
-    hydrateStoredImagesInDomV234(document);
-  },0);
+  const mount=document.getElementById('app');
+  if(!mount)return;
+  try{
+    mount.innerHTML=session?appView():loginView();
+    renderVersionBadge();
+    setTimeout(()=>{
+      try{
+        updatePwaInstallUI();
+        updateCentralStatusUI();
+        updateItineraryCountUI();
+        if(page==='postal')bindPostalValidation();
+        adjustScrollBelowHeaderV177(false);
+        setupGlobalDropdownSlideV205();
+        hydrateStoredImagesInDomV234(document);
+      }catch(e){
+        console.warn('Pós-renderização:',e);
+      }
+    },0);
+  }catch(err){
+    console.error('Falha ao renderizar página '+page+':',err);
+    if(page==='postal'){
+      page='catalog';
+      mount.innerHTML=session?appView():loginView();
+      setTimeout(()=>alert('O Correio Versátil encontrou um erro ao abrir. Tente novamente.'),0);
+      return;
+    }
+    throw err;
+  }
 }
 
 function renderVersionBadge(){
@@ -2188,7 +2205,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.39';
+  badge.textContent='v2.40';
 }
 
 function isPwaStandalone(){
@@ -2441,8 +2458,33 @@ function recoverAdmin(){
 }
 
 
+
+function openPostalPageV240(){
+  try{
+    page='postal';
+    render();
+    setTimeout(()=>{
+      const card=document.getElementById('postalCard');
+      const sent=document.querySelector('.postal-sent-screen');
+      if(!card&&!sent){
+        console.error('Correio Versátil não foi montado.');
+        page='catalog';
+        render();
+        alert('O Correio Versátil não pôde ser aberto. Tente novamente.');
+      }
+    },50);
+  }catch(err){
+    console.error('Falha ao abrir Correio Versátil:',err);
+    page='catalog';
+    try{render()}catch(e){}
+    alert('O Correio Versátil encontrou um erro ao abrir. Tente novamente.');
+  }
+  return false;
+}
+
 function appMenuButton(pageId,label,iconHtml,extra=''){
-  return `<button class="app-menu-btn ${page===pageId?'active':''} ${extra}" onclick="page='${pageId}';render()">
+  const action=pageId==='postal'?'return openPostalPageV240()':`page='${pageId}';render()`;
+  return `<button type="button" class="app-menu-btn ${page===pageId?'active':''} ${extra}" onclick="${action}">
     <span class="app-menu-icon">${iconHtml}</span><span class="app-menu-text">${label}</span>
   </button>`;
 }
@@ -2676,23 +2718,31 @@ function stableCouponFor(email){
   return 'VST-'+(Math.abs(h)>>>0).toString(36).toUpperCase().slice(0,7);
 }
 function postalTourismItem(){
-  const semester=(()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()<6?'H1':'H2')})();
-  const key='versatil_postal_tour_'+semester;
-  const tourismRoot=(db.leisureGuide||[]).find(n=>n.parentId===''&&String(n.name).toUpperCase().includes('TURISMO'));
-  const all=[];const walk=id=>{for(const n of leisureChildren(id)){if(n.type==='place'&&n.imageUrl)all.push(n);else if(n.type==='group')walk(n.id)}};if(tourismRoot)walk(tourismRoot.id);
-  if(!all.length)return {name:'Cuiabá',imageUrl:'leisure-assets/turismo.svg',mapQuery:'Cuiabá MT'};
-  let idx=Number(localStorage.getItem(key)||0)%all.length;
-  const item=all[idx];localStorage.setItem(key,String((idx+1)%all.length));return item;
+  try{
+    const semester=(()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()<6?'H1':'H2')})();
+    const key='versatil_postal_tour_'+semester;
+    const tourismRoot=(db.leisureGuide||[]).find(n=>n.parentId===''&&String(n.name).toUpperCase().includes('TURISMO'));
+    const all=[];
+    const walk=id=>{
+      for(const n of leisureChildren(id)){
+        if(n.type==='place'&&n.imageUrl)all.push(n);
+        else if(n.type==='group')walk(n.id);
+      }
+    };
+    if(tourismRoot)walk(tourismRoot.id);
+    if(!all.length)return {name:'Cuiabá',imageUrl:'leisure-assets/turismo.svg',mapQuery:'Cuiabá MT'};
+    let idx=0;
+    try{idx=Number(localStorage.getItem(key)||0)%all.length}catch(e){idx=0}
+    const item=all[idx]||all[0];
+    try{localStorage.setItem(key,String((idx+1)%all.length))}catch(e){
+      console.warn('Rotação do postal sem persistência local:',e);
+    }
+    return item;
+  }catch(e){
+    console.warn('Falha ao selecionar imagem turística do postal:',e);
+    return {name:'Cuiabá',imageUrl:'leisure-assets/turismo.svg',mapQuery:'Cuiabá MT'};
+  }
 }
-
-const POSTAL_FIXED_PHOTOS_V173={park:"https://hotelmt.com.br/wp-content/uploads/2020/03/original-ff169b7274cfb6259fe8c25c3c29ac1e.jpeg",facade:"https://cf.bstatic.com/xdata/images/hotel/max1024x768/527400490.jpg?k=601e3832271bf87f77452863c49ee6daf8c1cd63020105c24ada5f36f35a6777&o=",pool:"https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/ff5edf34_edited_0d15.jpg?impolicy=resizecrop&ra=fit&rw=598"};
-
-
-const POSTAL_TEXT_V180={
-  intro:'Envie um postal para quem você gosta e dê um brinde de presente!',
-  message:'Caro amigo(a) estou em Cuiabá, ficando no Versátil e estou adorando o lugar. Envio este postal pois lembrei de você durante minha viagem. Espero que estejas bem, mande notícias!',
-  couponText:'Use meu cupom de desconto e ganhe um up-grade na sua reserva'
-};
 function postalConfigV180(){
   const src=(db.postalConfig&&typeof db.postalConfig==='object')?db.postalConfig:{};
   return {
@@ -2713,7 +2763,6 @@ function postalConfigV180(){
 function postalPage(){
   if(postalAlreadySentV171())return postalSentScreenV171();
   const cfg=postalConfigV180();
-  const tour=postalTourismItem();
   const accessEmail=String(session?.email||'');
   const accessName=String(session?.name||'');
   return `<div class="card">${pageTitleV185('Correio Versátil',UI_ICONS.mailbox)}<p class="postal-page-intro">${esc(POSTAL_TEXT_V180.intro)}</p></div>

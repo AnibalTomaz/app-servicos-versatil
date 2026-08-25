@@ -1071,3 +1071,10 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - O backend não recebe referências internas `idbimg:`.
 - O Admin preserva imagens já armazenadas ao salvar a configuração do Correio.
 - Envio exibe loader/status e recupera o botão em caso de falha.
+
+## v2.40 — abertura do Correio Versátil corrigida
+- Removida da abertura do Correio uma chamada de rotação turística que fazia escrita em localStorage e podia lançar `QuotaExceededError` antes da página aparecer.
+- `postalTourismItem()` foi protegido para nunca interromper a interface se o armazenamento local estiver cheio.
+- O botão Correio Versátil agora possui rota dedicada com validação de montagem da página.
+- `render()` ganhou proteção para que um erro específico do Correio não pareça um botão sem ação.
+- Mantidas integralmente as recuperações de conteúdo da v2.38 e as correções de envio da v2.39.
