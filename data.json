@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "2.39",
-  "updatedAt": "2026-08-25T02:17:52.833Z",
-  "publishedAt": "2026-08-25T02:17:54.127Z",
+  "version": "2.40",
+  "updatedAt": "2026-08-25T17:06:51.237Z",
+  "publishedAt": "2026-08-25T17:06:52.529Z",
   "data": {
     "rooms": [
       {
@@ -4541,68 +4541,7 @@
         ]
       }
     ],
-    "starlisGuide": [
-      {
-        "id": "starlis_hoteis_v235",
-        "name": "Hotéis Starlis",
-        "description": "Conheça as unidades Starlis.",
-        "icon": "⭐",
-        "type": "gallery",
-        "items": [
-          {
-            "id": "delmond",
-            "name": "Delmond Hotel",
-            "image": "https://delmond.com.br/wp-content/uploads/2021/12/fachada-frente-hotel-delmond-19.jpg",
-            "description": "Sofisticação, acomodações bem equipadas, gastronomia e estrutura de lazer e eventos.",
-            "map": "Delmond Hotel Cuiabá",
-            "reserve": "https://www.starlis.com.br",
-            "images": [
-              "https://delmond.com.br/wp-content/uploads/2021/12/fachada-frente-hotel-delmond-19.jpg"
-            ]
-          },
-          {
-            "id": "delcas",
-            "name": "Delcas Hotel",
-            "image": "https://delcashotel.com.br/wp-content/uploads/2025/11/delcas-fachada-print-1.png",
-            "description": "Localização, lazer, conforto e gastronomia para viagens a negócios ou lazer.",
-            "map": "Delcas Hotel Cuiabá",
-            "reserve": "https://www.starlis.com.br",
-            "images": [
-              "https://delcashotel.com.br/wp-content/uploads/2025/11/delcas-fachada-print-1.png"
-            ]
-          },
-          {
-            "id": "hotel365",
-            "name": "Hotel 365",
-            "image": "https://hotel365.com.br/wp-content/uploads/2025/11/fachada-at.jpg",
-            "description": "Hospedagem funcional com conforto, praticidade e boa relação custo-benefício.",
-            "map": "Hotel 365 Cuiabá",
-            "reserve": "https://www.starlis.com.br",
-            "images": [
-              "https://hotel365.com.br/wp-content/uploads/2025/11/fachada-at.jpg"
-            ]
-          },
-          {
-            "id": "versatil",
-            "name": "Versátil",
-            "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=",
-            "description": "Esperamos que esteja gostando de estar conosco. Qualquer coisa basta avisar a portaria e faremos o possível para atendê-lo",
-            "map": "Starlis Home Versátil Cuiabá",
-            "reserve": "",
-            "images": [
-              "https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="
-            ]
-          }
-        ]
-      },
-      {
-        "id": "chx061m3tl9mt80wcpc",
-        "name": "Starlis Home - A moradia por assinatura da Starlis group hotels.",
-        "description": "",
-        "iconImage": "data:image/png;base64,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",
-        "items": []
-      }
-    ],
+    "starlisGuide": [],
     "postalConfig": {}
   }
 }
