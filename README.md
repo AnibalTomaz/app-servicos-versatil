@@ -1063,3 +1063,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Sincronização remota passa a fazer união conservadora, nunca exclusão.
 - Backup editorial local é gravado antes de publicação.
 - Botão Sair reforçado e mantido acessível no cabeçalho.
+
+## v2.39 — Correio Versátil corrigido
+- Novo login de cliente sempre libera um novo envio de postal.
+- Logout limpa o estado de postal enviado.
+- Imagens armazenadas em IndexedDB são expandidas antes do envio para o serviço de e-mail.
+- O backend não recebe referências internas `idbimg:`.
+- O Admin preserva imagens já armazenadas ao salvar a configuração do Correio.
+- Envio exibe loader/status e recupera o botão em caso de falha.
