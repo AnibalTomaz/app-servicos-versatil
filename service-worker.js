@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-35-starlis-structured";
+const CACHE="versatil-v2-36-content-protected";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2350',
-  './app.js?v=2350',
+  './style.css?v=2360',
+  './app.js?v=2360',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

@@ -1054,3 +1054,10 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Campos de Google Maps e link de reserva permanecem disponíveis por item.
 - Thumbnails só aparecem quando houver imagem e abrem a imagem completa ao clicar.
 - Conteúdo Starlis antigo em lista simples é migrado automaticamente para a categoria “Hotéis Starlis”, sem apagar os hotéis existentes.
+
+## v2.36 — conteúdo publicado protegido
+- Conteúdo publicado pelo Admin passa a ser a fonte de verdade.
+- Atualizações de código não repõem dados padrão sobre conteúdo publicado.
+- Base pública confirmada é carregada como conteúdo autoritativo.
+- Publicações bem-sucedidas gravam um marcador local de proteção.
+- Admin mostra o status “Conteúdo protegido”.
