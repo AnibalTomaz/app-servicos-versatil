@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "2.38",
-  "updatedAt": "2026-08-25T01:36:40.707Z",
-  "publishedAt": "2026-08-25T01:36:42.704Z",
+  "updatedAt": "2026-08-25T02:05:57.671Z",
+  "publishedAt": "2026-08-25T02:05:58.049Z",
   "data": {
     "rooms": [
       {
@@ -592,7 +592,7 @@
       {
         "id": "churras-serv",
         "cat": "locacoes",
-        "name": "Locação de churrasqueira: COM serviço",
+        "name": "Locação de churrasqueira com serviço",
         "icon": "🔥",
         "desc": "Locação do espaço com grelha argentina, 2 espetos duplos, utensílios de churrasco, talheres, 8 pratos (para 8 pessoas) copos descartáveis, guardanapos, panos perflex, caixa de fosforos, caixa de palitos, 2 travessas, 1 saladeira, 2 panelas, gás, fogão e limpeza antes e depois.",
         "q": 450,
@@ -602,7 +602,7 @@
       {
         "id": "churras-sem",
         "cat": "locacoes",
-        "name": "Locação de churrasqueira: SEM serviço",
+        "name": "Locação de churrasqueira sem serviço",
         "icon": "🍖",
         "desc": "Locação do espaço com grelha argentina, 2 espetos duplos, utensílios de churrasco, gás, fogão e limpeza.",
         "q": 300,
@@ -612,7 +612,7 @@
       {
         "id": "sala-dia-serv",
         "cat": "locacoes",
-        "name": "Locação diária de sala de reunião: COM serviço",
+        "name": "Locação diária de sala de reunião com serviço",
         "icon": "🏢",
         "desc": "Locação do espaço, máquina de café e 8 xícaras, açúcar, adoçante, água mineral, descartáveis e limpeza de louça ao meio dia.",
         "q": 400,
@@ -622,7 +622,7 @@
       {
         "id": "sala-dia-sem",
         "cat": "locacoes",
-        "name": "Locação diária de sala de reunião: SEM serviço",
+        "name": "Locação diária de sala de reunião sem serviço",
         "icon": "🗓️",
         "desc": "Apenas a locação do espaço está compreendida nesta modalidade.",
         "q": 300,
@@ -632,7 +632,7 @@
       {
         "id": "sala-meio-serv",
         "cat": "locacoes",
-        "name": "Locação de sala de reunião por meia diária: COM serviço",
+        "name": "Locação de sala de reunião por meia diária com serviço",
         "icon": "🕘",
         "desc": "Locação do espaço, máquina de café e 8 xícaras, pó de café, açúcar, adoçante, água mineral e descartáveis.",
         "q": 250,
@@ -642,7 +642,7 @@
       {
         "id": "sala-meio-sem",
         "cat": "locacoes",
-        "name": "Locação de sala de reunião por meia diária SEM serviço",
+        "name": "Locação de sala de reunião por meia diária sem serviço",
         "icon": "🕐",
         "desc": "Apenas a locação do espaço está compreendida nesta modalidade.",
         "q": 150,
@@ -682,77 +682,77 @@
       {
         "id": "pkg-diarista2",
         "cat": "pacotes",
-        "name": "Pacote de diarista: 2X",
+        "name": "Pacote de diarista 2x",
         "icon": "🎁",
         "desc": "Duas faxinas dentro do período de sua hospedagem.",
         "q": 400,
-        "a": 460,
+        "a": 400,
         "halfDay": false
       },
       {
         "id": "pkg-padrao2",
         "cat": "pacotes",
-        "name": "Pacote de limpeza padrão: 2X",
+        "name": "Pacote de limpeza padrão 2x",
         "icon": "🎁",
         "desc": "Duas limpezas dentro do período de sua hospedagem.",
         "q": 240,
-        "a": 400,
+        "a": 240,
         "halfDay": false
       },
       {
         "id": "pkg-padrao4",
         "cat": "pacotes",
-        "name": "Pacote de limpeza padrão: 4X",
+        "name": "Pacote de limpeza padrão 4x",
         "icon": "🎁",
         "desc": "Quatro limpezas dentro do período de sua hospedagem.",
-        "q": 480,
-        "a": 800,
+        "q": 400,
+        "a": 400,
         "halfDay": false
       },
       {
         "id": "pkg-express2",
         "cat": "pacotes",
-        "name": "Pacote de limpeza express: 2X",
+        "name": "Pacote de limpeza express 2x",
         "icon": "🎁",
         "desc": "Duas limpezas dentro do período de sua hospedagem.",
         "q": 200,
-        "a": 240,
+        "a": 200,
         "halfDay": false
       },
       {
         "id": "pkg-express4",
         "cat": "pacotes",
-        "name": "Pacote de limpeza express: 4X",
+        "name": "Pacote de limpeza express 4x",
         "icon": "🎁",
         "desc": "Quatro limpezas dentro do período de sua hospedagem.",
-        "q": 400,
-        "a": 480,
+        "q": 380,
+        "a": 380,
         "halfDay": false
       },
       {
         "id": "pkg-wc2",
         "cat": "pacotes",
-        "name": "Pacote de limpeza de WC's: 2X",
+        "name": "Pacote de limpeza de WCs 2x",
         "icon": "🎁",
         "desc": "Duas limpezas dentro do período de sua hospedagem.",
-        "q": 140,
-        "a": 200,
+        "q": 150,
+        "a": 150,
         "halfDay": false
       },
       {
         "id": "pkg-wc4",
         "cat": "pacotes",
-        "name": "Pacote de limpeza de WC's: 4X",
+        "name": "Pacote de limpeza de WCs 4x",
         "icon": "🎁",
         "desc": "Quatro limpezas dentro do período de sua hospedagem.",
         "q": 280,
-        "a": 400,
+        "a": 280,
         "halfDay": false
       },
       {
         "id": "pkg-sala2-serv",
         "cat": "pacotes",
-        "name": "Pacote de locação de sala: 2X COM serviço",
+        "name": "Pacote de locação de sala 2x com serviço",
         "icon": "🎁",
         "desc": "Duas diárias de sala com serviço dentro do período de sua hospedagem.",
         "q": 750,
@@ -762,7 +762,7 @@
       {
         "id": "pkg-sala2-sem",
         "cat": "pacotes",
-        "name": "Pacote de locação de sala: 2X SEM serviço",
+        "name": "Pacote de locação de sala 2x sem serviço",
         "icon": "🎁",
         "desc": "Duas diárias de sala sem serviço dentro do período de sua hospedagem.",
         "q": 550,
@@ -772,21 +772,21 @@
       {
         "id": "pkg-sala5-serv",
         "cat": "pacotes",
-        "name": "Pacote de locação de sala: semanal COM serviço",
+        "name": "Pacote semanal de locação de sala com serviço",
         "icon": "🎁",
         "desc": "Locação de sala por 5 dias corridos com serviço.",
-        "q": 1875,
-        "a": 1875,
+        "q": 1800,
+        "a": 1800,
         "halfDay": false
       },
       {
         "id": "pkg-sala5-sem",
         "cat": "pacotes",
-        "name": "Pacote de locação de sala: semanal SEM serviço",
+        "name": "Pacote semanal de locação de sala sem serviço",
         "icon": "🎁",
         "desc": "Locação de sala por 5 dias corridos sem serviço.",
-        "q": 1375,
-        "a": 1375,
+        "q": 1250,
+        "a": 1250,
         "halfDay": false
       }
     ],
@@ -4271,8 +4271,338 @@
     "serviceDailyCapacity": {
       "2026-08-20": 1
     },
-    "versatilGuide": [],
-    "starlisGuide": [],
+    "versatilGuide": [
+      {
+        "id": "normas",
+        "name": "Normas gerais",
+        "icon": "📖",
+        "type": "text",
+        "items": [
+          {
+            "id": "n10",
+            "name": "Check-in / Check-out",
+            "description": "Nosso check-in se dá a partir das 14h.\nNosso check-out é até as 12h.\nPara qualquer alteração ou necessidade contate a portaria o quanto antes.",
+            "iconKey": "walking"
+          },
+          {
+            "id": "n1",
+            "name": "Não é permitido fumar nas unidades",
+            "description": "Não é permitido fumar nas unidades",
+            "icon": "🚭"
+          },
+          {
+            "id": "n2",
+            "name": "O pagamento de suas reservas deve ser realizado no check-in",
+            "description": "O pagamento de suas reservas deve ser realizado no check-in",
+            "icon": "💲"
+          },
+          {
+            "id": "n3",
+            "name": "Vaga de garagem",
+            "description": "As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.",
+            "icon": "🚗"
+          },
+          {
+            "id": "n4",
+            "name": "Não dispomos de vagas para visitantes",
+            "description": "Não dispomos de vagas para visitantes",
+            "iconKey": "noCar"
+          },
+          {
+            "id": "n5",
+            "name": "Não aceitamos Pets",
+            "description": "Não são permitidos animais no condomínio.",
+            "iconKey": "noDog"
+          },
+          {
+            "id": "n6",
+            "name": "Churrasqueira e sala de reunião",
+            "description": "churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.",
+            "icon": "🔑"
+          },
+          {
+            "id": "n7",
+            "name": "Lixos e resíduos",
+            "description": "Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)",
+            "icon": "⚫"
+          },
+          {
+            "id": "n8",
+            "name": "Piscina",
+            "description": "Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.",
+            "iconKey": "pool"
+          },
+          {
+            "id": "n9",
+            "name": "Lei do silêncio",
+            "description": "Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais",
+            "iconKey": "noMegaphone"
+          }
+        ]
+      },
+      {
+        "id": "acomodacoes",
+        "name": "Acomodações",
+        "icon": "🛌",
+        "type": "gallery",
+        "items": [
+          {
+            "id": "loft-solo",
+            "name": "Loft Solo",
+            "description": "1 cama de solteiro",
+            "iconKey": "bedSingle"
+          },
+          {
+            "id": "loft-solteiro",
+            "name": "Loft Solteiro",
+            "description": "2 camas de solteiro",
+            "iconKey": "bedSingle",
+            "iconCount": 2
+          },
+          {
+            "id": "loft-casal",
+            "name": "Loft Casal",
+            "description": "1 cama de casal",
+            "iconKey": "bedDouble"
+          },
+          {
+            "id": "studio-casal",
+            "name": "Studio Casal",
+            "description": "1 cama de casal",
+            "iconKey": "bedDouble"
+          },
+          {
+            "id": "studio-triplo",
+            "name": "Studio Triplo casal",
+            "description": "1 cama de casal e 1 cama de solteiro",
+            "iconKey": "bedDouble",
+            "extraBed": "single"
+          },
+          {
+            "id": "master",
+            "name": "Master",
+            "description": "1 cama de casal maior",
+            "iconKey": "bedMaster"
+          },
+          {
+            "id": "apto-2q",
+            "name": "Apartamento de 2 quartos",
+            "description": "",
+            "icon": "🏠"
+          }
+        ]
+      },
+      {
+        "id": "areas-comuns",
+        "name": "Áreas comuns",
+        "icon": "🛋️",
+        "type": "gallery",
+        "items": [
+          {
+            "id": "sala-reuniao",
+            "name": "Sala de reunião",
+            "description": "",
+            "iconKey": "tableSide"
+          },
+          {
+            "id": "cowork",
+            "name": "Espaço cowork",
+            "description": "",
+            "icon": "💻"
+          },
+          {
+            "id": "lounge",
+            "name": "Lounge",
+            "description": "",
+            "iconKey": "sofaPastel"
+          },
+          {
+            "id": "tv",
+            "name": "Sala de TV",
+            "description": "",
+            "iconKey": "smartTv"
+          }
+        ]
+      },
+      {
+        "id": "garagem",
+        "name": "Garagem",
+        "icon": "🅿️",
+        "type": "gallery",
+        "items": [
+          {
+            "id": "patios",
+            "name": "Pátios",
+            "description": "",
+            "iconKey": "parking"
+          }
+        ]
+      },
+      {
+        "id": "lazer-interno",
+        "name": "Lazer",
+        "icon": "🏖️",
+        "type": "gallery",
+        "items": [
+          {
+            "id": "academia",
+            "name": "Academia",
+            "description": "",
+            "iconKey": "weights"
+          },
+          {
+            "id": "piscina",
+            "name": "Piscina",
+            "description": "",
+            "iconKey": "pool"
+          },
+          {
+            "id": "churrasqueira",
+            "name": "Churrasqueira",
+            "description": "",
+            "iconKey": "skewer"
+          }
+        ]
+      },
+      {
+        "id": "comodidades",
+        "name": "Comodidades",
+        "icon": "🛎️",
+        "type": "text",
+        "items": [
+          {
+            "id": "c1",
+            "name": "Portaria 24h",
+            "description": "Portaria 24h",
+            "icon": "🕒"
+          },
+          {
+            "id": "c2",
+            "name": "Estacionamento coberto (uma vaga por reserva)",
+            "description": "Estacionamento coberto (uma vaga por reserva)",
+            "iconKey": "parking"
+          },
+          {
+            "id": "c3",
+            "name": "Wifi",
+            "description": "Wifi",
+            "icon": "📶"
+          },
+          {
+            "id": "c4",
+            "name": "Dois elevadores panorâmicos",
+            "description": "Dois elevadores panorâmicos",
+            "iconKey": "elevator"
+          },
+          {
+            "id": "c5",
+            "name": "Loja de conveniência no local",
+            "description": "Loja de conveniência no local",
+            "iconKey": "store24"
+          },
+          {
+            "id": "c6",
+            "name": "Equipe de limpeza e manutenção no local",
+            "description": "Equipe de limpeza e manutenção no local",
+            "icon": "🧹"
+          },
+          {
+            "id": "c7",
+            "name": "Passadoria no 4º andar",
+            "description": "Passadoria no 4º andar",
+            "iconKey": "iron"
+          },
+          {
+            "id": "c8",
+            "name": "Voltagem 110V",
+            "description": "Voltagem 110V",
+            "icon": "⚡"
+          },
+          {
+            "id": "c9",
+            "name": "Áreas externas para fumantes",
+            "description": "Áreas externas para fumantes",
+            "icon": "🚬"
+          }
+        ]
+      },
+      {
+        "id": "mensalista",
+        "name": "Morador mensalista",
+        "icon": "✍️",
+        "type": "text",
+        "items": [
+          {
+            "id": "m1",
+            "name": "Morador mensalista",
+            "description": "Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300",
+            "icon": "🏠"
+          }
+        ]
+      }
+    ],
+    "starlisGuide": [
+      {
+        "id": "starlis_hoteis_v235",
+        "name": "Hotéis Starlis",
+        "description": "Conheça as unidades Starlis.",
+        "icon": "⭐",
+        "type": "gallery",
+        "items": [
+          {
+            "id": "delmond",
+            "name": "Delmond Hotel",
+            "image": "https://delmond.com.br/wp-content/uploads/2021/12/fachada-frente-hotel-delmond-19.jpg",
+            "description": "Sofisticação, acomodações bem equipadas, gastronomia e estrutura de lazer e eventos.",
+            "map": "Delmond Hotel Cuiabá",
+            "reserve": "https://www.starlis.com.br",
+            "images": [
+              "https://delmond.com.br/wp-content/uploads/2021/12/fachada-frente-hotel-delmond-19.jpg"
+            ]
+          },
+          {
+            "id": "delcas",
+            "name": "Delcas Hotel",
+            "image": "https://delcashotel.com.br/wp-content/uploads/2025/11/delcas-fachada-print-1.png",
+            "description": "Localização, lazer, conforto e gastronomia para viagens a negócios ou lazer.",
+            "map": "Delcas Hotel Cuiabá",
+            "reserve": "https://www.starlis.com.br",
+            "images": [
+              "https://delcashotel.com.br/wp-content/uploads/2025/11/delcas-fachada-print-1.png"
+            ]
+          },
+          {
+            "id": "hotel365",
+            "name": "Hotel 365",
+            "image": "https://hotel365.com.br/wp-content/uploads/2025/11/fachada-at.jpg",
+            "description": "Hospedagem funcional com conforto, praticidade e boa relação custo-benefício.",
+            "map": "Hotel 365 Cuiabá",
+            "reserve": "https://www.starlis.com.br",
+            "images": [
+              "https://hotel365.com.br/wp-content/uploads/2025/11/fachada-at.jpg"
+            ]
+          },
+          {
+            "id": "versatil",
+            "name": "Versátil",
+            "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=",
+            "description": "Esperamos que esteja gostando de estar conosco. Qualquer coisa basta avisar a portaria e faremos o possível para atendê-lo",
+            "map": "Starlis Home Versátil Cuiabá",
+            "reserve": "",
+            "images": [
+              "https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chx061m3tl9mt80wcpc",
+        "name": "Starlis Home - A moradia por assinatura da Starlis group hotels.",
+        "description": "",
+        "iconImage": "data:image/png;base64,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",
+        "items": []
+      }
+    ],
     "postalConfig": {}
   }
 }
