@@ -1078,3 +1078,11 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - O botão Correio Versátil agora possui rota dedicada com validação de montagem da página.
 - `render()` ganhou proteção para que um erro específico do Correio não pareça um botão sem ação.
 - Mantidas integralmente as recuperações de conteúdo da v2.38 e as correções de envio da v2.39.
+
+## v2.41
+- Exclusões persistentes por marcadores: conteúdo excluído não deve voltar por seed ou sincronização antiga.
+- Revisão aplicada a Starlis, Versátil, Lazer, quartos, categorias e produtos.
+- Correio: restauradas constantes ausentes que impediam a própria página de ser renderizada.
+- Efeito de luz/sombra de “Publicando alterações...” reforçado com feixe animado.
+- Listas fornecidas de Lazer/Conveniência aplicadas mantendo a estrutura; Noite renomeada para Casas Noturnas.
+- Novos locais incluem distância, telefone, endereço e consulta de mapa baseada no endereço.

@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-40-postal-open-fix";
+const CACHE="versatil-v2-41-general-review";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2400',
-  './app.js?v=2400',
+  './style.css?v=2410',
+  './app.js?v=2410',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

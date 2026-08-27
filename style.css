@@ -4753,3 +4753,18 @@ html,body{
 .postal-status{min-height:24px!important}
 .postal-card.sending{pointer-events:none!important}
 .postal-sent-popup .btn{margin-top:12px!important}
+
+/* v2.41 — luz e sombra percorrendo o texto de publicação */
+.versatil-loading-text.publishing-shimmer-v233{
+  position:relative!important;display:inline-block!important;overflow:hidden!important;
+  color:#31495c!important;-webkit-text-fill-color:currentColor!important;background:none!important;
+  filter:drop-shadow(0 2px 2px rgba(20,35,48,.32))!important;
+}
+.versatil-loading-text.publishing-shimmer-v233::after{
+  content:""!important;position:absolute!important;top:-35%!important;left:-45%!important;
+  width:24%!important;height:170%!important;transform:skewX(-18deg)!important;
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.98),rgba(32,52,68,.28),rgba(255,255,255,0))!important;
+  box-shadow:0 0 14px rgba(255,255,255,.8),8px 0 12px rgba(28,48,64,.25)!important;
+  animation:publishingSweepV241 1.55s linear infinite!important;pointer-events:none!important;
+}
+@keyframes publishingSweepV241{from{left:-45%}to{left:125%}}
