@@ -4768,3 +4768,79 @@ html,body{
   animation:publishingSweepV241 1.55s linear infinite!important;pointer-events:none!important;
 }
 @keyframes publishingSweepV241{from{left:-45%}to{left:125%}}
+
+/* v2.42 — Publicando alterações: feixe visível em TODOS os locais */
+.central-status.publishing-status-sweep-v242{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+.central-status.publishing-status-sweep-v242::after{
+  content:""!important;
+  position:absolute!important;
+  top:-60%!important;
+  left:-55%!important;
+  width:30%!important;
+  height:220%!important;
+  transform:skewX(-20deg)!important;
+  background:linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.98) 42%,
+    rgba(255,255,255,.98) 52%,
+    rgba(42,58,70,.32) 68%,
+    rgba(255,255,255,0) 100%)!important;
+  box-shadow:0 0 13px rgba(255,255,255,.95),8px 0 10px rgba(24,42,56,.28)!important;
+  animation:publishingBeamV242 1.35s linear infinite!important;
+  z-index:2!important;
+  pointer-events:none!important;
+}
+.publishing-text-sweep-v242{
+  background:linear-gradient(100deg,
+    currentColor 0%,
+    currentColor 32%,
+    #ffffff 43%,
+    #8da0af 50%,
+    #253c4d 58%,
+    currentColor 70%,
+    currentColor 100%)!important;
+  background-size:260% 100%!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  animation:publishingTextBeamV242 1.35s linear infinite!important;
+  filter:drop-shadow(0 2px 2px rgba(15,30,42,.28))!important;
+}
+@keyframes publishingBeamV242{
+  from{left:-55%}
+  to{left:130%}
+}
+@keyframes publishingTextBeamV242{
+  from{background-position:130% 0}
+  to{background-position:-130% 0}
+}
+
+/* v2.42 — upload de ícone das subcategorias */
+.leisure-icon-status-v242{
+  margin:5px 0 8px!important;
+  min-height:16px!important;
+}
+
+/* v2.42 — distância destacada no cabeçalho dos locais */
+.leisure-place-distance-v185{
+  font-size:14px!important;
+  font-weight:700!important;
+  line-height:1.25!important;
+  padding:5px 9px!important;
+  border-radius:7px!important;
+  background:rgba(255,255,255,.68)!important;
+  white-space:normal!important;
+}
+.leisure-place-distance-v185 b{
+  font-weight:900!important;
+}
+@media(max-width:700px){
+  .leisure-place-distance-v185{
+    font-size:12px!important;
+    padding:4px 6px!important;
+  }
+}

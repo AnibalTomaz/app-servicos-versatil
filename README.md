@@ -1086,3 +1086,9 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Efeito de luz/sombra de “Publicando alterações...” reforçado com feixe animado.
 - Listas fornecidas de Lazer/Conveniência aplicadas mantendo a estrutura; Noite renomeada para Casas Noturnas.
 - Novos locais incluem distância, telefone, endereço e consulta de mapa baseada no endereço.
+
+## v2.42
+- “Publicando alterações…” recebe feixe de luz/sombra no badge, textos de status do cabeçalho e loader.
+- A frente do Correio Versátil usa sempre `postal-facade-versatil.png`, cópia exata da imagem enviada pelo usuário.
+- Upload de ícone das categorias/subcategorias de Lazer e Conveniência usa fluxo dedicado, otimiza, armazena e mostra confirmação antes de salvar.
+- Distância no cabeçalho de cada local passa a aparecer como “Distância aproximada: X km”, com destaque maior.
