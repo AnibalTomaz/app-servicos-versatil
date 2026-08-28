@@ -1092,3 +1092,12 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - A frente do Correio Versátil usa sempre `postal-facade-versatil.png`, cópia exata da imagem enviada pelo usuário.
 - Upload de ícone das categorias/subcategorias de Lazer e Conveniência usa fluxo dedicado, otimiza, armazena e mostra confirmação antes de salvar.
 - Distância no cabeçalho de cada local passa a aparecer como “Distância aproximada: X km”, com destaque maior.
+
+
+## v2.43 — consolidação e correções efetivas
+- Base consolidada a partir da v2.42 preservada.
+- Exclusões reforçadas por marcadores persistentes também após recuperação, migrações e sincronização, evitando o retorno de itens já excluídos.
+- Todos os botões “Publicar alterações” usam o mesmo fluxo com loader e recebem animação de feixe visível diretamente no botão.
+- Upload de ícone em categorias/subcategorias ganhou fallback para navegadores/PWA sem `createImageBitmap`, além de aceitar GIF como entrada.
+- “Distância aproximada” recebeu contraste, borda e tipografia mais fortes no título de cada local.
+- Mantida a fachada fixa `postal-facade-versatil.png` da v2.42.

@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-42-visual-icons-postal";
+const CACHE="versatil-v2-43-consolidada";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2420',
-  './app.js?v=2420',
+  './style.css?v=2430',
+  './app.js?v=2430',
   './manifest.json',
   './data.json',
   './logo-versatil.jpg',

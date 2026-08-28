@@ -4844,3 +4844,34 @@ html,body{
     padding:4px 6px!important;
   }
 }
+
+
+/* v2.43 — correções efetivas solicitadas */
+.publishing-button-v243{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+.publishing-button-v243::after{
+  content:"";
+  position:absolute;
+  top:-65%;left:-55%;width:28%;height:230%;
+  transform:skewX(-20deg);
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95),rgba(255,255,255,.25),rgba(255,255,255,0));
+  box-shadow:0 0 12px rgba(255,255,255,.9);
+  animation:publishButtonSweepV243 1.55s linear infinite;
+  pointer-events:none;z-index:2;
+}
+@keyframes publishButtonSweepV243{from{left:-55%}to{left:135%}}
+
+/* Distância mais evidente no próprio cabeçalho do local. */
+.leisure-place-distance-v185{
+  font-size:15px!important;
+  font-weight:800!important;
+  color:#0f4c81!important;
+  background:#eef7ff!important;
+  border:1px solid rgba(15,76,129,.28)!important;
+  box-shadow:0 1px 3px rgba(15,76,129,.10)!important;
+}
+.leisure-place-distance-v185 b{font-weight:900!important;color:#0a3c68!important}
+@media(max-width:700px){.leisure-place-distance-v185{font-size:13px!important}}

@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.42';
+const APP_VERSION='2.43';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -280,8 +280,18 @@ function rememberDeletionV241(scope,obj){
 }
 function wasDeletedV241(scope,obj){return !!deletedEntitiesV241()[deletionKeyV241(scope,obj)]}
 function filterDeletedV241(scope,arr){return (Array.isArray(arr)?arr:[]).filter(x=>!wasDeletedV241(scope,x))}
+function purgeDeletedEntitiesV243(){
+  // Enforce exclusions after seeds, migrations, recovery and remote synchronization.
+  db.rooms=filterDeletedV241('rooms',db.rooms||[]);
+  db.categories=filterDeletedV241('categories',db.categories||[]);
+  db.products=filterDeletedV241('products',db.products||[]);
+  db.leisureGuide=filterDeletedV241('leisure',db.leisureGuide||[]);
+  db.versatilGuide=filterDeletedV241('versatil',db.versatilGuide||[]).map(sec=>({...sec,items:filterDeletedV241('versatil:items',sec.items||[])}));
+  db.starlisGuide=filterDeletedV241('starlis',db.starlisGuide||[]).map(sec=>({...sec,items:filterDeletedV241('starlis:items',sec.items||[])}));
+}
 let db=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(seed),session=null,page='catalog',adminPage='dashboard',selectedCat='',cart=[];
 recoverEditorialContentV238();
+purgeDeletedEntitiesV243();
 
 if(!Array.isArray(db.leisureGuide)||!db.leisureGuide.length)db.leisureGuide=structuredClone(seed.leisureGuide||[]);
 
@@ -1348,6 +1358,7 @@ async function loadCentralData(options={}){
 
     recoverVersatilV238();
     recoverStarlisV238();
+    purgeDeletedEntitiesV243();
     db.centralVersion=p.version||'';
     db.centralUpdatedAt=p.publishedAt||p.updatedAt||'';
     await migrateEmbeddedImagesV234(db);
@@ -2237,7 +2248,7 @@ function renderVersionBadge(){
     badge.id='appVersionBadge';
     document.body.appendChild(badge);
   }
-  badge.textContent='v2.42';
+  badge.textContent='v2.43';
 }
 
 function isPwaStandalone(){
@@ -2965,7 +2976,7 @@ function appView(){
     </div>
 
     <div class="header-col header-col-actions">
-      ${admin?`<button class="btn header-publish-btn header-action-v175" onclick="publishWithLoading()">Publicar alterações</button>`:''}
+      ${admin?`<button class="btn header-publish-btn header-action-v175 publishing-button-v243" onclick="publishWithLoading()">Publicar alterações</button>`:''}
       <button type="button" class="btn header-signout-btn header-action-v175" onclick="return signout(event)">Sair</button>
       ${admin?centralStatusHtml():`<button class="header-normas-btn header-action-v175 ${normasHeaderAnimationStoppedV176()?'normas-animation-stopped':''}" onclick="openNormasFromHeaderV176(this)">Normas gerais</button>`}
     </div>
@@ -3055,18 +3066,32 @@ function customIconHtmlV232(obj,cls=''){
 async function optimizeIconFileV232(file){
   if(!file||!String(file.type||'').startsWith('image/'))throw new Error('Selecione um arquivo de imagem.');
   if(file.size>12*1024*1024)throw new Error('O ícone deve ter no máximo 12 MB.');
-  const bmp=await createImageBitmap(file);
+
+  let source=null,revoke='';
   try{
+    if(typeof createImageBitmap==='function'){
+      try{source=await createImageBitmap(file)}catch(e){source=null}
+    }
+    if(!source){
+      revoke=URL.createObjectURL(file);
+      source=await new Promise((resolve,reject)=>{
+        const img=new Image();
+        img.onload=()=>resolve(img);
+        img.onerror=()=>reject(new Error('Não foi possível abrir esta imagem.'));
+        img.src=revoke;
+      });
+    }
+
     const max=ADMIN_ICON_SIZE_V232;
-    const scale=Math.min(1,max/Math.max(bmp.width,bmp.height));
-    const w=Math.max(1,Math.round(bmp.width*scale));
-    const h=Math.max(1,Math.round(bmp.height*scale));
+    const sw=Number(source.width||source.naturalWidth||1),sh=Number(source.height||source.naturalHeight||1);
+    const scale=Math.min(1,max/Math.max(sw,sh));
+    const w=Math.max(1,Math.round(sw*scale));
+    const h=Math.max(1,Math.round(sh*scale));
     const canvas=document.createElement('canvas');
     canvas.width=w;canvas.height=h;
     const ctx=canvas.getContext('2d');
     ctx.clearRect(0,0,w,h);
-    ctx.drawImage(bmp,0,0,w,h);
-    // PNG preserves transparent icon backgrounds. If result is too large, use JPEG.
+    ctx.drawImage(source,0,0,w,h);
     let data=canvas.toDataURL('image/png');
     if(data.length>420000){
       const white=document.createElement('canvas');white.width=w;white.height=h;
@@ -3076,7 +3101,8 @@ async function optimizeIconFileV232(file){
     }
     return data;
   }finally{
-    if(bmp.close)bmp.close();
+    try{if(source&&typeof source.close==='function')source.close()}catch(e){}
+    if(revoke)try{URL.revokeObjectURL(revoke)}catch(e){}
   }
 }
 async function handleAdminIconUploadV232(input,previewId){
@@ -3894,7 +3920,7 @@ function downloadICS(oid){
 }
 
 function adminPublishChangesButton(){
-  return `<button class="btn primary admin-publish-repeat" onclick="publishPublicDataToCentral(true)">Publicar alterações</button>`;
+  return `<button class="btn primary admin-publish-repeat publishing-button-v243" onclick="publishWithLoading()">Publicar alterações</button>`;
 }
 
 function leisureBreadcrumb(id){
@@ -4010,7 +4036,7 @@ function openLeisureEditor(nodeId='',presetParent=''){
     <div class="admin-icon-editor-v232">
       <label>Ícone do item/menu</label>
       <div id="lz_icon_preview_v232" class="admin-icon-preview-v232">${customIconDataV232(old)?`<img src="${esc(customIconDataV232(old))}" alt="">`:(leisureGroupIconV170(old,1)||'<span class="muted small">Ícone padrão atual</span>')}</div>
-      <input id="lz_icon_file_v242" type="file" accept="image/png,image/jpeg,image/webp" onchange="handleLeisureIconUploadV242(this)">
+      <input id="lz_icon_file_v242" type="file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleLeisureIconUploadV242(this)">
       <div id="lz_icon_status_v242" class="small muted leisure-icon-status-v242">${customIconDataV232(old)?'Ícone personalizado atual carregado.':'Selecione uma imagem para esta categoria/subcategoria.'}</div>
       <button type="button" class="btn small" onclick="clearLeisureIconV242()">Restaurar ícone padrão</button>
     </div>
@@ -4694,7 +4720,7 @@ function adminPageContent(){
 function dashboard(){
   let active=db.orders.filter(o=>o.status==='ativo'),total=active.reduce((a,o)=>a+o.total,0);
   return `<div class="grid"><div class="card"><div class="muted">Pedidos ativos</div><div class="kpi">${active.length}</div></div><div class="card"><div class="muted">Vendas consolidadas</div><div class="kpi">${money(total)}</div></div><div class="card"><div class="muted">Unidades cadastradas</div><div class="kpi">${db.rooms.length}</div></div><div class="card"><div class="muted">Produtos</div><div class="kpi">${db.products.length}</div></div></div>
-  <div class="card" style="margin-top:14px"><div class="row between"><div><h3 style="margin:0">Base pública</h3><p class="muted">Produtos, categorias, unidades e disponibilidade compartilhados entre todos os usuários.</p></div><div class="row"><button class="btn" onclick="loadCentralData()">↻ Baixar base pública</button><button class="btn primary" onclick="publishPublicDataToCentral(true)">Publicar alterações</button></div></div>${centralStatusHtml()}</div>`;
+  <div class="card" style="margin-top:14px"><div class="row between"><div><h3 style="margin:0">Base pública</h3><p class="muted">Produtos, categorias, unidades e disponibilidade compartilhados entre todos os usuários.</p></div><div class="row"><button class="btn" onclick="loadCentralData()">↻ Baixar base pública</button><button class="btn primary publishing-button-v243" onclick="publishWithLoading()">Publicar alterações</button></div></div>${centralStatusHtml()}</div>`;
 }
 function focusNewRoomNumber(){
   setTimeout(()=>{
@@ -6309,6 +6335,7 @@ async function bootVersatilV140(){
       await openImageDbV234();
       ensureStarlisStructureV235();
       applyLeisureListsV241();
+      purgeDeletedEntitiesV243();
       await migrateEmbeddedImagesV234(db);
       save();
       installImageHydrationObserverV234();
@@ -6318,7 +6345,7 @@ async function bootVersatilV140(){
     render();
     loadCentralData({force:true});
     startPublicDataAutoSync();
-    console.info('APP SERVIÇOS VERSÁTIL - Versão 1.70 carregada.');
+    console.info('APP SERVIÇOS VERSÁTIL - Versão 2.43 carregada.');
   }catch(err){
     console.error('Falha ao iniciar APP SERVIÇOS VERSÁTIL:',err);
 
