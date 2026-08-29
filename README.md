@@ -1101,3 +1101,20 @@ Correções solicitadas em Lazer, Conheça o Versátil e Correio Versátil; nova
 - Upload de ícone em categorias/subcategorias ganhou fallback para navegadores/PWA sem `createImageBitmap`, além de aceitar GIF como entrada.
 - “Distância aproximada” recebeu contraste, borda e tipografia mais fortes no título de cada local.
 - Mantida a fachada fixa `postal-facade-versatil.png` da v2.42.
+
+
+## v2.44 — Publicando e enquadramento
+- Removida qualquer animação permanente dos botões **Publicar alterações**.
+- A animação fica exclusivamente na mensagem **Publicando alterações…**, somente enquanto há publicação em andamento.
+- Corrigido o bloco **Base pública** para que **Baixar base pública** e **Publicar alterações** permaneçam dentro do enquadramento em larguras menores.
+- Cache/PWA incrementado para forçar a atualização da interface após publicação no GitHub.
+
+
+## v2.45 — publicação segura, preservação local e correção de quota
+- Publicação só é considerada concluída depois que o `data.json` público confirma o `publicationId` exato enviado pelo Admin.
+- A mensagem/overlay **Publicando alterações…** permanece ativa durante a confirmação real; o botão não possui animação contínua.
+- Em falha ou ausência de confirmação, os dados locais continuam marcados como não publicados.
+- `CONTENT` do Apps Script passa a dividir JSON grande em blocos de 40.000 caracteres, evitando o limite por célula do Google Sheets quando há fotos em base64.
+- `data.json` deixa de ser armazenado pelo Service Worker. Antes, URLs com `?v=Date.now()` podiam criar muitas cópias grandes no Cache Storage e provocar `QuotaExceededError`.
+- Ao ativar a v2.45, caches de versões anteriores são removidos sem apagar Local Storage ou IndexedDB.
+- Esta versão foi preparada para ser instalada sobre a mesma origem do GitHub Pages, preservando os dados locais e as imagens existentes no navegador.

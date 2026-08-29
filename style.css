@@ -4875,3 +4875,74 @@ html,body{
 }
 .leisure-place-distance-v185 b{font-weight:900!important;color:#0a3c68!important}
 @media(max-width:700px){.leisure-place-distance-v185{font-size:13px!important}}
+
+
+/* v2.44 — publicação: animação somente na mensagem PUBLICANDO, nunca no botão. */
+.publishing-button-v243,
+.header-publish-btn,
+.admin-publish-repeat,
+.public-base-actions-v244 .btn.primary{
+  overflow:visible!important;
+  isolation:auto!important;
+}
+.publishing-button-v243::after,
+.header-publish-btn::after,
+.admin-publish-repeat::after,
+.public-base-actions-v244 .btn.primary::after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+
+/* A animação de andamento só existe enquanto o estado real é "publicando". */
+.central-status:not(.publicando)::after,
+.central-status:not(.publicando)::before,
+.versatil-loading-text:not(.publishing-text-sweep-v242)::after,
+.versatil-loading-text:not(.publishing-shimmer-v233)::after{
+  animation:none!important;
+}
+
+/* v2.44 — Base pública: ações sempre dentro do enquadramento em desktop e celular. */
+.public-base-card-v244{overflow:hidden!important}
+.public-base-layout-v244{
+  display:flex!important;
+  align-items:flex-start!important;
+  gap:14px!important;
+  width:100%!important;
+  min-width:0!important;
+}
+.public-base-copy-v244{flex:1 1 320px!important;min-width:0!important}
+.public-base-actions-v244{
+  flex:0 1 auto!important;
+  min-width:0!important;
+  max-width:100%!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+}
+.public-base-actions-v244 .btn{
+  max-width:100%!important;
+  white-space:normal!important;
+  text-align:center!important;
+}
+@media(max-width:760px){
+  .public-base-layout-v244{flex-direction:column!important;align-items:stretch!important}
+  .public-base-actions-v244{width:100%!important;justify-content:stretch!important}
+  .public-base-actions-v244 .btn{flex:1 1 180px!important;width:auto!important}
+}
+@media(max-width:430px){
+  .public-base-actions-v244{display:grid!important;grid-template-columns:1fr!important}
+  .public-base-actions-v244 .btn{width:100%!important;min-width:0!important}
+}
+
+
+/* v2.45 — falha de publicação visível sem falso positivo. */
+.central-status.erro_publicacao{
+  background:#fff2f2!important;
+  color:#9b1c1c!important;
+  border-color:#e9b7b7!important;
+  animation:none!important;
+}
+.central-status.erro_publicacao::before,
+.central-status.erro_publicacao::after{content:none!important;animation:none!important}

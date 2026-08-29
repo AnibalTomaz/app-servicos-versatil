@@ -1,11 +1,10 @@
-const CACHE="versatil-v2-43-consolidada";
+const CACHE="versatil-v2-45-cache-controlado";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2430',
-  './app.js?v=2430',
+  './style.css?v=2450',
+  './app.js?v=2450',
   './manifest.json',
-  './data.json',
   './logo-versatil.jpg',
   './icon-192.png',
   './icon-512.png',
@@ -14,9 +13,7 @@ const APP_SHELL=[
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE).then(cache=>cache.addAll(APP_SHELL))
-  );
+  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(APP_SHELL)));
 });
 
 self.addEventListener('activate',event=>{
@@ -29,17 +26,15 @@ self.addEventListener('activate',event=>{
 
 self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
-
   const url=new URL(event.request.url);
   const sameOrigin=url.origin===self.location.origin;
 
-  // Navegação: tenta rede primeiro; se estiver sem internet, abre o app salvo.
   if(event.request.mode==='navigate'){
     event.respondWith(
       fetch(event.request,{cache:'no-store'})
         .then(response=>{
           const copy=response.clone();
-          caches.open(CACHE).then(cache=>cache.put('./index.html',copy));
+          caches.open(CACHE).then(cache=>cache.put('./index.html',copy)).catch(()=>{});
           return response;
         })
         .catch(()=>caches.match('./index.html'))
@@ -47,17 +42,10 @@ self.addEventListener('fetch',event=>{
     return;
   }
 
-
+  // v2.45: data.json is always network-only. Cache-busting query strings previously
+  // created hundreds of multi-megabyte copies and exhausted browser quota.
   if(sameOrigin && url.pathname.endsWith('/data.json')){
-    event.respondWith(
-      fetch(event.request,{cache:'no-store'})
-        .then(response=>{
-          const copy=response.clone();
-          caches.open(CACHE).then(cache=>cache.put(event.request,copy));
-          return response;
-        })
-        .catch(()=>caches.match(event.request))
-    );
+    event.respondWith(fetch(event.request,{cache:'no-store'}));
     return;
   }
 
@@ -66,12 +54,13 @@ self.addEventListener('fetch',event=>{
       fetch(event.request,{cache:'no-store'})
         .then(response=>{
           if(response && response.ok){
+            const normalized=new Request(url.origin+url.pathname,{method:'GET'});
             const copy=response.clone();
-            caches.open(CACHE).then(cache=>cache.put(event.request,copy));
+            caches.open(CACHE).then(cache=>cache.put(normalized,copy)).catch(()=>{});
           }
           return response;
         })
-        .catch(()=>caches.match(event.request))
+        .catch(()=>caches.match(new Request(url.origin+url.pathname,{method:'GET'})))
     );
   }
 });
