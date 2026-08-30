@@ -1,7 +1,7 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.46';
-const APP_BUILD='1790-reference-icons-exclusive-details';
+const APP_VERSION='2.47';
+const APP_BUILD='2470-edicao-unificada';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama king e 1 cama de solteiro","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"master","name":"Master","description":"1 cama King","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"Apartamento com dois quartos","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200","https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o="]}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"sofa","type":"gallery","items":[{"id":"recepcao","name":"Recepção interna","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"sala-reuniao","name":"Sala de reunião","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"cowork","name":"Espaço cowork","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"lounge","name":"Lounge","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"tv","name":"Sala de TV","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"garagem","name":"Garagem","icon":"car","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"lazer-interno","name":"Lazer","icon":"gym","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"piscina","name":"Piscina","description":"","images":["https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/9d32d0c9.jpg?impolicy=resizecrop&ra=fill&rh=575&rw=575","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]},{"id":"churrasqueira","name":"Churrasqueira","description":"","images":["https://cf.bstatic.com/xdata/images/hotel/max1024x768/530591456.jpg?hp=1&k=4c274cdf4bd33bdfde8ea7bf40170693d99330afca2b189442e2220b434de99e&o=","https://images.trvl-media.com/lodging/38000000/37200000/37198900/37198826/w6661h3000x6y0-9582d101.jpg?h=800&impolicy=fcrop&quality=medium&w=1200"]}]},{"id":"comodidades","name":"Comodidades","icon":"bell","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":""},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":""},{"id":"c3","name":"Wifi","description":""},{"id":"c4","name":"Dois elevadores panorâmicos","description":""},{"id":"c5","name":"Loja de conveniência no local","description":""},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":""},{"id":"c7","name":"Passadoria no 4º andar","description":""},{"id":"c8","name":"Voltagem 110V","description":""},{"id":"c9","name":"Áreas externas para fumantes","description":""}]},{"id":"normas","name":"Normas gerais","icon":"book","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":""},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":""},{"id":"n3","name":"Uma vaga de garagem por reserva","description":""},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":""},{"id":"n5","name":"Não aceitamos pets","description":""},{"id":"n6","name":"Uso de churrasqueira e sala de reunião apenas por locação","description":""}]},{"id":"mensalista","name":"Morador mensalista","icon":"pen","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300"}]}];
@@ -1277,6 +1277,9 @@ function editorialPublicationSignatureV246(data){
   // Signature only over editorial fields stored losslessly in CONTENT. Other tables intentionally
   // normalize their schemas in Apps Script, so hashing the entire browser snapshot would differ.
   const editorial={
+    categories:Array.isArray(data?.categories)?data.categories:[],
+    products:Array.isArray(data?.products)?data.products:[],
+    leisureGuide:Array.isArray(data?.leisureGuide)?data.leisureGuide:[],
     versatilGuide:Array.isArray(data?.versatilGuide)?data.versatilGuide:[],
     starlisGuide:Array.isArray(data?.starlisGuide)?data.starlisGuide:[],
     postalConfig:data?.postalConfig&&typeof data.postalConfig==='object'?data.postalConfig:{}
@@ -1356,7 +1359,7 @@ function applyRemotePublicDataV246(c,preserveLocal){
     return;
   }
 
-  // v2.46: after a confirmed publication (and on every client device), the public base is authoritative.
+  // v2.47: after a confirmed publication (and on every client device), the public base is authoritative.
   // This prevents built-in/default descriptions such as "1 cama de solteiro" from masking Admin text.
   if(Array.isArray(c.rooms))db.rooms=cloneRemoteV246(c.rooms);
   if(Array.isArray(c.categories))db.categories=cloneRemoteV246(c.categories);
@@ -2739,13 +2742,13 @@ function openVersatilImageV227(src,title='Imagem'){
   document.body.insertAdjacentHTML('beforeend',`<div id="versatilImageViewerV227" class="versatil-image-viewer-v227" onclick="if(event.target===this)this.remove()"><div class="versatil-image-viewer-box-v227"><button class="versatil-image-viewer-close-v227" type="button" onclick="document.getElementById('versatilImageViewerV227')?.remove()">×</button><img src="${esc(src)}" alt="${esc(title)}"></div></div>`);
 }
 function versatilGuidePage(){
-  const sections=(db.versatilGuide||[]).slice().sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'pt-BR',{sensitivity:'base'}));
+  const sections=(db.versatilGuide||[]).filter(sec=>String(sec?.id||'').toLowerCase()!=='normas'&&String(sec?.name||'').trim().toLowerCase()!=='normas gerais').slice().sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'pt-BR',{sensitivity:'base'}));
   return `<div class="card institutional-page">${pageTitleV185('Conheça o Versátil',versatilIcon())}<p class="muted">Estrutura, acomodações e informações úteis durante a sua estada.</p></div>
     ${sections.map(sec=>{
       const secName=String(sec.name||'').trim().toLowerCase();
       const sharedGallery=(secName==='acomodações'||secName==='áreas comuns');
       return `<details class="institution-detail ${sharedGallery?'versatil-gallery-category-v231':''}"><summary class="unified-category-control-v210">${versatilCategoryIconV179(sec)}<span>${esc(sec.name)}</span><span>⌄</span></summary>
-      <div class="institution-inside">${versatilItemsOrderedV179(sec).map(item=>{
+      <div class="institution-inside">${currentSingleImageV247(sec)?`<div class="institution-category-image-v247"><img src="${esc(currentSingleImageV247(sec))}" alt="${esc(sec.name||'Categoria')}"></div>`:''}${versatilItemsOrderedV179(sec).map(item=>{
         const imgs=versatilItemImagesV227(item);
         return `<details class="institution-item institution-item-v227"><summary>${versatilItemIconV179(item)}<span class="institution-item-title">${esc(item.name)}</span><span>⌄</span></summary>
           <div class="institution-item-body institution-item-body-v227">
@@ -2797,6 +2800,7 @@ function starlisGuidePage(){
     ${sections.map(sec=>`<details class="institution-detail starlis-category-v235">
       <summary class="unified-category-control-v210">${starlisCategoryIconV235(sec)}<span>${esc(sec.name||'Categoria')}</span><span>⌄</span></summary>
       <div class="institution-inside">
+        ${currentSingleImageV247(sec)?`<div class="institution-category-image-v247"><img src="${esc(currentSingleImageV247(sec))}" alt="${esc(sec.name||'Categoria')}"></div>`:''}
         ${(Array.isArray(sec.items)?sec.items:[]).map(item=>{
           const imgs=versatilItemImagesV227(item);
           return `<details class="institution-item institution-item-v227 starlis-item-v235">
@@ -3004,6 +3008,15 @@ function showSignoutPopupV170(){
 
 
 
+function normasSectionV247(){
+  const list=db.versatilGuide||[];
+  return list.find(s=>String(s?.id||'').toLowerCase()==='normas')
+    ||list.find(s=>String(s?.name||'').trim().toLowerCase()==='normas gerais')
+    ||null;
+}
+function normasHeaderLabelV247(){
+  return normasSectionV247()?.name||'Normas gerais';
+}
 function openNormasFromHeaderV176(btn){
   try{sessionStorage.setItem('normas_header_animation_stopped','1')}catch(e){}
   if(btn)btn.classList.add('normas-animation-stopped');
@@ -3041,7 +3054,7 @@ function appView(){
     <div class="header-col header-col-actions">
       ${admin?`<button class="btn header-publish-btn header-action-v175" onclick="publishWithLoading()">Publicar alterações</button>`:''}
       <button type="button" class="btn header-signout-btn header-action-v175" onclick="return signout(event)">Sair</button>
-      ${admin?centralStatusHtml():`<button class="header-normas-btn header-action-v175 ${normasHeaderAnimationStoppedV176()?'normas-animation-stopped':''}" onclick="openNormasFromHeaderV176(this)">Normas gerais</button>`}
+      ${admin?centralStatusHtml():`<button class="header-normas-btn header-action-v175 ${normasHeaderAnimationStoppedV176()?'normas-animation-stopped':''}" onclick="openNormasFromHeaderV176(this)">${esc(normasHeaderLabelV247())}</button>`}
     </div>
   </header><div class="wrap">${admin?adminView():clientView()}</div>`;
 }
@@ -3062,9 +3075,9 @@ function signout(ev){
 
 function normasGeraisPage(){
   ensureNormasV174();
-  const sec=(db.versatilGuide||[]).find(s=>String(s.name||'').toLowerCase()==='normas gerais');
+  const sec=normasSectionV247();
   const items=(sec?.items||[]).slice().sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'pt-BR',{sensitivity:'base'}));
-  return `<div class="card institutional-page normas-page-head"><div class="row between"><div>${pageTitleV185('Normas gerais','📖')}<p class="muted">Informações importantes para uma boa convivência durante sua estada.</p></div><button class="btn" onclick="page='catalog';render()">Voltar</button></div></div>
+  return `<div class="card institutional-page normas-page-head"><div class="row between"><div>${pageTitleV185(sec?.name||'Normas gerais',versatilCategoryIconV179(sec||{name:'Normas gerais',icon:'📖'}))}<p class="muted">Informações importantes para uma boa convivência durante sua estada.</p></div><button class="btn" onclick="page='catalog';render()">Voltar</button></div></div>
   <div class="normas-page-list">${items.map(item=>`<details class="institution-item normas-direct-item"><summary>${versatilItemIconV179(item)}<span class="institution-item-title">${esc(item.name)}</span><span>⌄</span></summary><div class="institution-item-body"><p>${esc(item.description||item.name).replace(/\n/g,'<br>')}</p></div></details>`).join('')}</div>`;
 }
 function clientView(){
@@ -3118,6 +3131,7 @@ function clientCategoryChangeButton(){
 
 const ADMIN_ICON_SIZE_V232=256;
 let adminIconDraftV232='';
+let adminIconUploadPendingV247=Promise.resolve();
 
 function customIconDataV232(obj){
   return String(obj?.iconImage||obj?.customIcon||'').trim();
@@ -3172,16 +3186,20 @@ async function handleAdminIconUploadV232(input,previewId){
   const file=input?.files?.[0];if(!file)return;
   const preview=document.getElementById(previewId);
   if(preview)preview.innerHTML='<span class="small muted">Otimizando ícone...</span>';
-  try{
-    const optimized=await optimizeIconFileV232(file);
-    adminIconDraftV232=await storeImageDataV234(optimized);
-    renderAdminIconPreviewV232(previewId,adminIconDraftV232);
-  }catch(err){
-    console.error(err);adminIconDraftV232='';
-    if(input)input.value='';
-    alert(err?.message||'Não foi possível processar o ícone.');
-    renderAdminIconPreviewV232(previewId,'');
-  }
+  adminIconUploadPendingV247=(async()=>{
+    try{
+      const optimized=await optimizeIconFileV232(file);
+      adminIconDraftV232=await storeImageDataV234(optimized);
+      renderAdminIconPreviewV232(previewId,adminIconDraftV232);
+      hydrateStoredImagesInDomV234(preview);
+    }catch(err){
+      console.error(err);adminIconDraftV232='';
+      if(input)input.value='';
+      alert(err?.message||'Não foi possível processar o ícone.');
+      renderAdminIconPreviewV232(previewId,'');
+    }
+  })();
+  await adminIconUploadPendingV247;
 }
 function renderAdminIconPreviewV232(previewId,src,fallbackHtml=''){
   const box=document.getElementById(previewId);if(!box)return;
@@ -3190,6 +3208,40 @@ function renderAdminIconPreviewV232(previewId,src,fallbackHtml=''){
 function clearAdminIconDraftV232(previewId,fallbackHtml=''){
   adminIconDraftV232='';
   renderAdminIconPreviewV232(previewId,'',fallbackHtml);
+}
+
+let adminSingleImageDraftV247='';
+let adminSingleImageUploadPendingV247=Promise.resolve();
+function currentSingleImageV247(obj){
+  return String(obj?.image||obj?.imageUrl||(Array.isArray(obj?.images)?obj.images[0]:'')||'').trim();
+}
+function beginSingleImageEditorV247(obj){adminSingleImageDraftV247=currentSingleImageV247(obj)}
+function renderSingleImagePreviewV247(previewId){
+  const box=document.getElementById(previewId);if(!box)return;
+  const src=String(adminSingleImageDraftV247||'').trim();
+  box.classList.toggle('has-image',!!src);
+  box.innerHTML=src?`<img src="${esc(src)}" class="admin-image-preview-v224" alt=""><button type="button" class="btn red small" onclick="clearSingleImageV247('${previewId}')">Remover imagem</button>`:'<span class="small muted">Nenhuma imagem carregada.</span>';
+  hydrateStoredImagesInDomV234(box);
+}
+async function handleSingleImageUploadV247(input,previewId){
+  const file=input?.files?.[0];if(!file)return;
+  const box=document.getElementById(previewId);if(box)box.innerHTML='<span class="small muted">Otimizando imagem...</span>';
+  adminSingleImageUploadPendingV247=(async()=>{
+    try{
+      const optimized=await optimizeImageBlobV229(file);
+      adminSingleImageDraftV247=await storeImageDataV234(optimized);
+      renderSingleImagePreviewV247(previewId);
+    }catch(err){
+      console.error(err);if(input)input.value='';alert('Não foi possível processar esta imagem.');renderSingleImagePreviewV247(previewId);
+    }
+  })();
+  await adminSingleImageUploadPendingV247;
+}
+function clearSingleImageV247(previewId){adminSingleImageDraftV247='';renderSingleImagePreviewV247(previewId)}
+function singleImageFieldV247(obj,previewId,label='Imagem'){
+  beginSingleImageEditorV247(obj);
+  const src=adminSingleImageDraftV247;
+  return `<div class="admin-single-image-v247"><label>${esc(label)}</label><div id="${previewId}" class="admin-image-preview-wrap-v224 ${src?'has-image':''}">${src?`<img src="${esc(src)}" class="admin-image-preview-v224" alt=""><button type="button" class="btn red small" onclick="clearSingleImageV247('${previewId}')">Remover imagem</button>`:'<span class="small muted">Nenhuma imagem carregada.</span>'}</div><input type="file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleSingleImageUploadV247(this,'${previewId}')"><div class="small muted">Uma imagem. O arquivo é redimensionado, comprimido e armazenado no app.</div></div>`;
 }
 function adminIconFieldV232(currentObj,previewId='admin_icon_preview_v232',inputId='admin_icon_file_v232',fallbackHtml=''){
   adminIconDraftV232=customIconDataV232(currentObj);
@@ -3219,7 +3271,9 @@ function clientProductAccordionBodyV211(p){
   const noAvailability=(requiresPeriod||daily)&&!slots.length;
   const lockQty=isPackage||requiresPeriod||daily||p.id==='diarista';
 
+  const productImage=currentSingleImageV247(p);
   return `<div class="client-product-body-content-v211 restored-product-body-v221">
+    ${productImage?`<div class="client-product-image-v247"><img src="${esc(productImage)}" alt="${esc(p.name||'Produto')}"></div>`:''}
     <p class="client-product-description">${esc(p.desc||'')}</p>
     <div class="client-product-price restored-price-v221">${unavailable?'Preço a cadastrar':money(price)}</div>
     ${packageSavingsHtml(p)}
@@ -3297,6 +3351,7 @@ function catalogPage(){
         <span class="unified-category-arrow-v210" aria-hidden="true">⌄</span>
       </summary>
       <div class="client-category-inside-v211">
+        ${currentSingleImageV247(c)?`<div class="client-category-image-v247"><img src="${esc(currentSingleImageV247(c))}" alt="${esc(c.name||'Categoria')}"></div>`:''}
         ${products.length?products.map(productRow).join(''):'<p class="muted client-category-empty-v211">Nenhum produto disponível nesta categoria.</p>'}
       </div>
     </details>`;
@@ -4086,6 +4141,7 @@ function openLeisureEditor(nodeId='',presetParent=''){
   const old=(db.leisureGuide||[]).find(n=>n.id===nodeId)||{id:'',parentId:presetParent,type:'place',name:'',description:'',distance:'',phone:'',imageUrl:'',mapQuery:'',sort:(db.leisureGuide||[]).length+1};
   adminIconDraftV232=customIconDataV232(old);
   leisureIconDraftV242=customIconDataV232(old);
+  beginSingleImageEditorV247({image:old.imageUrl||old.image||''});
   const modal=document.createElement('div');
   modal.id='leisureEditorModal'; modal.className='modal-overlay';
   modal.innerHTML=`<div class="modal-card leisure-editor-modal">
@@ -4103,14 +4159,13 @@ function openLeisureEditor(nodeId='',presetParent=''){
       <div id="lz_icon_status_v242" class="small muted leisure-icon-status-v242">${customIconDataV232(old)?'Ícone personalizado atual carregado.':'Selecione uma imagem para esta categoria/subcategoria.'}</div>
       <button type="button" class="btn small" onclick="clearLeisureIconV242()">Restaurar ícone padrão</button>
     </div>
+    ${singleImageFieldV247({image:old.imageUrl||old.image||''},'lz_image_preview_v247','Imagem do item / menu')}
     <div id="lz_place_fields">
       <div class="field"><label>Descrição</label><textarea id="lz_description" rows="4">${esc(old.description||'')}</textarea></div>
       <div class="grid">
         <div class="field"><label>Distância do Versátil</label><input id="lz_distance" value="${esc(old.distance||'')}"></div>
         <div class="field"><label>Telefone</label><input id="lz_phone" value="${esc(old.phone||'')}"></div>
       </div>
-      <div class="field"><label>Imagem / thumbnail — URL</label><input id="lz_image" value="${esc(old.imageUrl||'')}" oninput="previewAdminImageV224('lz_image','lz_image_preview')"></div>
-      <div id="lz_image_preview" class="admin-image-preview-wrap-v224">${old.imageUrl?`<img src="${esc(old.imageUrl)}" class="admin-image-preview-v224" alt="">`:''}</div>
       <div class="field"><label>Google Maps — busca ou link</label><input id="lz_map" value="${esc(old.mapQuery||old.name||'')}"></div>
     </div>
     <div class="row between" style="margin-top:16px"><span class="small muted">Salve e depois publique pelo cabeçalho.</span><button class="btn primary" onclick="saveLeisureNode('${old.id}')">Salvar</button></div>
@@ -4122,6 +4177,7 @@ function updateLeisureEditorType(){
   if(b)b.style.display=document.getElementById('lz_type')?.value==='place'?'block':'none';
 }
 async function saveLeisureNode(nodeId=''){
+  await adminSingleImageUploadPendingV247;
   const type=document.getElementById('lz_type')?.value||'place';
   const name=document.getElementById('lz_name')?.value.trim()||'';
   if(!name){alert('Informe o nome.');return}
@@ -4129,11 +4185,10 @@ async function saveLeisureNode(nodeId=''){
     description:type==='place'?(document.getElementById('lz_description')?.value.trim()||''):'',
     distance:type==='place'?(document.getElementById('lz_distance')?.value.trim()||''):'',
     phone:type==='place'?(document.getElementById('lz_phone')?.value.trim()||''):'',
-    imageUrl:document.getElementById('lz_image')?.value.trim()||'',
+    imageUrl:adminSingleImageDraftV247||'',
     iconImage:leisureIconDraftV242||'',
     mapQuery:type==='place'?(document.getElementById('lz_map')?.value.trim()||name):'',
     sort:Number(document.getElementById('lz_sort')?.value||1)};
-  if(node.imageUrl)node.imageUrl=await urlToStoredImageV227(node.imageUrl);
   if(!Array.isArray(db.leisureGuide))db.leisureGuide=[];
   const i=db.leisureGuide.findIndex(n=>n.id===nodeId);
   if(i>=0)db.leisureGuide[i]=node;else db.leisureGuide.push(node);
@@ -4328,6 +4383,7 @@ function openStarlisCategoryEditorV235(index=-1){
   ensureStarlisStructureV235();
   const old=index>=0?(db.starlisGuide[index]||{}):{};
   adminIconDraftV232=customIconDataV232(old);
+  beginSingleImageEditorV247(old);
   document.getElementById('starlisCategoryModalV235')?.remove();
   const m=document.createElement('div');m.id='starlisCategoryModalV235';m.className='modal-overlay';
   m.innerHTML=`<div class="modal-card leisure-editor-modal">
@@ -4340,16 +4396,18 @@ function openStarlisCategoryEditorV235(index=-1){
       <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleAdminIconUploadV232(this,'sc_icon_preview_v235')">
       <button type="button" class="btn small" onclick="clearAdminIconDraftV232('sc_icon_preview_v235')">Restaurar ícone padrão</button>
     </div>
+    ${singleImageFieldV247(old,'sc_image_preview_v247','Imagem da categoria')}
     <button class="btn primary" onclick="saveStarlisCategoryV235(${index})">Salvar</button>
   </div>`;
   document.body.appendChild(m);
 }
-function saveStarlisCategoryV235(index=-1){
+async function saveStarlisCategoryV235(index=-1){
+  await Promise.all([adminIconUploadPendingV247,adminSingleImageUploadPendingV247]);
   ensureStarlisStructureV235();
   const name=document.getElementById('sc_name_v235')?.value.trim()||'';
   if(!name)return alert('Informe o nome da categoria.');
   const old=index>=0?(db.starlisGuide[index]||{}):{};
-  const obj={...old,id:old.id||id(),name,description:document.getElementById('sc_desc_v235')?.value.trim()||'',iconImage:adminIconDraftV232||'',items:Array.isArray(old.items)?old.items:[]};
+  const obj={...old,id:old.id||id(),name,description:document.getElementById('sc_desc_v235')?.value.trim()||'',iconImage:adminIconDraftV232||'',image:adminSingleImageDraftV247||'',items:Array.isArray(old.items)?old.items:[]};
   if(index>=0)db.starlisGuide[index]=obj;else db.starlisGuide.push(obj);
   save();markAdminLocalDirtyV226();document.getElementById('starlisCategoryModalV235')?.remove();render();
 }
@@ -4458,6 +4516,7 @@ function openContentEditorV170(kind,index=-1){
   const arr=kind==='versatil'?(db.versatilGuide||[]):(db.starlisGuide||[]);
   const x=index>=0?arr[index]:{};
   adminIconDraftV232=customIconDataV232(x);
+  beginSingleImageEditorV247(x);
   document.getElementById('contentV170Modal')?.remove();
   const m=document.createElement('div');m.id='contentV170Modal';m.className='modal-overlay';
   m.innerHTML=`<div class="modal-card leisure-editor-modal"><div class="row between"><h2>${index>=0?'Editar':'Adicionar'} item</h2><button class="btn" onclick="document.getElementById('contentV170Modal')?.remove()">Fechar</button></div>
@@ -4469,23 +4528,23 @@ function openContentEditorV170(kind,index=-1){
       <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleAdminIconUploadV232(this,'cv_icon_preview_v232')">
       <button type="button" class="btn small" onclick="clearAdminIconDraftV232('cv_icon_preview_v232')">Restaurar ícone padrão</button>
     </div>
-    ${kind==='starlis'?`<div class="field"><label>Imagem / thumbnail — URL</label><input id="cv_image" value="${esc(x.image||'')}" oninput="previewAdminImageV224('cv_image','cv_image_preview')"></div><div id="cv_image_preview" class="admin-image-preview-wrap-v224">${x.image?`<img src="${esc(x.image)}" class="admin-image-preview-v224" alt="">`:''}</div><div class="field"><label>Busca Google Maps</label><input id="cv_map" value="${esc(x.map||'')}"></div><div class="field"><label>Link reservar</label><input id="cv_reserve" value="${esc(x.reserve||'')}"></div>`:`<div class="field"><label>Tipo</label><select id="cv_type"><option value="gallery" ${x.type==='gallery'?'selected':''}>Galeria</option><option value="text" ${x.type==='text'?'selected':''}>Texto</option></select></div>`}
+    ${singleImageFieldV247(x,'cv_image_preview_v247','Imagem da categoria')}
+    ${kind==='starlis'?`<div class="field"><label>Busca Google Maps</label><input id="cv_map" value="${esc(x.map||'')}"></div><div class="field"><label>Link reservar</label><input id="cv_reserve" value="${esc(x.reserve||'')}"></div>`:`<div class="field"><label>Tipo</label><select id="cv_type"><option value="gallery" ${x.type==='gallery'?'selected':''}>Galeria</option><option value="text" ${x.type==='text'?'selected':''}>Texto</option></select></div>`}
     <button class="btn primary" onclick="saveContentV170('${kind}',${index})">Salvar</button></div>`;
   document.body.appendChild(m);
 }
 async function saveContentV170(kind,index){
+  await Promise.all([adminIconUploadPendingV247,adminSingleImageUploadPendingV247]);
   const arr=kind==='versatil'?(db.versatilGuide||[]):(db.starlisGuide||[]);
   const old=index>=0?arr[index]:{};
   const obj={...old,id:old.id||id(),name:document.getElementById('cv_name')?.value.trim()||'',description:document.getElementById('cv_desc')?.value.trim()||'',iconImage:adminIconDraftV232||''};
   if(kind==='starlis'){
-    obj.image=document.getElementById('cv_image')?.value.trim()||obj.image||'';
-    if(obj.image)obj.image=await urlToStoredImageV227(obj.image);
+    obj.image=adminSingleImageDraftV247||'';
     obj.map=document.getElementById('cv_map')?.value.trim()||'';
     obj.reserve=document.getElementById('cv_reserve')?.value.trim()||'';
   }else{
     obj.type=document.getElementById('cv_type')?.value||'text';
-    obj.image=document.getElementById('cv_image')?.value.trim()||obj.image||'';
-    if(obj.image)obj.image=await urlToStoredImageV227(obj.image);
+    obj.image=adminSingleImageDraftV247||'';
     if(!Array.isArray(obj.items))obj.items=[];
   }
   if(!obj.name)return alert('Informe o nome.');
@@ -4931,6 +4990,7 @@ function openCategoryEditorV232(cid=''){
   const old=(db.categories||[]).find(x=>x.id===cid)||{id:'',name:'',icon:'📌',description:'',iconImage:''};
   document.getElementById('categoryEditorV232')?.remove();
   adminIconDraftV232=customIconDataV232(old);
+  beginSingleImageEditorV247(old);
   const fallback=`<span class="catalog-category-icon-v183 small">${old.icon||'📌'}</span>`;
   const m=document.createElement('div');m.id='categoryEditorV232';m.className='modal-overlay';
   m.innerHTML=`<div class="modal-card leisure-editor-modal">
@@ -4945,15 +5005,17 @@ function openCategoryEditorV232(cid=''){
       <div class="small muted">Dimensão padrão automática. O arquivo é otimizado antes de armazenar.</div>
       <button type="button" class="btn small" onclick="clearAdminIconDraftV232('cat_icon_preview_v232',${JSON.stringify(fallback)})">Restaurar ícone padrão</button>
     </div>
+    ${singleImageFieldV247(old,'cat_image_preview_v247','Imagem da categoria')}
     <button class="btn primary" onclick="saveCategoryEditorV232('${old.id}')">Salvar</button>
   </div>`;
   document.body.appendChild(m);
 }
-function saveCategoryEditorV232(cid=''){
+async function saveCategoryEditorV232(cid=''){
+  await Promise.all([adminIconUploadPendingV247,adminSingleImageUploadPendingV247]);
   const name=document.getElementById('cat_name_v232')?.value.trim()||'';
   if(!name)return alert('Informe o nome da categoria.');
   const old=(db.categories||[]).find(x=>x.id===cid);
-  const obj={...(old||{}),id:cid||id(),name,description:document.getElementById('cat_desc_v232')?.value.trim()||'',icon:document.getElementById('cat_emoji_v232')?.value.trim()||'📌',iconImage:adminIconDraftV232||''};
+  const obj={...(old||{}),id:cid||id(),name,description:document.getElementById('cat_desc_v232')?.value.trim()||'',icon:document.getElementById('cat_emoji_v232')?.value.trim()||'📌',iconImage:adminIconDraftV232||'',image:adminSingleImageDraftV247||''};
   if(old)Object.assign(old,obj);else db.categories.push(obj);
   save();localStorage.setItem('versatil_admin_unsaved_public_changes','1');
   document.getElementById('categoryEditorV232')?.remove();render();
@@ -5064,9 +5126,10 @@ function preserveCafeDefaultV149(){
 function addProductAdmin(){openProductEditorV232('')}
 function editProductAdmin(pid){openProductEditorV232(pid)}
 function openProductEditorV232(pid=''){
-  const old=(db.products||[]).find(x=>x.id===pid)||{id:'',cat:(db.categories||[])[0]?.id||'',name:'',desc:'',q:0,a:0,icon:'🧰',iconImage:''};
+  const old=(db.products||[]).find(x=>x.id===pid)||{id:'',cat:(db.categories||[])[0]?.id||'',name:'',desc:'',q:0,a:0,icon:'🧰',iconImage:'',image:''};
   document.getElementById('productEditorV232')?.remove();
   adminIconDraftV232=customIconDataV232(old);
+  beginSingleImageEditorV247(old);
   const fallback=`<span class="admin-product-icon">${productIconV181({...old,iconImage:''})||old.icon||'🧰'}</span>`;
   const m=document.createElement('div');m.id='productEditorV232';m.className='modal-overlay';
   m.innerHTML=`<div class="modal-card leisure-editor-modal">
@@ -5083,15 +5146,17 @@ function openProductEditorV232(pid=''){
       <div class="small muted">O ícone será otimizado e ajustado automaticamente ao tamanho padrão do app.</div>
       <button type="button" class="btn small" onclick="clearAdminIconDraftV232('prod_icon_preview_v232',${JSON.stringify(fallback)})">Restaurar ícone padrão</button>
     </div>
+    ${singleImageFieldV247(old,'prod_image_preview_v247','Imagem do produto')}
     <button class="btn primary" onclick="saveProductEditorV232('${old.id}')">Salvar</button>
   </div>`;
   document.body.appendChild(m);
 }
-function saveProductEditorV232(pid=''){
+async function saveProductEditorV232(pid=''){
+  await Promise.all([adminIconUploadPendingV247,adminSingleImageUploadPendingV247]);
   const name=document.getElementById('prod_name_v232')?.value.trim()||'';
   if(!name)return alert('Informe o nome do produto.');
   const old=(db.products||[]).find(x=>x.id===pid);
-  const obj={...(old||{}),id:pid||id(),cat:document.getElementById('prod_cat_v232')?.value||'',name,desc:document.getElementById('prod_desc_v232')?.value.trim()||'',q:Number(document.getElementById('prod_q_v232')?.value||0),a:Number(document.getElementById('prod_a_v232')?.value||0),icon:document.getElementById('prod_emoji_v232')?.value.trim()||'🧰',iconImage:adminIconDraftV232||''};
+  const obj={...(old||{}),id:pid||id(),cat:document.getElementById('prod_cat_v232')?.value||'',name,desc:document.getElementById('prod_desc_v232')?.value.trim()||'',q:Number(document.getElementById('prod_q_v232')?.value||0),a:Number(document.getElementById('prod_a_v232')?.value||0),icon:document.getElementById('prod_emoji_v232')?.value.trim()||'🧰',iconImage:adminIconDraftV232||'',image:adminSingleImageDraftV247||''};
   if(old)Object.assign(old,obj);else db.products.push(obj);
   save();localStorage.setItem('versatil_admin_unsaved_public_changes','1');
   if(obj.id==='cafe')preserveCafeDefaultV149();

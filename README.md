@@ -1,3 +1,13 @@
+# APP SERVIÇOS VERSÁTIL v2.47 — Edição unificada
+
+Correções desta versão:
+- “Normas gerais” deixa de aparecer duplicada em Conheça o Versátil e permanece acessível pelo botão do cabeçalho, ligado à categoria real por ID.
+- Títulos de categorias continuam editáveis e passam a compartilhar a mesma lógica de edição de conteúdo, ícone e imagem.
+- Categorias do Catálogo, Conheça o Versátil, Conheça a Starlis e itens de Lazer podem ter imagem carregada por upload e ícone carregado.
+- Produtos do Catálogo agora aceitam uma única imagem por upload, otimizada e armazenada no mesmo mecanismo das imagens de Conheça o Versátil.
+- O ícone personalizado do produto tem prioridade sobre o ícone padrão e é preservado ao salvar.
+- Não substitua data.json manualmente ao publicar esta versão.
+
 # APP SERVIÇOS VERSÁTIL — v2.46
 
 Correção de sincronização de conteúdo editorial. A base pública passa a ser autoritativa em dispositivos sem alterações Admin pendentes, impedindo que textos-padrão locais sobrescrevam descrições publicadas em Conheça o Versátil. Em dispositivos com edição Admin ainda não publicada, o conteúdo local continua preservado. A confirmação de publicação agora também compara a assinatura do snapshot público completo, incluindo os textos editoriais.
