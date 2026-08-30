@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.45';
+const APP_VERSION='2.46';
 const APP_BUILD='1790-reference-icons-exclusive-details';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -1273,6 +1273,20 @@ function productPublicationSignatureV203(products){
   for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}
   return (h>>>0).toString(16);
 }
+function editorialPublicationSignatureV246(data){
+  // Signature only over editorial fields stored losslessly in CONTENT. Other tables intentionally
+  // normalize their schemas in Apps Script, so hashing the entire browser snapshot would differ.
+  const editorial={
+    versatilGuide:Array.isArray(data?.versatilGuide)?data.versatilGuide:[],
+    starlisGuide:Array.isArray(data?.starlisGuide)?data.starlisGuide:[],
+    postalConfig:data?.postalConfig&&typeof data.postalConfig==='object'?data.postalConfig:{}
+  };
+  let str='';
+  try{str=JSON.stringify(editorial)}catch(e){str=String(editorial||'')}
+  let h=2166136261;
+  for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}
+  return (h>>>0).toString(16)+':'+str.length;
+}
 function publicationIdV245(){
   try{return crypto.randomUUID()}catch(e){return 'pub_'+Date.now()+'_'+Math.random().toString(36).slice(2)}
 }
@@ -1282,7 +1296,8 @@ function setPendingPublicPublication(snapshot=null){
     at:Date.now(),
     iso:new Date().toISOString(),
     publicationId:publicationIdV245(),
-    productsSignature:productPublicationSignatureV203(snap.products||[])
+    productsSignature:productPublicationSignatureV203(snap.products||[]),
+    editorialSignature:editorialPublicationSignatureV246(snap)
   };
   localStorage.setItem(PENDING_PUBLICATION_KEY,JSON.stringify(marker));
   return marker;
@@ -1311,6 +1326,46 @@ function markAdminLocalDirtyV226(){
 }
 function clearAdminLocalDirtyV226(){
   try{localStorage.removeItem(ADMIN_LOCAL_DIRTY_KEY_V226)}catch(e){}
+}
+
+function shouldPreserveLocalPublicEditsV246(){
+  try{
+    return adminLocalDirtyV226()
+      || localStorage.getItem('versatil_admin_unsaved_public_changes')==='1'
+      || !!getPendingPublicPublication();
+  }catch(e){return !!getPendingPublicPublication()}
+}
+function cloneRemoteV246(value){
+  try{return structuredClone(value)}catch(e){return JSON.parse(JSON.stringify(value))}
+}
+function applyRemotePublicDataV246(c,preserveLocal){
+  c=c&&typeof c==='object'?c:{};
+  if(preserveLocal){
+    // Admin edits that have not yet been confirmed publicly must remain authoritative on this device.
+    if(Array.isArray(c.rooms)&&c.rooms.length)db.rooms=conservativeRemoteMergeV238(db.rooms||[],c.rooms,'rooms');
+    if(Array.isArray(c.categories)&&c.categories.length)db.categories=conservativeRemoteMergeV238(db.categories||[],c.categories,'categories');
+    if(Array.isArray(c.products)&&c.products.length)db.products=conservativeRemoteMergeV238(db.products||[],c.products,'products');
+    if(Array.isArray(c.availabilityClosures))db.availabilityClosures=conservativeRemoteMergeV238(db.availabilityClosures||[],c.availabilityClosures,'closures');
+    if(Array.isArray(c.leisureGuide)&&c.leisureGuide.length)db.leisureGuide=conservativeRemoteMergeV238(db.leisureGuide||[],c.leisureGuide,'leisure');
+    if(Array.isArray(c.versatilGuide)&&c.versatilGuide.length)db.versatilGuide=conservativeRemoteMergeV238(db.versatilGuide||[],c.versatilGuide,'versatil');
+    if(Array.isArray(c.starlisGuide)&&c.starlisGuide.length)db.starlisGuide=conservativeRemoteMergeV238(normalizeStarlisStructureV235(db.starlisGuide||[]),normalizeStarlisStructureV235(c.starlisGuide),'starlis');
+    if(c.postalConfig&&typeof c.postalConfig==='object')db.postalConfig={...(c.postalConfig||{}),...(db.postalConfig||{})};
+    recoverVersatilV238();
+    recoverStarlisV238();
+    purgeDeletedEntitiesV243();
+    return;
+  }
+
+  // v2.46: after a confirmed publication (and on every client device), the public base is authoritative.
+  // This prevents built-in/default descriptions such as "1 cama de solteiro" from masking Admin text.
+  if(Array.isArray(c.rooms))db.rooms=cloneRemoteV246(c.rooms);
+  if(Array.isArray(c.categories))db.categories=cloneRemoteV246(c.categories);
+  if(Array.isArray(c.products))db.products=cloneRemoteV246(c.products);
+  if(Array.isArray(c.availabilityClosures))db.availabilityClosures=cloneRemoteV246(c.availabilityClosures);
+  if(Array.isArray(c.leisureGuide))db.leisureGuide=cloneRemoteV246(c.leisureGuide);
+  if(Array.isArray(c.versatilGuide))db.versatilGuide=cloneRemoteV246(c.versatilGuide);
+  if(Array.isArray(c.starlisGuide))db.starlisGuide=normalizeStarlisStructureV235(cloneRemoteV246(c.starlisGuide));
+  if(c.postalConfig&&typeof c.postalConfig==='object')db.postalConfig=cloneRemoteV246(c.postalConfig);
 }
 
 async function loadCentralData(options={}){
@@ -1349,20 +1404,8 @@ async function loadCentralData(options={}){
       }
     }
 
-    // v2.38: remote sync may add/complete content, but never remove or replace
-    // Admin content already present on this device.
-    if(Array.isArray(c.rooms)&&c.rooms.length)db.rooms=conservativeRemoteMergeV238(db.rooms||[],c.rooms,'rooms');
-    if(Array.isArray(c.categories)&&c.categories.length)db.categories=conservativeRemoteMergeV238(db.categories||[],c.categories,'categories');
-    if(Array.isArray(c.products)&&c.products.length)db.products=conservativeRemoteMergeV238(db.products||[],c.products,'products');
-    if(Array.isArray(c.availabilityClosures))db.availabilityClosures=conservativeRemoteMergeV238(db.availabilityClosures||[],c.availabilityClosures,'closures');
-    if(Array.isArray(c.leisureGuide)&&c.leisureGuide.length)db.leisureGuide=conservativeRemoteMergeV238(db.leisureGuide||[],c.leisureGuide,'leisure');
-    if(Array.isArray(c.versatilGuide)&&c.versatilGuide.length)db.versatilGuide=conservativeRemoteMergeV238(db.versatilGuide||[],c.versatilGuide,'versatil');
-    if(Array.isArray(c.starlisGuide)&&c.starlisGuide.length)db.starlisGuide=conservativeRemoteMergeV238(normalizeStarlisStructureV235(db.starlisGuide||[]),normalizeStarlisStructureV235(c.starlisGuide),'starlis');
-    if(c.postalConfig&&typeof c.postalConfig==='object')db.postalConfig={...(c.postalConfig||{}),...(db.postalConfig||{})};
-
-    recoverVersatilV238();
-    recoverStarlisV238();
-    purgeDeletedEntitiesV243();
+    const preserveLocalPublicEdits=shouldPreserveLocalPublicEditsV246();
+    applyRemotePublicDataV246(c,preserveLocalPublicEdits);
     db.centralVersion=p.version||'';
     db.centralUpdatedAt=p.publishedAt||p.updatedAt||'';
     await migrateEmbeddedImagesV234(db);
@@ -1428,6 +1471,9 @@ async function verifyPendingPublicationV203(attempt=0,options={}){
     // v2.45: confirmation is tied to this exact publication, not only to products or timestamp.
     const remotePublicationId=String(p.publicationId||'');
     const exactPublication=!!pending.publicationId && remotePublicationId===String(pending.publicationId);
+    const expectedEditorialSignature=String(pending.editorialSignature||'');
+    const remoteEditorialSignature=expectedEditorialSignature?editorialPublicationSignatureV246(p?.data||{}):'';
+    const sameEditorial=!expectedEditorialSignature || remoteEditorialSignature===expectedEditorialSignature;
 
     // Backward compatibility for a publication started by an older version.
     const remoteProducts=p?.data?.products||[];
@@ -1435,7 +1481,7 @@ async function verifyPendingPublicationV203(attempt=0,options={}){
     const newEnough=remotePublicationIsNewEnough(p.updatedAt,pending);
     const legacyConfirmed=!pending.publicationId && sameProducts && newEnough;
 
-    if(exactPublication||legacyConfirmed){
+    if((exactPublication&&sameEditorial&&sameProducts)||legacyConfirmed){
       clearPendingPublicPublication();
       clearAdminLocalDirtyV226();
       localStorage.removeItem('versatil_admin_unsaved_public_changes');

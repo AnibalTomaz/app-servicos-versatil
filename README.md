@@ -1,3 +1,7 @@
+# APP SERVIÇOS VERSÁTIL — v2.46
+
+Correção de sincronização de conteúdo editorial. A base pública passa a ser autoritativa em dispositivos sem alterações Admin pendentes, impedindo que textos-padrão locais sobrescrevam descrições publicadas em Conheça o Versátil. Em dispositivos com edição Admin ainda não publicada, o conteúdo local continua preservado. A confirmação de publicação agora também compara a assinatura do snapshot público completo, incluindo os textos editoriais.
+
 # APP SERVIÇOS VERSÁTIL — v1
 
 Protótipo funcional/PWA para contratação de serviços.
