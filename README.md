@@ -1,3 +1,14 @@
+# APP SERVIÇOS VERSÁTIL v2.48 — Ajustes Alimentação e edição
+
+Correções desta versão:
+- Em Lazer > Alimentação, o ícone de cada local aparece apenas no título; a foto cadastrada aparece somente ao abrir o item.
+- O Admin também mostra o ícone personalizado no título do local, sem reutilizar a foto como ícone.
+- O botão do cabeçalho permanece sempre com o texto compacto “Normas gerais”, enquanto o link continua abrindo a categoria real de Normas.
+- Títulos de Lazer/Conveniência passam a exibir exatamente o texto salvo pelo Admin; foram removidas normalizações que encurtavam “Alimentação” e outras categorias.
+- O salvamento de ícones em Lazer aguarda o processamento do arquivo antes de gravar, evitando perda do ícone ao clicar em Salvar rapidamente.
+- Fotos de locais mantêm o thumbnail atual: 170×120 px em desktop; 110×92 px em telas intermediárias; em celular estreito, largura total × 170 px.
+- Não contém data.json e não substitui a base pública atualizada.
+
 # APP SERVIÇOS VERSÁTIL v2.47 — Edição unificada
 
 Correções desta versão:
