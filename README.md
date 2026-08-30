@@ -1,3 +1,16 @@
+# APP SERVIÇOS VERSÁTIL v2.49 — Correio, Promocode e estabilidade
+
+Correções desta versão:
+- Correio Admin com 3 setores de imagens e 6 posições de acervo por setor (18 imagens no total), usando upload otimizado.
+- O postal usa uma composição de 3 imagens, uma por setor. As combinações são embaralhadas e não se repetem até o ciclo ser esgotado.
+- Promocode novo e aleatório a cada disparo, registrado na planilha PROMOCODES, vinculado ao e-mail do destinatário, validade de 3 meses e uso único.
+- Endpoint de validação para integração externa: promoCodeStatus (consulta) e validatePromoCode com consume=true (consumo).
+- Postal mantém proporção horizontal no celular; o layout não empilha mais as imagens.
+- Ícones das categorias do Catálogo passam a usar a mesma janela de cantos arredondados das demais áreas.
+- Corrigido o glitch da tela de acesso: uma sincronização em segundo plano não volta mais da aba Admin para Cliente.
+- Normas gerais correta volta a aparecer em Conheça o Versátil; apenas duplicatas excedentes são ocultadas, e o botão do cabeçalho abre a categoria canônica.
+- Não contém data.json e não substitui a base pública já publicada.
+
 # APP SERVIÇOS VERSÁTIL v2.48 — Ajustes Alimentação e edição
 
 Correções desta versão:

@@ -4975,3 +4975,40 @@ html,body{
   .leisure-place-title-icon-v248{width:30px!important;height:30px!important}
   .leisure-place-title-icon-v248 img,.leisure-place-title-icon-v248 .admin-custom-icon-v232{width:26px!important;height:26px!important;max-width:26px!important;max-height:26px!important}
 }
+
+/* v2.49 — Correio em formato horizontal, acervo de imagens e ícones arredondados */
+.client-category-card .catalog-category-icon-v183,
+.client-category-card .category-image-icon-v183,
+.client-category-card .unified-category-icon-v210{
+  border-radius:14px!important;
+  overflow:hidden!important;
+}
+.client-category-card .catalog-category-icon-v183 img,
+.client-category-card .category-image-icon-v183 img,
+.client-category-card .unified-category-icon-v210 img{
+  border-radius:inherit!important;
+}
+.postal-admin-sector-v249{margin:20px 0;padding:16px;border:1px solid #dbe5ed;border-radius:16px;background:#f8fbfd}
+.postal-admin-sector-v249 h3{margin:0 0 12px;color:#0f4c81}
+.postal-admin-vault-v249{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.postal-admin-slot-v249{background:#fff;border:1px solid #d8e2ea;border-radius:14px;padding:10px;min-width:0}
+.postal-admin-slot-preview-v249{height:125px;margin:8px 0;display:flex;align-items:center;justify-content:center;border:1px dashed #b8c8d5;border-radius:12px;overflow:hidden;position:relative;background:#f5f7f9}
+.postal-admin-slot-preview-v249 img{width:100%;height:100%;object-fit:cover}
+.postal-admin-slot-preview-v249 .btn{position:absolute;right:5px;bottom:5px}
+.postal-coupon small{display:block;margin-top:5px;font-size:10px;line-height:1.2}
+
+/* O postal nunca volta ao layout empilhado: mantém proporção horizontal também no celular. */
+@media(max-width:780px){
+  .postal-stage{width:100%!important;max-width:100%!important;margin:10px auto!important;overflow:visible!important}
+  .postal-card{width:100%!important;aspect-ratio:1.55/1!important;min-height:0!important}
+  .postal-back{display:grid!important;grid-template-columns:56% 44%!important;padding:10px 11px!important;overflow:hidden!important}
+  .postal-message-column{padding-right:10px!important;border-right:1px solid #777!important;border-bottom:0!important;margin-bottom:0!important;overflow:auto!important}
+  .postal-address-column{padding-left:10px!important;overflow:hidden!important}
+  .postal-front-grid{grid-template-columns:2fr 1fr!important;grid-template-rows:1fr!important;padding:5px!important;gap:5px!important}
+  .postal-versatil-stack{grid-template-rows:2fr 1fr!important;gap:5px!important}
+  .postal-hand,.postal-main-message,.postal-address,.postal-coupon,.postal-input{font-size:clamp(8px,2.2vw,12px)!important;line-height:1.18!important}
+  .postal-stamp-zone{transform:scale(.68);transform-origin:top right}
+  .postal-center-btn{transform:translate(-50%,-50%) scale(.82)!important}
+  .postal-admin-vault-v249{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:430px){.postal-admin-vault-v249{grid-template-columns:1fr}}
