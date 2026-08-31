@@ -1,3 +1,7 @@
+# APP SERVIÇOS VERSÁTIL — v2.50
+
+Ajustes: acesso Admin pela logo, tela de acesso sem piscada, postal móvel em tela cheia horizontal, identificação VERSÁTIL e recuperação/estabilização de Normas gerais. O pacote não contém data.json e não substitui a base pública publicada.
+
 # APP SERVIÇOS VERSÁTIL v2.49 — Correio, Promocode e estabilidade
 
 Correções desta versão:

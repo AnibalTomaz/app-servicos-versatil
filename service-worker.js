@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-49-correio-promocode-ajustes";
+const CACHE="versatil-v2-50-acesso-postal-normas";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2490',
-  './app.js?v=2490',
+  './style.css?v=2500',
+  './app.js?v=2500',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
@@ -42,7 +42,7 @@ self.addEventListener('fetch',event=>{
     return;
   }
 
-  // v2.49: data.json is always network-only. Cache-busting query strings previously
+  // v2.50: data.json is always network-only. Cache-busting query strings previously
   // created hundreds of multi-megabyte copies and exhausted browser quota.
   if(sameOrigin && url.pathname.endsWith('/data.json')){
     event.respondWith(fetch(event.request,{cache:'no-store'}));

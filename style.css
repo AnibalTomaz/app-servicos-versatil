@@ -5012,3 +5012,49 @@ html,body{
   .postal-admin-vault-v249{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:430px){.postal-admin-vault-v249{grid-template-columns:1fr}}
+
+
+/* v2.50 — acesso administrativo camuflado na logo, postal móvel horizontal e Normas estáveis */
+.login-logo-secret-v250{display:block;margin:0 auto 10px;padding:0;border:0;background:transparent;width:160px;height:160px;border-radius:20px;overflow:hidden;cursor:default}
+.login-logo-secret-v250 .login-logo{width:160px;height:160px;margin:0;pointer-events:none}
+.login-brand-name-v250{text-align:center;margin:0;font-size:25px;letter-spacing:.06em;color:#173c59}
+.login-brand-subtitle-v250{text-align:center;margin:7px auto 14px;line-height:1.35}
+.admin-access-title-v250{font-weight:800;color:#0f4c81;text-align:center;margin:8px 0 16px}
+.login-return-client-v250{display:block;margin:14px auto 0;border:0;background:transparent;color:#657789;font-size:12px;text-decoration:underline;padding:6px}
+
+.postal-fullscreen-v250{position:relative;min-height:100%;background:#f4f7fb}
+.postal-close-v250{position:fixed;right:max(10px,env(safe-area-inset-right));top:max(10px,env(safe-area-inset-top));z-index:100003;width:40px;height:40px;border-radius:50%;border:1px solid #c9d5de;background:#fff;color:#183a54;font-size:29px;line-height:34px;box-shadow:0 4px 16px #0003}
+.postal-rotate-prompt-v250{display:none}
+
+@media(max-width:900px){
+  body.postal-open-v250{overflow:hidden!important}
+  .postal-fullscreen-v250{position:fixed;inset:0;z-index:100000;background:#e8edf1;overflow:hidden;padding:0}
+  .postal-workspace-v250{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .postal-intro-v250{display:none!important}
+  .postal-fullscreen-v250 .postal-status{position:absolute;left:8px;right:52px;bottom:max(2px,env(safe-area-inset-bottom));margin:0!important;font-size:11px!important;z-index:5;color:#445564}
+}
+@media(max-width:900px) and (orientation:portrait){
+  .postal-rotate-prompt-v250{display:flex;position:absolute;inset:0;z-index:100002;align-items:center;justify-content:center;background:linear-gradient(145deg,#0f4c81,#1769aa);color:#fff;text-align:center;padding:28px}
+  .postal-rotate-prompt-v250>div{display:grid;gap:9px;justify-items:center}
+  .postal-rotate-prompt-v250 span{font-size:64px;line-height:1}
+  .postal-rotate-prompt-v250 b{font-size:24px}
+  .postal-rotate-prompt-v250 small{font-size:14px;max-width:280px;line-height:1.4}
+  .postal-workspace-v250{visibility:hidden}
+}
+@media(max-width:900px) and (orientation:landscape){
+  .postal-rotate-prompt-v250{display:none!important}
+  .postal-fullscreen-v250{padding:4px 50px 18px 4px}
+  .postal-stage{width:auto!important;max-width:none!important;height:calc(100dvh - 24px)!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:visible!important}
+  .postal-card{height:min(calc(100dvh - 26px),calc((100vw - 58px)/1.55))!important;width:auto!important;max-width:calc(100vw - 58px)!important;aspect-ratio:1.55/1!important;min-height:0!important}
+  .postal-back{grid-template-columns:56% 44%!important;padding:18px 20px!important;overflow:hidden!important}
+  .postal-message-column{padding-right:18px!important;border-right:1.5px solid #5d5d5d!important;border-bottom:0!important;margin-bottom:0!important;overflow:auto!important}
+  .postal-address-column{padding-left:20px!important;overflow:hidden!important}
+  .postal-front-grid{grid-template-columns:2fr 1fr!important;grid-template-rows:1fr!important;padding:7px!important;gap:7px!important}
+  .postal-versatil-stack{grid-template-rows:2fr 1fr!important;gap:7px!important}
+  .postal-hand,.postal-main-message,.postal-address,.postal-coupon,.postal-input{font-size:clamp(12px,2.8vh,17px)!important;line-height:1.3!important}
+  .postal-main-message{margin-top:12px!important}
+  .postal-coupon{margin-top:10px!important;padding:7px!important}
+  .postal-coupon small{font-size:clamp(8px,1.7vh,11px)!important}
+  .postal-stamp-zone{width:190px!important;height:90px!important;margin-bottom:6px!important;transform:scale(.78);transform-origin:top right}
+  .postal-center-btn{transform:translate(-50%,-50%) scale(.92)!important}
+}
