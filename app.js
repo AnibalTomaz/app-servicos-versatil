@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.52';
+const APP_VERSION='2.53';
 const APP_BUILD='2520-normas-integradas';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -326,7 +326,7 @@ function save(){
 normalizeLocaisTuristicosV192();
 save();
 
-ensureNormasV174();
+restoreNormasDefinitiveV253();
 save();
 
 const V173_CONTENT='versatil_content_v173';
@@ -1356,6 +1356,7 @@ function applyRemotePublicDataV246(c,preserveLocal){
     recoverVersatilV238();
     recoverStarlisV238();
     purgeDeletedEntitiesV243();
+    restoreNormasDefinitiveV253();
     return;
   }
 
@@ -1369,6 +1370,7 @@ function applyRemotePublicDataV246(c,preserveLocal){
   if(Array.isArray(c.versatilGuide))db.versatilGuide=cloneRemoteV246(c.versatilGuide);
   if(Array.isArray(c.starlisGuide))db.starlisGuide=normalizeStarlisStructureV235(cloneRemoteV246(c.starlisGuide));
   if(c.postalConfig&&typeof c.postalConfig==='object')db.postalConfig=cloneRemoteV246(c.postalConfig);
+  restoreNormasDefinitiveV253();
 }
 
 async function loadCentralData(options={}){
@@ -2726,38 +2728,83 @@ function versatilGuideIcon(name){
 
 
 
+function normasNormalizeV253(v){
+  return String(v||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+function normasHistoricalTemplateV253(){
+  const fallback=(DEFAULT_VERSATIL_GUIDE_V173||[]).find(s=>String(s?.id||'').trim().toLowerCase()==='normas');
+  const sec=fallback?structuredClone(fallback):{id:'normas',name:'Normas gerais',icon:'📖',type:'text',items:[]};
+  if(!Array.isArray(sec.items))sec.items=[];
+  if(!sec.items.some(x=>String(x?.id||'')==='n10'))sec.items.push({id:'n10',name:'Check-in / Check-out',description:'Nosso check-in se dá a partir das 14h.\nNosso check-out é até as 12h.\nPara qualquer alteração ou necessidade contate a portaria o quanto antes.',iconKey:'walking'});
+  return sec;
+}
+function clearNormasCategoryTombstoneV253(){
+  try{
+    const all=deletedEntitiesV241();
+    let changed=false;
+    for(const k of Object.keys(all)){
+      const key=String(k||'').toLowerCase();
+      const meta=all[k]||{};
+      if(key==='versatil::normas'||key==='versatil::normas gerais'||String(meta.id||'').toLowerCase()==='normas'||normasNormalizeV253(meta.name)==='normas gerais'){
+        delete all[k];changed=true;
+      }
+    }
+    if(changed)localStorage.setItem(DELETE_TOMBSTONES_KEY_V241,JSON.stringify(all));
+  }catch(e){console.warn('v2.53: não foi possível limpar a exclusão antiga de Normas gerais.',e)}
+}
 function ensureNormasV174(){
   if(!Array.isArray(db.versatilGuide))db.versatilGuide=[];
-  const normName=v=>String(v||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-  const candidates=db.versatilGuide.filter(s=>String(s?.id||'').trim().toLowerCase()==='normas'||normName(s?.name)==='normas gerais');
+  clearNormasCategoryTombstoneV253();
+  const candidates=db.versatilGuide.filter(s=>String(s?.id||'').trim().toLowerCase()==='normas'||normasNormalizeV253(s?.name)==='normas gerais');
   let normas=candidates.find(s=>String(s?.id||'').trim().toLowerCase()==='normas')||candidates[0]||null;
   if(!normas){
-    const fallback=(DEFAULT_VERSATIL_GUIDE_V173||[]).find(s=>String(s?.id||'')==='normas');
-    normas=fallback?structuredClone(fallback):{id:'normas',name:'Normas gerais',icon:'📖',type:'text',items:[]};
+    normas=normasHistoricalTemplateV253();
     db.versatilGuide.push(normas);
   }
   normas.id='normas';
   if(!String(normas.name||'').trim())normas.name='Normas gerais';
   if(!normas.icon&&!normas.iconImage)normas.icon='📖';
-  normas.type=normas.type||'text';
+  if(!normas.type)normas.type='text';
   if(!Array.isArray(normas.items))normas.items=[];
 
-  // v2.50: une eventuais duplicatas em uma única categoria canônica, sem perder conteúdo editado.
+  // Une somente duplicatas da própria categoria, preservando sempre a versão já editada no Admin.
   for(const duplicate of candidates){
     if(duplicate===normas)continue;
     for(const item of (Array.isArray(duplicate.items)?duplicate.items:[])){
-      const exists=normas.items.some(x=>String(x?.id||'')===String(item?.id||'')||normName(x?.name)===normName(item?.name));
+      const exists=normas.items.some(x=>String(x?.id||'')===String(item?.id||'')||normasNormalizeV253(x?.name)===normasNormalizeV253(item?.name));
       if(!exists)normas.items.push(structuredClone(item));
     }
   }
-  db.versatilGuide=db.versatilGuide.filter(s=>s===normas||!(String(s?.id||'').trim().toLowerCase()==='normas'||normName(s?.name)==='normas gerais'));
-
-  // Check-in / Check-out é criado apenas quando realmente não existe. Nunca sobrescreve edição do Admin.
-  const checkinExists=normas.items.some(x=>String(x?.id||'')==='n10'||normName(x?.name)==='check-in / check-out');
-  if(!checkinExists)normas.items.push({id:'n10',name:'Check-in / Check-out',description:'Nosso check-in se dá a partir das 14h.\nNosso check-out é até as 12h.\nPara qualquer alteração ou necessidade contate a portaria o quanto antes.',iconKey:'walking'});
+  db.versatilGuide=db.versatilGuide.filter(s=>s===normas||!(String(s?.id||'').trim().toLowerCase()==='normas'||normasNormalizeV253(s?.name)==='normas gerais'));
   return normas;
 }
+const NORMAS_RESTORE_MARK_V253='versatil_normas_restore_v253';
+function restoreNormasDefinitiveV253(){
+  clearNormasCategoryTombstoneV253();
+  const normas=ensureNormasV174();
+  if(!normas)return null;
+  if(localStorage.getItem(NORMAS_RESTORE_MARK_V253)!=='1'){
+    const template=normasHistoricalTemplateV253();
+    // Remove apenas tombstones históricos dos itens que pertenciam às Normas antes da v2.48.
+    // A marca de migração garante que exclusões feitas pelo Admin DEPOIS da v2.53 continuarão respeitadas.
+    try{
+      const all=deletedEntitiesV241();let changed=false;
+      for(const item of template.items||[]){
+        for(const key of ['versatil:items::'+String(item.id||'').toLowerCase(),'versatil:items::'+String(item.name||'').trim().toLowerCase()]){
+          if(all[key]){delete all[key];changed=true}
+        }
+      }
+      if(changed)localStorage.setItem(DELETE_TOMBSTONES_KEY_V241,JSON.stringify(all));
+    }catch(e){console.warn('v2.53: limpeza de tombstones dos itens de Normas.',e)}
 
+    for(const baseItem of template.items||[]){
+      const current=normas.items.find(x=>String(x?.id||'')===String(baseItem?.id||'')||normasNormalizeV253(x?.name)===normasNormalizeV253(baseItem?.name));
+      if(!current)normas.items.push(structuredClone(baseItem));
+    }
+    try{localStorage.setItem(NORMAS_RESTORE_MARK_V253,'1')}catch(e){}
+  }
+  return normas;
+}
 
 
 const UI_ICON_ASSETS_V180={
@@ -2827,7 +2874,7 @@ function versatilGuidePage(){
     ${sections.map(sec=>{
       const secName=String(sec.name||'').trim().toLowerCase();
       const sharedGallery=(secName==='acomodações'||secName==='áreas comuns');
-      return `<details class="institution-detail ${sharedGallery?'versatil-gallery-category-v231':''}"><summary class="unified-category-control-v210">${versatilCategoryIconV179(sec)}<span>${esc(sec.name)}</span><span>⌄</span></summary>
+      return `<details class="institution-detail ${sharedGallery?'versatil-gallery-category-v231':''}" data-versatil-section-id="${esc(sec.id||'')}"><summary class="unified-category-control-v210">${versatilCategoryIconV179(sec)}<span>${esc(sec.name)}</span><span>⌄</span></summary>
       <div class="institution-inside">${currentSingleImageV247(sec)?`<div class="institution-category-image-v247"><img src="${esc(currentSingleImageV247(sec))}" alt="${esc(sec.name||'Categoria')}"></div>`:''}${versatilItemsOrderedV179(sec).map(item=>{
         const imgs=versatilItemImagesV227(item);
         return `<details class="institution-item institution-item-v227"><summary>${versatilItemIconV179(item)}<span class="institution-item-title">${esc(item.name)}</span><span>⌄</span></summary>
@@ -3158,9 +3205,14 @@ function normasHeaderLabelV247(){
 function openNormasFromHeaderV176(btn){
   try{sessionStorage.setItem('normas_header_animation_stopped','1')}catch(e){}
   if(btn)btn.classList.add('normas-animation-stopped');
-  page='normas';
+  restoreNormasDefinitiveV253();
+  page='versatil';
   render();
-  setTimeout(()=>adjustScrollBelowHeaderV177(true),0);
+  setTimeout(()=>{
+    const detail=document.querySelector('details[data-versatil-section-id="normas"]');
+    if(detail){detail.open=true;detail.scrollIntoView({behavior:'smooth',block:'start'});}
+    adjustScrollBelowHeaderV177(true);
+  },60);
 }
 function normasHeaderAnimationStoppedV176(){
   try{return sessionStorage.getItem('normas_header_animation_stopped')==='1'}catch(e){return false}
@@ -3234,7 +3286,7 @@ function clientView(){
   if(page==='versatil')return menu+versatilGuidePage();
   if(page==='starlis')return menu+starlisGuidePage();
   if(page==='postal')return menu+postalPage();
-  if(page==='normas')return menu+normasGeraisPage();
+  if(page==='normas')return menu+versatilGuidePage();
   return menu+(page==='catalog'?catalogPage():page==='cart'?cartPage():confirmationPage());
 }
 function selectClientCategory(cid){
@@ -4397,6 +4449,7 @@ function recoveryNoticeV238(){
 }
 
 function contentAdminPage(kind){
+  if(kind==='versatil')restoreNormasDefinitiveV253();
   const cfg={
     versatil:{title:'Conheça o Versátil',data:db.versatilGuide||[]},
     starlis:{title:'Conheça a Starlis',data:db.starlisGuide||[]},
@@ -4698,7 +4751,7 @@ async function saveContentV252(kind,index,button){
     document.getElementById('contentV170Modal')?.remove();
     render();
   }catch(err){
-    console.error('v2.52 erro ao salvar conteúdo',err);
+    console.error('v2.53 erro ao salvar conteúdo',err);
     alert('Não foi possível salvar. '+(err?.message||err));
     if(button){button.disabled=false;button.textContent='Salvar'}
   }
@@ -5001,55 +5054,6 @@ function itinerariesAdmin(){
     ${adminItinerariesTodayData.length?`<div class="tablewrap"><table class="table"><thead><tr><th>Horário</th><th>Usuário</th><th>E-mail</th><th>Quarto</th><th>Locais</th></tr></thead><tbody>${adminItinerariesTodayData.map(x=>`<tr><td>${esc(x.time||'')}</td><td>${esc(x.clientName||'')}</td><td>${esc(x.clientEmail||'')}</td><td>${esc(x.roomName||'')}</td><td>${Number(x.itemCount||0)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="muted">Clique em Atualizar para carregar os roteiros confirmados hoje.</div>'}
   </div>`;
 }
-function normasAdminPageV251(){
-  ensureNormasV174();
-  const sec=normasSectionV247();
-  if(!sec)return `<div class="card"><h2>Normas gerais</h2><div class="danger">A categoria Normas gerais não foi localizada.</div></div>`;
-  const si=(db.versatilGuide||[]).indexOf(sec);
-  const items=Array.isArray(sec.items)?sec.items:[];
-  const secImg=sec.image||sec.imageUrl||(Array.isArray(sec.images)?sec.images[0]:'')||'';
-  return `<div class="card admin-accordion-card normas-admin-v251">
-    <div class="row between">
-      <div><h2>Normas gerais</h2><p class="muted">Edite o título, texto, ícone, imagem e todos os itens de Normas gerais. Esta é a mesma categoria exibida ao cliente.</p></div>
-      <button class="btn primary" onclick="openVersatilItemEditorV224(${si})">+ Item</button>
-    </div>
-    <details class="admin-products-category-detail versatil-admin-detail-v224 admin-level-v226-1" open>
-      <summary>
-        <span class="admin-category-icon admin-client-icon-v225">${versatilCategoryIconV179(sec)}</span>
-        <span class="admin-category-name">${esc(sec.name||'Normas gerais')}</span>
-        <span class="admin-category-count">${items.length} item${items.length===1?'':'s'}</span>
-        <span class="admin-category-arrow">⌄</span>
-      </summary>
-      <div class="versatil-admin-section-body-v224">
-        ${secImg?`<img class="admin-preview-v224" src="${esc(secImg)}" alt="${esc(sec.name||'Normas gerais')}">`:''}
-        ${sec.description?`<p>${esc(sec.description)}</p>`:''}
-        <div class="admin-inline-actions-v224">
-          <button class="btn small" onclick="openContentEditorV170('versatil',${si})">Editar categoria</button>
-          <button class="btn small" onclick="openVersatilItemEditorV224(${si})">+ Item</button>
-        </div>
-        <div class="admin-category-accordion nested-admin-accordion-v224">
-          ${items.map((item,ii)=>{
-            const img=(Array.isArray(item.images)&&item.images[0])||item.image||item.imageUrl||'';
-            return `<details class="admin-products-category-detail versatil-admin-item-v224 admin-level-v226-2" data-admin-start-closed="1">
-              <summary>
-                <span class="admin-category-icon admin-client-icon-v225">${versatilItemIconV179(item)}</span>
-                <span class="admin-category-name">${esc(item.name||'Item')}</span>
-                <span class="admin-category-count">Editar</span>
-                <span class="admin-category-arrow">⌄</span>
-              </summary>
-              <div class="content-admin-expanded-v224">
-                ${img?`<img class="admin-preview-v224" src="${esc(img)}" alt="${esc(item.name||'')}">`:''}
-                <p>${esc(item.description||'')}</p>
-                <div class="row"><button class="btn small" onclick="openVersatilItemEditorV224(${si},${ii})">Editar</button><button class="btn red small" onclick="deleteVersatilItemV224(${si},${ii})">Excluir</button></div>
-              </div>
-            </details>`;
-          }).join('')}
-        </div>
-      </div>
-    </details>
-  </div>`;
-}
-
 function adminView(){let menus=[
   ['dashboard','Visão geral'],
   ['rooms','Quartos/Apartamentos'],
@@ -6708,6 +6712,7 @@ async function bootVersatilV140(){
       ensureStarlisStructureV235();
       applyLeisureListsV241();
       purgeDeletedEntitiesV243();
+      restoreNormasDefinitiveV253();
       await migrateEmbeddedImagesV234(db);
       save();
       installImageHydrationObserverV234();
