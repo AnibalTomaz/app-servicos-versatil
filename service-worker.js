@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-55-sync-pc-celular";
+const CACHE="versatil-v2-56-imagens-unificadas";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2540',
-  './app.js?v=2540',
+  './style.css?v=2560',
+  './app.js?v=2560',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',

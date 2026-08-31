@@ -5085,3 +5085,16 @@ html,body{
   .postal-tourism-caption,.postal-reserve-overlay{font-size:clamp(12px,2.45vh,16px)!important;line-height:1.22!important}
   .postal-reserve-overlay b{font-size:clamp(16px,3.2vh,21px)!important}
 }
+
+/* v2.56 — imagens de conteúdo sempre clicáveis e botões compactos no acesso móvel */
+.client-product-image-v247 img,
+.client-category-image-v247 img,
+.institution-category-image-v247 img,
+.institution-gallery-v227 img,
+.leisure-place-body .leisure-place-img,
+.postal-tourism img,.postal-facade img,.postal-pool-photo img{cursor:zoom-in;}
+@media (max-width: 640px){
+  .loginbox-v250 #adminLogin .row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .loginbox-v250 #adminLogin .row .btn{width:100%;min-height:40px;padding:8px 10px;border-radius:10px;font-size:14px;}
+  .loginbox-v250 #clientEnterBtnV219{min-height:40px;padding:8px 12px;border-radius:10px;}
+}

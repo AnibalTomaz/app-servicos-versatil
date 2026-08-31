@@ -1,10 +1,12 @@
-# APP SERVIÇOS VERSÁTIL v2.55 — Sincronização PC/Celular
+APP SERVIÇOS VERSÁTIL — v2.56
 
-Correção estrutural para que a base pública seja renderizada de forma idêntica em PC e celular.
+Correções desta versão:
+- Conheça o Versátil: imagens públicas permanecem no formato recebido e não são convertidas em segundo plano para idbimg:, eliminando diferença entre PC e celular.
+- Persistência compacta não modifica mais a base visível em memória.
+- Fotografias de conteúdo passam a expandir ao toque/clique: produtos, categorias, Conheça o Versátil, Lazer e áreas fotográficas do postal.
+- Acesso cliente: botão “Entrar”.
+- Acesso Admin: botões “Entrar” e “Rec. Senha”, compactos no celular.
+- Confirmação de saída: botão “Obrigado!”.
+- data.json não faz parte deste pacote; a base pública publicada não é substituída.
 
-- Conteúdo público (inclusive imagens data:image) é aplicado e renderizado imediatamente, sem bloquear a tela esperando cópia para IndexedDB.
-- O IndexedDB passa a ser apenas cache local em segundo plano; falha/quota do aparelho não remove conteúdo público.
-- O localStorage recebe um espelho compacto, evitando estouro de quota por imagens base64.
-- A publicação audita referências de imagem e é interrompida se alguma imagem local não puder ser incorporada à base pública.
-- Mantidas as correções anteriores, inclusive Normas Gerais integradas em Conheça o Versátil.
-- O pacote não inclui data.json.
+Atualização: Apps Script v2.56 primeiro; depois os arquivos do app no GitHub.
