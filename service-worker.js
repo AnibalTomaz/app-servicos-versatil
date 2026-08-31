@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-53-normas-restauradas";
+const CACHE="versatil-v2-54-inicializacao-normas";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2530',
-  './app.js?v=2530',
+  './style.css?v=2540',
+  './app.js?v=2540',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',

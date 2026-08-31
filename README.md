@@ -1,3 +1,7 @@
+# APP SERVIÇOS VERSÁTIL v2.54 — correção de inicialização de Normas
+
+Correção emergencial do erro `Cannot access NORMAS_RESTORE_MARK_V253 before initialization`. A constante de migração agora é inicializada antes da rotina de restauração. Mantém a recuperação definitiva de Normas gerais da v2.53 sem alterar `data.json`.
+
 APP SERVIÇOS VERSÁTIL — v2.53 — NORMAS RESTAURADAS DEFINITIVAMENTE
 
 Correção baseada no comportamento anterior à v2.48 (especialmente v2.46):
