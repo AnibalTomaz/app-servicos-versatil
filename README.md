@@ -1,3 +1,12 @@
+# APP SERVIÇOS VERSÁTIL v2.52 — Normas integradas
+
+- Remove o menu/página independente de **Normas gerais** do Admin.
+- **Normas gerais** volta a ser editada exclusivamente dentro de **Conheça o Versátil**, como as demais categorias.
+- Corrige o botão **Salvar** do editor de categoria com espera explícita de upload, estado visual e tratamento de erro.
+- Preserva o ID canônico `normas` para impedir que a categoria se perca após edição/publicação.
+- Impede apenas a exclusão acidental da categoria estrutural Normas gerais; seus textos, ícone, imagem e itens continuam editáveis.
+- Não inclui `data.json`, preservando a base pública já publicada.
+
 # APP SERVIÇOS VERSÁTIL v2.51
 
 Ajustes desta versão:
