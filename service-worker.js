@@ -1,4 +1,4 @@
-const CACHE="versatil-v2-54-inicializacao-normas";
+const CACHE="versatil-v2-55-sync-pc-celular";
 const APP_SHELL=[
   './',
   './index.html',

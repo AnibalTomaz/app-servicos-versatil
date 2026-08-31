@@ -1,16 +1,10 @@
-# APP SERVIÇOS VERSÁTIL v2.54 — correção de inicialização de Normas
+# APP SERVIÇOS VERSÁTIL v2.55 — Sincronização PC/Celular
 
-Correção emergencial do erro `Cannot access NORMAS_RESTORE_MARK_V253 before initialization`. A constante de migração agora é inicializada antes da rotina de restauração. Mantém a recuperação definitiva de Normas gerais da v2.53 sem alterar `data.json`.
+Correção estrutural para que a base pública seja renderizada de forma idêntica em PC e celular.
 
-APP SERVIÇOS VERSÁTIL — v2.53 — NORMAS RESTAURADAS DEFINITIVAMENTE
-
-Correção baseada no comportamento anterior à v2.48 (especialmente v2.46):
-- Normas gerais volta a ser uma categoria/subcategoria dentro de Conheça o Versátil, no Cliente e no Admin.
-- O botão Normas gerais do cabeçalho abre a própria seção dentro de Conheça o Versátil; não existe página Admin separada.
-- Recuperação única dos 10 itens históricos (n1–n10) se a regressão das versões posteriores os tiver removido.
-- Textos, imagens, ícones e alterações já existentes têm prioridade e NÃO são sobrescritos pelos textos padrão.
-- Tombstone histórico que apagou a categoria Normas é neutralizado. Depois da migração v2.53, exclusões de itens feitas pelo Admin voltam a ser respeitadas normalmente.
-- A sincronização remota não pode mais fazer Normas desaparecer: após cada sincronização a categoria estrutural é verificada/restaurada.
-- Nenhum data.json acompanha o pacote; a base pública atual do usuário não é substituída pelo deploy do código.
-
-Atualização: primeiro APPS_SCRIPT_v2_53.gs na implantação existente; depois os arquivos web no GitHub.
+- Conteúdo público (inclusive imagens data:image) é aplicado e renderizado imediatamente, sem bloquear a tela esperando cópia para IndexedDB.
+- O IndexedDB passa a ser apenas cache local em segundo plano; falha/quota do aparelho não remove conteúdo público.
+- O localStorage recebe um espelho compacto, evitando estouro de quota por imagens base64.
+- A publicação audita referências de imagem e é interrompida se alguma imagem local não puder ser incorporada à base pública.
+- Mantidas as correções anteriores, inclusive Normas Gerais integradas em Conheça o Versátil.
+- O pacote não inclui data.json.
