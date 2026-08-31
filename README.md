@@ -1,3 +1,11 @@
+# APP SERVIÇOS VERSÁTIL v2.51
+
+Ajustes desta versão:
+- Normas gerais habilitada como menu próprio no Admin, usando a mesma categoria exibida ao cliente.
+- Logo/botão secreto do Admin centralizada no celular.
+- Postal com tipografia slim sem cursiva e corpo maior para leitura em orientação horizontal.
+- Base pública não é incluída no pacote; o data.json publicado permanece preservado.
+
 # APP SERVIÇOS VERSÁTIL — v2.50
 
 Ajustes: acesso Admin pela logo, tela de acesso sem piscada, postal móvel em tela cheia horizontal, identificação VERSÁTIL e recuperação/estabilização de Normas gerais. O pacote não contém data.json e não substitui a base pública publicada.

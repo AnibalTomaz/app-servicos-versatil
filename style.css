@@ -5058,3 +5058,30 @@ html,body{
   .postal-stamp-zone{width:190px!important;height:90px!important;margin-bottom:6px!important;transform:scale(.78);transform-origin:top right}
   .postal-center-btn{transform:translate(-50%,-50%) scale(.92)!important}
 }
+
+/* v2.51 — Normas no Admin, logo móvel centralizada e tipografia postal mais legível */
+.login-logo-secret-v250{display:grid!important;place-items:center!important}
+.login-logo-secret-v250 .login-logo{display:block!important;margin:0 auto!important}
+@media(max-width:700px){
+  .login-logo-secret-v250{width:104px!important;height:104px!important;margin:0 auto 10px!important;border-radius:16px!important}
+  .login-logo-secret-v250 .login-logo{width:104px!important;height:104px!important;max-width:104px!important;max-height:104px!important;object-fit:contain!important}
+}
+.normas-admin-v251 .admin-products-category-detail>summary{background:#f8fbfd}
+
+/* O postal usa caixa slim/sans em vez de cursiva, com maior corpo no celular. */
+.postal-page-intro,.postal-back,.postal-back *,.postal-front .postal-reserve-overlay,.postal-tourism-caption,
+.postal-hand,.postal-main-message,.postal-address,.postal-coupon,.postal-input{
+  font-family:"Arial Narrow","Aptos Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif!important;
+  letter-spacing:.015em;
+}
+.postal-hand,.postal-main-message,.postal-address,.postal-input{font-weight:500!important}
+.postal-coupon{font-weight:600!important}
+@media(max-width:900px) and (orientation:landscape){
+  .postal-hand,.postal-main-message,.postal-address,.postal-coupon,.postal-input{
+    font-size:clamp(15px,3.25vh,20px)!important;
+    line-height:1.32!important;
+  }
+  .postal-coupon small{font-size:clamp(10px,2vh,13px)!important;line-height:1.25!important}
+  .postal-tourism-caption,.postal-reserve-overlay{font-size:clamp(12px,2.45vh,16px)!important;line-height:1.22!important}
+  .postal-reserve-overlay b{font-size:clamp(16px,3.2vh,21px)!important}
+}

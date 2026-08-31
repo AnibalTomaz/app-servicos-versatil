@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-50-acesso-postal-normas";
+const CACHE="versatil-v2-51-normas-logo-postal";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2500',
-  './app.js?v=2500',
+  './style.css?v=2510',
+  './app.js?v=2510',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
