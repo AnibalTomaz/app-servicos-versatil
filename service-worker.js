@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-56-imagens-unificadas";
+const CACHE="versatil-v2-57-imagens-unificadas";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2560',
-  './app.js?v=2560',
+  './style.css?v=2570',
+  './app.js?v=2570',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
