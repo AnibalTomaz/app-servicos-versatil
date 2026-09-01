@@ -1,8 +1,10 @@
-# APP SERVIÇOS VERSÁTIL v2.57
+# APP SERVIÇOS VERSÁTIL v2.58
 
-Correções:
-- Botão do cabeçalho “Normas gerais” volta a abrir de forma robusta a subcategoria Normas gerais dentro de Conheça o Versátil.
-- Rótulo do botão permanece sempre “Normas gerais”, sem incorporar o título/explicativo editorial.
-- Acesso Admin no celular mantém Entrar e Rec. Senha lado a lado, compactos e arredondados.
-- Layout móvel reduz alturas e espaçamentos para evitar scroll apenas para alcançar os botões.
-- data.json não faz parte deste pacote.
+Correção específica do botão **Normas gerais** do cabeçalho.
+
+- O rótulo do botão permanece fixo em `Normas gerais`, sem incorporar título ou texto explicativo da categoria.
+- O clique abre `Conheça o Versátil` já com a subcategoria canônica `Normas gerais` expandida.
+- A abertura não depende mais apenas de um `setTimeout` posterior ao `render`: o estado `open` é aplicado na própria geração do HTML da seção.
+- Depois da renderização, o aplicativo posiciona a tela diretamente na subcategoria.
+- Mantidas as correções e dados da v2.57.
+- O pacote não inclui `data.json`.
