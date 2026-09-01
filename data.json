@@ -1,10 +1,10 @@
 {
   "ok": true,
-  "version": "2.54",
-  "updatedAt": "2026-08-31T18:07:39.317Z",
-  "publishedAt": "2026-08-31T18:07:39.953Z",
-  "publicationId": "ac622fc8-79c5-4545-bf12-c9da2b9cdad8",
-  "clientPublishedAt": "2026-08-31T18:07:16.900Z",
+  "version": "2.57",
+  "updatedAt": "2026-09-01T05:00:36.070Z",
+  "publishedAt": "2026-09-01T05:00:37.090Z",
+  "publicationId": "9835c3c0-6051-40a3-a98d-c9801473c985",
+  "clientPublishedAt": "2026-09-01T05:00:07.039Z",
   "data": {
     "rooms": [
       {
