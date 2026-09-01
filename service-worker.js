@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-58-normas-link-direto";
+const CACHE="versatil-v2-60-normas-primeiro";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2580',
-  './app.js?v=2580',
+  './style.css?v=2600',
+  './app.js?v=2600',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
