@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-61-conheca-versatil-normas";
+const CACHE="versatil-v2-62-cliente-imagens-sincronizacao";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2610',
-  './app.js?v=2610',
+  './style.css?v=2620',
+  './app.js?v=2620',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
