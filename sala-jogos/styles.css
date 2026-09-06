@@ -1,0 +1,1010 @@
+*{box-sizing:border-box}
+body{margin:0;background:#eef3f7;font-family:Arial,Helvetica,sans-serif;color:#17324a}
+.topbar{background:#12385c;color:#fff;padding:16px 22px;display:flex;justify-content:space-between;gap:16px;align-items:center;position:sticky;top:0;z-index:3}
+.brand{font-weight:800;letter-spacing:.6px}.sub{opacity:.82;font-size:13px;margin-top:3px}.badge{background:rgba(255,255,255,.14);padding:8px 12px;border-radius:999px;font-size:13px}
+.wrap{max-width:900px;margin:24px auto;padding:0 14px}.card{background:#fff;border:1px solid #dce5ed;border-radius:15px;padding:22px;box-shadow:0 8px 24px rgba(13,47,76,.08)}
+.hidden{display:none!important}h1,h2{margin-top:0}.lead{line-height:1.5;color:#526a7e}label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+.row{display:flex;gap:8px}input{flex:1;min-width:0;padding:12px 13px;border:1px solid #b8c9d8;border-radius:10px;font-size:16px}
+button{border:0;background:#185b91;color:#fff;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer}
+button.secondary{background:#fff;color:#185b91;border:1px solid #aac1d4}button:disabled{cursor:default;opacity:.55}
+.games{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.game{height:84px;background:#fff;color:#185b91;border:2px solid #185b91;display:flex;align-items:center;text-align:left;gap:12px}
+.pokerGame{grid-column:1/-1}.gameIcon{font-size:28px;width:42px;text-align:center}.game small{display:block;font-size:10px;margin-top:4px;opacity:.7}
+.notice{margin-top:18px;padding:12px;border-radius:10px;background:#f5f9fc;border:1px solid #dce8f1;font-size:13px;line-height:1.45}
+.spinner{width:54px;height:54px;border:6px solid #dce6ee;border-top-color:#185b91;border-radius:50%;animation:spin 1s linear infinite;margin:28px auto}@keyframes spin{to{transform:rotate(360deg)}}#queueView{text-align:center}
+.gameHeader{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.muted{font-size:12px;color:#718496}
+.players{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:18px 0}.playerBox{border:2px solid #d1dde7;border-radius:12px;padding:12px;text-align:center;min-height:82px}
+.playerBox strong{display:block}.playerBox small{display:block;color:#6e8293;margin-top:3px}.playerBlue{border-color:#1565c0}.playerRed{border-color:#d32f2f}.versus{font-weight:900;color:#8193a1}
+.scoreNumber{margin-top:7px;font-size:28px;line-height:1;font-weight:900;color:#17324a}
+.status{padding:10px;border-radius:10px;text-align:center;background:#f1f6fa;margin:12px 0 16px;font-weight:700}
+.board{width:min(480px,100%);margin:0 auto;display:grid;gap:7px}.board.ttt{grid-template-columns:repeat(3,1fr);width:min(420px,100%)}
+.cell{aspect-ratio:1;border:1px solid #b9cad8;border-radius:12px;background:#fff;color:#12385c;font-size:clamp(34px,9vw,66px);font-weight:900;display:flex;align-items:center;justify-content:center;padding:0}
+.cell.markX,.cell.markX:disabled{color:#1565c0!important;opacity:1}.cell.markO,.cell.markO:disabled{color:#d32f2f!important;opacity:1}
+
+/* Quatro em Linha */
+.board.connect4{grid-template-columns:repeat(7,1fr);background:#f4f7fa;padding:8px;border-radius:14px}
+.c4cell{aspect-ratio:1;border-radius:50%;border:1px solid #b9cad8;background:#fff;padding:0}.c4blue{background:#1565c0!important}.c4red{background:#d32f2f!important}
+
+/* Batalha Naval */
+.battleWrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}.battlePanel h3{text-align:center;margin:8px 0}
+.battleGrid{display:grid;grid-template-columns:repeat(8,1fr);gap:3px}.battleCell{aspect-ratio:1;border:1px solid #b9cad8;border-radius:4px;background:#edf6fb;padding:0;font-size:13px}
+.shipBlue{background:#1565c0!important}.shotBlue{background:#90caf9!important}.shotRed{background:#ef9a9a!important}.hitCell{outline:3px solid #263238;outline-offset:-3px}
+
+/* Xadrez */
+.board.chess{grid-template-columns:repeat(8,1fr);gap:0;border:2px solid #17324a;width:min(560px,100%)}
+.chessCell{aspect-ratio:1;border:0;border-radius:0;font-size:clamp(28px,6vw,48px);padding:0;background:#f0d9b5}.chessCell.dark{background:#b58863}
+.chessBlue{color:#1565c0!important;text-shadow:0 1px 0 #fff}.chessRed{color:#d32f2f!important;text-shadow:0 1px 0 #fff}.selectedSquare{outline:4px solid #ffb300;outline-offset:-4px}
+
+/* Poker */
+.pokerSeats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0 16px}.pokerSeat{border:2px solid #d1dde7;border-radius:12px;padding:10px;text-align:center}
+.pokerSeat.you{border-color:#1565c0}.pokerSeat.opponent{border-color:#d32f2f}.pokerSeat .scoreNumber{font-size:21px}.chips{font-size:12px;color:#607d8b;margin-top:4px}
+.pokerTable{background:#225b42;border:8px solid #6d4c41;border-radius:80px;padding:24px 16px;color:#fff;text-align:center;min-height:250px}
+.cards{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:10px 0}.playingCard{width:52px;height:72px;border-radius:7px;background:#fff;color:#17212b;display:flex;align-items:center;justify-content:center;font-weight:900;border:1px solid #d0d0d0}
+.playingCard.redSuit{color:#c62828}.playingCard.back{background:#12385c;color:#fff}.pokerControls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.playMoneyNote{font-size:12px;opacity:.92;margin-top:10px}
+
+/* Modal / aviso */
+.modal{position:fixed;inset:0;background:rgba(6,25,42,.62);display:grid;place-items:center;padding:16px;z-index:10;overflow:auto}
+.modalCard{width:min(460px,100%);background:#fff;border-radius:16px;padding:24px;text-align:center}.modalActions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.legalCard{width:min(760px,100%);text-align:left;max-height:92vh;overflow:auto}.legalCard h2{text-align:center}.legalText{font-size:14px;line-height:1.5;background:#f7fafc;border:1px solid #dbe6ee;border-radius:12px;padding:14px;margin-bottom:14px}
+.legalText h3{text-align:center}.checkLine{display:flex;gap:9px;align-items:center;margin:12px 0;font-size:15px}.checkLine input{flex:0 0 auto;width:20px;height:20px}
+.ageMsg{font-size:13px;min-height:20px;margin:6px 0 10px}.ageMsg.error{color:#b71c1c}.ageMsg.ok{color:#1b5e20}.legalActions{margin-top:12px}
+
+@media(max-width:620px){
+  .topbar{padding:12px 14px}.wrap{margin:12px auto;padding:0 8px}.card{padding:16px}.games{grid-template-columns:1fr}.pokerGame{grid-column:auto}.row{flex-direction:column}
+  .battleWrap{grid-template-columns:1fr}.pokerSeats{grid-template-columns:1fr 1fr}.playingCard{width:44px;height:62px}
+}
+
+/* =========================
+   v0.14 — Poker: mesa com 4 posições
+   ========================= */
+.pokerArena{
+  position:relative;
+  width:min(760px,100%);
+  min-height:520px;
+  margin:12px auto 0;
+}
+.pokerOval{
+  position:absolute;
+  left:12%;
+  right:12%;
+  top:14%;
+  bottom:14%;
+  background:radial-gradient(circle at 50% 45%,#2f7a59 0%,#245e46 62%,#184a35 100%);
+  border:10px solid #6d4c41;
+  border-radius:48%;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.15),0 14px 28px rgba(0,0,0,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+.pokerCenter{
+  width:70%;
+  text-align:center;
+}
+.pokerCenter .cards{margin:8px 0}
+.pokerSeatPos{
+  position:absolute;
+  width:min(220px,36%);
+  background:#fff;
+  border:3px solid #d32f2f;
+  border-radius:14px;
+  padding:10px;
+  text-align:center;
+  box-shadow:0 8px 22px rgba(0,0,0,.16);
+  z-index:2;
+}
+.pokerSeatPos.you{border-color:#1565c0}
+.pokerSeatPos.top{top:0;left:50%;transform:translateX(-50%)}
+.pokerSeatPos.bottom{bottom:0;left:50%;transform:translateX(-50%)}
+.pokerSeatPos.left{left:0;top:50%;transform:translateY(-50%)}
+.pokerSeatPos.right{right:0;top:50%;transform:translateY(-50%)}
+.pokerSeatPos strong{display:block}
+.pokerSeatPos small{display:block;color:#607d8b;margin-top:2px}
+.pokerSeatCards{display:flex;justify-content:center;gap:4px;margin-top:6px}
+.miniCard{
+  width:30px;height:42px;border-radius:5px;background:#12385c;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;
+  border:1px solid rgba(255,255,255,.55)
+}
+.miniCard.face{background:#fff;color:#17212b;border-color:#cfd8dc}
+.miniCard.face.redSuit{color:#c62828}
+.pokerSeatPos .scoreNumber{font-size:20px;margin-top:4px}
+.pokerSeatPos .chips{font-size:11px}
+.pokerActionsBelow{margin-top:8px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+
+/* =========================
+   v0.14 — Batalha Naval
+   ========================= */
+.battleCell.enemyCell{
+  cursor:pointer;
+  pointer-events:auto;
+  touch-action:manipulation;
+}
+.battleCell.enemyCell:not(:disabled):hover{
+  outline:3px solid #d32f2f;
+  outline-offset:-3px;
+  background:#fff3f3;
+}
+.battleCell.enemyCell:not(:disabled){
+  opacity:1;
+}
+
+/* =========================
+   v0.14 — Xadrez: destinos + animação
+   ========================= */
+.chessCell{
+  position:relative;
+  overflow:visible;
+  transition:box-shadow .15s ease,transform .12s ease;
+}
+.chessCell.legalTarget::after{
+  content:"";
+  position:absolute;
+  width:22%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:rgba(25,118,210,.68);
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.chessCell.legalCapture{
+  box-shadow:inset 0 0 0 5px rgba(211,47,47,.72);
+}
+.chessCell.selectedSquare{
+  outline:4px solid #ffb300;
+  outline-offset:-4px;
+  z-index:1;
+}
+.chessFlyingPiece{
+  position:fixed;
+  z-index:9999;
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:clamp(28px,6vw,48px);
+  font-weight:700;
+  transition:transform .34s cubic-bezier(.2,.75,.25,1);
+  will-change:transform;
+  text-shadow:0 2px 4px rgba(0,0,0,.18);
+}
+.chessFlyingPiece.blue{color:#1565c0}
+.chessFlyingPiece.red{color:#d32f2f}
+
+@media(max-width:620px){
+  .pokerArena{min-height:570px}
+  .pokerSeatPos{width:44%;padding:8px}
+  .pokerSeatPos.left{left:0;top:43%}
+  .pokerSeatPos.right{right:0;top:43%}
+  .pokerOval{left:9%;right:9%;top:17%;bottom:17%}
+  .pokerCenter{width:72%}
+}
+
+
+/* =========================
+   v0.15 — Batalha Naval: navios de guerra 3D
+   ========================= */
+.battlePanel{
+  perspective:900px;
+}
+.battleGrid{
+  position:relative;
+  padding:7px;
+  border-radius:12px;
+  background:
+    linear-gradient(rgba(255,255,255,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.10) 1px,transparent 1px),
+    linear-gradient(145deg,#0d74a5,#07527c);
+  background-size:12.5% 12.5%,12.5% 12.5%,100% 100%;
+  box-shadow:inset 0 0 24px rgba(0,0,0,.28),0 8px 18px rgba(0,0,0,.12);
+  transform:rotateX(2deg);
+  transform-origin:center;
+}
+.battleCell{
+  position:relative;
+  overflow:visible;
+  background:rgba(213,241,255,.42);
+  border-color:rgba(255,255,255,.42);
+  min-width:0;
+}
+.warship3d{
+  background:transparent!important;
+  border-color:rgba(255,255,255,.36)!important;
+}
+.warship3d::before{
+  content:"";
+  position:absolute;
+  z-index:3;
+  left:14%;
+  right:14%;
+  top:30%;
+  bottom:24%;
+  border-radius:48% 48% 32% 32% / 62% 62% 38% 38%;
+  background:linear-gradient(90deg,#263238 0%,#78909c 22%,#cfd8dc 47%,#607d8b 68%,#263238 100%);
+  box-shadow:
+    0 5px 3px rgba(0,0,0,.38),
+    inset 0 3px 2px rgba(255,255,255,.48),
+    inset 0 -4px 3px rgba(0,0,0,.30);
+  transform:perspective(80px) rotateX(18deg);
+}
+.warship3d::after{
+  content:"";
+  position:absolute;
+  z-index:4;
+  width:34%;
+  height:30%;
+  left:33%;
+  top:17%;
+  border-radius:3px 3px 1px 1px;
+  background:linear-gradient(90deg,#37474f,#b0bec5 48%,#455a64);
+  box-shadow:
+    0 3px 2px rgba(0,0,0,.35),
+    8px 4px 0 -5px #263238,
+    -8px 4px 0 -5px #263238;
+  transform:perspective(60px) rotateX(10deg);
+}
+.warshipBow::before{
+  clip-path:polygon(50% 0,92% 30%,82% 100%,18% 100%,8% 30%);
+}
+.warshipMid::before{
+  border-radius:20%;
+}
+.warshipStern::before{
+  clip-path:polygon(15% 0,85% 0,96% 75%,72% 100%,28% 100%,4% 75%);
+}
+.battleCell.hitCell.warship3d{
+  animation:shipHit .45s ease-out;
+}
+.battleCell.hitCell.warship3d::after{
+  background:radial-gradient(circle,#fff59d 0 12%,#ff9800 20% 40%,#d32f2f 48% 62%,rgba(38,50,56,.9) 65% 78%,transparent 80%);
+  width:70%;
+  height:70%;
+  left:15%;
+  top:8%;
+  border-radius:50%;
+  box-shadow:none;
+  transform:none;
+}
+@keyframes shipHit{
+  0%{transform:translate(0,0) rotate(0)}
+  30%{transform:translate(-2px,1px) rotate(-2deg)}
+  60%{transform:translate(2px,-1px) rotate(2deg)}
+  100%{transform:translate(0,0) rotate(0)}
+}
+.battleLegend{
+  margin:8px 0 0;
+  font-size:11px;
+  color:#607d8b;
+  text-align:center;
+}
+@media(max-width:620px){
+  .battleGrid{padding:4px;gap:2px}
+  .warship3d::after{width:38%;left:31%}
+}
+
+
+/* =========================
+   v0.16 — Batalha Naval refinada
+   ========================= */
+
+/* Tabuleiro azul bem clarinho */
+.battleGrid{
+  background:#dff4ff!important;
+  background-image:
+    linear-gradient(rgba(74,144,184,.16) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(74,144,184,.16) 1px,transparent 1px)!important;
+  background-size:12.5% 12.5%!important;
+  box-shadow:inset 0 0 14px rgba(54,116,148,.14),0 6px 14px rgba(0,0,0,.08)!important;
+  transform:none!important;
+  border:1px solid #b9dcea;
+}
+.battleCell{
+  background:rgba(255,255,255,.38)!important;
+  border:1px solid rgba(112,170,198,.36)!important;
+  overflow:visible!important;
+}
+
+/* Navio é um objeto sobre o tabuleiro, não a própria casa */
+.warship3d{
+  background:rgba(255,255,255,.38)!important;
+  border-color:rgba(112,170,198,.36)!important;
+}
+.warship3d::before{
+  left:8%!important;
+  right:8%!important;
+  top:22%!important;
+  bottom:20%!important;
+  border-radius:50% 50% 34% 34% / 64% 64% 38% 38%!important;
+  background:linear-gradient(90deg,#263238 0%,#455a64 18%,#cfd8dc 47%,#607d8b 72%,#263238 100%)!important;
+  box-shadow:
+    0 5px 4px rgba(0,0,0,.34),
+    inset 0 3px 2px rgba(255,255,255,.55),
+    inset 0 -3px 3px rgba(0,0,0,.28)!important;
+  transform:perspective(90px) rotateX(16deg) scale(.92)!important;
+}
+.warship3d::after{
+  width:30%!important;
+  height:28%!important;
+  left:35%!important;
+  top:13%!important;
+  border-radius:4px 4px 2px 2px!important;
+  background:linear-gradient(90deg,#37474f,#eceff1 48%,#455a64)!important;
+  box-shadow:
+    0 3px 2px rgba(0,0,0,.30),
+    7px 4px 0 -5px #263238,
+    -7px 4px 0 -5px #263238!important;
+}
+.warshipBow::before{
+  clip-path:polygon(50% 0,95% 34%,82% 100%,18% 100%,5% 34%)!important;
+}
+.warshipMid::before{
+  clip-path:none!important;
+  border-radius:20%!important;
+}
+.warshipStern::before{
+  clip-path:polygon(14% 0,86% 0,96% 72%,72% 100%,28% 100%,4% 72%)!important;
+}
+
+/* Água: gota azul escura */
+.waterMiss::after{
+  content:"💧";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-52%);
+  z-index:6;
+  font-size:clamp(14px,3vw,24px);
+  line-height:1;
+  filter:saturate(1.35) brightness(.82);
+  text-shadow:0 1px 1px rgba(0,0,0,.12);
+}
+
+/* Parte do navio atingida fica vermelha */
+.shipHitRed::before{
+  background:linear-gradient(90deg,#7f0000 0%,#c62828 24%,#ef5350 48%,#b71c1c 72%,#7f0000 100%)!important;
+  box-shadow:
+    0 5px 4px rgba(0,0,0,.30),
+    inset 0 3px 2px rgba(255,255,255,.35),
+    inset 0 -3px 3px rgba(0,0,0,.25)!important;
+}
+.shipHitRed::after{
+  background:linear-gradient(90deg,#8e0000,#ef5350 48%,#8e0000)!important;
+  box-shadow:0 3px 2px rgba(0,0,0,.25)!important;
+  transform:perspective(60px) rotateX(10deg)!important;
+}
+
+/* Campo adversário: água clara, resultado do tiro visível */
+.enemyCell{
+  background:rgba(255,255,255,.38)!important;
+}
+.enemyCell.waterMiss{
+  background:#dff4ff!important;
+}
+.enemyCell.enemyShipHit{
+  background:#ef5350!important;
+  box-shadow:inset 0 0 0 3px #b71c1c!important;
+}
+.enemyCell.enemyShipHit::after{
+  content:"";
+  position:absolute;
+  inset:22%;
+  border-radius:50%;
+  background:#b71c1c;
+  box-shadow:0 0 0 3px rgba(255,255,255,.45);
+}
+
+
+/* =========================
+   v0.17 — Batalha Naval: 5 embarcações de 1 casa
+   ========================= */
+.singleShip{
+  position:relative;
+}
+.singleShip::before{
+  content:"";
+  position:absolute;
+  z-index:5;
+  left:10%;
+  right:10%;
+  top:18%;
+  bottom:18%;
+  background:linear-gradient(180deg,#eceff1 0%,#90a4ae 46%,#455a64 100%);
+  border:1px solid #263238;
+  box-shadow:0 4px 5px rgba(0,0,0,.28),inset 0 2px 2px rgba(255,255,255,.7);
+  transform:perspective(80px) rotateX(18deg);
+}
+.singleShip.caravela::before{
+  clip-path:polygon(50% 0,92% 35%,78% 100%,22% 100%,8% 35%);
+  border-radius:45% 45% 24% 24%;
+}
+.singleShip.submarino::before{
+  left:12%;
+  right:12%;
+  top:28%;
+  bottom:28%;
+  border-radius:999px;
+  background:linear-gradient(180deg,#cfd8dc 0%,#607d8b 52%,#263238 100%);
+}
+.singleShip.submarino::after{
+  content:"";
+  position:absolute;
+  z-index:6;
+  width:18%;
+  height:22%;
+  left:41%;
+  top:20%;
+  border-radius:3px 3px 0 0;
+  background:#455a64;
+  box-shadow:0 2px 2px rgba(0,0,0,.28);
+}
+.singleShip.caiaque::before{
+  left:22%;
+  right:22%;
+  top:8%;
+  bottom:8%;
+  clip-path:polygon(50% 0,85% 20%,72% 100%,28% 100%,15% 20%);
+  background:linear-gradient(90deg,#6d4c41,#d7ccc8 48%,#6d4c41);
+}
+.singleShip.shipHitRed::before{
+  background:linear-gradient(180deg,#ef5350 0%,#c62828 55%,#7f0000 100%)!important;
+}
+.singleShip.shipHitRed::after{
+  background:#b71c1c!important;
+}
+.shipLabel{
+  position:absolute;
+  left:50%;
+  bottom:2px;
+  transform:translateX(-50%);
+  z-index:7;
+  font-size:8px;
+  font-weight:900;
+  color:#17324a;
+  background:rgba(255,255,255,.74);
+  padding:1px 3px;
+  border-radius:3px;
+  pointer-events:none;
+}
+
+/* =========================
+   v0.17 — Poker: controles de aposta play money
+   ========================= */
+.pokerBetPanel{
+  margin-top:12px;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.22);
+}
+.pokerBetInfo{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  font-size:12px;
+  margin-bottom:9px;
+}
+.pokerBetControls{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.pokerBetControls input{
+  width:105px;
+  flex:0 0 105px;
+  background:#fff;
+}
+.pokerBetControls button{
+  white-space:nowrap;
+}
+.pokerActionMsg{
+  margin-top:8px;
+  font-size:12px;
+  min-height:16px;
+}
+
+
+/* =========================
+   v0.18 — Poker legível + mobile first
+   ========================= */
+.pokerArena{
+  width:min(720px,100%)!important;
+  min-height:470px!important;
+  margin:8px auto 10px!important;
+}
+.pokerOval{
+  left:13%!important;right:13%!important;top:17%!important;bottom:17%!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+}
+.pokerCenter{width:62%!important}
+.pokerCenter .cards{margin:8px auto!important}
+.pokerPot{font-size:15px;margin-top:7px}
+.pokerSeatPos{
+  width:176px!important;
+  max-width:31%!important;
+  padding:7px!important;
+  font-size:12px!important;
+}
+.pokerSeatPos.top{top:0!important}
+.pokerSeatPos.bottom{bottom:0!important}
+.pokerSeatPos.left{left:0!important;top:50%!important}
+.pokerSeatPos.right{right:0!important;top:50%!important}
+.pokerSeatPos .scoreNumber{font-size:17px!important;margin-top:2px!important}
+.pokerSeatPos .chips{font-size:10px!important;margin-top:2px!important}
+.pokerSeatCards{margin-top:4px!important}
+.miniCard{width:26px!important;height:36px!important;font-size:12px!important}
+
+.pokerGameControls{
+  width:min(720px,100%);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.pokerStageBtn{
+  width:100%;
+  min-height:48px;
+  font-size:16px;
+  background:#0d6b3d;
+  border:2px solid #fff;
+  box-shadow:0 3px 9px rgba(0,0,0,.15);
+}
+.pokerBetPanel{
+  margin:0!important;
+  background:#f5f9fc!important;
+  color:#17324a!important;
+  border:1px solid #cbdde9!important;
+}
+.pokerBetControls{display:grid!important;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px!important}
+.raiseGroup{display:flex;gap:5px;min-width:0}
+.raiseGroup input{width:76px!important;min-width:0!important;flex:1!important;padding:9px 6px!important}
+.raiseGroup button{padding:9px 8px!important}
+.pokerActionMsg{color:#405b70}
+.pokerGameControls .playMoneyNote{color:#607d8b;opacity:1}
+
+/* Data: campo não cresce além do necessário */
+#birthDate{max-width:220px;letter-spacing:.5px}
+
+/* Batalha: nenhuma indicação visual de cronômetro/espera */
+.battleGrid{touch-action:manipulation}
+.battleCell.enemyCell{touch-action:manipulation}
+
+@media(max-width:620px){
+  .pokerArena{
+    min-height:390px!important;
+    width:100%!important;
+    overflow:hidden;
+  }
+  .pokerOval{
+    left:8%!important;right:8%!important;top:18%!important;bottom:18%!important;
+    border-width:6px!important;
+  }
+  .pokerCenter{width:54%!important;font-size:11px}
+  .pokerCenter .playingCard{width:31px!important;height:44px!important;font-size:11px}
+  .pokerSeatPos{
+    width:116px!important;
+    max-width:35%!important;
+    padding:5px!important;
+    border-width:2px!important;
+    border-radius:10px!important;
+    font-size:10px!important;
+  }
+  .pokerSeatPos small{font-size:8px!important}
+  .pokerSeatPos .chips{font-size:8px!important}
+  .pokerSeatPos .scoreNumber{font-size:14px!important}
+  .miniCard{width:21px!important;height:29px!important;font-size:9px!important}
+  .pokerSeatPos.left{top:49%!important}
+  .pokerSeatPos.right{top:49%!important}
+  .pokerBetControls{grid-template-columns:1fr 1fr!important}
+  .pokerBetControls button{min-height:44px;padding:9px 7px}
+  .raiseGroup{grid-column:1/-1}
+  .raiseGroup input{width:45%!important}
+  .raiseGroup button{flex:1}
+  .pokerBetInfo{gap:7px!important;font-size:11px!important}
+  .pokerStageBtn{position:relative;z-index:4;min-height:50px}
+  #birthDate{max-width:100%;width:100%}
+}
+@media(max-width:390px){
+  .pokerArena{min-height:365px!important}
+  .pokerSeatPos{width:102px!important}
+  .pokerOval{left:5%!important;right:5%!important}
+  .pokerCenter{width:48%!important}
+}
+
+
+/* v0.20 — Sala de Jogos / banners / contador */
+.roomHero{display:grid;grid-template-columns:minmax(170px,1fr) minmax(260px,1.15fr);gap:18px;align-items:center}
+.roomTitleLine{display:flex;align-items:center;gap:10px}
+.roomIcon{width:42px;height:42px;object-fit:contain;border-radius:8px}
+.roomTitleLine h1{margin:0}
+.roomLead{margin-top:10px}
+.gameBanner{
+  aspect-ratio:1200/340;
+  width:100%;
+  border:1px solid #9fb7c8;
+  border-radius:4px;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  overflow:hidden;
+}
+.gameBanner.hidden{display:none!important}
+.gameHeaderWithBanner{display:grid!important;grid-template-columns:minmax(105px,.65fr) minmax(230px,1.35fr) auto;gap:14px;align-items:center}
+.gameNameBlock h2{margin:0}
+.gameBannerInMatch{max-width:420px;justify-self:center}
+.countdownSpinner{position:relative;display:flex!important;align-items:center;justify-content:center}
+.countdownSpinner span{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:900;color:#0d4f7c;line-height:1
+}
+.adminBannerModel{margin-top:14px}
+.adminModelHead{display:flex;justify-content:space-between;gap:14px;align-items:center}
+.adminModelHead h2{margin:0 0 5px}
+.adminModelHead p{margin:0}
+.bannerSlots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.bannerSlot{border:1px solid #cad9e3;border-radius:10px;padding:10px;background:#f7fafc}
+.bannerSlotTop{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
+.bannerPreview{aspect-ratio:1200/340;border:1px dashed #9fb7c8;border-radius:5px;background:#fff center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#6b8191;font-size:12px}
+.bannerSlot input[type=file]{width:100%;margin-top:8px;font-size:12px}
+.bannerSlot button{margin-top:7px;padding:7px 10px;font-size:11px}
+
+@media(max-width:620px){
+  .roomHero{grid-template-columns:1fr;gap:10px}
+  .roomTitleLine{justify-content:flex-start}
+  .roomIcon{width:38px;height:38px}
+  .gameHeaderWithBanner{grid-template-columns:1fr auto;gap:9px}
+  .gameBannerInMatch{grid-column:1/-1;grid-row:2;width:100%;max-width:none}
+  .gameNameBlock{grid-column:1}
+  .gameHeaderWithBanner #leaveGame{grid-column:2;grid-row:1}
+  .bannerSlots{grid-template-columns:1fr}
+  .adminModelHead{align-items:flex-start;flex-direction:column}
+}
+
+
+/* =========================
+   v0.21 — relógio estático + banners sempre identificáveis no modelo
+   ========================= */
+
+/* O círculo continua animado; o número não pertence ao elemento rotacionado. */
+.countdownWrap{
+  position:relative;
+  width:48px;
+  height:48px;
+  margin:10px auto 14px;
+}
+.countdownWrap .countdownSpinner{
+  position:absolute;
+  inset:0;
+  margin:0!important;
+}
+.countdownNumber{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3;
+  font-size:14px;
+  font-weight:900;
+  color:#0d4f7c;
+  line-height:1;
+  transform:none!important;
+  animation:none!important;
+  pointer-events:none;
+}
+
+/* Área de banner deve ser claramente visível mesmo antes do upload no protótipo. */
+.gameBanner{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:72px;
+  background-color:#b9e5f2;
+  color:#17324a;
+  font-weight:700;
+  letter-spacing:.4px;
+  text-align:center;
+}
+.gameBanner.bannerPlaceholder{
+  background-image:linear-gradient(90deg,#d8f2f7,#8ed7e8)!important;
+}
+.gameBanner.bannerPlaceholder span{
+  display:block;
+  padding:8px 12px;
+}
+.gameBanner.hasImage span{display:none}
+
+/* Sala de Jogos: título e ícone ficam compactos à esquerda; banner ocupa o bloco à direita. */
+.roomHero{
+  grid-template-columns:minmax(155px,.72fr) minmax(300px,1.45fr)!important;
+  align-items:center!important;
+}
+.roomTitleLine{
+  align-items:center!important;
+  align-self:center;
+}
+.roomTitleLine h1{
+  font-size:20px;
+  line-height:1.05;
+  max-width:110px;
+}
+.roomLead{
+  max-width:100%;
+  margin-top:8px!important;
+}
+
+/* Partidas: nome do jogo à esquerda, banner central, voltar à direita. */
+.gameHeaderWithBanner{
+  grid-template-columns:minmax(120px,.62fr) minmax(320px,1.55fr) auto!important;
+  align-items:center!important;
+  gap:12px!important;
+}
+.gameNameBlock{
+  min-width:0;
+}
+.gameNameBlock h2{
+  font-size:18px;
+  line-height:1.05;
+  white-space:normal;
+}
+.gameBannerInMatch{
+  width:100%!important;
+  max-width:460px!important;
+  justify-self:center;
+}
+.gameHeaderWithBanner #leaveGame{
+  align-self:start;
+}
+
+/* Tablet e celular */
+@media(max-width:760px){
+  .roomHero{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  .roomTitleLine h1{max-width:none;font-size:20px}
+  .gameBanner{min-height:64px}
+  .gameHeaderWithBanner{
+    grid-template-columns:1fr auto!important;
+  }
+  .gameNameBlock{
+    grid-column:1;
+    grid-row:1;
+  }
+  .gameHeaderWithBanner #leaveGame{
+    grid-column:2;
+    grid-row:1;
+  }
+  .gameBannerInMatch{
+    grid-column:1/-1;
+    grid-row:2;
+    width:100%!important;
+    max-width:none!important;
+  }
+}
+
+@media(max-width:420px){
+  .roomTitleLine{gap:8px}
+  .roomIcon{width:34px!important;height:34px!important}
+  .roomTitleLine h1{font-size:18px}
+  .gameNameBlock h2{font-size:17px}
+  .gameBanner{min-height:58px}
+}
+
+
+/* =========================
+   v0.22 — Cabeçalho da Sala conforme modelo enviado
+   ========================= */
+
+.roomHero{
+  display:grid!important;
+  grid-template-columns:minmax(0, 43%) minmax(0, 57%)!important;
+  gap:10px!important;
+  align-items:stretch!important;
+  width:100%;
+}
+
+.roomInfoBlock{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding:2px 4px 2px 2px;
+}
+
+.roomTitleLine{
+  display:flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  margin:0 0 3px 0!important;
+}
+
+.roomIcon{
+  width:28px!important;
+  height:28px!important;
+  object-fit:contain!important;
+  flex:0 0 28px;
+  border-radius:4px!important;
+}
+
+.roomTitleLine h1{
+  margin:0!important;
+  max-width:none!important;
+  font-size:18px!important;
+  line-height:1!important;
+  white-space:nowrap;
+}
+
+.roomLead{
+  margin:0!important;
+  padding:0 1px 0 1px!important;
+  font-size:10px!important;
+  line-height:1.18!important;
+  max-width:100%!important;
+  color:#17212b;
+}
+
+#homeBanner{
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:1200/340!important;
+  align-self:center!important;
+  justify-self:stretch!important;
+  border-radius:0!important;
+}
+
+/* Desktop: cabeçalho compacto, igual ao modelo */
+@media(min-width:761px){
+  .roomHero{
+    min-height:72px;
+  }
+  .roomInfoBlock{
+    align-self:center;
+  }
+}
+
+/* Celular: mantém nome + texto juntos, banner passa para baixo sem quebrar o bloco */
+@media(max-width:760px){
+  .roomHero{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  .roomInfoBlock{
+    width:100%;
+  }
+  .roomTitleLine h1{
+    font-size:18px!important;
+  }
+  .roomLead{
+    font-size:11px!important;
+    line-height:1.24!important;
+  }
+  #homeBanner{
+    width:100%!important;
+  }
+}
+
+
+/* =========================
+   v0.24 — Barcos enviados pelo usuário + ícones nos títulos
+   ========================= */
+
+.gameNameBlock h2{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.gameTitleIcon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:24px;
+  height:24px;
+  font-size:18px;
+  line-height:1;
+}
+
+/* O barco passa a ser a imagem fornecida pelo usuário, posicionada sobre a casa. */
+.singleShip::before,
+.singleShip::after,
+.singleShip.caravela::before,
+.singleShip.submarino::before,
+.singleShip.submarino::after,
+.singleShip.caiaque::before{
+  content:none!important;
+  display:none!important;
+}
+.battleCell.singleShip{
+  background:rgba(255,255,255,.38)!important;
+}
+.battleBoatImage{
+  position:absolute;
+  z-index:6;
+  width:92%;
+  height:92%;
+  object-fit:contain;
+  left:4%;
+  top:4%;
+  pointer-events:none;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.24));
+}
+.battleCell.shipHitRed .battleBoatImage{
+  filter:
+    sepia(1)
+    saturate(8)
+    hue-rotate(320deg)
+    brightness(.78)
+    drop-shadow(0 2px 2px rgba(0,0,0,.22));
+}
+
+/* Em telas pequenas, mantém o ícone perto do nome sem esmagar o banner. */
+@media(max-width:620px){
+  .gameTitleIcon{min-width:21px;height:21px;font-size:16px}
+  .battleBoatImage{width:96%;height:96%;left:2%;top:2%}
+}
+
+
+/* =========================
+   v0.26 — Transição suave entre banners
+   ========================= */
+.gameBanner{
+  position:relative;
+  overflow:hidden;
+  background-image:none!important;
+}
+
+.gameBannerLayer{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0;
+  transition:opacity 1.2s ease-in-out;
+  will-change:opacity;
+  pointer-events:none;
+}
+
+.gameBannerLayer.active{
+  opacity:1;
+}
+
+.gameBanner.bannerPlaceholder::before{
+  content:"BANNER RANDÔMICO";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1;
+  background:linear-gradient(90deg,#d8f2f7,#8ed7e8);
+  color:#17324a;
+  font-weight:700;
+  letter-spacing:.4px;
+}
+
+.gameBanner.hasImage::before{
+  display:none;
+}
+
+/* Mantém qualquer texto antigo de placeholder escondido para não sobrepor os layers */
+.gameBanner > span{
+  display:none!important;
+}
+
+/* v0.27 integrado ao APP v2.63 */
+.integratedClientMode .adminBannerModel{display:none!important}
+.integratedAdminMode .adminBannerModel{display:block!important;margin:0}
+.integratedAdminMode .topbar{display:none}
+.integratedAdminMode main{max-width:1100px;padding-top:10px}
+.gameStatsAdmin{margin-top:22px;padding-top:18px;border-top:1px solid #ccdbe4}
+.statsGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.statCard{border:1px solid #cad9e3;border-radius:10px;background:#fff;padding:14px;display:flex;flex-direction:column;gap:7px}
+.statCard b{font-size:12px;color:#496273}.statCard strong{font-size:25px;color:#17324a}
+@media(max-width:620px){.statsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
