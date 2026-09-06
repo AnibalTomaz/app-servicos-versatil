@@ -1,14 +1,19 @@
-const CACHE="versatil-v2-62-cliente-imagens-sincronizacao";
+const CACHE="versatil-v2-63-sala-de-jogos-integrada";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2620',
-  './app.js?v=2620',
+  './style.css?v=2630',
+  './app.js?v=2630',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
   './icon-512.png',
-  './icon-maskable-512.png'
+  './icon-maskable-512.png',
+  './sala-jogos/index.html',
+  './sala-jogos/styles.css?v=0.27',
+  './sala-jogos/app.js?v=0.27',
+  './sala-jogos/sala-jogos-icon.jpg',
+  './sala-jogos/barco-pirata.png'
 ];
 
 self.addEventListener('install',event=>{

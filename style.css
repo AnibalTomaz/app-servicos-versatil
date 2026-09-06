@@ -5146,3 +5146,13 @@ html,body{
   .loginbox-v250 .field{margin-bottom:5px!important;}
   .login-install-area{display:none!important;}
 }
+
+/* v2.63 — Sala de Jogos integrada */
+.games-menu-btn-v263 .app-menu-icon img{width:100%;height:100%;object-fit:contain;border-radius:12px}
+.games-integrated-card-v263{padding:0!important;overflow:hidden}
+.games-frame-v263{display:block;width:100%;height:900px;border:0;background:#eef8fb}
+.games-admin-frame-v263{display:block;width:100%;height:1150px;border:0;background:#f5f8fa;margin-top:12px}
+@media(max-width:700px){
+  .games-frame-v263{height:1120px}
+  .games-admin-frame-v263{height:1350px}
+}
