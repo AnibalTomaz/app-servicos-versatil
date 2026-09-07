@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-66-roteiro-email-admin-corrigido";
+const CACHE="versatil-v2-67-roteiros-admin-corrigido";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2660',
-  './app.js?v=2660',
+  './style.css?v=2670',
+  './app.js?v=2670',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
