@@ -369,14 +369,15 @@ function testarReaberturaChurrasqueiraV136(){
 
 function salvarRoteiro_(data){
   const sh=centralSheet_('ITINERARIES');
-  if(sh.getLastRow()===0)sh.appendRow(['id','createdAt','clientName','roomName','itemCount','itemsJson']);
+  if(sh.getLastRow()===0)sh.appendRow(['id','createdAt','clientName','roomName','itemCount','itemsJson','excludeFromStatistics']);
+  else if(sh.getLastColumn()<7)sh.getRange(1,7).setValue('excludeFromStatistics');
   const items=Array.isArray(data.items)?data.items:[];
-  sh.appendRow([Utilities.getUuid(),new Date().toISOString(),String(data.client?.name||''),String(data.client?.roomName||''),items.length,JSON.stringify(items.map(x=>({id:x.id||'',name:x.name||''})))]);
+  sh.appendRow([Utilities.getUuid(),new Date().toISOString(),String(data.client?.name||''),String(data.client?.roomName||''),items.length,JSON.stringify(items.map(x=>({id:x.id||'',name:x.name||''}))),data.excludeFromStatistics===true]);
 }
 function itineraryStats_(){
   const sh=centralSheet_('ITINERARIES');
   if(!sh||sh.getLastRow()<2)return {total:0,today:0,month:0,byMonth:[],topPlaces:[]};
-  const rows=sh.getDataRange().getValues().slice(1).filter(r=>r[0]);
+  const rows=sh.getDataRange().getValues().slice(1).filter(r=>r[0] && !(r[6]===true || String(r[6]).toLowerCase()==='true'));
   const now=new Date(),tz=APP_TIMEZONE,todayKey=Utilities.formatDate(now,tz,'yyyy-MM-dd'),monthKey=Utilities.formatDate(now,tz,'yyyy-MM');
   let today=0,month=0;const byMonth={},places={};
   rows.forEach(r=>{

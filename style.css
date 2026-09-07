@@ -5156,3 +5156,33 @@ html,body{
   .games-frame-v263{height:1120px}
   .games-admin-frame-v263{height:1350px}
 }
+
+/* v2.64 — menus compactos */
+.admin-menu{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:7px!important;width:100%!important}
+.admin-menu button{min-width:0!important;padding:10px 6px!important;font-size:12px!important;line-height:1.15!important;white-space:normal!important}
+.app-menu-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;width:100%!important}
+.app-menu-btn{width:100%!important;min-width:0!important;height:70px!important;padding:7px 9px!important;gap:8px!important}
+.app-menu-icon{flex-basis:46px!important;width:46px!important;height:46px!important}
+.app-menu-icon svg,.app-menu-icon img{width:42px!important;height:42px!important}.app-menu-text{font-size:13px!important}
+@media(max-width:700px){
+  .admin-menu{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:4px!important}
+  .admin-menu button{font-size:9px!important;padding:8px 2px!important;min-height:46px!important}
+  .app-menu-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
+  .app-menu-btn{height:64px!important;padding:5px!important;gap:4px!important;flex-direction:column!important;justify-content:center!important;text-align:center!important}
+  .app-menu-icon{flex:0 0 34px!important;width:34px!important;height:34px!important}
+  .app-menu-icon svg,.app-menu-icon img{width:32px!important;height:32px!important}
+  .app-menu-text{font-size:10px!important;line-height:1.05!important}
+}
+.manager-preview-card-v264{display:flex;align-items:center;justify-content:space-between;gap:16px}
+@media(max-width:650px){.manager-preview-card-v264{display:grid;grid-template-columns:1fr}.manager-preview-card-v264 .btn{width:100%}}
+.menu-anim-v264-games img{animation:v264GamesPulse 3.6s cubic-bezier(.22,.72,.18,1) 1}
+@keyframes v264GamesPulse{0%,10%,100%{transform:scale(1) rotate(0);filter:brightness(1)}34%{transform:scale(.88) rotate(-4deg);filter:brightness(.96)}62%{transform:scale(1.08) rotate(4deg);filter:brightness(1.08)}82%{transform:scale(1) rotate(0);filter:brightness(1)}}
+.app-menu-icon.menu-anim-v264-games{overflow:hidden!important}
+.game-stats-bridge-v264{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;border:0!important}
+.game-stats-kpis-v264{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:14px 0}
+.game-stats-kpis-v264>div{border:1px solid #dbe5ed;border-radius:10px;padding:10px;background:#fbfdff}
+.game-stats-kpis-v264 span{display:block;font-size:11px;color:#6b7280;margin-bottom:4px}
+.game-stats-kpis-v264 b{font-size:22px;color:#0f4c81}.game-stats-kpis-v264 small{font-size:11px}
+.game-stats-comparison-v264{padding:10px 12px;border-radius:10px;background:#eef6fc;border:1px solid #cfe5f5}
+.game-stats-report-loading-v264{padding:18px;text-align:center;color:#6b7280}
+@media(max-width:700px){.game-stats-kpis-v264{grid-template-columns:repeat(2,minmax(0,1fr))}}

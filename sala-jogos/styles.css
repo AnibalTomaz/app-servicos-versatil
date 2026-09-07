@@ -1008,3 +1008,9 @@ button.secondary{background:#fff;color:#185b91;border:1px solid #aac1d4}button:d
 .statCard{border:1px solid #cad9e3;border-radius:10px;background:#fff;padding:14px;display:flex;flex-direction:column;gap:7px}
 .statCard b{font-size:12px;color:#496273}.statCard strong{font-size:25px;color:#17324a}
 @media(max-width:620px){.statsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* v0.28 — banners estabilizados e arredondados */
+.gameBanner,.bannerPreview{border-radius:14px!important;overflow:hidden!important;isolation:isolate!important;transform:translateZ(0);backface-visibility:hidden}
+.gameBannerLayer{border-radius:inherit!important;transform:translateZ(0);backface-visibility:hidden}
+.gameBanner.isCrossfading{contain:paint}
+.integratedReportMode .topbar,.integratedReportMode main{display:none!important}

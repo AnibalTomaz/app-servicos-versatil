@@ -1,17 +1,17 @@
-const CACHE="versatil-v2-63-sala-de-jogos-integrada";
+const CACHE="versatil-v2-65-gerente-operacional-sem-estatisticas";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2630',
-  './app.js?v=2630',
+  './style.css?v=2650',
+  './app.js?v=2650',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
   './icon-512.png',
   './icon-maskable-512.png',
   './sala-jogos/index.html',
-  './sala-jogos/styles.css?v=0.27',
-  './sala-jogos/app.js?v=0.27',
+  './sala-jogos/styles.css?v=0.28',
+  './sala-jogos/app.js?v=0.28',
   './sala-jogos/sala-jogos-icon.jpg',
   './sala-jogos/barco-pirata.png'
 ];

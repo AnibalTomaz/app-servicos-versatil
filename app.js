@@ -1,6 +1,6 @@
 const KEY='versatil_services_v1_8';
 const GOOGLE_APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxxn_Oo355Xlel9W6Oc3SKNFIJeesZc0jyTVesvUDdv8LSEDtFq8p-IlHjRvL_JFCvREw/exec";
-const APP_VERSION='2.63';
+const APP_VERSION='2.65';
 const APP_BUILD='2550-sync-pc-celular';
 const DEFAULT_VERSATIL_GUIDE_V173=[{"id":"acomodacoes","name":"Acomodações","icon":"🛌","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","iconKey":"bedSingle"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","iconKey":"bedSingle","iconCount":2},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","iconKey":"bedDouble"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","iconKey":"bedDouble","extraBed":"single"},{"id":"master","name":"Master","description":"1 cama de casal maior","iconKey":"bedMaster"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","iconKey":"tableSide"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","iconKey":"sofaPastel"},{"id":"tv","name":"Sala de TV","description":"","iconKey":"smartTv"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","iconKey":"parking"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","iconKey":"weights"},{"id":"piscina","name":"Piscina","description":"","iconKey":"pool"},{"id":"churrasqueira","name":"Churrasqueira","description":"","iconKey":"skewer"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","iconKey":"parking"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","iconKey":"elevator"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","iconKey":"store24"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","iconKey":"iron"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","iconKey":"noCar"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","iconKey":"noDog"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"⚫"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","iconKey":"pool"},{"id":"n9","name":"Lei do silêncio","description":"Não fazer barulho que possa incomodar os vizinhos, tendo como parâmetro a legislação municipal vigente. LEI Nº 3819 DE 15 DE JANEIRO DE 1999 – Art. 1º É vedado perturbar o sossego e o bem estar público com ruídos, sons excessivos ou incômodos de qualquer natureza, produzidos por qualquer forma ou que contrariem os níveis máximos fixados nesta Lei.\n\n- Não usar em qualquer hora, alto-falante, piano, rádio, toca-fitas ou quaisquer outros instrumentos sonoros em condições que venham a causar incômodo aos demais condôminos ou moradores;\n- Não é permitido o uso de caixas de som ou semelhantes, ou qualquer meio de poluição sonora na piscina ou áreas sociais","iconKey":"noMegaphone"}]},{"id":"mensalista","name":"Morador mensalista","icon":"✍️","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
 const DEFAULT_VERSATIL_GUIDE_V171=[{"id":"acomodacoes","name":"Acomodações","icon":"bed","type":"gallery","items":[{"id":"loft-solo","name":"Loft Solo","description":"1 cama de solteiro","icon":"🛏️"},{"id":"loft-solteiro","name":"Loft Solteiro","description":"2 camas de solteiro","icon":"🛏️🛏️"},{"id":"loft-casal","name":"Loft Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-casal","name":"Studio Casal","description":"1 cama de casal","icon":"🛌"},{"id":"studio-triplo","name":"Studio Triplo casal","description":"1 cama de casal e 1 cama de solteiro","icon":"🛌🛏️"},{"id":"master","name":"Master","description":"1 cama de casal maior","icon":"🛌"},{"id":"apto-2q","name":"Apartamento de 2 quartos","description":"","icon":"🏠"}]},{"id":"areas-comuns","name":"Áreas comuns","icon":"🛋️","type":"gallery","items":[{"id":"sala-reuniao","name":"Sala de reunião","description":"","icon":"🪑🟥🪑"},{"id":"cowork","name":"Espaço cowork","description":"","icon":"💻"},{"id":"lounge","name":"Lounge","description":"","icon":"🛋️"},{"id":"tv","name":"Sala de TV","description":"","icon":"📺"}]},{"id":"garagem","name":"Garagem","icon":"🅿️","type":"gallery","items":[{"id":"patios","name":"Pátios","description":"","icon":"🅿️"}]},{"id":"lazer-interno","name":"Lazer","icon":"🏖️","type":"gallery","items":[{"id":"academia","name":"Academia","description":"","icon":"🏋️"},{"id":"piscina","name":"Piscina","description":"","icon":"🏊"},{"id":"churrasqueira","name":"Churrasqueira","description":"","icon":"🍢"}]},{"id":"comodidades","name":"Comodidades","icon":"🛎️","type":"text","items":[{"id":"c1","name":"Portaria 24h","description":"Portaria 24h","icon":"🕒"},{"id":"c2","name":"Estacionamento coberto (uma vaga por reserva)","description":"Estacionamento coberto (uma vaga por reserva)","icon":"🅿️"},{"id":"c3","name":"Wifi","description":"Wifi","icon":"📶"},{"id":"c4","name":"Dois elevadores panorâmicos","description":"Dois elevadores panorâmicos","icon":"⬆️⬇️"},{"id":"c5","name":"Loja de conveniência no local","description":"Loja de conveniência no local","icon":"🏠24h"},{"id":"c6","name":"Equipe de limpeza e manutenção no local","description":"Equipe de limpeza e manutenção no local","icon":"🧹"},{"id":"c7","name":"Passadoria no 4º andar","description":"Passadoria no 4º andar","icon":"♨️"},{"id":"c8","name":"Voltagem 110V","description":"Voltagem 110V","icon":"⚡"},{"id":"c9","name":"Áreas externas para fumantes","description":"Áreas externas para fumantes","icon":"🚬"}]},{"id":"normas","name":"Normas gerais","icon":"📖","type":"text","items":[{"id":"n1","name":"Não é permitido fumar nas unidades","description":"Não é permitido fumar nas unidades","icon":"🚭"},{"id":"n2","name":"O pagamento de suas reservas deve ser realizado no check-in","description":"O pagamento de suas reservas deve ser realizado no check-in","icon":"💲"},{"id":"n3","name":"Vaga de garagem","description":"As vagas de garagem destinam-se exclusivamente ao estacionamento dos veículos dos Condôminos proprietários as mesmas, sendo permitido o uso de uma vaga por apartamento, não podendo ser vendidas, emprestadas ou alugadas a terceiros não condôminos no edifício.","icon":"🚗"},{"id":"n4","name":"Não dispomos de vagas para visitantes","description":"Não dispomos de vagas para visitantes","icon":"🚫🚗"},{"id":"n5","name":"Não aceitamos Pets","description":"Não são permitidos animais no condomínio.","icon":"🚫🐕"},{"id":"n6","name":"Churrasqueira e sala de reunião","description":"churrasqueira, sala de reunião. São espaços alugados mediante agendamento prévio com o concierge.","icon":"🔑"},{"id":"n7","name":"Lixos e resíduos","description":"Coletar o lixo e detritos em sacos plásticos e colocá-los em local indicado pelo síndico e /ou administrador no horário determinado, uma vez ao dia, e no local onde serão coletados pelo funcionário do condomínio. (estacionamento do subsolo marcado como ‘SS’ no elevador.)","icon":"🗑️"},{"id":"n8","name":"Piscina","description":"Destina-se exclusivamente ao uso dos dos Condôminos as mesmas das 06:00 às 22:00 não podendo ser utilizada por terceiros não condôminos no edifício.","icon":"🏊"}]},{"id":"mensalista","name":"Morador mensalista","icon":"🏠","type":"text","items":[{"id":"m1","name":"Morador mensalista","description":"Sem necessidade de fiador ou caução você pode se hospedar mensalmente conosco e ter todos os benefícios oferecidos pelo Versátil, como: Água, gás, internet, condomínio incluso em todas as modalidades. Energia cobrada à parte em algumas unidades. Converse conosco! (65) 2121 3300","icon":"🏠"}]}];
@@ -1891,7 +1891,7 @@ async function confirmMyItinerary(){
   const items=myItinerary.map(x=>itineraryNodeById(x.id)||x).map(p=>({id:p.id,name:p.name,distance:p.distance||'',mapQuery:p.mapQuery||p.name}));
   showVersatilLoading('Enviando seu roteiro…');
   try{
-    await fetch(GOOGLE_APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',cache:'no-store',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'sendItinerary',clientVersion:APP_VERSION,client:{name:session?.name||'',email,roomName:session?.roomName||session?.room||''},items})});
+    await fetch(GOOGLE_APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',cache:'no-store',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'sendItinerary',clientVersion:APP_VERSION,excludeFromStatistics:isManagerPreviewV264(),client:{name:session?.name||'',email,roomName:session?.roomName||session?.room||''},items})});
     setSessionActivity('route');alert('Roteiro enviado para o seu e-mail. Aproveite sua estada em Cuiabá!');
     setTimeout(()=>loadCentralData({force:true,quiet:true}),2500);
   }catch(e){alert('Não foi possível enviar o roteiro agora. Tente novamente.')}finally{hideVersatilLoading()}
@@ -2631,8 +2631,9 @@ function enterClientV219(ev){
       return false;
     }
 
-    const registered=findRegisteredRoom(unitValue);
-    if(!registered){
+    const managerPreview=isManagerCredentialsV264(email,name,unitValue);
+    const registered=managerPreview?null:findRegisteredRoom(unitValue);
+    if(!managerPreview&&!registered){
       setClientAccessStatusV219('Unidade não existente. Confira o número do quarto/apartamento.','error');
       return false;
     }
@@ -2641,8 +2642,9 @@ function enterClientV219(ev){
       role:'client',
       email,
       name,
-      roomId:registered.id,
-      roomName:roomLabel(registered)
+      roomId:managerPreview?'manager-preview-800':registered.id,
+      roomName:managerPreview?'Apartamento 800':roomLabel(registered),
+      managerPreview
     };
     try{sessionStorage.setItem('versatil_menu_anim_access_v219',String(Date.now()))}catch(e){}
 
@@ -2671,6 +2673,27 @@ function enterAdminV219(ev){
   return false;
 }
 
+
+/* v2.64 — usuário padrão de conferência do Admin */
+const MANAGER_PREVIEW_V264={email:'versatil@starlis.com.br',name:'gerente',unit:'800'};
+function isManagerCredentialsV264(email,name,unit){
+  return String(email||'').trim().toLowerCase()===MANAGER_PREVIEW_V264.email &&
+    String(name||'').trim().toLowerCase()===MANAGER_PREVIEW_V264.name &&
+    String(unit||'').trim()===MANAGER_PREVIEW_V264.unit;
+}
+function isManagerPreviewV264(){
+  return !!(session?.role==='client'&&(session.managerPreview===true||
+    (String(session.email||'').toLowerCase()===MANAGER_PREVIEW_V264.email &&
+     String(session.name||'').toLowerCase()===MANAGER_PREVIEW_V264.name)));
+}
+function enterManagerPreviewV264(){
+  session={role:'client',email:MANAGER_PREVIEW_V264.email,name:MANAGER_PREVIEW_V264.name,
+    roomId:'manager-preview-800',roomName:'Apartamento 800',managerPreview:true};
+  cart=[];selectedCat='';expandedClientProductId='';page='catalog';
+  try{sessionStorage.setItem('versatil_menu_anim_access_v219',String(Date.now()))}catch(e){}
+  render();
+}
+
 function clientLogin(){
   const email=document.getElementById("c_email").value.trim();
   const name=document.getElementById("c_name").value.trim();
@@ -2681,8 +2704,9 @@ function clientLogin(){
     return;
   }
 
-  const registered=findRegisteredRoom(unitValue);
-  if(!registered){
+  const managerPreview=isManagerCredentialsV264(email,name,unitValue);
+  const registered=managerPreview?null:findRegisteredRoom(unitValue);
+  if(!managerPreview&&!registered){
     alert("Unidade não existente");
     return;
   }
@@ -2691,8 +2715,9 @@ function clientLogin(){
     role:"client",
     email,
     name,
-    roomId:registered.id,
-    roomName:roomLabel(registered)
+    roomId:managerPreview?"manager-preview-800":registered.id,
+    roomName:managerPreview?"Apartamento 800":roomLabel(registered),
+    managerPreview
   };
   try{sessionStorage.removeItem(POSTAL_SENT_ACCESS_KEY)}catch(e){}
   cart=[];
@@ -3120,7 +3145,7 @@ function starlisItemIconV235(item){
 function starlisGuidePage(){
   ensureStarlisStructureV235();
   const sections=(db.starlisGuide||[]).slice().sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'pt-BR',{sensitivity:'base'}));
-  return `<div class="card institutional-page">${pageTitleV185('Conheça a Starlis',starlisStarsIcon())}<div class="starlis-page-brand">${starlisStarsIcon()}<b>STARLIS GROUP HOTELS</b></div></div>
+  return `<div class="card institutional-page">${pageTitleV185('Conheça a Starlis',starlisStarsIcon())}</div>
     ${sections.map(sec=>`<details class="institution-detail starlis-category-v235">
       <summary class="unified-category-control-v210">${starlisCategoryIconV235(sec)}<span>${esc(sec.name||'Categoria')}</span><span>⌄</span></summary>
       <div class="institution-inside">
@@ -3484,15 +3509,16 @@ function normasGeraisPage(){
 }
 
 function gamesClientPageV263(){
+  const preview=isManagerPreviewV264()?'&preview=1':'';
   return `<div class="card games-integrated-card-v263">
-    <iframe class="games-frame-v263" src="sala-jogos/index.html?mode=client&v=263" title="Sala de Jogos" allow="fullscreen"></iframe>
+    <iframe class="games-frame-v263" src="sala-jogos/index.html?mode=client&v=264${preview}" title="Sala de Jogos" allow="fullscreen"></iframe>
   </div>`;
 }
 function gamesAdminPageV263(){
   return `<div class="card games-admin-integrated-v263">
     <h2>Sala de Jogos</h2>
-    <p class="muted">Gerencie os 6 banners e acompanhe as estatísticas da Sala de Jogos. Banners recomendados: 1200 × 340 px.</p>
-    <iframe class="games-admin-frame-v263" src="sala-jogos/index.html?mode=admin&v=263" title="Administração da Sala de Jogos"></iframe>
+    <p class="muted">Gerencie os 6 banners da Sala de Jogos. Banners recomendados: 1200 × 340 px. As estatísticas ficam em Relatórios.</p>
+    <iframe class="games-admin-frame-v263" src="sala-jogos/index.html?mode=admin&v=264" title="Administração da Sala de Jogos"></iframe>
   </div>`;
 }
 
@@ -3504,9 +3530,9 @@ function clientView(){
     ${appMenuButton('cart',`Carrinho${cart.length?` (${cart.length})`:''}`,UI_ICONS.cart)}
     ${appMenuButton('confirmation','Confirmação',UI_ICONS.check)}
     ${appMenuButton('versatil','Conheça o Versátil',versatilIcon())}
-    ${appMenuButton('starlis','Conheça a Starlis',starlisStarsIcon())}
     ${appMenuButton('postal','Correio Versátil',UI_ICONS.mailbox,'postal-menu-btn')}
     ${appMenuButton('games','Sala de Jogos','<img src="sala-jogos/sala-jogos-icon.jpg" alt="">','games-menu-btn-v263')}
+    ${appMenuButton('starlis','Conheça a Starlis',starlisStarsIcon())}
   </nav>`;
   if(page==='leisure')return menu+leisureGuidePage();
   if(page==='itinerary')return menu+itineraryPage();
@@ -4211,7 +4237,8 @@ function confirmOrder(){
     items:structuredClone(cart),
     total:cart.reduce((a,i)=>a+i.price*i.qty,0),
     createdAt:new Date().toISOString(),
-    status:'ativo'
+    status:'ativo',
+    excludeFromStatistics:isManagerPreviewV264()
   };
 
   db.orders.push(order);
@@ -4366,7 +4393,8 @@ function sendConfirmationEmails(o){
     client:o.client,
     items:o.items,
     total:o.total,
-    createdAt:o.createdAt
+    createdAt:o.createdAt,
+    excludeFromStatistics:o.excludeFromStatistics===true
   };
 
   fetch(GOOGLE_APPS_SCRIPT_URL,{
@@ -5320,7 +5348,12 @@ function adminPageContent(){
 function dashboard(){
   let active=db.orders.filter(o=>o.status==='ativo'),total=active.reduce((a,o)=>a+o.total,0);
   return `<div class="grid"><div class="card"><div class="muted">Pedidos ativos</div><div class="kpi">${active.length}</div></div><div class="card"><div class="muted">Vendas consolidadas</div><div class="kpi">${money(total)}</div></div><div class="card"><div class="muted">Unidades cadastradas</div><div class="kpi">${db.rooms.length}</div></div><div class="card"><div class="muted">Produtos</div><div class="kpi">${db.products.length}</div></div></div>
-  <div class="card public-base-card-v244" style="margin-top:14px"><div class="row between public-base-layout-v244"><div class="public-base-copy-v244"><h3 style="margin:0">Base pública</h3><p class="muted">Produtos, categorias, unidades e disponibilidade compartilhados entre todos os usuários.</p></div><div class="row public-base-actions-v244"><button class="btn" onclick="loadCentralData()">↻ Baixar base pública</button><button class="btn primary" onclick="publishWithLoading()">Publicar alterações</button></div></div>${centralStatusHtml()}</div>`;
+  <div class="card public-base-card-v244" style="margin-top:14px"><div class="row between public-base-layout-v244"><div class="public-base-copy-v244"><h3 style="margin:0">Base pública</h3><p class="muted">Produtos, categorias, unidades e disponibilidade compartilhados entre todos os usuários.</p></div><div class="row public-base-actions-v244"><button class="btn" onclick="loadCentralData()">↻ Baixar base pública</button><button class="btn primary" onclick="publishWithLoading()">Publicar alterações</button></div></div>${centralStatusHtml()}</div>
+  <div class="card manager-preview-card-v264" style="margin-top:14px">
+    <div><h3 style="margin:0 0 4px">Visualização padrão do Cliente</h3>
+    <p class="muted" style="margin:0">gerente • versatil@starlis.com.br • Apartamento 800. Este acesso funciona como um Cliente comum para conferência completa; apenas não entra nas estatísticas e gráficos.</p></div>
+    <button class="btn primary" onclick="enterManagerPreviewV264()">Visualizar como gerente</button>
+  </div>`;
 }
 function focusNewRoomNumber(){
   setTimeout(()=>{
@@ -6071,6 +6104,10 @@ function reportSectionChartData(section,data){
       {label:data.currentLabel,value:data.filteredTotal}
     ];
   }
+  if(section==='games'){
+    const g=gameStatsReportDataV264(),names={tictactoe:'Jogo da Velha',connect4:'Quatro em Linha',battleship:'Batalha Naval',chess:'Xadrez',poker:'Poker'};
+    return Object.entries(names).map(([k,label])=>({label,value:g.current.byGame[k]||0}));
+  }
   return [];
 }
 
@@ -6122,7 +6159,7 @@ function pdfAddColumnChart(doc,items,y,title='Gráfico de colunas'){
 }
 
 
-function pdfDrawColumnChart(doc,items,x,y,w,h){
+function pdfDrawColumnChart(doc,items,x,y,w,h,valueFormatter=money){
   const data=(items||[]).filter(x=>Number.isFinite(Number(x.value)));
   if(!data.length){
     doc.setFont('helvetica','italic');
@@ -6156,7 +6193,7 @@ function pdfDrawColumnChart(doc,items,x,y,w,h){
 
     doc.setFont('helvetica','bold');
     doc.setFontSize(6);
-    const val=money(v);
+    const val=String(valueFormatter(v));
     doc.text(val,bx+barW/2,Math.max(y+4,by-1.5),{align:'center'});
 
     doc.setFont('helvetica','normal');
@@ -6214,7 +6251,8 @@ function pdfAddReportSection(doc,section,data,y){
     rightX,
     y+7,
     rightW,
-    sectionHeight-18
+    sectionHeight-18,
+    section==='games'?(v=>String(v)):money
   );
 
   return y+sectionHeight+7;
@@ -6249,6 +6287,11 @@ function reportSectionLines(section,data){
       data.pct===null?'Variação: sem base anterior':`Variação: ${data.pct.toFixed(1)}%`
     ];
   }
+  if(section==='games'){
+    const g=gameStatsReportDataV264(),s=g.current,total=s.hvh+s.hvv;
+    const ph=total?((s.hvh/total)*100).toFixed(1):'0,0',pv=total?((s.hvv/total)*100).toFixed(1):'0,0';
+    return ['ESTATÍSTICAS DA SALA DE JOGOS','',`Filtro: ${g.currentLabel}`,`Entradas: ${s.entries}`,`Partidas iniciadas: ${s.matches}`,`Partidas concluídas: ${s.completed}`,`Partidas abandonadas: ${s.abandonments}`,`Humano × Humano: ${s.hvh} (${ph}%)`,`Humano × Virtual: ${s.hvv} (${pv}%)`,`Folds no Poker: ${s.folds}`,`Período anterior: ${g.previous.matches} partidas`];
+  }
   if(section==='summary'){
     return ['RESUMO DO PERÍODO','',
       `Filtro: ${data.currentLabel}`,
@@ -6269,7 +6312,8 @@ function exportSingleReportSection(section){
     products:'Vendas por produto',
     last3:'Comparativo dos últimos 3 meses',
     annual:'Comparativo anual',
-    previous:'Comparativo com o ano anterior'
+    previous:'Comparativo com o ano anterior',
+    games:'Estatísticas da Sala de Jogos'
   };
 
   const JsPDF=getJsPDF();
@@ -6523,7 +6567,7 @@ function previousPeriodFilter(filter){
 function buildReportsData(){
   const now=new Date();
   const filter=getReportFilter();
-  const orders=activeOrders();
+  const orders=activeOrders().filter(o=>o.excludeFromStatistics!==true);
 
   const filteredOrders=orders.filter(o=>orderMatchesReportFilter(o,filter));
   const filteredTotal=filteredOrders.reduce((a,o)=>a+Number(o.total||0),0);
@@ -6640,6 +6684,61 @@ function reportSummaryChart(d){
 
 
 
+
+
+/* v2.64 — Estatísticas da Sala de Jogos dentro de Relatórios */
+window.gameStatsRawV264=window.gameStatsRawV264||null;
+function timestampMatchesReportFilterV264(ts,filter){
+  const d=new Date(Number(ts)||ts); if(Number.isNaN(d.getTime()))return false;
+  if(filter.day&&d.getDate()!==Number(filter.day))return false;
+  if(filter.month&&d.getMonth()+1!==Number(filter.month))return false;
+  if(filter.year&&d.getFullYear()!==Number(filter.year))return false;
+  return true;
+}
+function gameStatsForFilterV264(filter){
+  const raw=window.gameStatsRawV264||{entries:[],matches:[],abandonments:[],folds:[]};
+  const entries=(raw.entries||[]).filter(x=>timestampMatchesReportFilterV264(x.createdAt,filter));
+  const matches=(raw.matches||[]).filter(x=>timestampMatchesReportFilterV264(x.startedAt||x.createdAt,filter));
+  const aband=(raw.abandonments||[]).filter(x=>timestampMatchesReportFilterV264(x.createdAt,filter));
+  const folds=(raw.folds||[]).filter(x=>timestampMatchesReportFilterV264(x.createdAt,filter));
+  const byGame={tictactoe:0,connect4:0,battleship:0,chess:0,poker:0};
+  let hvh=0,hvv=0,completed=0;
+  matches.forEach(m=>{if(m.game in byGame)byGame[m.game]++;if(m.mode==='human_vs_human')hvh++;if(m.mode==='human_vs_virtual')hvv++;if(m.status==='completed')completed++});
+  return {entries:entries.length,matches:matches.length,completed,abandonments:aband.length,folds:folds.length,hvh,hvv,byGame};
+}
+function gameStatsReportDataV264(){
+  const filter=getReportFilter(),current=gameStatsForFilterV264(filter),prevFilter=previousPeriodFilter(filter),previous=gameStatsForFilterV264(prevFilter);
+  const now=new Date(),refYear=filter.year?Number(filter.year):now.getFullYear(),refMonth=filter.month?Number(filter.month)-1:now.getMonth();
+  const last3=[];
+  for(let k=2;k>=0;k--){const d=new Date(refYear,refMonth-k,1);last3.push({label:d.toLocaleDateString('pt-BR',{month:'short',year:'2-digit'}),value:gameStatsForFilterV264({day:'',month:String(d.getMonth()+1),year:String(d.getFullYear())}).matches})}
+  const annual=[];for(let m=0;m<12;m++)annual.push({label:new Date(refYear,m,1).toLocaleDateString('pt-BR',{month:'short'}),value:gameStatsForFilterV264({day:'',month:String(m+1),year:String(refYear)}).matches});
+  return {filter,current,previous,last3,annual,year:refYear,currentLabel:reportFilterLabel(filter),previousLabel:reportFilterLabel(prevFilter)};
+}
+function gameStatsReportBoxHtmlV264(){
+  if(!window.gameStatsRawV264)return `<div class="game-stats-report-loading-v264">Carregando estatísticas da Sala de Jogos…</div>`;
+  const d=gameStatsReportDataV264(),s=d.current,names={tictactoe:'Jogo da Velha',connect4:'Quatro em Linha',battleship:'Batalha Naval',chess:'Xadrez',poker:'Poker'},total=s.hvh+s.hvv;
+  const ph=total?((s.hvh/total)*100).toFixed(1):'0,0',pv=total?((s.hvv/total)*100).toFixed(1):'0,0';
+  return `<div class="game-stats-kpis-v264">
+    <div><span>Entradas</span><b>${s.entries}</b></div><div><span>Partidas</span><b>${s.matches}</b></div>
+    <div><span>Concluídas</span><b>${s.completed}</b></div><div><span>Abandonadas</span><b>${s.abandonments}</b></div>
+    <div><span>Humano × Humano</span><b>${s.hvh} <small>(${ph}%)</small></b></div>
+    <div><span>Humano × Virtual</span><b>${s.hvv} <small>(${pv}%)</small></b></div>
+    <div><span>Folds Poker</span><b>${s.folds}</b></div></div>
+    <div class="game-stats-comparison-v264"><b>Comparação:</b> ${esc(d.previousLabel)} = ${d.previous.matches} partidas • ${esc(d.currentLabel)} = ${s.matches} partidas</div>
+    <h4 class="chart-title">Partidas por jogo</h4>${reportColumnChart(Object.entries(names).map(([k,label])=>({label,value:s.byGame[k]||0})),v=>String(v))}
+    <h4 class="chart-title">Últimos 3 meses</h4>${reportColumnChart(d.last3,v=>String(v))}
+    <h4 class="chart-title">Comparativo anual - ${d.year}</h4>${reportColumnChart(d.annual,v=>String(v))}`;
+}
+function renderGameStatsReportBoxV264(){const box=document.getElementById('gameStatsReportContentV264');if(box)box.innerHTML=gameStatsReportBoxHtmlV264()}
+function refreshGameStatsReportV264(){document.getElementById('gameStatsBridgeV264')?.contentWindow?.postMessage({type:'versatil-game-stats-refresh'},location.origin)}
+function resetGameStatsReportV264(){
+  if(!confirm('Zerar todas as estatísticas atuais da Sala de Jogos? Esta ação não pode ser desfeita.'))return;
+  document.getElementById('gameStatsBridgeV264')?.contentWindow?.postMessage({type:'versatil-game-stats-reset'},location.origin);
+}
+window.addEventListener('message',ev=>{
+  if(ev.origin!==location.origin||ev.data?.type!=='versatil-game-stats-data')return;
+  window.gameStatsRawV264=ev.data.data||{entries:[],matches:[],abandonments:[],folds:[]};renderGameStatsReportBoxV264();
+});
 
 function reportsAdmin(){
   const d=buildReportsData();
@@ -6803,6 +6902,13 @@ function reportsAdmin(){
     ${pdfHeader('itineraryPlaces')}
     <h3>Locais mais escolhidos nos roteiros</h3>
     ${(itineraryStats.topPlaces||[]).length?reportColumnChart((itineraryStats.topPlaces||[]).slice(0,10).map(x=>({label:x.name||x.label||'',value:Number(x.count||x.value||0)})),v=>String(v)):'<div class="muted">Ainda não há dados de roteiros.</div>'}
+  </div>
+  <div class="card report-box game-stats-report-box-v264" style="margin-top:14px">
+    ${pdfHeader('games')}
+    <div class="row between"><div><h3>Estatísticas da Sala de Jogos</h3><div class="muted">Usa os mesmos filtros e comparações dos demais relatórios.</div></div>
+    <div class="row"><button class="btn" onclick="refreshGameStatsReportV264()">Atualizar</button><button class="btn red" onclick="resetGameStatsReportV264()">Zerar estatísticas</button></div></div>
+    <div id="gameStatsReportContentV264">${gameStatsReportBoxHtmlV264()}</div>
+    <iframe id="gameStatsBridgeV264" class="game-stats-bridge-v264" src="sala-jogos/index.html?mode=report&v=264" title="Ponte de estatísticas da Sala de Jogos"></iframe>
   </div>`;
 }
 function exportReport(){let rows=[['Pedido','Cliente','Unidade','Data','Total','Status'],...db.orders.map(o=>[o.id,o.client.name,o.client.roomName,new Date(o.createdAt).toLocaleDateString('pt-BR'),o.total,o.status])],csv=rows.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(';')).join('\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download='relatorio-versatil.csv';a.click()}
@@ -7014,9 +7120,9 @@ function firstAllowedDate24h(p){
 
 const MENU_ANIM_V219={
   step:20000,
-  sequence:["catalog", "leisure", "itinerary", "cart", "confirmation", "versatil", "starlis", "postal"],
-  files:{"catalog": "catalogo_livro_folheando_contorno_azul.gif", "leisure": "lazer_pin_giro_vertical_360.gif", "itinerary": "meu_roteiro_mapa_desdobrando.gif", "cart": "carrinho_deslizando_esquerda_direita.gif", "confirmation": "confirmacao_check_aparecendo.gif", "versatil": "conheca_versatil_brilho_passando.gif", "starlis": "conheca_starlis_estrelas_surgindo.gif", "postal": "correio_bandeira_baixa_levanta.gif"},
-  durations:{"catalog": 2310, "leisure": 2640, "itinerary": 3080, "cart": 2700, "confirmation": 3040, "versatil": 3560, "starlis": 4240, "postal": 5880},
+  sequence:["catalog", "leisure", "itinerary", "cart", "confirmation", "versatil", "postal", "games", "starlis"],
+  files:{"catalog":"catalogo_livro_folheando_contorno_azul.gif","leisure":"lazer_pin_giro_vertical_360.gif","itinerary":"meu_roteiro_mapa_desdobrando.gif","cart":"carrinho_deslizando_esquerda_direita.gif","confirmation":"confirmacao_check_aparecendo.gif","versatil":"conheca_versatil_brilho_passando.gif","postal":"correio_bandeira_baixa_levanta.gif","games":"sala-jogos/sala-jogos-icon.jpg","starlis":"conheca_starlis_estrelas_surgindo.gif"},
+  durations:{"catalog":2310,"leisure":2640,"itinerary":3080,"cart":2700,"confirmation":3040,"versatil":3560,"postal":5880,"games":3600,"starlis":4240},
   lastSlot:0,
   restores:{}
 };
@@ -7028,8 +7134,9 @@ function staticIconV219(key){
   if(key==='cart')return UI_ICONS.cart;
   if(key==='confirmation')return UI_ICONS.check;
   if(key==='versatil')return versatilIcon();
-  if(key==='starlis')return starlisStarsIcon();
   if(key==='postal')return UI_ICONS.mailbox;
+  if(key==='games')return '<img src="sala-jogos/sala-jogos-icon.jpg" alt="">';
+  if(key==='starlis')return starlisStarsIcon();
   return '';
 }
 function restoreIconV219(key){
@@ -7040,7 +7147,7 @@ function restoreIconV219(key){
     holder.classList.remove(
       'menu-anim-v222-catalog','menu-anim-v222-leisure','menu-anim-v222-itinerary',
       'menu-anim-v222-cart','menu-anim-v222-confirmation','menu-anim-v222-versatil',
-      'menu-anim-v222-starlis','menu-anim-v222-postal'
+      'menu-anim-v222-starlis','menu-anim-v222-postal','menu-anim-v264-games'
     );
   }catch(e){}
 }
@@ -7056,7 +7163,7 @@ function playIconV219(key){
     // v2.22: anima o próprio ícone existente.
     // Não adiciona imagem, não substitui HTML, não altera dimensões.
     restoreIconV219(key);
-    const cls='menu-anim-v222-'+key;
+    const cls=key==='games'?'menu-anim-v264-games':'menu-anim-v222-'+key;
     void holder.offsetWidth; // reinicia a animação CSS sem reflow estrutural
     holder.classList.add(cls);
 
@@ -7072,7 +7179,7 @@ setInterval(()=>{
   try{
     if(!session||session.role!=='client')return;
     const buttons=menuButtonsV219();
-    if(buttons.length<8)return;
+    if(buttons.length<9)return;
     let start=0;
     try{start=Number(sessionStorage.getItem('versatil_menu_anim_access_v219')||0)}catch(e){}
     if(!start)return;

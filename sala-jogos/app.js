@@ -62,61 +62,32 @@ function ensureBannerLayers(el){
   return layers.slice(0,2);
 }
 
+function preloadBannerV028(src){
+  return new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(true);im.onerror=()=>resolve(false);im.src=src});
+}
 function applyBanner(el,idx,{instant=false}={}){
-  const arr=loadBanners();
-  if(!el)return;
-
+  const arr=loadBanners();if(!el)return;
+  const token=String(Number(el.dataset.bannerToken||0)+1);el.dataset.bannerToken=token;
   if(idx<0||!arr[idx]){
-    el.classList.remove('hidden','hasImage');
-    el.classList.add('bannerPlaceholder');
-    const layers=ensureBannerLayers(el);
-    layers.forEach(layer=>{
-      layer.classList.remove('active');
-      layer.style.backgroundImage='';
-    });
-    return;
+    el.classList.remove('hidden','hasImage','isCrossfading');el.classList.add('bannerPlaceholder');
+    ensureBannerLayers(el).forEach(layer=>{layer.classList.remove('active');layer.style.backgroundImage=''});return;
   }
-
-  el.classList.remove('hidden','bannerPlaceholder');
-  el.classList.add('hasImage');
-
-  const layers=ensureBannerLayers(el);
-  const current=layers.find(l=>l.classList.contains('active'))||layers[0];
-  const next=layers.find(l=>l!==current)||layers[1];
-
-  // Se ainda não há imagem ativa, mostra diretamente.
-  if(!current.style.backgroundImage){
-    current.style.backgroundImage=`url("${arr[idx]}")`;
-    current.classList.add('active');
-    next.classList.remove('active');
-    next.style.backgroundImage='';
-    return;
-  }
-
-  // Se for a mesma imagem, não reinicia a animação.
-  const targetUrl=`url("${arr[idx]}")`;
-  if(current.style.backgroundImage===targetUrl)return;
-
-  next.style.backgroundImage=targetUrl;
-
-  if(instant){
-    current.classList.remove('active');
-    next.classList.add('active');
-    setTimeout(()=>{current.style.backgroundImage=''},50);
-    return;
-  }
-
-  // Crossfade: novo banner entra enquanto o anterior sai suavemente.
-  requestAnimationFrame(()=>{
-    next.classList.add('active');
-    current.classList.remove('active');
+  const src=arr[idx];
+  preloadBannerV028(src).then(ok=>{
+    if(!ok||el.dataset.bannerToken!==token)return;
+    el.classList.remove('hidden','bannerPlaceholder');el.classList.add('hasImage');
+    const layers=ensureBannerLayers(el),current=layers.find(l=>l.classList.contains('active'))||layers[0],next=layers.find(l=>l!==current)||layers[1],targetUrl=`url("${src}")`;
+    if(!current.style.backgroundImage){current.style.backgroundImage=targetUrl;current.classList.add('active');next.classList.remove('active');next.style.backgroundImage='';return}
+    if(current.style.backgroundImage===targetUrl)return;
+    next.style.backgroundImage=targetUrl;
+    if(instant){current.classList.remove('active');next.classList.add('active');current.style.backgroundImage='';return}
+    el.classList.add('isCrossfading');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      if(el.dataset.bannerToken!==token)return;
+      next.classList.add('active');current.classList.remove('active');
+      setTimeout(()=>{if(el.dataset.bannerToken===token&&!current.classList.contains('active')){current.style.backgroundImage='';el.classList.remove('isCrossfading')}},1350);
+    }));
   });
-
-  setTimeout(()=>{
-    if(!current.classList.contains('active')){
-      current.style.backgroundImage='';
-    }
-  },1350);
 }
 function showAccessBanner(){
   currentBannerIndex=pickBannerIndex(true);
@@ -209,7 +180,7 @@ function statsMode(r=room){
 function statsHumanCount(r=room){return Object.values(r?.players||{}).filter(p=>p?.type==='human').length}
 function statsVirtualCount(r=room){return Object.values(r?.players||{}).filter(p=>p?.type==='bot').length}
 async function statsWriteOnce(path,data){
-  if(!uid)return;
+  if(NO_STATS_MODE||!uid)return;
   try{await runTransaction(ref(db,path),cur=>cur||data)}
   catch(e){console.warn('Estatística não gravada:',path,e?.message||e)}
 }
@@ -256,6 +227,7 @@ async function statsRecordAbandonment(r=room,reason='leave'){
   });
 }
 async function statsArmAbandonment(r=room){
+  if(NO_STATS_MODE)return;
   await statsDisarmAbandonment();
   if(!uid||!roomId||!r||r.winner)return;
   const round=statsRound(r),rid=statsSafeId(roomId);
@@ -292,48 +264,60 @@ function otherSide(s){return s==='blue'?'red':'blue'}
 function scoreOf(r,s){return Number(r?.score?.[s]||0)}
 
 
-const URL_MODE=new URLSearchParams(location.search).get('mode')||'client';
+const URL_PARAMS=new URLSearchParams(location.search);
+const URL_MODE=URL_PARAMS.get('mode')||'client';
 const IS_ADMIN_MODE=URL_MODE==='admin';
+const IS_REPORT_MODE=URL_MODE==='report';
+const IS_PREVIEW_MODE=URL_PARAMS.get('preview')==='1';
+const NO_STATS_MODE=IS_ADMIN_MODE||IS_REPORT_MODE||IS_PREVIEW_MODE;
 
 function applyIntegratedMode(){
   const admin=$('#adminBannerModel');
   if(IS_ADMIN_MODE){
     ['#homeView','#queueView','#gameView','#endModal','#pokerGate'].forEach(sel=>$(sel)?.classList.add('hidden'));
-    admin?.classList.remove('hidden');
-    document.body.classList.add('integratedAdminMode');
+    admin?.classList.remove('hidden');document.body.classList.add('integratedAdminMode');
+  }else if(IS_REPORT_MODE){
+    ['#homeView','#queueView','#gameView','#endModal','#pokerGate','#adminBannerModel'].forEach(sel=>$(sel)?.classList.add('hidden'));
+    document.body.classList.add('integratedReportMode');
   }else{
-    admin?.classList.add('hidden');
-    document.body.classList.add('integratedClientMode');
+    admin?.classList.add('hidden');document.body.classList.add('integratedClientMode');
   }
 }
-function statsCountObject(v){return v&&typeof v==='object'?Object.keys(v).length:0}
-async function loadGameStatsAdmin(){
-  const box=$('#gameStatsContent');if(!box)return;
-  box.innerHTML='<div class="muted">Carregando estatísticas…</div>';
-  try{
-    const [entriesSnap,matchesSnap,abandSnap,foldSnap]=await Promise.all([
-      get(ref(db,'statistics/entries')),get(ref(db,'statistics/matches')),
-      get(ref(db,'statistics/abandonments')),get(ref(db,'statistics/pokerFolds'))
-    ]);
-    const entries=entriesSnap.val()||{},matches=matchesSnap.val()||{},aband=abandSnap.val()||{},folds=foldSnap.val()||{};
-    let entryCount=0;Object.values(entries).forEach(v=>entryCount+=statsCountObject(v));
-    const rows=[];Object.values(matches).forEach(roomRounds=>Object.values(roomRounds||{}).forEach(m=>{if(m&&m.game)rows.push(m)}));
-    const byGame={};let hvh=0,hvb=0,completed=0;
-    rows.forEach(m=>{byGame[m.game]=(byGame[m.game]||0)+1;if(m.mode==='human_vs_human')hvh++;else if(m.mode==='human_vs_virtual')hvb++;if(m.status==='completed')completed++});
-    let abandonCount=0;Object.values(aband).forEach(rounds=>Object.values(rounds||{}).forEach(users=>abandonCount+=statsCountObject(users)));
-    let foldCount=0;Object.values(folds).forEach(rounds=>Object.values(rounds||{}).forEach(users=>foldCount+=statsCountObject(users)));
-    const names={tictactoe:'Jogo da Velha',connect4:'Quatro em Linha',battleship:'Batalha Naval',chess:'Xadrez',poker:'Poker'};
-    box.innerHTML=`
-      <div class="statCard"><b>Entradas na Sala</b><strong>${entryCount}</strong></div>
-      <div class="statCard"><b>Partidas iniciadas</b><strong>${rows.length}</strong></div>
-      <div class="statCard"><b>Partidas concluídas</b><strong>${completed}</strong></div>
-      <div class="statCard"><b>Desistências</b><strong>${abandonCount}</strong></div>
-      <div class="statCard"><b>Humano × Humano</b><strong>${hvh}</strong></div>
-      <div class="statCard"><b>Humano × Virtual</b><strong>${hvb}</strong></div>
-      ${Object.keys(names).map(k=>`<div class="statCard"><b>${names[k]}</b><strong>${byGame[k]||0}</strong></div>`).join('')}
-      <div class="statCard"><b>Folds no Poker</b><strong>${foldCount}</strong></div>`;
-  }catch(e){console.error(e);box.innerHTML='<div class="muted">Não foi possível carregar as estatísticas. Verifique as regras do Firebase.</div>'}
+function flattenValuesV264(obj,depth=5){
+  const out=[];
+  function walk(v,d){
+    if(!v||typeof v!=='object')return;
+    if(v.type||v.game||v.createdAt||v.startedAt){out.push(v);return}
+    if(d<=0)return;
+    Object.values(v).forEach(x=>walk(x,d-1));
+  }
+  walk(obj,depth);return out;
 }
+async function ensureStatsResetV264(){
+  if(!IS_REPORT_MODE)return;
+  const markerRef=ref(db,'statistics/resetMarkers/v264'),marker=await get(markerRef);
+  if(marker.exists())return;
+  await remove(ref(db,'statistics'));
+  await set(markerRef,{createdAt:Date.now(),version:'2.64'});
+}
+async function sendGameStatsToParentV264(){
+  if(!IS_REPORT_MODE)return;
+  const [e,m,a,f]=await Promise.all([get(ref(db,'statistics/entries')),get(ref(db,'statistics/matches')),get(ref(db,'statistics/abandonments')),get(ref(db,'statistics/pokerFolds'))]);
+  const entries=flattenValuesV264(e.val()||{}).filter(x=>x?.type==='room_entry').map(x=>({createdAt:Number(x.createdAt)||0}));
+  const matches=flattenValuesV264(m.val()||{}).filter(x=>x?.game).map(x=>({game:x.game||'',mode:x.mode||'',status:x.status||'',startedAt:Number(x.startedAt)||0,finishedAt:Number(x.finishedAt)||0}));
+  const abandonments=flattenValuesV264(a.val()||{}).filter(x=>x?.type==='abandonment').map(x=>({game:x.game||'',mode:x.mode||'',createdAt:Number(x.createdAt)||0}));
+  const folds=flattenValuesV264(f.val()||{}).filter(x=>x?.type==='poker_fold').map(x=>({createdAt:Number(x.createdAt)||0}));
+  parent.postMessage({type:'versatil-game-stats-data',data:{entries,matches,abandonments,folds}},location.origin);
+}
+async function resetGameStatsV264(){
+  if(!IS_REPORT_MODE)return;
+  await remove(ref(db,'statistics'));await set(ref(db,'statistics/resetMarkers/v264'),{createdAt:Date.now(),version:'2.64',manual:true});await sendGameStatsToParentV264();
+}
+window.addEventListener('message',async ev=>{
+  if(ev.origin!==location.origin||!IS_REPORT_MODE)return;
+  if(ev.data?.type==='versatil-game-stats-refresh')await sendGameStatsToParentV264();
+  if(ev.data?.type==='versatil-game-stats-reset')await resetGameStatsV264();
+});
 
 async function boot(){
   const buttons=['#playTTT','#playC4','#playBattle','#playChess','#playPoker'].map($);
@@ -348,8 +332,9 @@ async function boot(){
     $('#connBadge').textContent='Firebase online';
     buttons.forEach(b=>b.disabled=false);
     await syncBannersFromFirebase();
-    statsRecordRoomEntry();
-    if(IS_ADMIN_MODE)loadGameStatsAdmin();
+    if(!IS_REPORT_MODE)showAccessBanner();
+    if(!NO_STATS_MODE)statsRecordRoomEntry();
+    if(IS_REPORT_MODE){await ensureStatsResetV264();await sendGameStatsToParentV264();}
   }catch(e){
     console.error(e); $('#nick').value='Indisponível'; $('#connBadge').textContent='Falha na conexão';
   }
@@ -1389,10 +1374,8 @@ birthInput.addEventListener('keydown',e=>{
 });
 
 applyIntegratedMode();
-showAccessBanner();
 renderBannerAdmin();
 if($('#toggleAdminBanners'))$('#toggleAdminBanners').style.display='none';
-if($('#refreshGameStats'))$('#refreshGameStats').onclick=loadGameStatsAdmin;
 $('#playTTT').onclick=()=>startGame('tictactoe');
 $('#playC4').onclick=()=>startGame('connect4');
 $('#playBattle').onclick=()=>startGame('battleship');

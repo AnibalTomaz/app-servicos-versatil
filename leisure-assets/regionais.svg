@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480">
+<rect width="720" height="480" fill="#eef5fa"/>
+<rect x="24" y="24" width="672" height="432" fill="#ffffff" stroke="#0f4c81" stroke-width="6"/>
+<text x="360" y="210" text-anchor="middle" font-size="110">🥘</text>
+<text x="360" y="315" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="38" fill="#0f4c81">REGIONAIS</text>
+<text x="360" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#5d7080">Lazer e Conveniências</text>
+</svg>
