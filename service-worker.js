@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-67-roteiros-admin-corrigido";
+const CACHE="versatil-v2-68-roteiros-admin-jsonp-corrigido";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2670',
-  './app.js?v=2670',
+  './style.css?v=2680',
+  './app.js?v=2680',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
