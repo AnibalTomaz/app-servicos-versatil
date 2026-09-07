@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-73-starlis-publico-autoritativo";
+const CACHE="versatil-v2-74-postal-tipografia-atual";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2730',
-  './app.js?v=2730',
+  './style.css?v=2740',
+  './app.js?v=2740',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
