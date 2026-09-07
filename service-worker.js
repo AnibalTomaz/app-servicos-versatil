@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-72-pc-celular-conteudo-sincronizado";
+const CACHE="versatil-v2-73-starlis-publico-autoritativo";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2720',
-  './app.js?v=2720',
+  './style.css?v=2730',
+  './app.js?v=2730',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
