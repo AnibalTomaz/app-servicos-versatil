@@ -156,6 +156,7 @@ const GAME_ICONS={
 
 let uid=null,nick='',nickKey='',sessionId='',gameKey='',roomId=null,room=null;
 let matching=false,enteringRoom=false,botTimer=null,seekTimer=null,roomUnsub=null,assignUnsub=null;
+let roomWatchdogTimer=null,lastRoomEventAt=0,botBusySince=0;
 let statsPageSession='',statsDisconnectHandle=null,statsRoundSeen='';
 let queueCountdownTimer=null,bannerRotateTimer=null,currentBannerIndex=-1;
 let chessSelected=null,pokerAgeApproved=false;
@@ -169,6 +170,48 @@ function clearSeek(){if(seekTimer){clearTimeout(seekTimer);seekTimer=null}}
 function scheduleSeek(ms=700){clearSeek();seekTimer=setTimeout(seekOpponent,ms)}
 function qRef(id=uid){return ref(db,`queues/${gameKey}/${id}`)}
 function assignmentRef(id=uid){return ref(db,`queues/assignments/${gameKey}/${id}`)}
+
+function stopRoomWatchdogV270(){
+  if(roomWatchdogTimer)clearInterval(roomWatchdogTimer);
+  roomWatchdogTimer=null;
+  lastRoomEventAt=0;
+}
+function startRoomWatchdogV270(){
+  stopRoomWatchdogV270();
+  lastRoomEventAt=Date.now();
+  roomWatchdogTimer=setInterval(async()=>{
+    if(!roomId||!gameKey)return;
+
+    // Se uma jogada do bot ficou marcada como ocupada por falha/rede,
+    // libera o estado para permitir nova tentativa.
+    if(botBusy && botBusySince && Date.now()-botBusySince>6500){
+      botBusy=false;
+      botBusySince=0;
+    }
+
+    // Mesmo sem novos eventos Firebase, verifica o estado da sala.
+    // Isso recupera partidas que pareciam "travadas" depois de algum tempo.
+    try{
+      if(Date.now()-lastRoomEventAt>5000){
+        const snap=await get(ref(db,'rooms/'+roomId));
+        if(snap.exists()){
+          room=snap.val();
+          lastRoomEventAt=Date.now();
+          renderGame();
+        }
+      }
+      // Em partidas contra jogador virtual, se a vez ficou no bot,
+      // o watchdog tenta novamente sem criar jogadas duplicadas.
+      if(room && !room.winner){
+        const red=room.players?.red;
+        if(red?.type==='bot' && room.turn==='red')maybeBotMove();
+      }
+    }catch(e){
+      console.warn('Watchdog da partida:',e?.message||e);
+    }
+  },2500);
+}
+
 
 function statsSafeId(v){return String(v||'').replace(/[.#$\[\]\/]/g,'_')}
 function statsNow(){return Date.now()}
@@ -481,12 +524,17 @@ async function enter(rid){
   if(roomUnsub)roomUnsub();
   roomUnsub=onValue(ref(db,'rooms/'+rid),s=>{
     if(!s.exists())return;
+    lastRoomEventAt=Date.now();
     room=s.val();
     const sr=`${roomId}|${statsRound(room)}`;
     if(sr!==statsRoundSeen)statsRecordMatchStart(room);
     if(room?.winner)statsMarkMatchFinished(room);
     renderGame();maybeBotMove();maybeStartHumanRematch(room);
+  },err=>{
+    console.warn('Listener da sala interrompido:',err?.message||err);
+    lastRoomEventAt=0;
   });
+  startRoomWatchdogV270();
   enteringRoom=false;
 }
 
@@ -1235,6 +1283,7 @@ async function maybeBotMove(){
   if(botBusy||!room||room.winner||gameKey==='poker')return;
   const red=room.players?.red;if(red?.type!=='bot'||room.turn!=='red')return;
   botBusy=true;
+  botBusySince=Date.now();
   const botDelay=gameKey==='battleship'?0:800;
   setTimeout(async()=>{
     try{
@@ -1247,7 +1296,7 @@ async function maybeBotMove(){
       }else if(gameKey==='chess'){
         await runTransaction(ref(db,'rooms/'+roomId),r=>{if(!r||r.winner||r.turn!=='red')return r;const mv=chessBotMove(r);if(!mv){const res=chessGameResult(r.board,'red');if(res)awardWinner(r,res);return r}const[from,to]=mv,p=r.board[from];r.board[to]=p;r.board[from]='';if(p==='rP'&&Math.floor(to/8)===7)r.board[to]='rQ';r.turn='blue';const res=chessGameResult(r.board,'blue');if(res)awardWinner(r,res);return r});
       }
-    }finally{botBusy=false}
+    }catch(e){console.warn('Jogada do jogador virtual:',e?.message||e)}finally{botBusy=false;botBusySince=0}
   },botDelay);
 }
 
@@ -1322,7 +1371,7 @@ async function rematch(){
   $('#status').textContent='Aguardando o adversário aceitar jogar de novo…';
 }
 async function back(){
-  clearTimeout(botTimer);clearSeek();stopQueueCountdown();stopGameBannerRotation();matching=false;enteringRoom=false;chessSelected=null;
+  clearTimeout(botTimer);clearSeek();stopQueueCountdown();stopGameBannerRotation();stopRoomWatchdogV270();matching=false;enteringRoom=false;chessSelected=null;botBusy=false;botBusySince=0;
   if(roomId&&room&&!room.winner)await statsRecordAbandonment(room,'leave');
   await statsDisarmAbandonment();
   try{const q=await get(qRef());if(q.exists()&&q.val()?.sessionId===sessionId)await remove(qRef())}catch{}

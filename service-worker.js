@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-69-jogos-estaveis-admin-5x3";
+const CACHE="versatil-v2-70-jogos-auto-recuperacao-layout-compacto";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2690',
-  './app.js?v=2690',
+  './style.css?v=2700',
+  './app.js?v=2700',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
