@@ -1,17 +1,17 @@
-const CACHE="versatil-v2-71-banner-arredondado-poker-resultados";
+const CACHE="versatil-v2-72-pc-celular-conteudo-sincronizado";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2710',
-  './app.js?v=2710',
+  './style.css?v=2720',
+  './app.js?v=2720',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
   './icon-512.png',
   './icon-maskable-512.png',
   './sala-jogos/index.html',
-  './sala-jogos/styles.css?v=0.28',
-  './sala-jogos/app.js?v=0.28',
+  './sala-jogos/styles.css?v=0.29',
+  './sala-jogos/app.js?v=0.29',
   './sala-jogos/sala-jogos-icon.jpg',
   './sala-jogos/barco-pirata.png'
 ];
