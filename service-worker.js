@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-75-horario-ultima-versao";
+const CACHE="versatil-v2-76-horario-versao-central-autoritativo";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2750',
-  './app.js?v=2750',
+  './style.css?v=2760',
+  './app.js?v=2760',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
