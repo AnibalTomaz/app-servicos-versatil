@@ -5186,3 +5186,37 @@ html,body{
 .game-stats-comparison-v264{padding:10px 12px;border-radius:10px;background:#eef6fc;border:1px solid #cfe5f5}
 .game-stats-report-loading-v264{padding:18px;text-align:center;color:#6b7280}
 @media(max-width:700px){.game-stats-kpis-v264{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* v2.69 — Admin exatamente 5 colunas × 3 linhas */
+.admin-menu{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  grid-auto-flow:row!important;
+  gap:7px!important;
+  width:100%!important;
+  margin-bottom:14px!important;
+}
+.admin-menu button{
+  width:100%!important;
+  min-width:0!important;
+  min-height:42px!important;
+  padding:9px 5px!important;
+  font-size:12px!important;
+  line-height:1.15!important;
+  white-space:normal!important;
+  text-align:center!important;
+}
+@media(max-width:700px){
+  .admin-menu{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    gap:5px!important;
+  }
+  .admin-menu button{
+    min-height:42px!important;
+    padding:7px 2px!important;
+    font-size:9px!important;
+    line-height:1.08!important;
+  }
+}

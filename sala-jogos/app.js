@@ -188,7 +188,7 @@ async function statsRecordRoomEntry(){
   if(!uid)return;
   if(!statsPageSession)statsPageSession=`${Date.now()}_${Math.random().toString(36).slice(2,9)}`;
   await statsWriteOnce(`statistics/entries/${uid}/${statsSafeId(statsPageSession)}`,{
-    type:'room_entry',uid,createdAt:statsNow(),source:'sala_de_jogos',version:'0.19'
+    type:'room_entry',uid,createdAt:statsNow(),source:'sala_de_jogos',version:'0.20'
   });
 }
 async function statsRecordMatchStart(r=room){
@@ -197,12 +197,13 @@ async function statsRecordMatchStart(r=room){
   await statsWriteOnce(`statistics/matches/${rid}/${round}`,{
     type:'match',roomId,round,game:r.game,mode:statsMode(r),
     humanPlayers:statsHumanCount(r),virtualPlayers:statsVirtualCount(r),
-    startedAt:statsNow(),status:'active',version:'0.19'
+    startedAt:statsNow(),status:'active',version:'0.20'
   });
   statsRoundSeen=`${roomId}|${round}`;
   await statsArmAbandonment(r);
 }
 async function statsMarkMatchFinished(r=room){
+  if(NO_STATS_MODE)return;
   if(!roomId||!r?.winner)return;
   const round=statsRound(r),rid=statsSafeId(roomId);
   try{
@@ -210,7 +211,7 @@ async function statsMarkMatchFinished(r=room){
       const base=cur||{
         type:'match',roomId,round,game:r.game,mode:statsMode(r),
         humanPlayers:statsHumanCount(r),virtualPlayers:statsVirtualCount(r),
-        startedAt:statsNow(),version:'0.19'
+        startedAt:statsNow(),version:'0.20'
       };
       if(base.finishedAt)return base;
       return {...base,status:'completed',winner:r.winner,finishedAt:statsNow()};
@@ -223,7 +224,7 @@ async function statsRecordAbandonment(r=room,reason='leave'){
   const round=statsRound(r),rid=statsSafeId(roomId);
   await statsWriteOnce(`statistics/abandonments/${rid}/${round}/${uid}`,{
     type:'abandonment',uid,roomId,round,game:r.game,mode:statsMode(r),
-    reason,createdAt:statsNow(),version:'0.19'
+    reason,createdAt:statsNow(),version:'0.20'
   });
 }
 async function statsArmAbandonment(r=room){
@@ -235,7 +236,7 @@ async function statsArmAbandonment(r=room){
     statsDisconnectHandle=onDisconnect(ref(db,`statistics/abandonments/${rid}/${round}/${uid}`));
     await statsDisconnectHandle.set({
       type:'abandonment',uid,roomId,round,game:r.game,mode:statsMode(r),
-      reason:'disconnect',createdAt:statsNow(),version:'0.19'
+      reason:'disconnect',createdAt:statsNow(),version:'0.20'
     });
   }catch(e){statsDisconnectHandle=null;console.warn('onDisconnect estatístico indisponível',e?.message||e)}
 }
@@ -247,7 +248,7 @@ async function statsRecordPokerFold(r=room,seat=''){
   if(!uid||!roomId||!r||r.game!=='poker')return;
   const round=statsRound(r),rid=statsSafeId(roomId);
   await statsWriteOnce(`statistics/pokerFolds/${rid}/${round}/${uid}`,{
-    type:'poker_fold',uid,roomId,round,seat,createdAt:statsNow(),version:'0.19'
+    type:'poker_fold',uid,roomId,round,seat,createdAt:statsNow(),version:'0.20'
   });
 }
 
@@ -295,10 +296,10 @@ function flattenValuesV264(obj,depth=5){
 }
 async function ensureStatsResetV264(){
   if(!IS_REPORT_MODE)return;
-  const markerRef=ref(db,'statistics/resetMarkers/v264'),marker=await get(markerRef);
+  const markerRef=ref(db,'statistics/resetMarkers/v269'),marker=await get(markerRef);
   if(marker.exists())return;
   await remove(ref(db,'statistics'));
-  await set(markerRef,{createdAt:Date.now(),version:'2.64'});
+  await set(markerRef,{createdAt:Date.now(),version:'2.69'});
 }
 async function sendGameStatsToParentV264(){
   if(!IS_REPORT_MODE)return;
@@ -311,7 +312,7 @@ async function sendGameStatsToParentV264(){
 }
 async function resetGameStatsV264(){
   if(!IS_REPORT_MODE)return;
-  await remove(ref(db,'statistics'));await set(ref(db,'statistics/resetMarkers/v264'),{createdAt:Date.now(),version:'2.64',manual:true});await sendGameStatsToParentV264();
+  await remove(ref(db,'statistics'));await set(ref(db,'statistics/resetMarkers/v269'),{createdAt:Date.now(),version:'2.69',manual:true});await sendGameStatsToParentV264();
 }
 window.addEventListener('message',async ev=>{
   if(ev.origin!==location.origin||!IS_REPORT_MODE)return;

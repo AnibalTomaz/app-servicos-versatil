@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-68-roteiros-admin-jsonp-corrigido";
+const CACHE="versatil-v2-69-jogos-estaveis-admin-5x3";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2680',
-  './app.js?v=2680',
+  './style.css?v=2690',
+  './app.js?v=2690',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
