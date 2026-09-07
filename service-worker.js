@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-70-jogos-auto-recuperacao-layout-compacto";
+const CACHE="versatil-v2-71-banner-arredondado-poker-resultados";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2700',
-  './app.js?v=2700',
+  './style.css?v=2710',
+  './app.js?v=2710',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',

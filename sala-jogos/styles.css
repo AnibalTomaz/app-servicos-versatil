@@ -1014,3 +1014,53 @@ button.secondary{background:#fff;color:#185b91;border:1px solid #aac1d4}button:d
 .gameBannerLayer{border-radius:inherit!important;transform:translateZ(0);backface-visibility:hidden}
 .gameBanner.isCrossfading{contain:paint}
 .integratedReportMode .topbar,.integratedReportMode main{display:none!important}
+
+
+/* v2.71 — cantos arredondados definitivos dos banners da Sala de Jogos */
+#homeBanner,
+#gameBanner,
+.gameBanner,
+.gameBannerInMatch,
+.bannerPreview{
+  border-radius:16px!important;
+  overflow:hidden!important;
+  clip-path:inset(0 round 16px)!important;
+}
+.gameBannerLayer{
+  border-radius:16px!important;
+}
+
+/* v2.71 — Poker: resultado abaixo da mesa, sem cobrir as cartas */
+.pokerResultPanel{
+  position:relative!important;
+  z-index:2!important;
+  width:min(620px,100%)!important;
+  margin:12px auto 0!important;
+  padding:12px 14px!important;
+  border:1px solid #cad9e3!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  color:#17324a!important;
+  text-align:center!important;
+  box-shadow:0 5px 16px rgba(0,0,0,.08)!important;
+}
+.pokerResultPanel strong{
+  display:block!important;
+  font-size:18px!important;
+  margin-bottom:4px!important;
+}
+.pokerResultPanel span,
+.pokerResultPanel small{
+  display:block!important;
+  margin-top:3px!important;
+}
+.pokerResultActions{
+  display:flex!important;
+  justify-content:center!important;
+  gap:8px!important;
+  flex-wrap:wrap!important;
+  margin-top:10px!important;
+}
+.pokerResultActions button{
+  min-width:150px!important;
+}

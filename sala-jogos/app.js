@@ -1085,7 +1085,8 @@ function renderPoker(){
     const you=p.uid===uid&&p.sessionId===sessionId;
     const folded=!!room.folded?.[seat];
     const hole=room.holes?.[seat]||[];
-    const holeHtml=you
+    const showHole=you||!!room.winner;
+    const holeHtml=showHole
       ? hole.map(c=>{
           const red=c.includes('♥')||c.includes('♦');
           return `<span class="miniCard face ${red?'redSuit':''}">${c}</span>`;
@@ -1103,9 +1104,22 @@ function renderPoker(){
   }
 
   let result='';
+  let pokerResultPanel='';
   if(room.winner){
     const win=room.winnerSeats||[];
-    result=win.includes(side)?'Você venceu a mão!':'Mão encerrada.';
+    const won=win.includes(side);
+    result=won?'Você venceu a mão!':'Mão encerrada.';
+    const winnerNames=win.map(s=>room.players?.[s]?.nick||s).join(', ');
+    pokerResultPanel=`
+      <div class="pokerResultPanel">
+        <strong>${won?'Você venceu!':'Resultado da mão'}</strong>
+        <span>${winnerNames?`Vencedor${win.length>1?'es':''}: ${winnerNames}`:''}</span>
+        <small>As cartas de todos os jogadores estão visíveis acima.</small>
+        <div class="pokerResultActions">
+          <button id="pokerRematchInline">Jogar de novo</button>
+          <button id="pokerBackInline" class="secondary">Voltar à Sala de Jogos</button>
+        </div>
+      </div>`;
   }
 
   const actionLabel=room.stage===0?'ABRIR FLOP':
@@ -1153,6 +1167,7 @@ function renderPoker(){
         <div class="pokerActionMsg">${room.lastAction||''}</div>
         <div class="playMoneyNote">Somente fichas fictícias • sem dinheiro real, depósitos, retiradas ou prêmios.</div>
       </div>
+      ${pokerResultPanel}
     </div>`;
 
   $('#status').textContent=room.winner?result:'Mesa recreativa em andamento';
@@ -1168,6 +1183,11 @@ function renderPoker(){
   if(raise){raise.disabled=controlsDisabled;raise.onclick=()=>pokerBetAction('raise')}
   if(allin){allin.disabled=controlsDisabled||myChips<=0;allin.onclick=()=>pokerBetAction('allin')}
   if(fold){fold.disabled=controlsDisabled;fold.onclick=()=>pokerBetAction('fold')}
+
+  const pokerRematchInline=$('#pokerRematchInline');
+  const pokerBackInline=$('#pokerBackInline');
+  if(pokerRematchInline)pokerRematchInline.onclick=rematch;
+  if(pokerBackInline)pokerBackInline.onclick=back;
 
   if(room.winner)renderPokerEnd();
   else $('#endModal').classList.add('hidden');
@@ -1260,19 +1280,19 @@ async function pokerNextStage(){
 }
 function renderPokerEnd(){
   const side=sideOf(room),wins=room.winnerSeats||[],won=wins.includes(side);
-  $('#endTitle').textContent=won?'Você venceu!':'Você perdeu!';
-  $('#endText').textContent=won?'Você venceu esta mão recreativa.':'Outro participante venceu esta mão.';
+  // v2.71: no Poker o resultado fica dentro da própria mesa, nunca em modal sobre as cartas.
+  $('#endModal').classList.add('hidden');
 
   const humans=Object.values(room.players||{}).filter(p=>p?.type==='human');
   const myVote=room.rematch?.[uid]?.accepted===true&&room.rematch?.[uid]?.sessionId===sessionId;
+  const inlineBtn=$('#pokerRematchInline');
 
   if(humans.length>1&&myVote){
-    $('#endModal').classList.add('hidden');
     $('#status').textContent='Aguardando o outro jogador aceitar jogar de novo…';
-    $('#rematchBtn').disabled=true;
+    if(inlineBtn)inlineBtn.disabled=true;
   }else{
-    $('#endModal').classList.remove('hidden');
-    $('#rematchBtn').disabled=false;
+    $('#status').textContent=won?'Você venceu!':'Resultado da mão';
+    if(inlineBtn)inlineBtn.disabled=false;
   }
 }
 /* BOT */
