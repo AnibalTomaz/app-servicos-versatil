@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-74-postal-tipografia-atual";
+const CACHE="versatil-v2-75-horario-ultima-versao";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2740',
-  './app.js?v=2740',
+  './style.css?v=2750',
+  './app.js?v=2750',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
