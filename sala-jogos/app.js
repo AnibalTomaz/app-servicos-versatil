@@ -1037,6 +1037,26 @@ function eval5(cards){
   return[0,...vals];
 }
 function cmpRank(a,b){for(let i=0;i<Math.max(a.length,b.length);i++){const x=a[i]||0,y=b[i]||0;if(x!==y)return x-y}return 0}
+function pokerHandInfo(rank){
+  const info={
+    8:['Straight Flush','Sequência do mesmo naipe.'],
+    7:['Quadra','Quatro cartas do mesmo valor.'],
+    6:['Full House','Uma trinca combinada com um par.'],
+    5:['Flush','Cinco cartas do mesmo naipe.'],
+    4:['Straight','Cinco cartas em sequência.'],
+    3:['Trinca','Três cartas do mesmo valor.'],
+    2:['Dois Pares','Dois pares de valores diferentes.'],
+    1:['Um Par','Duas cartas do mesmo valor.'],
+    0:['Carta Alta','A carta de maior valor da mão.']
+  };
+  return info[Number(rank?.[0])]||['Mão de Poker','Melhor combinação de cinco cartas.'];
+}
+function pokerWinnerHandDescription(room,winnerSeats){
+  const seats=(winnerSeats||[]).filter(s=>room?.holes?.[s]);
+  if(!seats.length)return ['Vitória por desistência','A mão foi encerrada porque os demais jogadores desistiram.'];
+  const ranked=seats.map(s=>best7([...(room.holes[s]||[]),...(room.community||[])]));
+  return pokerHandInfo(ranked[0]);
+}
 function best7(cards){return combos5(cards).map(eval5).sort((a,b)=>cmpRank(b,a))[0]}
 function pokerResolve(r){
   const active=Object.keys(r.players).filter(s=>!r.folded?.[s]);
@@ -1110,11 +1130,12 @@ function renderPoker(){
     const won=win.includes(side);
     result=won?'Você venceu a mão!':'Mão encerrada.';
     const winnerNames=win.map(s=>room.players?.[s]?.nick||s).join(', ');
+    const handInfo=pokerWinnerHandDescription(room,win);
     pokerResultPanel=`
       <div class="pokerResultPanel">
         <strong>${won?'Você venceu!':'Resultado da mão'}</strong>
         <span>${winnerNames?`Vencedor${win.length>1?'es':''}: ${winnerNames}`:''}</span>
-        <small>As cartas de todos os jogadores estão visíveis acima.</small>
+        <small class="pokerHandResult"><b>${handInfo[0]}:</b> ${handInfo[1]}</small>
         <div class="pokerResultActions">
           <button id="pokerRematchInline">Jogar de novo</button>
           <button id="pokerBackInline" class="secondary">Voltar à Sala de Jogos</button>
