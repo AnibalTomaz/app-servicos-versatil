@@ -1058,6 +1058,57 @@ function pokerWinnerHandDescription(room,winnerSeats){
   return pokerHandInfo(ranked[0]);
 }
 function best7(cards){return combos5(cards).map(eval5).sort((a,b)=>cmpRank(b,a))[0]}
+
+/* v2.81 — comentário dinâmico de probabilidades */
+const pokerProbCacheV281=new Map();
+const pokerProbLabelsV281={
+  8:'Straight Flush',7:'Quadra',6:'Full House',5:'Flush',
+  4:'Straight',3:'Trinca',2:'Dois Pares',1:'Um Par',0:'Carta Alta'
+};
+function pokerProbRemainingDeckV281(known){
+  const used=new Set(known||[]);
+  return makeDeck().filter(c=>!used.has(c));
+}
+function pokerProbEstimateV281(hole,community){
+  const known=[...(hole||[]),...(community||[])];
+  const key=known.join('|');
+  if(pokerProbCacheV281.has(key))return pokerProbCacheV281.get(key);
+  const need=5-(community||[]).length;
+  const deck=pokerProbRemainingDeckV281(known);
+  const samples=5000;
+  const counts=Array(9).fill(0);
+  if(need<=0){
+    counts[best7(known)[0]]=1;
+  }else{
+    for(let n=0;n<samples;n++){
+      const pool=deck.slice(),future=[];
+      for(let k=0;k<need;k++){
+        const j=Math.floor(Math.random()*pool.length);
+        future.push(pool.splice(j,1)[0]);
+      }
+      counts[best7([...known,...future])[0]]++;
+    }
+  }
+  const total=need<=0?1:samples;
+  const result=counts.map((v,i)=>({
+    name:pokerProbLabelsV281[i],pct:v*100/total,rank:i
+  })).filter(x=>x.pct>0).sort((a,b)=>b.pct-a.pct||b.rank-a.rank).slice(0,3);
+  pokerProbCacheV281.set(key,result);
+  if(pokerProbCacheV281.size>24)pokerProbCacheV281.delete(pokerProbCacheV281.keys().next().value);
+  return result;
+}
+function pokerProbabilityHtmlV281(room,side){
+  const hole=room?.holes?.[side]||[];
+  const community=(room?.community||[]).slice(0,
+    room?.stage===0?0:room?.stage===1?3:room?.stage===2?4:5);
+  if(hole.length<2)return '';
+  const rows=pokerProbEstimateV281(hole,community);
+  return `<div class="pokerProbPanel">
+    <div class="pokerProbTitle">Suas probabilidades</div>
+    ${rows.map(x=>`<div class="pokerProbRow"><span><b>${x.name}</b></span><strong>${x.pct.toFixed(1)}%</strong></div>`).join('')}
+    <small>Estimativa das 3 mãos finais mais prováveis.</small>
+  </div>`;
+}
 function pokerResolve(r){
   const active=Object.keys(r.players).filter(s=>!r.folded?.[s]);
   if(active.length===1){
@@ -1164,6 +1215,7 @@ function renderPoker(){
           <div class="cards">${community}</div>
           <div class="pokerPot">Pot fictício: <b>${Number(room.pot||0)}</b></div>
         </div>
+        ${pokerProbabilityHtmlV281(room,side)}
       </div>
     </div>
 
