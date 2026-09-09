@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-77-horario-versao-separado-da-base";
+const CACHE="versatil-v2-78-listas-estaveis-sem-fechamento";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2770',
-  './app.js?v=2770',
+  './style.css?v=2780',
+  './app.js?v=2780',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
