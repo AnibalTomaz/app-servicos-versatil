@@ -100,7 +100,7 @@ function startGameBannerRotation(){
   if(loadBanners().length>1)bannerRotateTimer=setInterval(()=>{
     currentBannerIndex=pickBannerIndex(true);
     applyBanner($('#gameBanner'),currentBannerIndex);
-  },60000);
+  },25000);
 }
 function stopGameBannerRotation(){clearInterval(bannerRotateTimer);bannerRotateTimer=null}
 function renderBannerAdmin(){
