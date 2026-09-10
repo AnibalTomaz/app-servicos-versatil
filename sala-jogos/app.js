@@ -160,6 +160,7 @@ let roomWatchdogTimer=null,lastRoomEventAt=0,botBusySince=0;
 let statsPageSession='',statsDisconnectHandle=null,statsRoundSeen='';
 let queueCountdownTimer=null,bannerRotateTimer=null,currentBannerIndex=-1;
 let chessSelected=null,pokerAgeApproved=false;
+const battleAnimatedHits=new Set();
 
 const views=[$('#homeView'),$('#queueView'),$('#gameView')];
 function show(v){views.forEach(x=>x.classList.add('hidden'));v.classList.remove('hidden')}
@@ -541,10 +542,11 @@ async function enter(rid){
 function renderPlayersTwo(){
   const side=sideOf(room),opp=opponentOf(room);
   $('#playersArea').classList.remove('hidden');
-  $('#meBox').className='playerBox playerBlue';
-  $('#oppBox').className='playerBox playerRed';
-  $('#meBox').innerHTML=`<strong>${nick}</strong><small>Você • Azul</small><div class="scoreNumber">${scoreOf(room,side)}</div>`;
-  $('#oppBox').innerHTML=`<strong>${opp?.nick||'Adversário'}</strong><small>${opp?.type==='bot'?'Jogador virtual':'Jogador online'} • Vermelho</small><div class="scoreNumber">${scoreOf(room,otherSide(side))}</div>`;
+  const myColor=side==='blue'?'Azul':'Vermelho',oppColor=side==='blue'?'Vermelho':'Azul';
+  $('#meBox').className='playerBox '+(side==='blue'?'playerBlue':'playerRed');
+  $('#oppBox').className='playerBox '+(side==='blue'?'playerRed':'playerBlue');
+  $('#meBox').innerHTML=`<strong>${nick}</strong><small>Você • ${myColor}</small><div class="scoreNumber">${scoreOf(room,side)}</div>`;
+  $('#oppBox').innerHTML=`<strong>${opp?.nick||'Adversário'}</strong><small>${opp?.type==='bot'?'Jogador virtual':'Jogador online'} • ${oppColor}</small><div class="scoreNumber">${scoreOf(room,otherSide(side))}</div>`;
 }
 function renderGame(){
   if(!room)return;
@@ -561,16 +563,75 @@ function winnerText(){
   if(room.winner==='draw')return 'Empate';
   return room.winner===s?'Você venceu!':'Você perdeu!';
 }
+let winRevealTimer=null;
+function winAnimationPending(){
+  if(!room?.winner || !['tictactoe','connect4'].includes(gameKey) || room.winner==='draw')return false;
+  const at=Number(room.winAt||0);
+  return !!at && Date.now()-at<2000;
+}
+function scheduleWinReveal(){
+  if(winRevealTimer)clearTimeout(winRevealTimer);
+  const at=Number(room?.winAt||0),delay=Math.max(0,2000-(Date.now()-at));
+  winRevealTimer=setTimeout(()=>{if(room?.winAt===at)renderEndState()},delay+20);
+}
+function tttWinLine(b){
+  for(const line of [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]){
+    const [a,c,d]=line;if(b[a]&&b[a]===b[c]&&b[a]===b[d])return {side:b[a],cells:line};
+  }
+  return null;
+}
+function c4WinLine(b){
+  const at=(r,c)=>b[r*7+c];
+  for(let r=0;r<6;r++)for(let c=0;c<7;c++){
+    const s=at(r,c);if(!s)continue;
+    for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){
+      const cells=[];let ok=true;
+      for(let k=0;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}cells.push(rr*7+cc)}
+      if(ok)return {side:s,cells};
+    }
+  }
+  return null;
+}
+function addWinLineOverlay(el,type,info){
+  if(!el||!info)return;
+  const svgNS='http://www.w3.org/2000/svg';const svg=document.createElementNS(svgNS,'svg');
+  svg.classList.add('winLineSvg',info.side==='blue'?'winBlue':'winRed');svg.setAttribute('viewBox',type==='ttt'?'0 0 300 300':'0 0 700 600');svg.setAttribute('aria-hidden','true');
+  const line=document.createElementNS(svgNS,'line');
+  if(type==='ttt'){
+    const sets={
+      '0,1,2':[30,50,270,50],'3,4,5':[30,150,270,150],'6,7,8':[30,250,270,250],
+      '0,3,6':[50,30,50,270],'1,4,7':[150,30,150,270],'2,5,8':[250,30,250,270],
+      '0,4,8':[30,30,270,270],'2,4,6':[270,30,30,270]};
+    const p=sets[info.cells.join(',')];[line.x1,line.y1,line.x2,line.y2]=p;
+  }else{
+    const [a,b,c,d]=info.cells.map(i=>[Math.floor(i/7),i%7]);
+    line.setAttribute('x1',50+b*100);line.setAttribute('y1',50+a*100);line.setAttribute('x2',50+d*100);line.setAttribute('y2',50+c*100);
+  }
+  line.setAttribute('x1',line.x1?.baseVal?.value ?? line.getAttribute('x1'));
+  line.setAttribute('y1',line.y1?.baseVal?.value ?? line.getAttribute('y1'));
+  line.setAttribute('x2',line.x2?.baseVal?.value ?? line.getAttribute('x2'));
+  line.setAttribute('y2',line.y2?.baseVal?.value ?? line.getAttribute('y2'));
+  line.classList.add('winLinePath');svg.appendChild(line);el.appendChild(svg);
+}
 function renderEndState(){
+  if(winAnimationPending()){ $('#endModal').classList.add('hidden'); scheduleWinReveal(); return; }
   if(!room.winner){$('#endModal').classList.add('hidden');$('#rematchBtn').disabled=false;return}
   const title=winnerText(),opp=opponentOf(room),humanGame=opp?.type!=='bot';
   const myVote=humanGame&&room.rematch?.[uid]?.accepted===true&&room.rematch?.[uid]?.sessionId===sessionId;
   $('#endTitle').textContent=title;$('#endText').textContent=room.winner==='draw'?'A partida terminou empatada.':room.winner===sideOf(room)?'Boa partida.':'O adversário venceu esta rodada.';
+  const extra=$('#endExtra');
+  if(extra){
+    if(gameKey==='battleship' && room.winner===sideOf(room)){
+      extra.innerHTML='<div class="treasureChest" aria-label="Baú de tesouro"><div class="chestLid">◆</div><div class="chestBody">✦</div></div><div class="treasureCaption">Tesouro encontrado!</div>';
+      requestAnimationFrame(()=>extra.classList.add('chestOpen'));
+    }else extra.innerHTML='';
+  }
   if(myVote){$('#endModal').classList.add('hidden');$('#status').textContent='Aguardando o adversário aceitar jogar de novo…';$('#rematchBtn').disabled=true}
   else{$('#endModal').classList.remove('hidden');$('#rematchBtn').disabled=false}
 }
 function awardWinner(r,w){
   r.winner=w;
+  r.winAt=Date.now();
   if(w&&w!=='draw'){r.score=r.score||{blue:0,red:0};r.score[w]=(Number(r.score[w])||0)+1}
 }
 
@@ -581,12 +642,13 @@ function tttWin(b){
 }
 function renderTTT(){
   const side=sideOf(room),b=room.board||Array(9).fill('');
-  $('#status').textContent=room.winner?winnerText():room.turn===side?'Sua vez':'Vez do adversário';
+  $('#status').textContent=room.winner?(winAnimationPending()?'Sequência vencedora…':winnerText()):room.turn===side?'Sua vez':'Vez do adversário';
   const el=$('#board');el.className='board ttt';el.innerHTML='';$('#extraGameArea').innerHTML='';
   b.forEach((v,i)=>{
     const bt=document.createElement('button');bt.className='cell '+(v==='blue'?'markX':v==='red'?'markO':'');bt.textContent=v==='blue'?'X':v==='red'?'O':'';
     bt.disabled=!!room.winner||room.turn!==side||!!v;bt.onclick=()=>tttMove(i);el.appendChild(bt);
   });
+  if(room.winner){const info=tttWinLine(b);if(info)addWinLineOverlay(el,'ttt',info);}
 }
 async function tttMove(i){
   await runTransaction(ref(db,'rooms/'+roomId),r=>{
@@ -618,12 +680,13 @@ function c4Drop(b,col,side){
 }
 function renderConnect4(){
   const side=sideOf(room),b=room.board||Array(42).fill('');
-  $('#status').textContent=room.winner?winnerText():room.turn===side?'Sua vez — escolha uma coluna':'Vez do adversário';
+  $('#status').textContent=room.winner?(winAnimationPending()?'Sequência vencedora…':winnerText()):room.turn===side?'Sua vez — escolha uma coluna':'Vez do adversário';
   const el=$('#board');el.className='board connect4';el.innerHTML='';$('#extraGameArea').innerHTML='';
   b.forEach((v,i)=>{
     const bt=document.createElement('button');bt.className='c4cell '+(v==='blue'?'c4blue':v==='red'?'c4red':'');
     bt.disabled=!!room.winner||room.turn!==side||!!b[i%7];bt.onclick=()=>c4Move(i%7);el.appendChild(bt);
   });
+  if(room.winner){const info=c4WinLine(b);if(info)addWinLineOverlay(el,'c4',info);}
 }
 async function c4Move(col){
   await runTransaction(ref(db,'rooms/'+roomId),r=>{
@@ -691,10 +754,14 @@ function renderBattleship(){
     const ownWasShot=myIncoming.includes(i);
     const ownIsShip=myFleet.includes(i);
     const type=ownIsShip?(myTypes[i]||'caravela'):'';
+    const battleHitKey=`${roomId}|${statsRound(room)}|own|${i}`;
+    const animateOwnHit=ownWasShot&&ownIsShip&&!battleAnimatedHits.has(battleHitKey);
+    if(animateOwnHit)battleAnimatedHits.add(battleHitKey);
     own.className='battleCell '+
       (ownIsShip?`singleShip ${type} `:'')+
       (ownWasShot&&!ownIsShip?'waterMiss ':'')+
-      (ownWasShot&&ownIsShip?'shipHitRed ':'');
+      (ownWasShot&&ownIsShip?'shipHitRed ':'')+
+      (animateOwnHit?'shipSinking ':'');
     own.disabled=true;
     if(ownIsShip){
       const img=document.createElement('img');
@@ -712,9 +779,13 @@ function renderBattleship(){
     target.type='button';
     const alreadyShot=myShots.includes(i);
     const hit=alreadyShot&&oppFleet.includes(i);
+    const battleEnemyHitKey=`${roomId}|${statsRound(room)}|enemy|${i}`;
+    const animateEnemyHit=hit&&!battleAnimatedHits.has(battleEnemyHitKey);
+    if(animateEnemyHit)battleAnimatedHits.add(battleEnemyHitKey);
     target.className='battleCell enemyCell '+
       (alreadyShot&&!hit?'waterMiss ':'')+
-      (hit?'enemyShipHit ':'');
+      (hit?'enemyShipHit ':'')+
+      (animateEnemyHit?'shipSinking ':'');
     target.setAttribute('aria-label',alreadyShot?'Posição já atacada':'Atacar posição '+(i+1));
 
     const canShoot=!room.winner && room.turn===side && !alreadyShot;
@@ -1059,12 +1130,9 @@ function pokerWinnerHandDescription(room,winnerSeats){
 }
 function best7(cards){return combos5(cards).map(eval5).sort((a,b)=>cmpRank(b,a))[0]}
 
-/* v2.84 — comentário dinâmico de probabilidades */
+/* v2.81 — comentário dinâmico de probabilidades */
 const pokerProbCacheV281=new Map();
-const pokerProbLabelsV281={
-  8:'Straight Flush',7:'Quadra',6:'Full House',5:'Flush',
-  4:'Straight',3:'Trinca',2:'Dois Pares',1:'Um Par',0:'Carta Alta'
-};
+const pokerProbLabelsV281={};
 function pokerProbRemainingDeckV281(known){
   const used=new Set(known||[]);
   return makeDeck().filter(c=>!used.has(c));
@@ -1091,7 +1159,7 @@ function pokerProbEstimateV281(hole,community){
   }
   const total=need<=0?1:samples;
   const result=counts.map((v,i)=>({
-    name:pokerProbLabelsV281[i],pct:v*100/total,rank:i
+    name:pokerHandInfo([i])[0],pct:v*100/total,rank:i
   })).filter(x=>x.pct>0).sort((a,b)=>b.pct-a.pct||b.rank-a.rank).slice(0,3);
   pokerProbCacheV281.set(key,result);
   if(pokerProbCacheV281.size>24)pokerProbCacheV281.delete(pokerProbCacheV281.keys().next().value);
@@ -1215,9 +1283,10 @@ function renderPoker(){
           <div class="cards">${community}</div>
           <div class="pokerPot">Pot fictício: <b>${Number(room.pot||0)}</b></div>
         </div>
-        ${pokerProbabilityHtmlV281(room,side)}
       </div>
     </div>
+
+    ${pokerProbabilityHtmlV281(room,side)}
 
     <div class="pokerGameControls">
       <button id="pokerNext" class="pokerStageBtn">${actionLabel}</button>

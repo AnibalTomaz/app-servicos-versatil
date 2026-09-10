@@ -38,19 +38,19 @@
 
   <div class="games">
     <button id="playTTT" class="game active" disabled data-game="tictactoe">
-      <span class="gameIcon">✕○</span><span><strong>Jogo da Velha</strong><small>ONLINE</small></span>
+      <span class="gameIcon">✕○</span><span><strong>Jogo da Velha</strong><small class="gameHow">Clique nos quadrados e tente fazer<br>3 em linha.</small></span>
     </button>
     <button id="playC4" class="game active" disabled data-game="connect4">
-      <span class="gameIcon">●●</span><span><strong>Quatro em Linha</strong><small>ONLINE</small></span>
+      <span class="gameIcon">●●</span><span><strong>Quatro em Linha</strong><small class="gameHow">Clique nos círculos e tente fazer<br>4 em linha.</small></span>
     </button>
     <button id="playBattle" class="game active" disabled data-game="battleship">
-      <span class="gameIcon">⚓</span><span><strong>Batalha Naval</strong><small>ONLINE</small></span>
+      <span class="gameIcon">⚓</span><span><strong>Batalha Naval</strong><small class="gameHow">Clique nos quadrados do oponente e tente<br>afundar seus navios.</small></span>
     </button>
     <button id="playChess" class="game active" disabled data-game="chess">
-      <span class="gameIcon">♟</span><span><strong>Xadrez</strong><small>ONLINE</small></span>
+      <span class="gameIcon">♟</span><span><strong>Xadrez</strong><small class="gameHow">Movimente suas peças para atacar<br>a rainha do oponente.</small></span>
     </button>
     <button id="playPoker" class="game active pokerGame" disabled data-game="poker">
-      <span class="gameIcon">♠</span><span><strong>Poker — Texas Hold’em (+18)</strong><small>RECREATIVO • PLAY MONEY</small></span>
+      <span class="gameIcon">♠</span><span><strong>Poker — Texas Hold’em (+18)</strong><small class="gameHow">Busque montar a melhor mão de cartas<br>e vencer a rodada.</small></span>
     </button>
   </div>
 
@@ -109,6 +109,7 @@
   <div class="modalCard">
     <h2 id="endTitle">Partida terminada</h2>
     <p id="endText"></p>
+    <div id="endExtra"></div>
     <div class="modalActions">
       <button id="rematchBtn">Jogar de novo</button>
       <button id="backBtn" class="secondary">Voltar à Sala de Jogos</button>

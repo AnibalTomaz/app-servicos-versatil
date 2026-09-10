@@ -976,7 +976,7 @@ button.secondary{background:#fff;color:#185b91;border:1px solid #aac1d4}button:d
 }
 
 .gameBanner.bannerPlaceholder::before{
-  content:"Carregando...";
+  content:"BANNER RANDÔMICO";
   position:absolute;
   inset:0;
   display:flex;
@@ -1067,25 +1067,42 @@ button.secondary{background:#fff;color:#185b91;border:1px solid #aac1d4}button:d
 
 /* v2.81 — painel "Suas probabilidades" */
 .pokerProbPanel{
-  position:absolute; right:3.5%; top:56%; width:215px; max-width:29%;
+  position:absolute; right:3.5%; top:18%; width:215px; max-width:29%;
   background:rgba(255,255,255,.97); border:1px solid #1b365d;
   border-radius:16px; padding:10px 12px; box-sizing:border-box;
   box-shadow:0 2px 7px rgba(0,0,0,.08); z-index:5;
 }
 .pokerProbTitle{text-align:center;text-transform:uppercase;font-size:11px;
   color:#1b365d;margin-bottom:7px;letter-spacing:.25px}
-.pokerProbRow{color:#0f5d88;display:flex;justify-content:space-between;gap:8px;
+.pokerProbRow{display:flex;justify-content:space-between;gap:8px;
   border-bottom:1px solid #e4ebf1;padding:3px 0;font-size:10px;line-height:1.25}
 .pokerProbRow strong{font-size:10px;color:#0f5d88}
 .pokerProbPanel small{display:block;font-size:8px;line-height:1.25;
   color:#607d8b;margin-top:6px}
 @media(max-width:700px){
- .pokerProbPanel{right:2%;top:58%;width:150px;max-width:31%;padding:7px 8px}
+ .pokerProbPanel{right:2%;top:17%;width:150px;max-width:31%;padding:7px 8px}
  .pokerProbTitle{font-size:9px}.pokerProbRow,.pokerProbRow strong{font-size:8px}
  .pokerProbPanel small{font-size:7px}
 }
 @media(max-width:520px){
- .pokerProbPanel{top:58%;width:130px;max-width:34%;padding:6px}
+ .pokerProbPanel{top:15%;width:130px;max-width:34%;padding:6px}
  .pokerProbTitle{font-size:8px}.pokerProbRow,.pokerProbRow strong{font-size:7px}
  .pokerProbPanel small{font-size:6px}
 }
+
+/* v2.85 — linhas vencedoras animadas */
+#board.ttt,#board.connect4{position:relative}
+.winLineSvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;overflow:visible}
+.winLinePath{fill:none;stroke-width:8;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900;animation:winStroke 1.25s ease-out forwards;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.winBlue .winLinePath{stroke:#1565c0}.winRed .winLinePath{stroke:#d32f2f}
+@keyframes winStroke{to{stroke-dashoffset:0}}
+/* v2.85 — batalha naval: navio afundando a pino */
+.battleCell.shipSinking .battleBoatImage{transform-origin:50% 85%;animation:shipSinking 1.45s ease-in forwards}
+@keyframes shipSinking{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}35%{transform:translateY(-4px) rotate(25deg) scale(1.02);opacity:1}70%{transform:translateY(9px) rotate(72deg) scale(.92);opacity:.8}100%{transform:translateY(26px) rotate(90deg) scale(.72);opacity:0}}
+/* v2.85 — baú de tesouro */
+#endExtra{min-height:0}.treasureChest{width:92px;height:70px;margin:12px auto 2px;position:relative;transform-origin:50% 100%}.chestBody{position:absolute;left:5px;right:5px;bottom:5px;height:46px;border-radius:6px 6px 12px 12px;background:#a96b22;border:4px solid #6d4215;color:#ffe082;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:inset 0 6px 0 rgba(255,255,255,.14)}.chestLid{position:absolute;left:4px;right:4px;top:8px;height:31px;border-radius:18px 18px 4px 4px;background:#c5862d;border:4px solid #6d4215;color:#ffe082;z-index:2;text-align:center;line-height:23px;font-size:16px;transform-origin:50% 100%;transform:rotateX(0deg)}.chestOpen .chestLid{animation:chestOpen 1.1s ease-out .15s forwards}.chestOpen .chestBody{animation:chestGlow .9s ease-out .55s forwards}.treasureCaption{font-weight:800;color:#8a5a18;font-size:13px}@keyframes chestOpen{to{transform:rotateX(-105deg) translateY(-4px)}}@keyframes chestGlow{50%{box-shadow:0 0 20px 5px rgba(255,193,7,.6),inset 0 6px 0 rgba(255,255,255,.14)}to{box-shadow:inset 0 6px 0 rgba(255,255,255,.14)}}
+/* v2.85 — probabilidades fora da mesa */
+.pokerProbPanel{position:relative!important;right:auto!important;top:auto!important;width:min(420px,100%)!important;max-width:none!important;margin:6px 4% 12px auto!important;background:rgba(255,255,255,.98);border:1px solid #1b365d;border-radius:16px;padding:10px 12px;box-sizing:border-box;box-shadow:0 2px 7px rgba(0,0,0,.08);z-index:1}
+.pokerProbTitle{text-align:center;text-transform:uppercase;font-size:11px;color:#1b365d;margin-bottom:7px;letter-spacing:.25px}.pokerProbRow{color:#0f5d88;display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #e4ebf1;padding:3px 0;font-size:10px;line-height:1.25}.pokerProbRow strong{font-size:10px;color:#0f5d88}.pokerProbPanel small{display:block;font-size:8px;line-height:1.25;color:#607d8b;margin-top:6px}
+.gameHow{font-size:10px!important;line-height:1.25!important;opacity:.9!important;margin-top:4px!important;display:block}
+@media(max-width:620px){.pokerProbPanel{width:min(360px,96%)!important;margin:6px auto 12px!important}.gameHow{font-size:9px!important}.winLinePath{stroke-width:7}}
