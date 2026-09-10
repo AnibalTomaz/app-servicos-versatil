@@ -160,7 +160,7 @@ let roomWatchdogTimer=null,lastRoomEventAt=0,botBusySince=0;
 let statsPageSession='',statsDisconnectHandle=null,statsRoundSeen='';
 let queueCountdownTimer=null,bannerRotateTimer=null,currentBannerIndex=-1;
 let chessSelected=null,pokerAgeApproved=false;
-const battleAnimatedHits=new Set();
+const battleAnimatedHitsV286=new Set();
 
 const views=[$('#homeView'),$('#queueView'),$('#gameView')];
 function show(v){views.forEach(x=>x.classList.add('hidden'));v.classList.remove('hidden')}
@@ -542,7 +542,8 @@ async function enter(rid){
 function renderPlayersTwo(){
   const side=sideOf(room),opp=opponentOf(room);
   $('#playersArea').classList.remove('hidden');
-  const myColor=side==='blue'?'Azul':'Vermelho',oppColor=side==='blue'?'Vermelho':'Azul';
+  const myColor=side==='blue'?'Azul':'Vermelho';
+  const oppColor=side==='blue'?'Vermelho':'Azul';
   $('#meBox').className='playerBox '+(side==='blue'?'playerBlue':'playerRed');
   $('#oppBox').className='playerBox '+(side==='blue'?'playerRed':'playerBlue');
   $('#meBox').innerHTML=`<strong>${nick}</strong><small>Você • ${myColor}</small><div class="scoreNumber">${scoreOf(room,side)}</div>`;
@@ -563,71 +564,56 @@ function winnerText(){
   if(room.winner==='draw')return 'Empate';
   return room.winner===s?'Você venceu!':'Você perdeu!';
 }
-let winRevealTimer=null;
+let winRevealTimer=null,winRevealKey='';
 function winAnimationPending(){
-  if(!room?.winner || !['tictactoe','connect4'].includes(gameKey) || room.winner==='draw')return false;
+  if(!room?.winner||room.winner==='draw'||!['tictactoe','connect4'].includes(gameKey))return false;
   const at=Number(room.winAt||0);
   return !!at && Date.now()-at<2000;
 }
 function scheduleWinReveal(){
+  const at=Number(room?.winAt||0);
+  if(!at)return;
+  const key=gameKey+'|'+at;
+  if(winRevealKey===key)return;
+  winRevealKey=key;
   if(winRevealTimer)clearTimeout(winRevealTimer);
-  const at=Number(room?.winAt||0),delay=Math.max(0,2000-(Date.now()-at));
-  winRevealTimer=setTimeout(()=>{if(room?.winAt===at)renderEndState()},delay+20);
-}
-function tttWinLine(b){
-  for(const line of [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]){
-    const [a,c,d]=line;if(b[a]&&b[a]===b[c]&&b[a]===b[d])return {side:b[a],cells:line};
-  }
-  return null;
-}
-function c4WinLine(b){
-  const at=(r,c)=>b[r*7+c];
-  for(let r=0;r<6;r++)for(let c=0;c<7;c++){
-    const s=at(r,c);if(!s)continue;
-    for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){
-      const cells=[];let ok=true;
-      for(let k=0;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}cells.push(rr*7+cc)}
-      if(ok)return {side:s,cells};
-    }
-  }
-  return null;
-}
-function addWinLineOverlay(el,type,info){
-  if(!el||!info)return;
-  const svgNS='http://www.w3.org/2000/svg';const svg=document.createElementNS(svgNS,'svg');
-  svg.classList.add('winLineSvg',info.side==='blue'?'winBlue':'winRed');svg.setAttribute('viewBox',type==='ttt'?'0 0 300 300':'0 0 700 600');svg.setAttribute('aria-hidden','true');
-  const line=document.createElementNS(svgNS,'line');
-  if(type==='ttt'){
-    const sets={
-      '0,1,2':[30,50,270,50],'3,4,5':[30,150,270,150],'6,7,8':[30,250,270,250],
-      '0,3,6':[50,30,50,270],'1,4,7':[150,30,150,270],'2,5,8':[250,30,250,270],
-      '0,4,8':[30,30,270,270],'2,4,6':[270,30,30,270]};
-    const p=sets[info.cells.join(',')];[line.x1,line.y1,line.x2,line.y2]=p;
-  }else{
-    const [a,b,c,d]=info.cells.map(i=>[Math.floor(i/7),i%7]);
-    line.setAttribute('x1',50+b*100);line.setAttribute('y1',50+a*100);line.setAttribute('x2',50+d*100);line.setAttribute('y2',50+c*100);
-  }
-  line.setAttribute('x1',line.x1?.baseVal?.value ?? line.getAttribute('x1'));
-  line.setAttribute('y1',line.y1?.baseVal?.value ?? line.getAttribute('y1'));
-  line.setAttribute('x2',line.x2?.baseVal?.value ?? line.getAttribute('x2'));
-  line.setAttribute('y2',line.y2?.baseVal?.value ?? line.getAttribute('y2'));
-  line.classList.add('winLinePath');svg.appendChild(line);el.appendChild(svg);
+  const delay=Math.max(0,2000-(Date.now()-at))+30;
+  winRevealTimer=setTimeout(()=>{
+    winRevealTimer=null;
+    if(room?.winAt===at)renderEndState();
+  },delay);
 }
 function renderEndState(){
-  if(winAnimationPending()){ $('#endModal').classList.add('hidden'); scheduleWinReveal(); return; }
-  if(!room.winner){$('#endModal').classList.add('hidden');$('#rematchBtn').disabled=false;return}
+  if(!room.winner){
+    $('#endModal').classList.add('hidden');
+    $('#rematchBtn').disabled=false;
+    return;
+  }
+  if(winAnimationPending()){
+    $('#endModal').classList.add('hidden');
+    scheduleWinReveal();
+    return;
+  }
   const title=winnerText(),opp=opponentOf(room),humanGame=opp?.type!=='bot';
   const myVote=humanGame&&room.rematch?.[uid]?.accepted===true&&room.rematch?.[uid]?.sessionId===sessionId;
-  $('#endTitle').textContent=title;$('#endText').textContent=room.winner==='draw'?'A partida terminou empatada.':room.winner===sideOf(room)?'Boa partida.':'O adversário venceu esta rodada.';
+  $('#endTitle').textContent=title;
+  $('#endText').textContent=room.winner==='draw'?'A partida terminou empatada.':room.winner===sideOf(room)?'Boa partida.':'O adversário venceu esta rodada.';
   const extra=$('#endExtra');
   if(extra){
-    if(gameKey==='battleship' && room.winner===sideOf(room)){
+    extra.innerHTML='';
+    if(gameKey==='battleship'&&room.winner===sideOf(room)){
       extra.innerHTML='<div class="treasureChest" aria-label="Baú de tesouro"><div class="chestLid">◆</div><div class="chestBody">✦</div></div><div class="treasureCaption">Tesouro encontrado!</div>';
       requestAnimationFrame(()=>extra.classList.add('chestOpen'));
-    }else extra.innerHTML='';
+    }
   }
-  if(myVote){$('#endModal').classList.add('hidden');$('#status').textContent='Aguardando o adversário aceitar jogar de novo…';$('#rematchBtn').disabled=true}
-  else{$('#endModal').classList.remove('hidden');$('#rematchBtn').disabled=false}
+  if(myVote){
+    $('#endModal').classList.add('hidden');
+    $('#status').textContent='Aguardando o adversário aceitar jogar de novo…';
+    $('#rematchBtn').disabled=true;
+  }else{
+    $('#endModal').classList.remove('hidden');
+    $('#rematchBtn').disabled=false;
+  }
 }
 function awardWinner(r,w){
   r.winner=w;
@@ -639,6 +625,37 @@ function awardWinner(r,w){
 function tttWin(b){
   for(const [a,c,d] of [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]])if(b[a]&&b[a]===b[c]&&b[a]===b[d])return b[a];
   return b.every(Boolean)?'draw':'';
+}
+function tttWinLine(b){
+  for(const cells of [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]){
+    const [a,c,d]=cells;if(b[a]&&b[a]===b[c]&&b[a]===b[d])return {side:b[a],cells};
+  }
+  return null;
+}
+function addWinLineOverlay(el,type,info){
+  if(!el||!info)return;
+  const line=document.createElement('div');
+  line.className='winLineOverlay '+(info.side==='blue'?'winBlue':'winRed');
+  let r1,c1,r2,c2;
+  if(type==='ttt'){
+    const map={
+      '0,1,2':[0,0,0,2],'3,4,5':[1,0,1,2],'6,7,8':[2,0,2,2],
+      '0,3,6':[0,0,2,0],'1,4,7':[0,1,2,1],'2,5,8':[0,2,2,2],
+      '0,4,8':[0,0,2,2],'2,4,6':[0,2,2,0]
+    };
+    [r1,c1,r2,c2]=map[info.cells.join(',')];
+    const x1=(c1+.5)/3*100,y1=(r1+.5)/3*100,x2=(c2+.5)/3*100,y2=(r2+.5)/3*100;
+    const dx=x2-x1,dy=y2-y1;
+    line.style.left=x1+'%';line.style.top=y1+'%';
+    line.style.width=Math.hypot(dx,dy)+'%';line.style.transform=`rotate(${Math.atan2(dy,dx)*180/Math.PI}deg)`;
+  }else{
+    const [a,,d]=info.cells; r1=Math.floor(a/7);c1=a%7;r2=Math.floor(d/7);c2=d%7;
+    const x1=(c1+.5)/7*100,y1=(r1+.5)/6*100,x2=(c2+.5)/7*100,y2=(r2+.5)/6*100;
+    const dx=x2-x1,dy=y2-y1;
+    line.style.left=x1+'%';line.style.top=y1+'%';
+    line.style.width=Math.hypot(dx,dy)+'%';line.style.transform=`rotate(${Math.atan2(dy,dx)*180/Math.PI}deg)`;
+  }
+  el.appendChild(line);
 }
 function renderTTT(){
   const side=sideOf(room),b=room.board||Array(9).fill('');
@@ -669,14 +686,24 @@ function c4Winner(b){
   for(let r=0;r<6;r++)for(let c=0;c<7;c++){
     const s=at(r,c);if(!s)continue;
     for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){
-      let ok=true;for(let k=1;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}}
+      const cells=[r*7+c];let ok=true;
+      for(let k=1;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}cells.push(rr*7+cc)}
       if(ok)return s;
     }
   }
   return b.every(Boolean)?'draw':'';
 }
-function c4Drop(b,col,side){
-  for(let r=5;r>=0;r--){const i=r*7+col;if(!b[i]){b[i]=side;return i}}return -1;
+function c4WinLine(b){
+  const at=(r,c)=>b[r*7+c];
+  for(let r=0;r<6;r++)for(let c=0;c<7;c++){
+    const s=at(r,c);if(!s)continue;
+    for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){
+      const cells=[r*7+c];let ok=true;
+      for(let k=1;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}cells.push(rr*7+cc)}
+      if(ok)return {side:s,cells};
+    }
+  }
+  return null;
 }
 function renderConnect4(){
   const side=sideOf(room),b=room.board||Array(42).fill('');
@@ -754,14 +781,13 @@ function renderBattleship(){
     const ownWasShot=myIncoming.includes(i);
     const ownIsShip=myFleet.includes(i);
     const type=ownIsShip?(myTypes[i]||'caravela'):'';
-    const battleHitKey=`${roomId}|${statsRound(room)}|own|${i}`;
-    const animateOwnHit=ownWasShot&&ownIsShip&&!battleAnimatedHits.has(battleHitKey);
-    if(animateOwnHit)battleAnimatedHits.add(battleHitKey);
+    const ownHitKey=`${roomId}|${statsRound(room)}|own|${i}`;
+    const ownAnimateHit=ownWasShot&&ownIsShip&&!battleAnimatedHitsV286.has(ownHitKey);
+    if(ownAnimateHit)battleAnimatedHitsV286.add(ownHitKey);
     own.className='battleCell '+
       (ownIsShip?`singleShip ${type} `:'')+
       (ownWasShot&&!ownIsShip?'waterMiss ':'')+
-      (ownWasShot&&ownIsShip?'shipHitRed ':'')+
-      (animateOwnHit?'shipSinking ':'');
+      (ownWasShot&&ownIsShip?'shipHitRed ':'')+(ownAnimateHit?'shipSinking ':'');
     own.disabled=true;
     if(ownIsShip){
       const img=document.createElement('img');
@@ -779,13 +805,12 @@ function renderBattleship(){
     target.type='button';
     const alreadyShot=myShots.includes(i);
     const hit=alreadyShot&&oppFleet.includes(i);
-    const battleEnemyHitKey=`${roomId}|${statsRound(room)}|enemy|${i}`;
-    const animateEnemyHit=hit&&!battleAnimatedHits.has(battleEnemyHitKey);
-    if(animateEnemyHit)battleAnimatedHits.add(battleEnemyHitKey);
+    const enemyHitKey=`${roomId}|${statsRound(room)}|enemy|${i}`;
+    const enemyAnimateHit=hit&&!battleAnimatedHitsV286.has(enemyHitKey);
+    if(enemyAnimateHit)battleAnimatedHitsV286.add(enemyHitKey);
     target.className='battleCell enemyCell '+
       (alreadyShot&&!hit?'waterMiss ':'')+
-      (hit?'enemyShipHit ':'')+
-      (animateEnemyHit?'shipSinking ':'');
+      (hit?'enemyShipHit ':'')+(enemyAnimateHit?'shipSinking ':'');
     target.setAttribute('aria-label',alreadyShot?'Posição já atacada':'Atacar posição '+(i+1));
 
     const canShoot=!room.winner && room.turn===side && !alreadyShot;
@@ -1130,9 +1155,12 @@ function pokerWinnerHandDescription(room,winnerSeats){
 }
 function best7(cards){return combos5(cards).map(eval5).sort((a,b)=>cmpRank(b,a))[0]}
 
-/* v2.81 — comentário dinâmico de probabilidades */
+/* v2.86 — comentário dinâmico de probabilidades */
 const pokerProbCacheV281=new Map();
-const pokerProbLabelsV281={};
+const pokerProbLabelsV281={
+  8:'Straight Flush',7:'Quadra',6:'Full House',5:'Flush',
+  4:'Straight',3:'Trinca',2:'Dois Pares',1:'Um Par',0:'Carta Alta'
+};
 function pokerProbRemainingDeckV281(known){
   const used=new Set(known||[]);
   return makeDeck().filter(c=>!used.has(c));
@@ -1159,7 +1187,7 @@ function pokerProbEstimateV281(hole,community){
   }
   const total=need<=0?1:samples;
   const result=counts.map((v,i)=>({
-    name:pokerHandInfo([i])[0],pct:v*100/total,rank:i
+    name:pokerProbLabelsV281[i],pct:v*100/total,rank:i
   })).filter(x=>x.pct>0).sort((a,b)=>b.pct-a.pct||b.rank-a.rank).slice(0,3);
   pokerProbCacheV281.set(key,result);
   if(pokerProbCacheV281.size>24)pokerProbCacheV281.delete(pokerProbCacheV281.keys().next().value);
@@ -1286,7 +1314,7 @@ function renderPoker(){
       </div>
     </div>
 
-    ${pokerProbabilityHtmlV281(room,side)}
+    <div class="pokerProbabilityOutside">${pokerProbabilityHtmlV281(room,side)}</div>
 
     <div class="pokerGameControls">
       <button id="pokerNext" class="pokerStageBtn">${actionLabel}</button>
