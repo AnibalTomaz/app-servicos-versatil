@@ -6,26 +6,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Versátil">
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css?v=2830">
-</head><body><div id="appVersionBadge">v2.83</div><div id="app"></div><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css?v=2810">
+</head><body><div id="appVersionBadge">v2.81</div><div id="app"></div><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
-function showBootErrorV283(message){
+window.addEventListener('error',function(ev){
   const app=document.getElementById('app');
-  if(app && !app.dataset.bootErrorShown){
-    app.dataset.bootErrorShown='1';
-    app.innerHTML='<div style="max-width:620px;margin:40px auto;padding:20px;font-family:Arial;background:#fff;border:1px solid #ddd;border-radius:12px"><h2>APP SERVIÇOS VERSÁTIL</h2><p>Não foi possível carregar o aplicativo.</p><p style="font-size:12px;color:#666;word-break:break-word">Erro: '+String(message||'desconhecido').replace(/[<>]/g,'')+'</p><button onclick="location.reload()" style="padding:10px 16px">Tentar novamente</button></div>';
+  if(app && !app.innerHTML.trim()){
+    app.innerHTML='<div style="max-width:620px;margin:40px auto;padding:20px;font-family:Arial;background:#fff;border:1px solid #ddd;border-radius:12px"><h2>APP SERVIÇOS VERSÁTIL</h2><p>Não foi possível carregar o aplicativo.</p><p style="font-size:12px;color:#666">Erro: '+String(ev.message||'desconhecido')+'</p><button onclick="location.reload(true)" style="padding:10px 16px">Tentar novamente</button></div>';
   }
-}
-window.addEventListener('error',function(ev){showBootErrorV283(ev.message||'erro de carregamento')});
-window.addEventListener('unhandledrejection',function(ev){showBootErrorV283(ev.reason?.message||ev.reason||'erro assíncrono')});
+});
 </script>
-<script src="app.js?v=2830"></script><script>
+<script src="app.js?v=2810"></script><script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',async()=>{
     try{
       const regs=await navigator.serviceWorker.getRegistrations();
       for(const reg of regs)await reg.update();
-      await navigator.serviceWorker.register('service-worker.js?v=2830',{updateViaCache:'none'});
+      await navigator.serviceWorker.register('service-worker.js?v=2810',{updateViaCache:'none'});
     }catch(e){console.warn('Service Worker:',e)}
   });
 }

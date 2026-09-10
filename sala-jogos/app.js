@@ -1059,8 +1059,7 @@ function pokerWinnerHandDescription(room,winnerSeats){
 }
 function best7(cards){return combos5(cards).map(eval5).sort((a,b)=>cmpRank(b,a))[0]}
 
-/* v2.81 — comentário dinâmico de probabilidades */
-/* v2.83: pacote reconstruído sobre a base estável v2.80. */
+/* v2.84 — comentário dinâmico de probabilidades */
 const pokerProbCacheV281=new Map();
 const pokerProbLabelsV281={
   8:'Straight Flush',7:'Quadra',6:'Full House',5:'Flush',

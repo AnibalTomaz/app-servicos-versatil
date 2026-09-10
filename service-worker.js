@@ -1,9 +1,9 @@
-const CACHE="versatil-v2-83-estavel";
+const CACHE="versatil-v2-79-acesso-restaurado-listas-estaveis";
 const APP_SHELL=[
   './',
   './index.html',
-  './style.css?v=2830',
-  './app.js?v=2830',
+  './style.css?v=2840',
+  './app.js?v=2840',
   './manifest.json',
   './logo-versatil.jpg',
   './icon-192.png',
