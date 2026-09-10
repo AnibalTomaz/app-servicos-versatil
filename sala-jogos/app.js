@@ -153,6 +153,13 @@ const GAME_ICONS={
   chess:'♟',
   poker:'♠'
 };
+const GAME_DESCRIPTIONS={
+  tictactoe:'Clique nos quadrados e tente fazer 3 em linha.',
+  connect4:'Clique nas colunas e tente fazer 4 em linha.',
+  battleship:'Clique nas posições do oponente e tente afundar seus navios.',
+  chess:'Movimente suas peças para atacar a rainha do oponente.',
+  poker:'Busque montar a melhor mão de cartas e quebrar a banca.'
+};
 
 let uid=null,nick='',nickKey='',sessionId='',gameKey='',roomId=null,room=null;
 let matching=false,enteringRoom=false,botTimer=null,seekTimer=null,roomUnsub=null,assignUnsub=null;
@@ -160,7 +167,7 @@ let roomWatchdogTimer=null,lastRoomEventAt=0,botBusySince=0;
 let statsPageSession='',statsDisconnectHandle=null,statsRoundSeen='';
 let queueCountdownTimer=null,bannerRotateTimer=null,currentBannerIndex=-1;
 let chessSelected=null,pokerAgeApproved=false;
-const battleAnimatedHitsV286=new Set();
+let endAnimationKey='',endAnimationPending=false,endAnimationTimer=null;
 
 const views=[$('#homeView'),$('#queueView'),$('#gameView')];
 function show(v){views.forEach(x=>x.classList.add('hidden'));v.classList.remove('hidden')}
@@ -519,7 +526,7 @@ async function enter(rid){
   enteringRoom=true;clearTimeout(botTimer);clearSeek();stopQueueCountdown();startGameBannerRotation();
   const rs=await get(ref(db,'rooms/'+rid)),rv=rs.val();
   if(!rv||!Object.values(rv.players||{}).some(p=>p?.uid===uid&&p?.sessionId===sessionId)){enteringRoom=false;return}
-  roomId=rid;gameKey=rv.game;matching=false;show($('#gameView'));$('#gameTitle').innerHTML=`<span class="gameTitleIcon">${GAME_ICONS[gameKey]||'🎮'}</span><span>${GAME_NAMES[gameKey]}</span>`;$('#matchInfo').textContent='';
+  roomId=rid;gameKey=rv.game;matching=false;show($('#gameView'));$('#gameTitle').innerHTML=`<span class="gameTitleIcon">${GAME_ICONS[gameKey]||'🎮'}</span><span>${GAME_NAMES[gameKey]}</span>`;$('#gameDescription').textContent=GAME_DESCRIPTIONS[gameKey]||'';$('#matchInfo').textContent='';
   statsRecordMatchStart(rv);
   stopAssignmentListener();
   if(roomUnsub)roomUnsub();
@@ -542,12 +549,10 @@ async function enter(rid){
 function renderPlayersTwo(){
   const side=sideOf(room),opp=opponentOf(room);
   $('#playersArea').classList.remove('hidden');
-  const myColor=side==='blue'?'Azul':'Vermelho';
-  const oppColor=side==='blue'?'Vermelho':'Azul';
-  $('#meBox').className='playerBox '+(side==='blue'?'playerBlue':'playerRed');
-  $('#oppBox').className='playerBox '+(side==='blue'?'playerRed':'playerBlue');
-  $('#meBox').innerHTML=`<strong>${nick}</strong><small>Você • ${myColor}</small><div class="scoreNumber">${scoreOf(room,side)}</div>`;
-  $('#oppBox').innerHTML=`<strong>${opp?.nick||'Adversário'}</strong><small>${opp?.type==='bot'?'Jogador virtual':'Jogador online'} • ${oppColor}</small><div class="scoreNumber">${scoreOf(room,otherSide(side))}</div>`;
+  $('#meBox').className='playerBox playerBlue';
+  $('#oppBox').className='playerBox playerRed';
+  $('#meBox').innerHTML=`<strong>${nick}</strong><small>Você • Azul</small><div class="scoreNumber">${scoreOf(room,side)}</div>`;
+  $('#oppBox').innerHTML=`<strong>${opp?.nick||'Adversário'}</strong><small>${opp?.type==='bot'?'Jogador virtual':'Jogador online'} • Vermelho</small><div class="scoreNumber">${scoreOf(room,otherSide(side))}</div>`;
 }
 function renderGame(){
   if(!room)return;
@@ -564,61 +569,65 @@ function winnerText(){
   if(room.winner==='draw')return 'Empate';
   return room.winner===s?'Você venceu!':'Você perdeu!';
 }
-let winRevealTimer=null,winRevealKey='';
-function winAnimationPending(){
-  if(!room?.winner||room.winner==='draw'||!['tictactoe','connect4'].includes(gameKey))return false;
-  const at=Number(room.winAt||0);
-  return !!at && Date.now()-at<2000;
-}
-function scheduleWinReveal(){
-  const at=Number(room?.winAt||0);
-  if(!at)return;
-  const key=gameKey+'|'+at;
-  if(winRevealKey===key)return;
-  winRevealKey=key;
-  if(winRevealTimer)clearTimeout(winRevealTimer);
-  const delay=Math.max(0,2000-(Date.now()-at))+30;
-  winRevealTimer=setTimeout(()=>{
-    winRevealTimer=null;
-    if(room?.winAt===at)renderEndState();
-  },delay);
-}
 function renderEndState(){
-  if(!room.winner){
+  if(!room.winner){clearEndAnimation();$('#endModal').classList.add('hidden');$('#rematchBtn').disabled=false;return}
+  if(gameKey==='battleship'){
     $('#endModal').classList.add('hidden');
-    $('#rematchBtn').disabled=false;
     return;
   }
-  if(winAnimationPending()){
+  if(endAnimationPending && (gameKey==='tictactoe'||gameKey==='connect4')){
     $('#endModal').classList.add('hidden');
-    scheduleWinReveal();
     return;
   }
   const title=winnerText(),opp=opponentOf(room),humanGame=opp?.type!=='bot';
   const myVote=humanGame&&room.rematch?.[uid]?.accepted===true&&room.rematch?.[uid]?.sessionId===sessionId;
-  $('#endTitle').textContent=title;
-  $('#endText').textContent=room.winner==='draw'?'A partida terminou empatada.':room.winner===sideOf(room)?'Boa partida.':'O adversário venceu esta rodada.';
-  const extra=$('#endExtra');
-  if(extra){
-    extra.innerHTML='';
-    if(gameKey==='battleship'&&room.winner===sideOf(room)){
-      extra.innerHTML='<div class="treasureChest" aria-label="Baú de tesouro"><div class="chestLid">◆</div><div class="chestBody">✦</div></div><div class="treasureCaption">Tesouro encontrado!</div>';
-      requestAnimationFrame(()=>extra.classList.add('chestOpen'));
-    }
-  }
-  if(myVote){
-    $('#endModal').classList.add('hidden');
-    $('#status').textContent='Aguardando o adversário aceitar jogar de novo…';
-    $('#rematchBtn').disabled=true;
-  }else{
-    $('#endModal').classList.remove('hidden');
-    $('#rematchBtn').disabled=false;
-  }
+  $('#endTitle').textContent=title;$('#endText').textContent=room.winner==='draw'?'A partida terminou empatada.':room.winner===sideOf(room)?'Boa partida.':'O adversário venceu esta rodada.';
+  if(myVote){$('#endModal').classList.add('hidden');$('#status').textContent='Aguardando o adversário aceitar jogar de novo…';$('#rematchBtn').disabled=true}
+  else{$('#endModal').classList.remove('hidden');$('#rematchBtn').disabled=false}
 }
 function awardWinner(r,w){
   r.winner=w;
-  r.winAt=Date.now();
   if(w&&w!=='draw'){r.score=r.score||{blue:0,red:0};r.score[w]=(Number(r.score[w])||0)+1}
+}
+
+/* ANIMAÇÕES DE VITÓRIA — v2.87 */
+function tttWinningLine(b){
+  const lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  for(const line of lines){const [a,c,d]=line;if(b[a]&&b[a]===b[c]&&b[a]===b[d])return line}
+  return null;
+}
+function c4WinningLine(b){
+  const at=(r,c)=>b[r*7+c];
+  for(let r=0;r<6;r++)for(let c=0;c<7;c++){
+    const s=at(r,c);if(!s)continue;
+    for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){
+      const line=[r*7+c];let ok=true;
+      for(let k=1;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}line.push(rr*7+cc)}
+      if(ok)return line;
+    }
+  }
+  return null;
+}
+function endAnimKeyFor(){return `${roomId}|${gameKey}|${statsRound(room)}|${room?.winner||''}`}
+function clearEndAnimation(){if(endAnimationTimer)clearTimeout(endAnimationTimer);endAnimationTimer=null;endAnimationPending=false;endAnimationKey='';}
+function animateWinningStrike(boardEl,indices,color,done){
+  if(!boardEl||!indices?.length){done?.();return}
+  const key=endAnimKeyFor();
+  if(endAnimationKey===key)return;
+  endAnimationKey=key;endAnimationPending=true;
+  const old=boardEl.querySelector('.winStrikeLayer');if(old)old.remove();
+  const first=boardEl.querySelector(`[data-cell="${indices[0]}"]`),last=boardEl.querySelector(`[data-cell="${indices[indices.length-1]}"]`);
+  if(!first||!last){endAnimationPending=false;done?.();return}
+  boardEl.classList.add('winAnimationBoard');
+  const br=boardEl.getBoundingClientRect(),a=first.getBoundingClientRect(),b=last.getBoundingClientRect();
+  const x1=a.left+a.width/2-br.left,y1=a.top+a.height/2-br.top,x2=b.left+b.width/2-br.left,y2=b.top+b.height/2-br.top;
+  const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy),angle=Math.atan2(dy,dx)*180/Math.PI;
+  const layer=document.createElement('div');layer.className='winStrikeLayer';
+  const line=document.createElement('div');line.className=`winStrikeLine ${color}`;
+  line.style.left=x1+'px';line.style.top=y1+'px';line.style.transform=`rotate(${angle}deg)`;line.style.width='0px';
+  layer.appendChild(line);boardEl.appendChild(layer);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{line.style.width=len+'px'}));
+  endAnimationTimer=setTimeout(()=>{endAnimationPending=false;done?.()},2000);
 }
 
 /* JOGO DA VELHA */
@@ -626,46 +635,18 @@ function tttWin(b){
   for(const [a,c,d] of [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]])if(b[a]&&b[a]===b[c]&&b[a]===b[d])return b[a];
   return b.every(Boolean)?'draw':'';
 }
-function tttWinLine(b){
-  for(const cells of [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]){
-    const [a,c,d]=cells;if(b[a]&&b[a]===b[c]&&b[a]===b[d])return {side:b[a],cells};
-  }
-  return null;
-}
-function addWinLineOverlay(el,type,info){
-  if(!el||!info)return;
-  const line=document.createElement('div');
-  line.className='winLineOverlay '+(info.side==='blue'?'winBlue':'winRed');
-  let r1,c1,r2,c2;
-  if(type==='ttt'){
-    const map={
-      '0,1,2':[0,0,0,2],'3,4,5':[1,0,1,2],'6,7,8':[2,0,2,2],
-      '0,3,6':[0,0,2,0],'1,4,7':[0,1,2,1],'2,5,8':[0,2,2,2],
-      '0,4,8':[0,0,2,2],'2,4,6':[0,2,2,0]
-    };
-    [r1,c1,r2,c2]=map[info.cells.join(',')];
-    const x1=(c1+.5)/3*100,y1=(r1+.5)/3*100,x2=(c2+.5)/3*100,y2=(r2+.5)/3*100;
-    const dx=x2-x1,dy=y2-y1;
-    line.style.left=x1+'%';line.style.top=y1+'%';
-    line.style.width=Math.hypot(dx,dy)+'%';line.style.transform=`rotate(${Math.atan2(dy,dx)*180/Math.PI}deg)`;
-  }else{
-    const [a,,d]=info.cells; r1=Math.floor(a/7);c1=a%7;r2=Math.floor(d/7);c2=d%7;
-    const x1=(c1+.5)/7*100,y1=(r1+.5)/6*100,x2=(c2+.5)/7*100,y2=(r2+.5)/6*100;
-    const dx=x2-x1,dy=y2-y1;
-    line.style.left=x1+'%';line.style.top=y1+'%';
-    line.style.width=Math.hypot(dx,dy)+'%';line.style.transform=`rotate(${Math.atan2(dy,dx)*180/Math.PI}deg)`;
-  }
-  el.appendChild(line);
-}
 function renderTTT(){
   const side=sideOf(room),b=room.board||Array(9).fill('');
-  $('#status').textContent=room.winner?(winAnimationPending()?'Sequência vencedora…':winnerText()):room.turn===side?'Sua vez':'Vez do adversário';
+  $('#status').textContent=room.winner?winnerText():room.turn===side?'Sua vez':'Vez do adversário';
   const el=$('#board');el.className='board ttt';el.innerHTML='';$('#extraGameArea').innerHTML='';
   b.forEach((v,i)=>{
-    const bt=document.createElement('button');bt.className='cell '+(v==='blue'?'markX':v==='red'?'markO':'');bt.textContent=v==='blue'?'X':v==='red'?'O':'';
+    const bt=document.createElement('button');bt.dataset.cell=String(i);bt.className='cell '+(v==='blue'?'markX':v==='red'?'markO':'');bt.textContent=v==='blue'?'X':v==='red'?'O':'';
     bt.disabled=!!room.winner||room.turn!==side||!!v;bt.onclick=()=>tttMove(i);el.appendChild(bt);
   });
-  if(room.winner){const info=tttWinLine(b);if(info)addWinLineOverlay(el,'ttt',info);}
+  if(room.winner&&room.winner!=='draw'){
+    const line=tttWinningLine(b);
+    animateWinningStrike(el,line,room.winner,()=>renderEndState());
+  }
 }
 async function tttMove(i){
   await runTransaction(ref(db,'rooms/'+roomId),r=>{
@@ -686,34 +667,35 @@ function c4Winner(b){
   for(let r=0;r<6;r++)for(let c=0;c<7;c++){
     const s=at(r,c);if(!s)continue;
     for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){
-      const cells=[r*7+c];let ok=true;
-      for(let k=1;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}cells.push(rr*7+cc)}
+      let ok=true;for(let k=1;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}}
       if(ok)return s;
     }
   }
   return b.every(Boolean)?'draw':'';
 }
-function c4WinLine(b){
-  const at=(r,c)=>b[r*7+c];
-  for(let r=0;r<6;r++)for(let c=0;c<7;c++){
-    const s=at(r,c);if(!s)continue;
-    for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){
-      const cells=[r*7+c];let ok=true;
-      for(let k=1;k<4;k++){const rr=r+dr*k,cc=c+dc*k;if(rr<0||rr>=6||cc<0||cc>=7||at(rr,cc)!==s){ok=false;break}cells.push(rr*7+cc)}
-      if(ok)return {side:s,cells};
-    }
-  }
-  return null;
+function c4Drop(b,col,side){
+  for(let r=5;r>=0;r--){const i=r*7+col;if(!b[i]){b[i]=side;return i}}return -1;
 }
 function renderConnect4(){
   const side=sideOf(room),b=room.board||Array(42).fill('');
-  $('#status').textContent=room.winner?(winAnimationPending()?'Sequência vencedora…':winnerText()):room.turn===side?'Sua vez — escolha uma coluna':'Vez do adversário';
+  $('#status').textContent=room.winner?winnerText():room.turn===side?'Sua vez — escolha uma coluna':'Vez do adversário';
   const el=$('#board');el.className='board connect4';el.innerHTML='';$('#extraGameArea').innerHTML='';
-  b.forEach((v,i)=>{
-    const bt=document.createElement('button');bt.className='c4cell '+(v==='blue'?'c4blue':v==='red'?'c4red':'');
-    bt.disabled=!!room.winner||room.turn!==side||!!b[i%7];bt.onclick=()=>c4Move(i%7);el.appendChild(bt);
-  });
-  if(room.winner){const info=c4WinLine(b);if(info)addWinLineOverlay(el,'c4',info);}
+  for(let col=0;col<7;col++){
+    const column=document.createElement('div');column.className='c4Column';
+    const full=!!b[col];
+    for(let row=0;row<6;row++){
+      const i=row*7+col;const cell=document.createElement('button');cell.type='button';cell.dataset.cell=String(i);
+      cell.className='c4cell '+(b[i]==='blue'?'c4blue':b[i]==='red'?'c4red':'');
+      cell.disabled=!!room.winner||room.turn!==side||full;
+      cell.setAttribute('aria-label',`Coluna ${col+1}, linha ${row+1}`);
+      cell.onclick=()=>c4Move(col);column.appendChild(cell);
+    }
+    el.appendChild(column);
+  }
+  if(room.winner&&room.winner!=='draw'){
+    const line=c4WinningLine(b);
+    animateWinningStrike(el,line,room.winner,()=>renderEndState());
+  }
 }
 async function c4Move(col){
   await runTransaction(ref(db,'rooms/'+roomId),r=>{
@@ -749,6 +731,19 @@ function fleetName(type){
   return type==='caravela'?'Caravela':type==='submarino'?'Submarino':'Caiaque';
 }
 
+function renderBattleshipResult(){
+  const side=sideOf(room),won=room.winner===side;
+  const extra=$('#extraGameArea');
+  let panel=extra.querySelector('.battleResultPanel');
+  if(panel)return;
+  panel=document.createElement('div');panel.className=`battleResultPanel ${won?'battleWon':'battleLost'}`;
+  if(won){
+    panel.innerHTML=`<h2>Você venceu!</h2><div class="treasureChest" aria-label="Baú de tesouro abrindo"><div class="chestLid">◆</div><div class="chestBody"><span>🪙</span><span>🪙</span><span>🪙</span></div></div><p>O baú se abriu e revelou moedas de ouro!</p>`;
+  }else{
+    panel.innerHTML=`<h2>Você perdeu! Ande na prancha!</h2><div class="pirateSword" aria-label="Espada pirata">⚔️</div>`;
+  }
+  extra.appendChild(panel);
+}
 function renderBattleship(){
   const side=sideOf(room),opp=otherSide(side);
   const myFleet=Array.isArray(room.ships?.[side])?room.ships[side]:[];
@@ -769,7 +764,7 @@ function renderBattleship(){
   const extra=$('#extraGameArea');
   extra.innerHTML=
     '<div class="battleWrap">'+
-      '<div class="battlePanel"><h3>Seu mar — Azul</h3><div id="mySea" class="battleGrid"></div><div class="battleLegend">2 caravelas • 2 submarinos • 1 caiaque</div></div>'+
+      '<div class="battlePanel"><h3>Seu mar — Azul</h3><div id="mySea" class="battleGrid"></div></div>'+
       '<div class="battlePanel"><h3>Mar adversário — Vermelho</h3><div id="enemySea" class="battleGrid"></div><div class="battleLegend">💧 água • vermelho = embarcação atingida</div></div>'+
     '</div>';
 
@@ -781,13 +776,10 @@ function renderBattleship(){
     const ownWasShot=myIncoming.includes(i);
     const ownIsShip=myFleet.includes(i);
     const type=ownIsShip?(myTypes[i]||'caravela'):'';
-    const ownHitKey=`${roomId}|${statsRound(room)}|own|${i}`;
-    const ownAnimateHit=ownWasShot&&ownIsShip&&!battleAnimatedHitsV286.has(ownHitKey);
-    if(ownAnimateHit)battleAnimatedHitsV286.add(ownHitKey);
     own.className='battleCell '+
       (ownIsShip?`singleShip ${type} `:'')+
       (ownWasShot&&!ownIsShip?'waterMiss ':'')+
-      (ownWasShot&&ownIsShip?'shipHitRed ':'')+(ownAnimateHit?'shipSinking ':'');
+      (ownWasShot&&ownIsShip?'shipHitRed shipSinking ':'');
     own.disabled=true;
     if(ownIsShip){
       const img=document.createElement('img');
@@ -805,12 +797,9 @@ function renderBattleship(){
     target.type='button';
     const alreadyShot=myShots.includes(i);
     const hit=alreadyShot&&oppFleet.includes(i);
-    const enemyHitKey=`${roomId}|${statsRound(room)}|enemy|${i}`;
-    const enemyAnimateHit=hit&&!battleAnimatedHitsV286.has(enemyHitKey);
-    if(enemyAnimateHit)battleAnimatedHitsV286.add(enemyHitKey);
     target.className='battleCell enemyCell '+
       (alreadyShot&&!hit?'waterMiss ':'')+
-      (hit?'enemyShipHit ':'')+(enemyAnimateHit?'shipSinking ':'');
+      (hit?'enemyShipHit shipSinking ':'');
     target.setAttribute('aria-label',alreadyShot?'Posição já atacada':'Atacar posição '+(i+1));
 
     const canShoot=!room.winner && room.turn===side && !alreadyShot;
@@ -830,6 +819,7 @@ function renderBattleship(){
     }
     enemy.appendChild(target);
   }
+  if(room.winner)renderBattleshipResult();
 }
 async function battleShot(i){
   if(!roomId||!room)return;
@@ -1155,55 +1145,35 @@ function pokerWinnerHandDescription(room,winnerSeats){
 }
 function best7(cards){return combos5(cards).map(eval5).sort((a,b)=>cmpRank(b,a))[0]}
 
-/* v2.86 — comentário dinâmico de probabilidades */
-const pokerProbCacheV281=new Map();
-const pokerProbLabelsV281={
-  8:'Straight Flush',7:'Quadra',6:'Full House',5:'Flush',
-  4:'Straight',3:'Trinca',2:'Dois Pares',1:'Um Par',0:'Carta Alta'
-};
-function pokerProbRemainingDeckV281(known){
-  const used=new Set(known||[]);
-  return makeDeck().filter(c=>!used.has(c));
-}
-function pokerProbEstimateV281(hole,community){
-  const known=[...(hole||[]),...(community||[])];
-  const key=known.join('|');
-  if(pokerProbCacheV281.has(key))return pokerProbCacheV281.get(key);
-  const need=5-(community||[]).length;
-  const deck=pokerProbRemainingDeckV281(known);
-  const samples=5000;
-  const counts=Array(9).fill(0);
-  if(need<=0){
-    counts[best7(known)[0]]=1;
-  }else{
-    for(let n=0;n<samples;n++){
-      const pool=deck.slice(),future=[];
-      for(let k=0;k<need;k++){
-        const j=Math.floor(Math.random()*pool.length);
-        future.push(pool.splice(j,1)[0]);
-      }
-      counts[best7([...known,...future])[0]]++;
-    }
+/* v2.87 — probabilidades do Poker: somente as cartas do usuário */
+const pokerProbCacheV287=new Map();
+const pokerProbLabelsV287={8:'Straight Flush',7:'Quadra',6:'Full House',5:'Flush',4:'Straight',3:'Trinca',2:'Dois Pares',1:'Um Par',0:'Carta Alta'};
+function pokerProbEstimateV287(hole,community){
+  if(!hole||hole.length<2||!community||community.length<3)return [];
+  const known=[...hole,...community],key=known.join('|');
+  if(pokerProbCacheV287.has(key))return pokerProbCacheV287.get(key);
+  const deck=makeDeck().filter(c=>!known.includes(c));
+  const need=5-community.length,samples=10000,counts=Array(9).fill(0);
+  if(need<=0){counts[best7([...hole,...community])[0]]=1}
+  else for(let n=0;n<samples;n++){
+    const pool=deck.slice(),future=[];
+    for(let k=0;k<need;k++){const j=Math.floor(Math.random()*pool.length);future.push(pool.splice(j,1)[0])}
+    counts[best7([...hole,...community,...future])[0]]++;
   }
   const total=need<=0?1:samples;
-  const result=counts.map((v,i)=>({
-    name:pokerProbLabelsV281[i],pct:v*100/total,rank:i
-  })).filter(x=>x.pct>0).sort((a,b)=>b.pct-a.pct||b.rank-a.rank).slice(0,3);
-  pokerProbCacheV281.set(key,result);
-  if(pokerProbCacheV281.size>24)pokerProbCacheV281.delete(pokerProbCacheV281.keys().next().value);
+  const result=counts.map((v,i)=>({name:pokerProbLabelsV287[i],pct:v*100/total,rank:i}))
+    .filter(x=>x.pct>0).sort((a,b)=>b.pct-a.pct||b.rank-a.rank).slice(0,3);
+  pokerProbCacheV287.set(key,result);
+  if(pokerProbCacheV287.size>30)pokerProbCacheV287.delete(pokerProbCacheV287.keys().next().value);
   return result;
 }
-function pokerProbabilityHtmlV281(room,side){
+function pokerProbabilityHtmlV287(room,side){
   const hole=room?.holes?.[side]||[];
-  const community=(room?.community||[]).slice(0,
-    room?.stage===0?0:room?.stage===1?3:room?.stage===2?4:5);
-  if(hole.length<2)return '';
-  const rows=pokerProbEstimateV281(hole,community);
-  return `<div class="pokerProbPanel">
-    <div class="pokerProbTitle">Suas probabilidades</div>
-    ${rows.map(x=>`<div class="pokerProbRow"><span><b>${x.name}</b></span><strong>${x.pct.toFixed(1)}%</strong></div>`).join('')}
-    <small>Estimativa das 3 mãos finais mais prováveis.</small>
-  </div>`;
+  const visible=room?.stage===1?3:room?.stage===2?4:room?.stage>=3?5:0;
+  if(hole.length<2||visible<3)return '';
+  const community=(room.community||[]).slice(0,visible);
+  const rows=pokerProbEstimateV287(hole,community);
+  return `<div class="pokerProbPanel"><div class="pokerProbTitle">Suas probabilidades</div>${rows.map(x=>`<div class="pokerProbRow"><span><b>${x.name}</b></span><strong>${x.pct.toFixed(1)}%</strong></div>`).join('')}<small>Calculadas somente para suas duas cartas + cartas comunitárias abertas.</small></div>`;
 }
 function pokerResolve(r){
   const active=Object.keys(r.players).filter(s=>!r.folded?.[s]);
@@ -1311,10 +1281,9 @@ function renderPoker(){
           <div class="cards">${community}</div>
           <div class="pokerPot">Pot fictício: <b>${Number(room.pot||0)}</b></div>
         </div>
+        ${pokerProbabilityHtmlV287(room,side)}
       </div>
     </div>
-
-    <div class="pokerProbabilityOutside">${pokerProbabilityHtmlV281(room,side)}</div>
 
     <div class="pokerGameControls">
       <button id="pokerNext" class="pokerStageBtn">${actionLabel}</button>

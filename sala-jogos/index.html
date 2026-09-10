@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>Versátil • Sala de Jogos v2.86 Integrado</title>
+<title>Versátil • Sala de Jogos v0.29 Integrado</title>
 <link rel="stylesheet" href="styles.css?v=0.28">
 </head>
 <body>
@@ -38,19 +38,19 @@
 
   <div class="games">
     <button id="playTTT" class="game active" disabled data-game="tictactoe">
-      <span class="gameIcon">✕○</span><span><strong>Jogo da Velha</strong><small class="gameHowTo">Clique nos quadrados e tente fazer 3 em linha.</small><small>ONLINE</small></span>
+      <span class="gameIcon">✕○</span><span><strong>Jogo da Velha</strong><small class="gameHow">Clique nos quadrados e tente fazer 3 em linha.</small><small>ONLINE</small></span>
     </button>
     <button id="playC4" class="game active" disabled data-game="connect4">
-      <span class="gameIcon">●●</span><span><strong>Quatro em Linha</strong><small class="gameHowTo">Clique nos círculos e tente fazer 4 em linha.</small><small>ONLINE</small></span>
+      <span class="gameIcon">●●</span><span><strong>Quatro em Linha</strong><small class="gameHow">Clique nas colunas e tente fazer 4 em linha.</small><small>ONLINE</small></span>
     </button>
     <button id="playBattle" class="game active" disabled data-game="battleship">
-      <span class="gameIcon">⚓</span><span><strong>Batalha Naval</strong><small class="gameHowTo">Clique no mar do oponente e tente afundar seus navios.</small><small>ONLINE</small></span>
+      <span class="gameIcon">⚓</span><span><strong>Batalha Naval</strong><small class="gameHow">Clique nas posições do oponente e tente afundar seus navios.</small><small>ONLINE</small></span>
     </button>
     <button id="playChess" class="game active" disabled data-game="chess">
-      <span class="gameIcon">♟</span><span><strong>Xadrez</strong><small class="gameHowTo">Movimente suas peças para atacar a rainha do oponente.</small><small>ONLINE</small></span>
+      <span class="gameIcon">♟</span><span><strong>Xadrez</strong><small class="gameHow">Movimente suas peças para atacar a rainha do oponente.</small><small>ONLINE</small></span>
     </button>
     <button id="playPoker" class="game active pokerGame" disabled data-game="poker">
-      <span class="gameIcon">♠</span><span><strong>Poker — Texas Hold’em (+18)</strong><small class="gameHowTo">Busque montar a melhor mão de cartas e vencer a banca.</small><small>RECREATIVO • PLAY MONEY</small></span>
+      <span class="gameIcon">♠</span><span><strong>Poker — Texas Hold’em (+18)</strong><small class="gameHow">Busque montar a melhor mão de cartas e quebrar a banca.</small><small>RECREATIVO • PLAY MONEY</small></span>
     </button>
   </div>
 
@@ -73,6 +73,7 @@
   <div class="gameHeader gameHeaderWithBanner">
     <div class="gameNameBlock">
       <h2 id="gameTitle">Jogo</h2>
+      <div id="gameDescription" class="gameDescription"></div>
       <div id="matchInfo" class="muted hidden" aria-hidden="true"></div>
     </div>
     <div id="gameBanner" class="gameBanner gameBannerInMatch bannerPlaceholder" aria-label="Banner da partida"><span>Carregando...</span></div>
@@ -109,7 +110,6 @@
   <div class="modalCard">
     <h2 id="endTitle">Partida terminada</h2>
     <p id="endText"></p>
-    <div id="endExtra" class="endExtra"></div>
     <div class="modalActions">
       <button id="rematchBtn">Jogar de novo</button>
       <button id="backBtn" class="secondary">Voltar à Sala de Jogos</button>
@@ -158,6 +158,6 @@
   </div>
 </div>
 
-<script type="module" src="app.js?v=0.27"></script>
+<script type="module" src="app.js?v=0.29"></script>
 </body>
 </html>
