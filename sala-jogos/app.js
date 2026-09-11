@@ -590,7 +590,7 @@ function awardWinner(r,w){
   if(w&&w!=='draw'){r.score=r.score||{blue:0,red:0};r.score[w]=(Number(r.score[w])||0)+1}
 }
 
-/* ANIMAÇÕES DE VITÓRIA — v2.87 */
+/* ANIMAÇÕES DE VITÓRIA — v2.89 */
 function tttWinningLine(b){
   const lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
   for(const line of lines){const [a,c,d]=line;if(b[a]&&b[a]===b[c]&&b[a]===b[d])return line}
@@ -619,8 +619,10 @@ function animateWinningStrike(boardEl,indices,color,done){
   const first=boardEl.querySelector(`[data-cell="${indices[0]}"]`),last=boardEl.querySelector(`[data-cell="${indices[indices.length-1]}"]`);
   if(!first||!last){endAnimationPending=false;done?.();return}
   boardEl.classList.add('winAnimationBoard');
-  const br=boardEl.getBoundingClientRect(),a=first.getBoundingClientRect(),b=last.getBoundingClientRect();
-  const x1=a.left+a.width/2-br.left,y1=a.top+a.height/2-br.top,x2=b.left+b.width/2-br.left,y2=b.top+b.height/2-br.top;
+  // Calcula a linha usando as coordenadas internas das próprias células.
+  // Isso evita o deslocamento causado por padding/borda/scroll do container.
+  const x1=first.offsetLeft+first.offsetWidth/2,y1=first.offsetTop+first.offsetHeight/2;
+  const x2=last.offsetLeft+last.offsetWidth/2,y2=last.offsetTop+last.offsetHeight/2;
   const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy),angle=Math.atan2(dy,dx)*180/Math.PI;
   const layer=document.createElement('div');layer.className='winStrikeLayer';
   const line=document.createElement('div');line.className=`winStrikeLine ${color}`;
@@ -744,8 +746,12 @@ function renderBattleshipResult(){
   }
   extra.appendChild(panel);
 }
+let battleAnimatedIncomingV289=new Set();
+let battleAnimRoomV289='';
 function renderBattleship(){
   const side=sideOf(room),opp=otherSide(side);
+  const animRoom=`${roomId}|${statsRound(room)}|${side}`;
+  if(animRoom!==battleAnimRoomV289){battleAnimRoomV289=animRoom;battleAnimatedIncomingV289=new Set()}
   const myFleet=Array.isArray(room.ships?.[side])?room.ships[side]:[];
   const myTypes=room.shipTypes?.[side]||makeFleetTypes(myFleet);
   const myIncoming=Array.isArray(room.shots?.[opp])?room.shots[opp]:[];
@@ -776,10 +782,14 @@ function renderBattleship(){
     const ownWasShot=myIncoming.includes(i);
     const ownIsShip=myFleet.includes(i);
     const type=ownIsShip?(myTypes[i]||'caravela'):'';
+    const incomingShipHit=ownWasShot&&ownIsShip;
+    const animateIncoming=incomingShipHit&&!battleAnimatedIncomingV289.has(i);
     own.className='battleCell '+
       (ownIsShip?`singleShip ${type} `:'')+
       (ownWasShot&&!ownIsShip?'waterMiss ':'')+
-      (ownWasShot&&ownIsShip?'shipHitRed shipSinking ':'');
+      (animateIncoming?'shipHitRed shipSinking ':'')+
+      (incomingShipHit&&!animateIncoming?'shipHitRed ':'');
+    if(animateIncoming)battleAnimatedIncomingV289.add(i);
     own.disabled=true;
     if(ownIsShip){
       const img=document.createElement('img');
@@ -797,9 +807,10 @@ function renderBattleship(){
     target.type='button';
     const alreadyShot=myShots.includes(i);
     const hit=alreadyShot&&oppFleet.includes(i);
+    // Ao acertar o navio adversário, a casa fica somente vermelha.
     target.className='battleCell enemyCell '+
       (alreadyShot&&!hit?'waterMiss ':'')+
-      (hit?'enemyShipHit shipSinking ':'');
+      (hit?'enemyShipHit ':'');
     target.setAttribute('aria-label',alreadyShot?'Posição já atacada':'Atacar posição '+(i+1));
 
     const canShoot=!room.winner && room.turn===side && !alreadyShot;
@@ -1145,7 +1156,7 @@ function pokerWinnerHandDescription(room,winnerSeats){
 }
 function best7(cards){return combos5(cards).map(eval5).sort((a,b)=>cmpRank(b,a))[0]}
 
-/* v2.87 — probabilidades do Poker: somente as cartas do usuário */
+/* v2.89 — probabilidades do Poker: somente as cartas do usuário */
 const pokerProbCacheV287=new Map();
 const pokerProbLabelsV287={8:'Straight Flush',7:'Quadra',6:'Full House',5:'Flush',4:'Straight',3:'Trinca',2:'Dois Pares',1:'Um Par',0:'Carta Alta'};
 function pokerProbEstimateV287(hole,community){
